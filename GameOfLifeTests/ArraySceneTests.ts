@@ -36,3 +36,9 @@ test("ConstructorNonPositiveWidth", () =>
         (e: ArgumentException) => e.ArgumentName === "width",
         "An ArgumentException with argument name 'width' is thrown")
     );
+
+test("ConstructorNonIntegerWidth", () =>
+    throws(() => new ArrayScene(1.5, 7),
+        (e: ArgumentException) => e.ArgumentName === "width",
+        "An ArgumentException with argument name 'width' is thrown")
+    );
