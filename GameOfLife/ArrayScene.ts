@@ -1,12 +1,19 @@
 ﻿/// <reference path="IScene.ts"/>
+/// <reference path="ArgumentException.ts"/>
 
 class ArrayScene implements IScene {
-    private array : Array<Array<boolean>>;
+    private array: Array<Array<boolean>>;
 
     constructor(public width: number, public height: number) {
+        if (width <= 0) {
+            throw new ArgumentException("width");
+        }
         this.array = [];
-        for (var i = 0; i < width; i++) {
-            this.array.push([]);
+        for (var x = 0; x < width; x++) {
+            this.array[x] = [];
+            for (var y = 0; y < height; y++) {
+                this.array[x][y] = false;
+            }
         }
     }
 
