@@ -12,6 +12,36 @@ test("ConstructorGet", () => {
     }
 });
 
+test("ConstructorNonIntegerWidth", () =>
+    throws(() => new ArrayScene(1.5, 7),
+        (e: ArgumentException) => e.ArgumentName === "width",
+        "An ArgumentException with argument name 'width' is thrown")
+    );
+
+test("ConstructorNaN", () =>
+    throws(() => new ArrayScene(Number.NaN, 7),
+        (e: ArgumentException) => e.ArgumentName === "width",
+        "An ArgumentException with argument name 'width' is thrown")
+    );
+
+test("ConstructorNegativeInfinity", () =>
+    throws(() => new ArrayScene(Number.NEGATIVE_INFINITY, 7),
+        (e: ArgumentException) => e.ArgumentName === "width",
+        "An ArgumentException with argument name 'width' is thrown")
+    );
+
+test("ConstructorPositiveInfinity", () =>
+    throws(() => new ArrayScene(Number.POSITIVE_INFINITY, 7),
+        (e: ArgumentException) => e.ArgumentName === "width",
+        "An ArgumentException with argument name 'width' is thrown")
+    );
+
+test("ConstructorNonPositiveWidth", () =>
+    throws(() => new ArrayScene(0, 7),
+        (e: ArgumentException) => e.ArgumentName === "width",
+        "An ArgumentException with argument name 'width' is thrown")
+    );
+
 test("SetTrueGet", () => {
     var a = new ArrayScene(5, 7);
 
@@ -31,14 +61,4 @@ test("SetFalseGet", () => {
     strictEqual(p, false);
 });
 
-test("ConstructorNonPositiveWidth", () =>
-    throws(() => new ArrayScene(0, 7),
-        (e: ArgumentException) => e.ArgumentName === "width",
-        "An ArgumentException with argument name 'width' is thrown")
-    );
 
-test("ConstructorNonIntegerWidth", () =>
-    throws(() => new ArrayScene(1.5, 7),
-        (e: ArgumentException) => e.ArgumentName === "width",
-        "An ArgumentException with argument name 'width' is thrown")
-    );
