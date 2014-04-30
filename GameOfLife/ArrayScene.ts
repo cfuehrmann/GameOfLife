@@ -1,5 +1,6 @@
 ﻿/// <reference path="IScene.ts"/>
 /// <reference path="ArgumentException.ts"/>
+/// <reference path="Int.ts"/>
 
 class ArrayScene implements IScene {
     private array: Array<Array<boolean>>;
@@ -38,6 +39,10 @@ class ArrayScene implements IScene {
             throw new ArgumentException("y");
         }
         return this.array[x][y];
+    }
+
+    getPoint2(x: Int, y: Int): boolean {
+        return this.array[x.Value][y.Value];
     }
 }
 

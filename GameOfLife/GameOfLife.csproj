@@ -28,6 +28,7 @@
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="ArgumentException.ts" />
+    <TypeScriptCompile Include="Int.ts" />
     <TypeScriptCompile Include="IScene.ts" />
     <TypeScriptCompile Include="ArrayScene.ts" />
     <TypeScriptCompile Include="app.ts" />

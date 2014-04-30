@@ -144,16 +144,28 @@ test("yPositiveInfinity", () => {
 });
 
 QUnit.module("ArrayScene performance", {
-    setup: () => { a = new ArrayScene(10000, 10000); }
+    setup: () => { a = new ArrayScene(10000, 10000); } // Problem: Chutzpah/qunit thinks the time spent here is spent by the test
 });
 
-test("GetPerformance", () => {
+
+test("GetPerformanceWithInt", () => {
     var p: boolean;
-    for (var x = 0; x < 10000; x++) {
-        for (var y = 0; y < 10000; y++) {
-            p = p || a.getPoint(x, y);
+    for (var x = 0; x < 1; x++) {
+        for (var y = 0; y < 1; y++) {
+            p = p || a.getPoint2(new Int(x), new Int(y));
         }
     }
     strictEqual(p, false);
 });
+
+//test("GetPerformance", () => {
+//    var p: boolean;
+//    for (var x = 0; x < 10000; x++) {
+//        for (var y = 0; y < 10000; y++) {
+//            p = p || a.getPoint(x, y);
+//        }
+//    }
+//    strictEqual(p, false);
+//});
+
 
