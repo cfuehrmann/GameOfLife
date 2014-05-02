@@ -5,7 +5,7 @@ class Renderer {
         ctx.fillStyle = "rgb(" + String(255) + ", " + String(0) + ", " + String(0) + ")";
         for (var y = 0; y < scene.height; y++) {
             for (var x = 0; x < scene.width; x++) {
-                if (scene.getPoint(x, y)) {
+                if (scene.getPoint(new Int(x), new Int(y))) {
                     ctx.fillRect(x * 10, y * 10, 10, 10);
                 }
             }

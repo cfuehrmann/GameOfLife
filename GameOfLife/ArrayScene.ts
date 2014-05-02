@@ -31,17 +31,17 @@ class ArrayScene implements IScene {
         this.array[x][y] = value;
     }
 
-    getPoint(x: number, y: number): boolean {
-        if (x % 1 !== 0) {
-            throw new ArgumentException("x");
-        }
-        if (y % 1 !== 0) {
-            throw new ArgumentException("y");
-        }
-        return this.array[x][y];
-    }
+    // getPointUnsafe(x: number, y: number): boolean {
+    //    if (x % 1 !== 0) {
+    //        throw new ArgumentException("x");
+    //    }
+    //    if (y % 1 !== 0) {
+    //        throw new ArgumentException("y");
+    //    }
+    //    return this.array[x][y];
+    // }
 
-    getPoint2(x: Int, y: Int): boolean {
+    getPoint(x: Int, y: Int): boolean {
         return this.array[x.Value][y.Value];
     }
 }

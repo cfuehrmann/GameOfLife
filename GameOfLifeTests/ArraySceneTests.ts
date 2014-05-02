@@ -9,7 +9,7 @@ test("Get", () => {
 
     for (var x = 0; x < 5; x++) {
         for (var y = 0; y < 7; y++) {
-            strictEqual(a.getPoint(x, y), false);
+            strictEqual(a.getPoint(new Int(x), new Int(y)), false);
         }
     }
 });
@@ -82,7 +82,7 @@ QUnit.module("ArrayScene setPoint", {
 
 test("TrueGet", () => {
     a.setPoint(2, 3, true);
-    var p = a.getPoint(2, 3);
+    var p = a.getPoint(new Int(2), new Int(3));
 
     strictEqual(p, true);
 });
@@ -90,7 +90,7 @@ test("TrueGet", () => {
 test("FalseGet", () => {
     a.setPoint(2, 3, true);
     a.setPoint(2, 3, false);
-    var p = a.getPoint(2, 3);
+    var p = a.getPoint(new Int(2), new Int(3));
 
     strictEqual(p, false);
 });
@@ -144,28 +144,33 @@ test("yPositiveInfinity", () => {
 });
 
 QUnit.module("ArrayScene performance", {
-    setup: () => { a = new ArrayScene(10000, 10000); } // Problem: Chutzpah/qunit thinks the time spent here is spent by the test
+    setup: () => { a = new ArrayScene(2000, 2000); } // problem: Chutzpah/qunit thinks the time spent here is spent by the test
 });
-
 
 test("GetPerformanceWithInt", () => {
-    var p: boolean;
-    for (var x = 0; x < 1; x++) {
-        for (var y = 0; y < 1; y++) {
-            p = p || a.getPoint2(new Int(x), new Int(y));
-        }
-    }
-    strictEqual(p, false);
+    var range = new Int(2000).Range;
+    var startTime = new Date().getTime();
+
+    var q = new Int(42);
+    q.Value = 1;
+
+    strictEqual(q.Value, 1);
+
+    range.For(x =>
+        range.For(y =>
+            a.getPoint(x, y)));
+
+    var duration = new Date().getTime() - startTime;
+    strictEqual(false, false, "Duration: " + duration);
 });
 
-//test("GetPerformance", () => {
-//    var p: boolean;
-//    for (var x = 0; x < 10000; x++) {
-//        for (var y = 0; y < 10000; y++) {
-//            p = p || a.getPoint(x, y);
+// test("GetUnsafePerformance", () => {
+//    var startTime = new Date().getTime();
+//    for (var x = 0; x < 2000; x++) {
+//        for (var y = 0; y < 2000; y++) {
+//            a.getPoint(x, y);
 //        }
 //    }
-//    strictEqual(p, false);
-//});
-
-
+//    var duration = new Date().getTime() - startTime;
+//    strictEqual(false, false, "Duration: " + duration);
+// });
