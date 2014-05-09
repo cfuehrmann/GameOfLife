@@ -2,6 +2,13 @@
 /// <reference path="../GameOfLife/ArgumentException.ts"/>
 /// <reference path="../packages/qunit.TypeScript.DefinitelyTyped.0.1.1/Content/Scripts/typings/qunit/qunit.d.ts" />
 
+import Integers = require("../GameOfLife/Int");
+import Int = Integers.Int;
+import YYY = require("../GameOfLife/ArrayScene");
+import ArrayScene = YYY.ArrayScene;
+import XXX = require("../GameOfLife/IScene");
+import IScene = XXX.IScene;
+
 QUnit.module("ArrayScene constructor");
 
 test("Get", () => {
@@ -161,7 +168,9 @@ test("yPositiveInfinity", () => {
         );
 });
 
-QUnit.module("ArrayScene performance");
+QUnit.module("ArrayScene performance", {
+    setup: () => { a = new ArrayScene(2000, 2000); }
+});
 
 test("GetPerformanceWithInt", () => {
     var range = new Int(2000).getRange();

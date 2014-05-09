@@ -1,8 +1,9 @@
-﻿/// <reference path="IScene.ts"/>
-/// <reference path="ArgumentException.ts"/>
-/// <reference path="Int.ts"/>
+﻿import Integers = require("./Int");
+import Int = Integers.Int;
+import XXX = require("./IScene");
+import IScene = XXX.IScene;
 
-class ArrayScene implements IScene {
+export class ArrayScene implements IScene {
     private array: Array<Array<boolean>>;
 
     constructor(public width: number, public height: number) {

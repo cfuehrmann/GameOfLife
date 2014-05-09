@@ -1,4 +1,7 @@
-﻿interface IScene {
+﻿import Integers = require("./Int");
+import Int = Integers.Int;
+
+export interface IScene {
     width: number;
     height: number;
     setPoint(x: number, y: number, value: boolean): void;

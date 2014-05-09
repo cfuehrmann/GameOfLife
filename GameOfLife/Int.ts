@@ -1,6 +1,8 @@
-﻿/// <reference path="ArgumentException.ts"/>
+﻿export interface ISeq<T> {
+    For(body: (i: T) => void): void;
+}
 
-class Int {
+export class Int {
     private value: number;
 
     constructor(value: number) {
@@ -10,16 +12,12 @@ class Int {
         this.value = value;
     }
 
-    getRange() { return new IntRange(this); }
-
     getValue(): number { return this.value; }
+
+    getRange(): ISeq<Int> { return new IntRange(this); }
 }
 
-interface IntSeq {
-    For(body: (i: Int) => void): void;
-}
-
-class IntRange implements IntSeq {
+class IntRange implements ISeq<Int> {
     private count: number;
     private a: Array<Int>;
 
