@@ -3,8 +3,6 @@
 class Int {
     private value: number;
 
-    get Value(): number { return this.value; }
-
     constructor(value: number) {
         if (value % 1 !== 0) {
             throw new ArgumentException("value");
@@ -12,7 +10,9 @@ class Int {
         this.value = value;
     }
 
-    get Range() { return new IntRange(this); }
+    getRange() { return new IntRange(this); }
+
+    getValue(): number { return this.value; }
 }
 
 interface IntSeq {
@@ -24,9 +24,9 @@ class IntRange implements IntSeq {
     private a: Array<Int>;
 
     constructor(count: Int) {
-        this.count = count.Value;
+        this.count = count.getValue();
         this.a = new Array<Int>();
-        for (var i = 0; i < count.Value; i++) {
+        for (var i = 0; i < count.getValue(); i++) {
             this.a.push(new Int(i));
         }
     }

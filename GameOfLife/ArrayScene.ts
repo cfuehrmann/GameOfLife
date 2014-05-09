@@ -42,7 +42,7 @@ class ArrayScene implements IScene {
     // }
 
     getPoint(x: Int, y: Int): boolean {
-        return this.array[x.Value][y.Value];
+        return this.array[x.getValue()][y.getValue()];
     }
 }
 
