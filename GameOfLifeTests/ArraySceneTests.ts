@@ -161,7 +161,9 @@ test("yPositiveInfinity", () => {
         );
 });
 
-QUnit.module("ArrayScene performance");
+QUnit.module("ArrayScene performance", {
+    setup: () => { a = new ArrayScene(2000, 2000); }
+});
 
 test("GetPerformanceWithInt", () => {
     var range = new Int(2000).getRange();
