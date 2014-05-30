@@ -12,6 +12,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GameOfLife", "GameOfLife\Ga
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{C372E47F-D50A-4AC4-8356-C619C276C096}"
 	ProjectSection(SolutionItems) = preProject
+		.gitignore = .gitignore
 		tslint.json = tslint.json
 	EndProjectSection
 EndProject
