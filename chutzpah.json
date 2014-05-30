@@ -1,4 +1,13 @@
 {
-     "TypeScriptCodeGenTarget" : "ES5"
+          "Framework": "qunit",
+   "TestHarnessReferenceMode": "AMD",
+   "TestHarnessLocationMode": "SettingsFileAdjacent",
+   "Tests": [
+        { "Path" : "specrunner.html" }
+    ],
+   "References" : [
+      { "Path": "Scripts/require.js" },
+      { "Path": "GameOfLife", "IncludeInTestHarness": "false" }
+    ]
 
 }

@@ -1,4 +1,4 @@
-﻿class ArgumentException {
+﻿export class ArgumentException {
     private argumentName: string;
 
     getArgumentName(): string { return this.argumentName; }

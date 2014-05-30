@@ -1,6 +1,12 @@
 ﻿/// <reference path="ArgumentException.ts"/>
+import ZZZ = require('ArgumentException');
+import ArgumentException = ZZZ.ArgumentException;
 
-class Int {
+export interface IntSeq {
+    For(body: (i: Int) => void): void;
+}
+
+export class Int {
     private value: number;
 
     constructor(value: number) {
@@ -10,13 +16,9 @@ class Int {
         this.value = value;
     }
 
-    getRange() { return new IntRange(this); }
+    getRange() : IntSeq { return new IntRange(this); }
 
     getValue(): number { return this.value; }
-}
-
-interface IntSeq {
-    For(body: (i: Int) => void): void;
 }
 
 class IntRange implements IntSeq {

@@ -1,7 +1,20 @@
 ﻿/// <reference path="ArrayScene.ts"/>
 
+import Integers = require('Int');
+import Int = Integers.Int;
+import XXX = require('IScene');
+import IScene = XXX.IScene;
+import YYY = require('ArrayScene');
+import ArrayScene = YYY.ArrayScene;
+
+export class Foo {
+    Do(): void {
+        var x = 42;
+    }
+}
+
 class Renderer {
-    render(ctx: CanvasRenderingContext2D, scene : IScene) {
+    render(ctx: CanvasRenderingContext2D, scene: IScene) {
         ctx.fillStyle = "rgb(" + String(255) + ", " + String(0) + ", " + String(0) + ")";
         for (var y = 0; y < scene.height; y++) {
             for (var x = 0; x < scene.width; x++) {
