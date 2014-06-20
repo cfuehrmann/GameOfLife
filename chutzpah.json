@@ -6,8 +6,7 @@
         { "Path" : "specrunner.html" }
     ],
    "References" : [
-      { "Path": "Scripts/require.js" },
-      { "Path": "GameOfLife", "IncludeInTestHarness": "false" }
+      { "Path": "Scripts/require.js" }
     ]
 
 }
