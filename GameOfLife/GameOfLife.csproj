@@ -34,7 +34,7 @@
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="ArgumentException.ts" />
-    <TypeScriptCompile Include="ArraySceneTests.ts" />
+    <TypeScriptCompile Include="ArrayScene.test.ts" />
     <TypeScriptCompile Include="TestModule.ts" />
     <TypeScriptCompile Include="TestModule2.ts" />
     <TypeScriptCompile Include="Int.ts" />
@@ -45,6 +45,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
+    <Content Include="Build.proj" />
     <None Include="web.Debug.config">
       <DependentUpon>web.config</DependentUpon>
     </None>

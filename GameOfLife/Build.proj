@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0" DefaultTargets="RunTests">
+
+  <ItemGroup>
+    <TsFiles Include="*.ts" Exclude="*.d.ts"></TsFiles>
+  </ItemGroup>
+
+  <Target Name="cleanJS">
+    <Delete Files="@(TsFiles->'%(Filename).js')" />
+  </Target>
+
+  <Target Name="JS" Inputs="@(TsFiles)" Outputs="@(TsFiles->'%(Filename).js')">
+    <Exec Command="tsc --module amd --noImplicitAny %(TsFiles.Identity)" />
+  </Target>
+
+  <Target Name="RunTests" DependsOnTargets="JS">
+    <Delete Files="_Chutzpah.*" />
+    <RemoveDir Directories="Temp\Test" ></RemoveDir>
+    <ItemGroup>
+      <TestFiles Include="*.test.js"></TestFiles>
+    </ItemGroup>
+    <Copy SourceFiles="@(TestFiles)" DestinationFolder="Temp\Test"></Copy>
+    <Exec Command="..\packages\Chutzpah.3.2.1.1\tools\chutzpah.console.exe Temp\Test /openInBrowser" />
+  </Target>
+
+</Project>
