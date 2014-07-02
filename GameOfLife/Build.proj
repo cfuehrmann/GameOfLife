@@ -22,5 +22,23 @@
     <Copy SourceFiles="@(TestFiles)" DestinationFolder="Temp\Test"></Copy>
     <Exec Command="..\packages\Chutzpah.3.2.1.1\tools\chutzpah.console.exe Temp\Test /openInBrowser" />
   </Target>
+  
+  <!-- Before committing to source control, we want to ensure that the tests do not succeed only due to 
+  files that are not committed. To remove files that are not committed, we use the target "SourceClean".
+  However, we want to be sure that we do not remove untracked files by accident. So we fist call
+  "SourceCleanCheck" to see which files would be removed. In summary, before committing, we do this:
+  (1) Run SourceCleanCheck
+  (2) If SourceCleanCheck shows files we want to keep, track those
+  (3) Run SourceClean 
+  (4) Run the tests
+  -->
+  
+  <Target Name="SourceCleanCheck">
+    <Exec Command="git clean -n -x -d -e *.suo"></Exec>
+  </Target>
+  
+  <Target Name="SourceClean">
+    <Exec Command="git clean -f -x -d -e *.suo"></Exec>
+  </Target>
 
 </Project>

@@ -26,8 +26,6 @@
     <Content Include="Scripts\qunit.js" />
     <Content Include="Scripts\r.js" />
     <Content Include="Scripts\require.js" />
-    <Content Include="testmain.js" />
-    <Content Include="tests.html" />
     <Content Include="web.config">
       <SubType>Designer</SubType>
     </Content>
