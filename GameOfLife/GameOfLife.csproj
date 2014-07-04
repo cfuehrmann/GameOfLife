@@ -33,8 +33,6 @@
   <ItemGroup>
     <TypeScriptCompile Include="ArgumentException.ts" />
     <TypeScriptCompile Include="ArrayScene.test.ts" />
-    <TypeScriptCompile Include="TestModule.ts" />
-    <TypeScriptCompile Include="TestModule2.ts" />
     <TypeScriptCompile Include="Int.ts" />
     <TypeScriptCompile Include="IScene.ts" />
     <TypeScriptCompile Include="ArrayScene.ts" />

@@ -10,14 +10,8 @@ import YYY = require('ArrayScene');
 import ArrayScene = YYY.ArrayScene;
 import ZZZ = require('ArgumentException');
 import ArgumentException = ZZZ.ArgumentException;
-import TestModule = require('TestModule');
 
 QUnit.module("ArrayScene constructor");
-
-test("Xxx", () => {
-    new TestModule.TestModule.Message('xxx');
-    strictEqual(false, false);
-});
 
 test("Get", () => {
     var a = new ArrayScene(5, 7);

@@ -4,14 +4,11 @@ import XXX = require('IScene');
 import IScene = XXX.IScene;
 import ZZZ = require('ArgumentException');
 import ArgumentException = ZZZ.ArgumentException;
-//import MMM = require('TestModule');
-//import MMM = require('TestModule2');
 
 export class ArrayScene implements IScene {
     private array: Array<Array<boolean>>;
 
     constructor(public width: number, public height: number) {
-        //MMM.TestModule.Message2;
         if (width % 1 !== 0 || width <= 0) {
             throw new ArgumentException("width");
         }
