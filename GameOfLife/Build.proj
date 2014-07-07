@@ -14,13 +14,12 @@
   </Target>
 
   <Target Name="RunTests" DependsOnTargets="JS">
-    <Delete Files="_Chutzpah.*" />
     <RemoveDir Directories="Temp\Test" ></RemoveDir>
     <ItemGroup>
       <TestFiles Include="*.test.js"></TestFiles>
     </ItemGroup>
     <Copy SourceFiles="@(TestFiles)" DestinationFolder="Temp\Test"></Copy>
-    <Exec Command="..\packages\Chutzpah.3.2.1.1\tools\chutzpah.console.exe Temp\Test /openInBrowser" />
+    <Exec Command="karma start" />
   </Target>
   
   <!-- Before committing to source control, we want to ensure that the tests do not succeed only due to 
