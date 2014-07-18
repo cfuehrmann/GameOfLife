@@ -1,6 +1,6 @@
 ﻿/// <reference path="../GameOfLife/ArrayScene.ts"/>
 /// <reference path="../GameOfLife/ArgumentException.ts"/>
-/// <reference path="../packages/qunit.TypeScript.DefinitelyTyped.0.1.1/Content/Scripts/typings/qunit/qunit.d.ts" />
+/// <reference path="Imports/QUnit/qunit.d.ts" />
 
 import Integers = require('Int');
 import Int = Integers.Int;
