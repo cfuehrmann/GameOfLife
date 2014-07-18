@@ -1,24 +1,17 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="12.0" DefaultTargets="RunTests">
 
-  <ItemGroup>
-    <TsFiles Include="*.ts" Exclude="*.d.ts"></TsFiles>
-  </ItemGroup>
-
-  <Target Name="cleanJS">
-    <Delete Files="@(TsFiles->'%(Filename).js')" />
-  </Target>
-
-  <Target Name="JS" Inputs="@(TsFiles)" Outputs="@(TsFiles->'%(Filename).js')">
-    <Exec Command="tsc --module amd --noImplicitAny %(TsFiles.Identity)" />
+  <!-- Concerning incremental build: when called on a single file, tsc also builds the dependencies! 
+  (Maybe this is different without requirejs, but currently we use requirejs.) Plus, the time spent 
+  by tsc turns out to be mostly startup time! So, unless we find a way to make tsc compile single
+  files, we achieve the fastest build by calling tsc only once, with all required ts files as arguments.
+  There should be a more elegant way to achieve this than below. But since we replace msbuild by
+  grunt or gulp soon, we defer the required change. -->
+  <Target Name="JS">
+    <Exec Command="tsc --outDir BuildOutput --module amd --noImplicitAny main.ts arrayscene.test.ts" />
   </Target>
 
   <Target Name="RunTests" DependsOnTargets="JS">
-    <RemoveDir Directories="Temp\Test" ></RemoveDir>
-    <ItemGroup>
-      <TestFiles Include="*.test.js"></TestFiles>
-    </ItemGroup>
-    <Copy SourceFiles="@(TestFiles)" DestinationFolder="Temp\Test"></Copy>
     <Exec Command="karma start" />
   </Target>
   
@@ -33,7 +26,6 @@
   -->
   
   <Target Name="SourceCleanCheck">
-    
     <Exec Command="git clean -n -x -d -e *.suo"></Exec>
   </Target>
   
