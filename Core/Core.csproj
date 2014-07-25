@@ -2,7 +2,7 @@
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <ProjectGuid>{408D27AD-FC8D-48C4-8454-3EC2DA47D651}</ProjectGuid>
+    <ProjectGuid>{B99CCCD9-0F0A-41DC-9281-3715378F5C0C}</ProjectGuid>
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <OutputPath>bin</OutputPath>
@@ -17,32 +17,11 @@
     <IISExpressUseClassicPipelineMode />
   </PropertyGroup>
   <PropertyGroup>
-    <TypeScriptNoImplicitAny>true</TypeScriptNoImplicitAny>
-  </PropertyGroup>
-  <ItemGroup>
-    <Content Include="app.css" />
-    <Content Include="index.html" />
-    <Content Include="karma.conf.js" />
-    <Content Include="test-main.js" />
-  </ItemGroup>
-  <ItemGroup>
-    <TypeScriptCompile Include="ArgumentException.ts" />
-    <TypeScriptCompile Include="ArrayScene.test.ts" />
-    <TypeScriptCompile Include="Int.ts" />
-    <TypeScriptCompile Include="IScene.ts" />
-    <TypeScriptCompile Include="ArrayScene.ts" />
-    <TypeScriptCompile Include="app.ts" />
-    <TypeScriptCompile Include="main.ts" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Build.proj" />
-  </ItemGroup>
-  <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
   </PropertyGroup>
   <PropertyGroup>
-    <RootNamespace>TypeScriptHTMLApp2</RootNamespace>
+    <RootNamespace>Core</RootNamespace>
   </PropertyGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
@@ -52,9 +31,9 @@
         <WebProjectProperties>
           <UseIIS>True</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>51171</DevelopmentServerPort>
+          <DevelopmentServerPort>50672</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:51171/</IISUrl>
+          <IISUrl>http://localhost:50672/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>
@@ -67,9 +46,8 @@
   <PropertyGroup Condition="'$(Configuration)' == 'Debug'">
     <TypeScriptTarget>ES5</TypeScriptTarget>
     <TypeScriptRemoveComments>false</TypeScriptRemoveComments>
-    <TypeScriptSourceMap>True</TypeScriptSourceMap>
-    <TypeScriptModuleKind>amd</TypeScriptModuleKind>
-    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <TypeScriptSourceMap>true</TypeScriptSourceMap>
+    <TypeScriptModuleKind>AMD</TypeScriptModuleKind>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)' == 'Release'">
     <TypeScriptTarget>ES5</TypeScriptTarget>
@@ -77,5 +55,18 @@
     <TypeScriptSourceMap>false</TypeScriptSourceMap>
     <TypeScriptModuleKind>AMD</TypeScriptModuleKind>
   </PropertyGroup>
+  <ItemGroup>
+    <TypeScriptCompile Include="ArgumentException.ts" />
+    <TypeScriptCompile Include="ArgumentException.test.ts" />
+    <TypeScriptCompile Include="Int.test.ts" />
+    <TypeScriptCompile Include="Int.ts" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Build.proj" />
+    <Content Include="test-main.js" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="karma.conf.js" />
+  </ItemGroup>
   <Import Project="$(VSToolsPath)\TypeScript\Microsoft.TypeScript.targets" Condition="Exists('$(VSToolsPath)\TypeScript\Microsoft.TypeScript.targets')" />
 </Project>
