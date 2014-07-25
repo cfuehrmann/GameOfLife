@@ -1,5 +1,4 @@
-﻿/// <reference path="ArgumentException.ts"/>
-import ZZZ = require('ArgumentException');
+﻿import ZZZ = require('Imports/Core/ArgumentException');
 import ArgumentException = ZZZ.ArgumentException;
 
 export interface IntSeq {

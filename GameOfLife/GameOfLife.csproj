@@ -26,7 +26,6 @@
     <Content Include="test-main.js" />
   </ItemGroup>
   <ItemGroup>
-    <TypeScriptCompile Include="ArgumentException.ts" />
     <TypeScriptCompile Include="ArrayScene.test.ts" />
     <TypeScriptCompile Include="Int.ts" />
     <TypeScriptCompile Include="IScene.ts" />

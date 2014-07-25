@@ -11,7 +11,15 @@
     <Exec Command="tsc --outDir BuildOutput --module amd --noImplicitAny main.ts arrayscene.test.ts" />
   </Target>
 
-  <Target Name="RunTests" DependsOnTargets="JS">
+  <Target Name="CopyImports">
+    <RemoveDir Directories="Buildoutput\Imports"/>
+    <ItemGroup>
+      <Imports Include="Imports\**\*.js"></Imports>
+    </ItemGroup>
+    <Copy SourceFiles="@(Imports)" DestinationFolder="Buildoutput\Imports\%(RecursiveDir)" />
+  </Target>
+
+  <Target Name="RunTests" DependsOnTargets="JS;CopyImports">
     <Exec Command="karma start" />
   </Target>
   

@@ -1,5 +1,4 @@
 ﻿/// <reference path="../GameOfLife/ArrayScene.ts"/>
-/// <reference path="../GameOfLife/ArgumentException.ts"/>
 /// <reference path="Imports/QUnit/qunit.d.ts" />
 
 import Integers = require('Int');
@@ -8,12 +7,13 @@ import XXX = require('IScene');
 import IScene = XXX.IScene;
 import YYY = require('ArrayScene');
 import ArrayScene = YYY.ArrayScene;
-import ZZZ = require('ArgumentException');
+import ZZZ = require('Imports/Core/ArgumentException');
 import ArgumentException = ZZZ.ArgumentException;
 
 QUnit.module("ArrayScene constructor");
 
 test("Get", () => {
+    var r = new ArgumentException("1");
     var a = new ArrayScene(5, 7);
 
     for (var x = 0; x < 5; x++) {

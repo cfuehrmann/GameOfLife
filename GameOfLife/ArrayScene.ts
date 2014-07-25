@@ -2,7 +2,7 @@
 import Int = Integers.Int;
 import XXX = require('IScene');
 import IScene = XXX.IScene;
-import ZZZ = require('ArgumentException');
+import ZZZ = require('Imports/Core/ArgumentException');
 import ArgumentException = ZZZ.ArgumentException;
 
 export class ArrayScene implements IScene {

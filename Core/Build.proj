@@ -8,7 +8,7 @@
   There should be a more elegant way to achieve this than below. But since we replace msbuild by
   grunt or gulp soon, we defer the required change. -->
   <Target Name="JS">
-    <Exec Command="tsc --outDir BuildOutput --module amd --noImplicitAny Int.ts ArgumentException.ts Int.test.ts ArgumentException.test.ts" />
+    <Exec Command="tsc --outDir BuildOutput --module amd --noImplicitAny -d Int.ts ArgumentException.ts Int.test.ts ArgumentException.test.ts" />
   </Target>
 
   <Target Name="RunTests" DependsOnTargets="JS">
