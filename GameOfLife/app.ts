@@ -1,15 +1,16 @@
 ﻿/// <reference path="ArrayScene.ts"/>
 
-import XXX = require('IScene');
+import XXX = require('./IScene');
 import IScene = XXX.IScene;
-import YYY = require('ArrayScene');
+import YYY = require('./ArrayScene');
 import ArrayScene = YYY.ArrayScene;
-import Integers = require('Imports/Core/Int');
+import Integers = require('./Imports/Core/Int');
 import Int = Integers.Int;
 
 export class Foo {
-    Do(): void {
-        var x = 42;
+    Do(el: HTMLElement): void {
+        var x = new Int(42);
+        el.innerHTML = el.innerHTML + x.getValue();
     }
 }
 
