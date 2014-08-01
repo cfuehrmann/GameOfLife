@@ -1,7 +1,7 @@
 ﻿/// <reference path="../GameOfLife/ArrayScene.ts"/>
 /// <reference path="Imports/QUnit/qunit.d.ts" />
 
-import Integers = require('Int');
+import Integers = require('Imports/Core/Int');
 import Int = Integers.Int;
 import XXX = require('IScene');
 import IScene = XXX.IScene;

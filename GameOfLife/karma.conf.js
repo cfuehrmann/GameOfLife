@@ -17,9 +17,9 @@ module.exports = function(config) {
     files: [
     'test-main.js',
      {pattern: '**/BuildOutput/*test.js', included: false},
-     { pattern: '**/BuildOutput/Int.js', included: false },
+     //{ pattern: '**/BuildOutput/Imports/Core/Int.js', included: false },
+     //{ pattern: '**/BuildOutput/ArgumentException.js', included: false },
      { pattern: '**/BuildOutput/ArrayScene.js', included: false },
-     { pattern: '**/BuildOutput/ArgumentException.js', included: false },
     { pattern: '**/BuildOutput/Imports/*/*.js', included: false }
 ],
 

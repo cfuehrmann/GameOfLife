@@ -1,11 +1,11 @@
 ﻿/// <reference path="ArrayScene.ts"/>
 
-import Integers = require('Int');
-import Int = Integers.Int;
 import XXX = require('IScene');
 import IScene = XXX.IScene;
 import YYY = require('ArrayScene');
 import ArrayScene = YYY.ArrayScene;
+import Integers = require('Imports/Core/Int');
+import Int = Integers.Int;
 
 export class Foo {
     Do(): void {

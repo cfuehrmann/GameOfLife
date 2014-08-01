@@ -1,4 +1,4 @@
-﻿import Integers = require('Int');
+﻿import Integers = require('Imports/Core/Int');
 import Int = Integers.Int;
 import XXX = require('IScene');
 import IScene = XXX.IScene;
