@@ -19,7 +19,14 @@
     <Copy SourceFiles="@(Imports)" DestinationFolder="Buildoutput\Imports\%(RecursiveDir)" />
   </Target>
 
-  <Target Name="RunTests" DependsOnTargets="JS;CopyImports">
+  <Target Name="CopyHtml">
+    <ItemGroup>
+      <Html Include="index.html"></Html>
+    </ItemGroup>
+    <Copy SourceFiles="@(Html)" DestinationFolder="Buildoutput" />
+  </Target>
+
+  <Target Name="RunTests" DependsOnTargets="JS;CopyImports;CopyHtml">
     <Exec Command="karma start" />
   </Target>
   
