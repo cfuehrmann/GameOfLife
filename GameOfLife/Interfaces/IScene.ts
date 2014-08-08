@@ -1,4 +1,4 @@
-﻿import Integers = require('./Imports/Core/Int');
+﻿import Integers = require('./../Imports/Core/Int');
 import Int = Integers.Int;
 
 export interface IScene {

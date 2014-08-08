@@ -1,6 +1,6 @@
 ﻿/// <reference path="ArrayScene.ts"/>
 
-import XXX = require('./IScene');
+import XXX = require('./Interfaces/IScene');
 import IScene = XXX.IScene;
 import YYY = require('./ArrayScene');
 import ArrayScene = YYY.ArrayScene;

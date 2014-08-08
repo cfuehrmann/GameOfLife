@@ -27,7 +27,7 @@
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="ArrayScene.test.ts" />
-    <TypeScriptCompile Include="IScene.ts" />
+    <TypeScriptCompile Include="Interfaces\IScene.ts" />
     <TypeScriptCompile Include="ArrayScene.ts" />
     <TypeScriptCompile Include="app.ts" />
     <TypeScriptCompile Include="main.ts" />
