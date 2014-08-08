@@ -1,5 +1,5 @@
-﻿import XXX = require('./Interfaces/IScene');
-import IScene = XXX.IScene;
+﻿import XXX = require('./Interfaces/Scene');
+import Scene = XXX.Scene;
 import YYY = require('./ArrayScene');
 import ArrayScene = YYY.ArrayScene;
 import Integers = require('./Imports/Core/Int');
@@ -13,7 +13,7 @@ export class Foo {
 }
 
 class Renderer {
-    render(ctx: CanvasRenderingContext2D, scene: IScene) {
+    render(ctx: CanvasRenderingContext2D, scene: Scene) {
         ctx.fillStyle = "rgb(" + String(255) + ", " + String(0) + ", " + String(0) + ")";
         for (var y = 0; y < scene.height; y++) {
             for (var x = 0; x < scene.width; x++) {

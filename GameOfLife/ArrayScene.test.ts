@@ -3,8 +3,8 @@
 
 import Integers = require('Imports/Core/Int');
 import Int = Integers.Int;
-import XXX = require('Interfaces/IScene');
-import IScene = XXX.IScene;
+import XXX = require('Interfaces/Scene');
+import Scene = XXX.Scene;
 import YYY = require('ArrayScene');
 import ArrayScene = YYY.ArrayScene;
 import ZZZ = require('Imports/Core/ArgumentException');
@@ -93,7 +93,7 @@ test("HeightNonPositive", () =>
         )
     );
 
-var a: IScene;
+var a: Scene;
 
 QUnit.module("ArrayScene setPoint", {
     setup: () => { a = new ArrayScene(5, 7); }

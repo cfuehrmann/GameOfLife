@@ -1,11 +1,11 @@
 ﻿import Integers = require('./Imports/Core/Int');
 import Int = Integers.Int;
-import XXX = require('./Interfaces/IScene');
-import IScene = XXX.IScene;
+import XXX = require('./Interfaces/Scene');
+import Scene = XXX.Scene;
 import ZZZ = require('./Imports/Core/ArgumentException');
 import ArgumentException = ZZZ.ArgumentException;
 
-export class ArrayScene implements IScene {
+export class ArrayScene implements Scene {
     private array: Array<Array<boolean>>;
 
     constructor(public width: number, public height: number) {
