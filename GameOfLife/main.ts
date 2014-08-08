@@ -5,13 +5,6 @@ import ArrayScene = YYY.ArrayScene;
 import Integers = require('./Imports/Core/Int');
 import Int = Integers.Int;
 
-export class Foo {
-    Do(el: HTMLElement): void {
-        var x = new Int(42);
-        el.innerHTML = el.innerHTML + x.getValue();
-    }
-}
-
 class Renderer {
     render(ctx: CanvasRenderingContext2D, scene: Scene) {
         ctx.fillStyle = "rgb(" + String(255) + ", " + String(0) + ", " + String(0) + ")";
@@ -35,15 +28,14 @@ module Bla {
         var ctx = canv.getContext("2d");
         var renderer = new Renderer();
         var scene = new ArrayScene(100, 100);
+        scene.setPoint(10, 10, true);
         return renderer.render(ctx, scene);
     }
 }
 
-window.onload = function () {
-    Bla.exec();
-};
+//window.onload = function () {
+//    Bla.exec();
+//};
 
-var el = document.getElementById('content');
-el.innerHTML = "Blah";
-var x = new Foo();
-x.Do(el);
+Bla.exec();
+
