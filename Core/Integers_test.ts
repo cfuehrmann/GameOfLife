@@ -1,6 +1,6 @@
 ﻿/// <reference path="Imports/QUnit/qunit.d.ts" />
 
-import Integers = require('Int');
+import Integers = require('Integers');
 import Int = Integers.Int;
 import Exceptions = require('Exceptions');
 import ArgumentException = Exceptions.ArgumentException;

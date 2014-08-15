@@ -57,9 +57,9 @@
   </PropertyGroup>
   <ItemGroup>
     <TypeScriptCompile Include="Exceptions.ts" />
-    <TypeScriptCompile Include="ArgumentException.test.ts" />
-    <TypeScriptCompile Include="Int.test.ts" />
-    <TypeScriptCompile Include="Int.ts" />
+    <TypeScriptCompile Include="Exceptions_test.ts" />
+    <TypeScriptCompile Include="Integers_test.ts" />
+    <TypeScriptCompile Include="Integers.ts" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Build.proj" />

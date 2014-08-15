@@ -2,7 +2,7 @@
 import Scene = XXX.Scene;
 import YYY = require('./ArrayScene');
 import ArrayScene = YYY.ArrayScene;
-import Integers = require('./Imports/Core/Int');
+import Integers = require('./Imports/Core/Integers');
 import Int = Integers.Int;
 
 class Renderer {

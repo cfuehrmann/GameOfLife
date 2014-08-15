@@ -17,7 +17,7 @@ module.exports = function (config) {
         files: [
         'test-main.js',
          { pattern: '**/BuildOutput/*test.js', included: false },
-         { pattern: '**/BuildOutput/Int.js', included: false },
+         { pattern: '**/BuildOutput/Integers.js', included: false },
          { pattern: '**/BuildOutput/Exceptions.js', included: false },
         ],
 
