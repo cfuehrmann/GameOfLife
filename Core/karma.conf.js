@@ -18,7 +18,7 @@ module.exports = function (config) {
         'test-main.js',
          { pattern: '**/BuildOutput/*test.js', included: false },
          { pattern: '**/BuildOutput/Int.js', included: false },
-         { pattern: '**/BuildOutput/ArgumentException.js', included: false },
+         { pattern: '**/BuildOutput/Exceptions.js', included: false },
         ],
 
 

@@ -1,4 +1,4 @@
-﻿/// <reference path="ArgumentException.d.ts" />
+﻿/// <reference path="Exceptions.d.ts" />
 export interface IntSeq {
     For(body: (i: Int) => void): void;
 }

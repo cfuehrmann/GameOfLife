@@ -1,6 +1,6 @@
-﻿/// <reference path="ArgumentException.ts"/>
-import ZZZ = require('./ArgumentException');
-import ArgumentException = ZZZ.ArgumentException;
+﻿/// <reference path="Exceptions.ts"/>
+import Exceptions = require('./Exceptions');
+import ArgumentException = Exceptions.ArgumentException;
 
 export interface IntSeq {
     For(body: (i: Int) => void): void;

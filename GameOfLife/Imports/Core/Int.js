@@ -1,5 +1,5 @@
-﻿define(["require", "exports", './ArgumentException'], function(require, exports, ZZZ) {
-    var ArgumentException = ZZZ.ArgumentException;
+﻿define(["require", "exports", './Exceptions'], function(require, exports, Exceptions) {
+    var ArgumentException = Exceptions.ArgumentException;
 
     var Int = (function () {
         function Int(value) {

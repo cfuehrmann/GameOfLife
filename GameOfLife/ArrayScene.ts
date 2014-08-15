@@ -2,8 +2,8 @@
 import Int = Integers.Int;
 import XXX = require('./Interfaces/Scene');
 import Scene = XXX.Scene;
-import ZZZ = require('./Imports/Core/ArgumentException');
-import ArgumentException = ZZZ.ArgumentException;
+import Exceptions = require('./Imports/Core/Exceptions');
+import ArgumentException = Exceptions.ArgumentException;
 
 export class ArrayScene implements Scene {
     private array: Array<Array<boolean>>;

@@ -7,8 +7,8 @@ import XXX = require('Interfaces/Scene');
 import Scene = XXX.Scene;
 import YYY = require('ArrayScene');
 import ArrayScene = YYY.ArrayScene;
-import ZZZ = require('Imports/Core/ArgumentException');
-import ArgumentException = ZZZ.ArgumentException;
+import Exceptions = require('Imports/Core/Exceptions');
+import ArgumentException = Exceptions.ArgumentException;
 
 QUnit.module("ArrayScene constructor");
 

@@ -56,7 +56,7 @@
     <TypeScriptModuleKind>AMD</TypeScriptModuleKind>
   </PropertyGroup>
   <ItemGroup>
-    <TypeScriptCompile Include="ArgumentException.ts" />
+    <TypeScriptCompile Include="Exceptions.ts" />
     <TypeScriptCompile Include="ArgumentException.test.ts" />
     <TypeScriptCompile Include="Int.test.ts" />
     <TypeScriptCompile Include="Int.ts" />

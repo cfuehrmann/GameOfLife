@@ -1,7 +1,7 @@
 ﻿/// <reference path="Imports/QUnit/qunit.d.ts" />
 
-import ZZZ = require('ArgumentException');
-import ArgumentException = ZZZ.ArgumentException;
+import Exceptions = require('Exceptions');
+import ArgumentException = Exceptions.ArgumentException;
 
 QUnit.module("Foo");
 
