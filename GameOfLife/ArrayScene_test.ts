@@ -3,8 +3,8 @@
 
 import Integers = require('Imports/Core/Integers');
 import Int = Integers.Int;
-import XXX = require('Interfaces/Scene');
-import Scene = XXX.Scene;
+import Interface = require('Interface');
+import Scene = Interface.Scene;
 import YYY = require('ArrayScene');
 import ArrayScene = YYY.ArrayScene;
 import Exceptions = require('Imports/Core/Exceptions');

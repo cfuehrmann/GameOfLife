@@ -1,5 +1,5 @@
-﻿import XXX = require('./Interfaces/Scene');
-import Scene = XXX.Scene;
+﻿import Interface = require('./Interface');
+import Scene = Interface.Scene;
 import YYY = require('./ArrayScene');
 import ArrayScene = YYY.ArrayScene;
 import Integers = require('./Imports/Core/Integers');
