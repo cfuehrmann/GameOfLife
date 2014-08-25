@@ -1,12 +1,12 @@
-﻿/// <reference path="../GameOfLife/ArrayScene.ts"/>
+﻿/// <reference path="../GameOfLife/Implementation.ts"/>
 /// <reference path="Imports/QUnit/qunit.d.ts" />
 
 import Integers = require('Imports/Core/Integers');
 import Int = Integers.Int;
 import Interface = require('Interface');
 import Scene = Interface.Scene;
-import YYY = require('ArrayScene');
-import ArrayScene = YYY.ArrayScene;
+import Implementation = require('Implementation');
+import ArrayScene = Implementation.ArrayScene;
 import Exceptions = require('Imports/Core/Exceptions');
 import ArgumentException = Exceptions.ArgumentException;
 

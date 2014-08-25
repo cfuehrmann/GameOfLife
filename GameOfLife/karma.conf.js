@@ -19,7 +19,7 @@ module.exports = function(config) {
      {pattern: '**/BuildOutput/*test.js', included: false},
      //{ pattern: '**/BuildOutput/Imports/Core/Int.js', included: false },
      //{ pattern: '**/BuildOutput/ArgumentException.js', included: false },
-     { pattern: '**/BuildOutput/ArrayScene.js', included: false },
+     { pattern: '**/BuildOutput/Implementation.js', included: false },
     { pattern: '**/BuildOutput/Imports/*/*.js', included: false }
 ],
 

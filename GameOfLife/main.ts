@@ -1,7 +1,7 @@
 ﻿import Interface = require('./Interface');
 import Scene = Interface.Scene;
-import YYY = require('./ArrayScene');
-import ArrayScene = YYY.ArrayScene;
+import Implementation = require('./Implementation');
+import ArrayScene = Implementation.ArrayScene;
 import Integers = require('./Imports/Core/Integers');
 import Int = Integers.Int;
 
