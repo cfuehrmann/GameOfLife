@@ -63,7 +63,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Build.proj" />
-    <Content Include="test-main.js" />
+    <Content Include="karmaRequireAndStart.js" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="karma.conf.js" />

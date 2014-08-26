@@ -23,7 +23,7 @@
     <Content Include="app.css" />
     <Content Include="index.html" />
     <Content Include="karma.conf.js" />
-    <Content Include="test-main.js" />
+    <Content Include="karmaRequireAndStart.js" />
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="Implementation_test_ArrayScene.ts" />
