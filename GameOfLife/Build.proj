@@ -47,8 +47,4 @@
   <Target Name="SourceClean">
     <Exec Command="git clean -f -x -d -e *.suo"></Exec>
   </Target>
-
-  <Target Name="Test">
-    <Exec Command="tsc --version" />
-  </Target>
 </Project>
