@@ -26,7 +26,7 @@
     <Content Include="test-main.js" />
   </ItemGroup>
   <ItemGroup>
-    <TypeScriptCompile Include="ArrayScene_test.ts" />
+    <TypeScriptCompile Include="Implementation_test_ArrayScene.ts" />
     <TypeScriptCompile Include="Interface.ts" />
     <TypeScriptCompile Include="Implementation.ts" />
     <TypeScriptCompile Include="main.ts" />
