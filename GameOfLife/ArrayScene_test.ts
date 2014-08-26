@@ -1,5 +1,4 @@
-﻿/// <reference path="../GameOfLife/Implementation.ts"/>
-/// <reference path="Imports/QUnit/qunit.d.ts" />
+﻿/// <reference path="Imports/QUnit/qunit.d.ts" />
 
 import Integers = require('Imports/Core/Integers');
 import Int = Integers.Int;
