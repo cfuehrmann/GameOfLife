@@ -1,13 +1,15 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
-VisualStudioVersion = 12.0.30501.0
+VisualStudioVersion = 12.0.30723.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GameOfLife", "GameOfLife\GameOfLife.csproj", "{408D27AD-FC8D-48C4-8454-3EC2DA47D651}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{C372E47F-D50A-4AC4-8356-C619C276C096}"
 	ProjectSection(SolutionItems) = preProject
 		.gitignore = .gitignore
+		.jscsrc = .jscsrc
+		.jshintrc = .jshintrc
 		tslint.json = tslint.json
 	EndProjectSection
 EndProject
@@ -30,8 +32,5 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(NestedProjects) = preSolution
-		{B99CCCD9-0F0A-41DC-9281-3715378F5C0C} = {C372E47F-D50A-4AC4-8356-C619C276C096}
 	EndGlobalSection
 EndGlobal

@@ -1,8 +1,8 @@
-﻿import Interface = require('./Interface');
+﻿import Interface = require("./Interface");
 import Scene = Interface.Scene;
-import Implementation = require('./Implementation');
+import Implementation = require("./Implementation");
 import ArrayScene = Implementation.ArrayScene;
-import Integers = require('./Imports/Core/Integers');
+import Integers = require("./Imports/Core/Integers");
 import Int = Integers.Int;
 
 class Renderer {
@@ -33,9 +33,9 @@ module Bla {
     }
 }
 
-//window.onload = function () {
+// window.onload = function () {
 //    Bla.exec();
-//};
+// };
 
 Bla.exec();
 

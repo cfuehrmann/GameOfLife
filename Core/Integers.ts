@@ -1,4 +1,4 @@
-﻿import Exceptions = require('./Exceptions');
+﻿import Exceptions = require("./Exceptions");
 import ArgumentException = Exceptions.ArgumentException;
 
 export interface IntSeq {

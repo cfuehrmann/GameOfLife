@@ -7,14 +7,13 @@
     ],
     "class-name": true,
     "comment-format": [true,
-        "check-space",
-        "check-lowercase"
+        "check-space"
     ],
     "curly": true,
     "eofline": false,
     "forin": true,
     "indent": [true, 4],
-    "interface-name": true,
+    "interface-name": false,
     "jsdoc-format": true,
     "label-position": true,
     "label-undefined": true,

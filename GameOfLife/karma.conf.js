@@ -1,7 +1,4 @@
-// Karma configuration
-// Generated on Fri Jul 04 2014 17:04:13 GMT+0200 (Mitteleuropäische Sommerzeit)
-
-module.exports = function (config) {
+module.exports = function (config) { // jshint ignore:line
     config.set({
 
         // base path that will be used to resolve all patterns (eg. files, exclude)
@@ -20,6 +17,7 @@ module.exports = function (config) {
         // list of files to exclude
         exclude: [
             'BuildOutput/main.js',
+            'BuildOutput/Interface.js', 
             'BuildOutput/Imports/RequireJS/*.*',
             'BuildOutput/Imports/QUnit/*.*'
         ],

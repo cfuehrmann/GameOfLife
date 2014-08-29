@@ -1,7 +1,7 @@
 // The module object is apparently created by karma before this code is executed. 
 // It is then used below to store the config data. The exports may be used later by
 // the module system to attache modules to it.
-module.exports = function (config) {
+module.exports = function (config) { // jshint ignore:line
     config.set({
 
         // base path that will be used to resolve all patterns (eg. files, exclude)

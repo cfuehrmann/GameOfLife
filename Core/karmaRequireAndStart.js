@@ -1,9 +1,8 @@
 var testFiles = [];
-var TEST_REGEXP = /_test_.*\.js$/i;
+var TEST_REGEXP = /_test\.js$/i;
 
 Object.keys(window.__karma__.files).forEach(function (file) {
     if (TEST_REGEXP.test(file)) {
-        // Normalize paths to RequireJS module names.
         testFiles.push(file);
     }
 });
@@ -14,6 +13,6 @@ require.config({ // jshint ignore:line
 
     deps: testFiles,
 
-    // we have to kickoff jasmine, as it is asynchronous
+    // we have to kickoff qunit, as it is asynchronous
     callback: window.__karma__.start
 });

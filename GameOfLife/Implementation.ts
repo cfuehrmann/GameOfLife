@@ -1,8 +1,8 @@
-﻿import Integers = require('./Imports/Core/Integers');
+﻿import Integers = require("./Imports/Core/Integers");
 import Int = Integers.Int;
-import Interface = require('./Interface');
+import Interface = require("./Interface");
 import Scene = Interface.Scene;
-import Exceptions = require('./Imports/Core/Exceptions');
+import Exceptions = require("./Imports/Core/Exceptions");
 import ArgumentException = Exceptions.ArgumentException;
 
 export class ArrayScene implements Scene {

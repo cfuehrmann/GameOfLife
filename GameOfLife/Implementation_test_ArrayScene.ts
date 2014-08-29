@@ -1,18 +1,17 @@
 ﻿/// <reference path="Imports/QUnit/qunit.d.ts" />
 
-import Integers = require('Imports/Core/Integers');
+import Integers = require("Imports/Core/Integers");
 import Int = Integers.Int;
-import Interface = require('Interface');
+import Interface = require("Interface");
 import Scene = Interface.Scene;
-import Implementation = require('Implementation');
+import Implementation = require("Implementation");
 import ArrayScene = Implementation.ArrayScene;
-import Exceptions = require('Imports/Core/Exceptions');
+import Exceptions = require("Imports/Core/Exceptions");
 import ArgumentException = Exceptions.ArgumentException;
 
 QUnit.module("ArrayScene constructor");
 
 test("Get", () => {
-    var r = new ArgumentException("1");
     var a = new ArrayScene(5, 7);
 
     for (var x = 0; x < 5; x++) {
