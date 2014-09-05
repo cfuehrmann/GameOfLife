@@ -16,7 +16,7 @@ test("Get", () => {
 
     for (var x = 0; x < 5; x++) {
         for (var y = 0; y < 7; y++) {
-            strictEqual(a.getPoint(new Int(x), new Int(y)), true);
+            strictEqual(a.getPoint(new Int(x), new Int(y)), false);
         }
     }
 });
