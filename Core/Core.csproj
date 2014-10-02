@@ -62,7 +62,6 @@
     <TypeScriptCompile Include="Integers.ts" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Build.proj" />
     <Content Include="gulpfile.js" />
     <Content Include="karmaRequireAndStart.js" />
   </ItemGroup>

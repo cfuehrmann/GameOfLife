@@ -15,7 +15,7 @@ export class Int {
         this.value = value;
     }
 
-    getRange() : IntSeq { return new IntRange(this); }
+    getRange(): IntSeq { return new IntRange(this); }
 
     getValue(): number { return this.value; }
 }

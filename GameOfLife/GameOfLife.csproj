@@ -32,9 +32,6 @@
     <TypeScriptCompile Include="Implementation.ts" />
     <TypeScriptCompile Include="main.ts" />
   </ItemGroup>
-  <ItemGroup>
-    <Content Include="Build.proj" />
-  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
