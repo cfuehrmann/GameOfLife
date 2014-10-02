@@ -6,6 +6,7 @@ var test = require('gulp-karma');
 var exec = require('child_process').exec;
 var tslint = require('gulp-tslint');
 var jscs = require('gulp-jscs');
+var jshint = require('gulp-jshint');
 var remove = require('gulp-rimraf');
 
 gulp.task('default', ['runtests'], function () {
@@ -27,7 +28,7 @@ gulp.task('runtests', ['transpile', 'copyImports', 'copyHtml'], function () {
 // There should be a more elegant way to achieve this than below. But since we replace msbuild by
 // grunt or gulp soon, we defer the required change.
 
-gulp.task('transpile', ['tslint', 'jscs'], function () {
+gulp.task('transpile', ['tslint', 'jscs', 'jshint'], function () {
     return gulp.src(["main.ts", "Implementation_test_ArrayScene.ts"])
         .pipe(transpile({ emitError: false, noImplicitAny: true, module: "amd" }))
         .pipe(gulp.dest('BuildOutput/'));
@@ -42,6 +43,13 @@ gulp.task('tslint', function () {
     gulp.src("*.ts")
       .pipe(tslint())
       .pipe(tslint.report('verbose'));
+});
+
+gulp.task('jshint', function () {
+    return gulp.src('*.js')
+        .pipe(jshint())
+      .pipe(jshint.reporter('default'))
+    .pipe(jshint.reporter('fail'));
 });
 
 gulp.task('copyImports', ['removeImports'], function () {

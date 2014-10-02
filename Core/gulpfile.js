@@ -6,6 +6,7 @@ var test = require('gulp-karma');
 var exec = require('child_process').exec;
 var tslint = require('gulp-tslint');
 var jscs = require('gulp-jscs');
+var jshint = require('gulp-jshint');
 
 gulp.task('default', ['runtests'], function () {
 });
@@ -26,7 +27,7 @@ gulp.task('runtests', ['transpile'], function () {
 // There should be a more elegant way to achieve this than below. But since we replace msbuild by
 // grunt or gulp soon, we defer the required change.
 
-gulp.task('transpile', ['tslint', 'jscs'], function () {
+gulp.task('transpile', ['tslint', 'jscs', 'jshint'], function () {
     return gulp.src(["Integers.ts", "Exceptions.ts", "Integers_test.ts", "Exceptions_test.ts"])
       .pipe(transpile({ emitError: false, noImplicitAny: true, declaration: true, module: "amd" }))
       .pipe(gulp.dest('BuildOutput/'));
@@ -41,6 +42,13 @@ gulp.task('tslint', function () {
 gulp.task('jscs', function () {
     return gulp.src('*.js')
         .pipe(jscs());
+});
+
+gulp.task('jshint', function () {
+    return gulp.src('*.js')
+        .pipe(jshint())
+      .pipe(jshint.reporter('default'))
+    .pipe(jshint.reporter('fail'));
 });
 
 // Before committing to source control, we want to ensure that the tests do not succeed only due to 
