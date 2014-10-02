@@ -1,4 +1,4 @@
-﻿define(["require", "exports", './Exceptions'], function(require, exports, Exceptions) {
+define(["require", "exports", "./Exceptions"], function(require, exports, Exceptions) {
     var ArgumentException = Exceptions.ArgumentException;
 
     var Int = (function () {

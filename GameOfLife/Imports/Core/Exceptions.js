@@ -1,4 +1,4 @@
-﻿define(["require", "exports"], function(require, exports) {
+define(["require", "exports"], function(require, exports) {
     var ArgumentException = (function () {
         function ArgumentException(argumentName) {
             this.argumentName = argumentName;
