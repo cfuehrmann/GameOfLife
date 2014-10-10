@@ -17,7 +17,7 @@ module.exports = function (config) { // jshint ignore:line
         // list of files to exclude
         exclude: [
             'BuildOutput/main.js',
-            'BuildOutput/Interface.js', 
+            'BuildOutput/Interface.js',
             'BuildOutput/Imports/RequireJS/*.*',
             'BuildOutput/Imports/QUnit/*.*'
         ],
@@ -28,6 +28,19 @@ module.exports = function (config) { // jshint ignore:line
         // start these browsers
         // available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
         browsers: ['PhantomJS'],
+
+        phantomjsLauncher: {
+            // Here we could configure the path to the PhantomJS executable for each 
+            // platform. But since this file is a source, and the path is user-specific,
+            // the path should be set as an environment variable, not here.
+            // However, we need this "phantomjsLauncher" element, because 
+            // karma-phantomjs-launcher-nonet fails without it.
+            // cmd: {
+            //  linux: path.join(__dirname, 'target/phantomjs/linux64/phantomjs'),
+            //  darwin: path.join(__dirname, 'target/phantomjs/darwin/phantomjs'),
+            //  win32: path.join(__dirname, 'target/phantomjs/win/phantomjs.exe')
+            // }
+        },
 
         // Continuous Integration mode
         // if true, Karma captures browsers, runs the tests and exits
