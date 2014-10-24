@@ -68,5 +68,8 @@
   <ItemGroup>
     <Content Include="karma.conf.js" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include=".jshintignore" />
+  </ItemGroup>
   <Import Project="$(VSToolsPath)\TypeScript\Microsoft.TypeScript.targets" Condition="Exists('$(VSToolsPath)\TypeScript\Microsoft.TypeScript.targets')" />
 </Project>
