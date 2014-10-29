@@ -58,6 +58,7 @@
   <ItemGroup>
     <TypeScriptCompile Include="Exceptions.ts" />
     <TypeScriptCompile Include="Exceptions_test.ts" />
+    <TypeScriptCompile Include="Sequences.ts" />
     <TypeScriptCompile Include="Integers_test.ts" />
     <TypeScriptCompile Include="Integers.ts" />
   </ItemGroup>

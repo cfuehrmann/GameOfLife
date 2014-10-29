@@ -1,9 +1,7 @@
-﻿import Exceptions = require("./Exceptions");
+﻿import Sequences = require("./Sequences");
+import Exceptions = require("./Exceptions");
 import ArgumentException = Exceptions.ArgumentException;
-
-export interface Seq<T> {
-    For(body: (i: T) => void): void;
-}
+import Seq = Sequences.Seq;
 
 export class Int {
     private value: number;

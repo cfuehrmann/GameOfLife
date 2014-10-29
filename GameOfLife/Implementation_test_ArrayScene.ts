@@ -2,7 +2,8 @@
 
 import Integers = require("Imports/Core/Integers");
 import Int = Integers.Int;
-import Seq = Integers.Seq;
+import Sequences = require("Imports/Core/Sequences");
+import Seq = Sequences.Seq;
 import IntRange = Integers.IntRange;
 import Interface = require("Interface");
 import Scene = Interface.Scene;
