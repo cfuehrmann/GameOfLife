@@ -8,10 +8,6 @@ define(["require", "exports", "./Exceptions"], function(require, exports, Except
             }
             this.value = value;
         }
-        Int.prototype.getRange = function () {
-            return new IntRange(this);
-        };
-
         Int.prototype.getValue = function () {
             return this.value;
         };
@@ -34,4 +30,5 @@ define(["require", "exports", "./Exceptions"], function(require, exports, Except
         };
         return IntRange;
     })();
+    exports.IntRange = IntRange;
 });

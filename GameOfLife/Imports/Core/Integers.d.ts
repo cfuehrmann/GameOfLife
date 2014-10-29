@@ -4,6 +4,11 @@ export interface IntSeq {
 export declare class Int {
     private value;
     constructor(value: number);
-    public getRange(): IntSeq;
     public getValue(): number;
+}
+export declare class IntRange implements IntSeq {
+    private count;
+    private a;
+    constructor(count: Int);
+    public For(body: (i: Int) => void): void;
 }

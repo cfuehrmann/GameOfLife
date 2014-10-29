@@ -15,12 +15,10 @@ export class Int {
         this.value = value;
     }
 
-    getRange(): IntSeq { return new IntRange(this); }
-
     getValue(): number { return this.value; }
 }
 
-class IntRange implements IntSeq {
+export class IntRange implements IntSeq {
     private count: number;
     private a: Array<Int>;
 
