@@ -1,5 +1,6 @@
 ﻿/// <reference path="Imports/QUnit/qunit.d.ts" />
 
+
 import Integers = require("Integers");
 import Int = Integers.Int;
 import Exceptions = require("Exceptions");
@@ -21,6 +22,12 @@ test("ConstructorWithInfinity", () => {
 
 test("ConstructorWithMinusInfinity", () => {
     throws(() => new Int(-Infinity),
+        (e: ArgumentException) => e.getArgumentName() === "value",
+        "No ArgumentException with argument name 'value' is thrown");
+});
+
+test("ConstructorWithNaN", () => {
+    throws(() => new Int(NaN),
         (e: ArgumentException) => e.getArgumentName() === "value",
         "No ArgumentException with argument name 'value' is thrown");
 });

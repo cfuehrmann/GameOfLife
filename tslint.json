@@ -6,8 +6,7 @@
         ["_", "isDefined"]
     ],
     "class-name": true,
-    "comment-format": [true,
-        "check-space"
+    "comment-format": [true
     ],
     "curly": true,
     "eofline": false,
@@ -61,10 +60,10 @@
         ["catchClause", "noSpace"],
         ["indexSignature", "space"]
     ],
-    "use-strict": [true,
-        "check-module",
-        "check-function"
-    ],
+    "use-strict": [
+        true,
+        "check-module"
+    ],       
     "variable-name": false,
     "whitespace": [false,
         "check-branch",
