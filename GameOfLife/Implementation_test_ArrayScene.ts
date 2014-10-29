@@ -2,7 +2,7 @@
 
 import Integers = require("Imports/Core/Integers");
 import Int = Integers.Int;
-import IntSeq = Integers.IntSeq;
+import Seq = Integers.Seq;
 import IntRange = Integers.IntRange;
 import Interface = require("Interface");
 import Scene = Interface.Scene;
@@ -175,7 +175,7 @@ QUnit.module("ArrayScene performance", {
 });
 
 test("GetPerformanceWithInt", () => {
-    var range : IntSeq = new IntRange(new Int(2000));
+    var range : Seq<Int> = new IntRange(new Int(2000));
     var startTime = new Date().getTime();
 
     range.For(x => range.For(y => a.getPoint(x, y)));

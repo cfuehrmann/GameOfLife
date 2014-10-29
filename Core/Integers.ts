@@ -1,8 +1,8 @@
 ﻿import Exceptions = require("./Exceptions");
 import ArgumentException = Exceptions.ArgumentException;
 
-export interface IntSeq {
-    For(body: (i: Int) => void): void;
+export interface Seq<T> {
+    For(body: (i: T) => void): void;
 }
 
 export class Int {
@@ -18,7 +18,7 @@ export class Int {
     getValue(): number { return this.value; }
 }
 
-export class IntRange implements IntSeq {
+export class IntRange implements Seq<Int> {
     private count: number;
     private a: Array<Int>;
 
