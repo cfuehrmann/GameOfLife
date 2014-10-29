@@ -21,7 +21,7 @@
     "gulp-jscs": "1.1.x",
     "gulp-tslint": "1.3.x",
     "karma-ie-launcher": "0.1.x",
-    "typescript":  "1.1.x"
+    "typescript":  "1.0.x"
   },
   "devDependencies": {},
   "scripts": {

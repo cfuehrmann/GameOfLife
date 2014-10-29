@@ -12,7 +12,7 @@ gulp.task('default', ['runtests'], function () {
 });
 
 gulp.task('runtests', ['transpile'], function () {
-    return gulp.src('BuildOutput/*_test_*.js')
+    return gulp.src([]) // we supply no test files here, because those are specified by karma.conf.js!
       .pipe(test({ configFile: 'karma.conf.js', action: 'run' }))
       .on('error', function (err) {
           // Make sure failed tests cause gulp to exit non-zero
