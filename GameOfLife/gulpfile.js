@@ -7,7 +7,7 @@ var exec = require('child_process').exec;
 var tslint = require('gulp-tslint');
 var jscs = require('gulp-jscs');
 var jshint = require('gulp-jshint');
-var remove = require('gulp-rimraf');
+var remove = require('del');
 
 gulp.task('default', ['runtests'], function () {
 });
@@ -62,9 +62,8 @@ gulp.task('copyHtml', function () {
         pipe(gulp.dest('./BuildOutput'));
 });
 
-gulp.task('removeImports', function () {
-    return gulp.src('./BuildOutput/Imports')
-        .pipe(remove());
+gulp.task('removeImports', function (cb) {
+    remove('./BuildOutput/Imports', cb);
 });
 
 // Before committing to source control, we want to ensure that the tests do not succeed only due to 
