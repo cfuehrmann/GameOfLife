@@ -5,7 +5,6 @@ export interface Scene {
     getWidth(): Int;
     getHeight(): Int;
     setPoint(x: Int, y: Int, value: boolean): void;
-    // getPointUnsafe(x: number, y: number): boolean;
     getPoint(x: Int, y: Int): boolean;
 }
 
