@@ -31,3 +31,13 @@ test("ConstructorWithNaN", () => {
         (e: ArgumentException) => e.getArgumentName() === "value",
         "No ArgumentException with argument name 'value' is thrown");
 });
+
+test("ConstructorWithNaN", () => {
+    throws(() => new Int(NaN),
+        (e: ArgumentException) => e.getArgumentName() === "value",
+        "No ArgumentException with argument name 'value' is thrown");
+});
+
+test("getValue", () => {
+    strictEqual(new Int(-42).getValue(), -42);
+});
