@@ -2,9 +2,9 @@
 import Int = Integers.Int;
 
 export interface Scene {
-    width: number;
-    height: number;
-    setPoint(x: number, y: number, value: boolean): void;
+    width: Int;
+    height: Int;
+    setPoint(x: Int, y: Int, value: boolean): void;
     // getPointUnsafe(x: number, y: number): boolean;
     getPoint(x: Int, y: Int): boolean;
 }
