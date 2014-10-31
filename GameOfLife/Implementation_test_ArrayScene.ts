@@ -27,14 +27,14 @@ test("Get", () => {
 test("WidthNonPositive", () =>
     throws(() => new ArrayScene(new Int(0), new Int(7)),
         (e: ArgumentException) => e.getArgumentName() === "width",
-        "An ArgumentException with argument name 'width' is thrown"
+        "No ArgumentException with argument name 'width' is thrown"
         )
     );
 
 test("HeightNonPositive", () =>
     throws(() => new ArrayScene(new Int(7), new Int(0)),
         (e: ArgumentException) => e.getArgumentName() === "height",
-        "An ArgumentException with argument name 'height' is thrown"
+        "No ArgumentException with argument name 'height' is thrown"
         )
     );
 
@@ -83,3 +83,15 @@ test("GetPerformanceWithInt", () => {
 //    var duration = new Date().getTime() - startTime;
 //    strictEqual(false, false, "Duration: " + duration);
 // });
+
+test("getWidth", () => {
+    var s: Scene = new ArrayScene(new Int(42), new Int(43));
+
+    strictEqual(s.getWidth().getValue(), 42);
+});
+
+test("getHeight", () => {
+    var s: Scene = new ArrayScene(new Int(42), new Int(43));
+
+    strictEqual(s.getHeight().getValue(), 43);
+});

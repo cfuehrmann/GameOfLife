@@ -2,8 +2,8 @@
 import Int = Integers.Int;
 
 export interface Scene {
-    width: Int;
-    height: Int;
+    getWidth(): Int;
+    getHeight(): Int;
     setPoint(x: Int, y: Int, value: boolean): void;
     // getPointUnsafe(x: number, y: number): boolean;
     getPoint(x: Int, y: Int): boolean;
