@@ -16,7 +16,7 @@ export class Int {
     getValue(): number { return this.value; }
 }
 
-export class IntRange implements Seq<Int> {
+export class Range implements Seq<Int> {
     private count: number;
     private a: Array<Int>;
 
