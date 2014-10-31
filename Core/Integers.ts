@@ -16,11 +16,14 @@ export class Int {
     getValue(): number { return this.value; }
 }
 
-export class Range implements Seq<Int> {
+export class EagerRange implements Seq<Int> {
     private count: number;
     private a: Array<Int>;
 
     constructor(count: Int) {
+        if (count.getValue() < 0) {
+            throw new ArgumentException("value");
+        }
         this.count = count.getValue();
         this.a = new Array<Int>();
         for (var i = 0; i < count.getValue(); i++) {

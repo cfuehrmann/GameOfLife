@@ -15,20 +15,23 @@ define(["require", "exports", "./Exceptions"], function(require, exports, Except
     })();
     exports.Int = Int;
 
-    var IntRange = (function () {
-        function IntRange(count) {
+    var EagerRange = (function () {
+        function EagerRange(count) {
+            if (count.getValue() < 0) {
+                throw new ArgumentException("value");
+            }
             this.count = count.getValue();
             this.a = new Array();
             for (var i = 0; i < count.getValue(); i++) {
                 this.a.push(new Int(i));
             }
         }
-        IntRange.prototype.For = function (body) {
+        EagerRange.prototype.For = function (body) {
             for (var i = 0; i < this.count; i++) {
                 body(this.a[i]);
             }
         };
-        return IntRange;
+        return EagerRange;
     })();
-    exports.IntRange = IntRange;
+    exports.EagerRange = EagerRange;
 });

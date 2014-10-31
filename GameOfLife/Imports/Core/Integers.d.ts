@@ -4,7 +4,7 @@ export declare class Int {
     constructor(value: number);
     public getValue(): number;
 }
-export declare class IntRange implements Sequences.Seq<Int> {
+export declare class EagerRange implements Sequences.Seq<Int> {
     private count;
     private a;
     constructor(count: Int);
