@@ -43,16 +43,6 @@ export class ArrayScene implements Scene {
         this.matrix[x.getValue()][y.getValue()] = value;
     }
 
-    // getPointUnsafe(x: number, y: number): boolean {
-    //    if (x % 1 !== 0) {
-    //        throw new ArgumentException("x");
-    //    }
-    //    if (y % 1 !== 0) {
-    //        throw new ArgumentException("y");
-    //    }
-    //    return this.array[x][y];
-    // }
-
     getPoint(x: Int, y: Int): boolean {
         return this.matrix[x.getValue()][y.getValue()];
     }

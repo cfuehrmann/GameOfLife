@@ -17,11 +17,11 @@ QUnit.module("ArrayScene constructor");
 test("Get", () => {
     var a = new ArrayScene(new Int(5), new Int(7));
 
-    for (var x = 0; x < 5; x++) {
-        for (var y = 0; y < 7; y++) {
-            strictEqual(a.getPoint(new Int(x), new Int(y)), false);
-        }
-    }
+    new Int(5).each(x => {
+        new Int(7).each(y => {
+            strictEqual(a.getPoint(x, y), false);
+        });
+    });
 });
 
 test("WidthNonPositive", () =>
@@ -72,17 +72,6 @@ test("GetPerformanceWithInt", () => {
     var duration = new Date().getTime() - startTime;
     strictEqual(false, false, "Duration: " + duration);
 });
-
-// test("GetUnsafePerformance", () => {
-//    var startTime = new Date().getTime();
-//    for (var x = 0; x < 2000; x++) {
-//        for (var y = 0; y < 2000; y++) {
-//            a.getPoint(x, y);
-//        }
-//    }
-//    var duration = new Date().getTime() - startTime;
-//    strictEqual(false, false, "Duration: " + duration);
-// });
 
 test("getWidth", () => {
     var s: Scene = new ArrayScene(new Int(42), new Int(43));

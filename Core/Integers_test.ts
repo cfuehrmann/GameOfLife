@@ -44,6 +44,64 @@ test("getValue", () => {
     strictEqual(new Int(-42).getValue(), -42);
 });
 
+test("each", () => {
+    var calls: Array<Number> = new Array<Number>();
+    function body(i: Int) {
+        calls.push(i.getValue());
+    }
+    var i = new Int(42);
+
+    i.each(body);
+
+    strictEqual(calls.length, 42);
+    for (var j = 0; j < 42; j++) {
+        strictEqual(calls[j], j);
+    }
+});
+
+test("eachWhenBodyThrows", () => {
+    var calls: Array<Number> = new Array<Number>();
+    function body(x: Int) {
+        if (x.getValue() === 3) {
+            throw "foo";
+        } else {
+            calls.push(x.getValue());
+        }
+    }
+    var i = new Int(42);
+
+    throws(() => i.each(body), "foo", "The exception from the body is not propagated!");
+
+    strictEqual(calls.length, 3);
+    for (var j = 0; j < 3; j++) {
+        strictEqual(calls[j], j);
+    }
+});
+
+test("eachOnZero", () => {
+    var bodyHasBeenCalled: boolean = false;
+    function body(x: Int) {
+        bodyHasBeenCalled = true;
+    }
+    var i = new Int(0);
+
+    i.each(body);
+
+    strictEqual(bodyHasBeenCalled, false);
+});
+
+test("eachOnNegative", () => {
+    var bodyHasBeenCalled: boolean = false;
+    function body(x: Int) {
+        bodyHasBeenCalled = true;
+    }
+    var i = new Int(-42);
+
+    i.each(body);
+
+    strictEqual(bodyHasBeenCalled, false);
+});
+
 
 QUnit.module("EagerRange");
 

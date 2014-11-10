@@ -11,6 +11,12 @@ define(["require", "exports", "./Exceptions"], function(require, exports, Except
         Int.prototype.getValue = function () {
             return this.value;
         };
+
+        Int.prototype.each = function (body) {
+            for (var i = 0; i < this.value; i++) {
+                body(new Int(i));
+            }
+        };
         return Int;
     })();
     exports.Int = Int;

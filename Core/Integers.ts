@@ -14,6 +14,12 @@ export class Int {
     }
 
     getValue(): number { return this.value; }
+
+    each(body: (x: Int) => void): void {
+        for (var i = 0; i < this.value; i++) {
+            body(new Int(i));
+        }
+    }
 }
 
 export class EagerRange implements Seq<Int> {
