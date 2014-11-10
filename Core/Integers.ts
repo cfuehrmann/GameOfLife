@@ -1,7 +1,5 @@
-﻿import Sequences = require("./Sequences");
-import Exceptions = require("./Exceptions");
+﻿import Exceptions = require("./Exceptions");
 import ArgumentException = Exceptions.ArgumentException;
-import Seq = Sequences.Seq;
 
 export class Int {
     private value: number;
@@ -22,7 +20,7 @@ export class Int {
     }
 }
 
-export class EagerRange implements Seq<Int> {
+export class EagerRange {
     private count: number;
     private a: Array<Int>;
 

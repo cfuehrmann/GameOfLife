@@ -1,8 +1,6 @@
 ﻿import Integers = require("./Imports/Core/Integers");
 import Int = Integers.Int;
 import EagerRange = Integers.EagerRange;
-import Sequences = require("./Imports/Core/Sequences");
-import Seq = Sequences.Seq;
 import Interface = require("./Interface");
 import Scene = Interface.Scene;
 import Exceptions = require("Imports/Core/Exceptions");
@@ -12,8 +10,8 @@ export class ArrayScene implements Scene {
     private matrix: Array<Array<boolean>>;
     private _width: Int;
     private _height: Int;
-    private xRange: Seq<Int>;
-    private yRange: Seq<Int>;
+    private xRange: EagerRange;
+    private yRange: EagerRange;
 
     constructor(public width: Int, public height: Int) {
         var w = width.getValue();

@@ -3,8 +3,6 @@
 import Integers = require("Integers");
 import Int = Integers.Int;
 import EagerRange = Integers.EagerRange;
-import Sequences = require("Sequences");
-import Seq = Sequences.Seq;
 import Exceptions = require("Exceptions");
 import ArgumentException = Exceptions.ArgumentException;
 
@@ -116,7 +114,7 @@ test("For", () => {
     function body(i: Int) {
         calls.push(i.getValue());
     }
-    var range: Seq<Int> = new EagerRange(new Int(42));
+    var range = new EagerRange(new Int(42));
 
     range.For(body);
 
@@ -135,7 +133,7 @@ test("ForWhenBodyThrows", () => {
             calls.push(i.getValue());
         }
     }
-    var range: Seq<Int> = new EagerRange(new Int(42));
+    var range = new EagerRange(new Int(42));
 
     throws(() => range.For(body), "foo", "The exception from the body is not propagated!");
 
@@ -150,7 +148,7 @@ test("ForOnZeroRange", () => {
     function body(i: Int) {
         bodyHasBeenCalled = true;
     }
-    var range: Seq<Int> = new EagerRange(new Int(0));
+    var range = new EagerRange(new Int(0));
 
     range.For(body);
 

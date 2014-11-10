@@ -2,8 +2,6 @@
 
 import Integers = require("Imports/Core/Integers");
 import Int = Integers.Int;
-import Sequences = require("Imports/Core/Sequences");
-import Seq = Sequences.Seq;
 import EagerRange = Integers.EagerRange;
 import Interface = require("Interface");
 import Scene = Interface.Scene;
@@ -64,7 +62,7 @@ QUnit.module("ArrayScene performance", {
 });
 
 test("GetPerformanceWithInt", () => {
-    var range: Seq<Int> = new EagerRange(new Int(2000));
+    var range = new EagerRange(new Int(2000));
     var startTime = new Date().getTime();
 
     range.For(x => range.For(y => a.getPoint(x, y)));
