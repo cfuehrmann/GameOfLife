@@ -3,7 +3,7 @@ import Int = Integers.Int;
 import Exceptions = require("Imports/Core/Exceptions");
 import ArgumentException = Exceptions.ArgumentException;
 
-export class ArrayScene {
+export class Array2D {
     private matrix: Array<Array<boolean>>;
     private _width: Int;
     private _height: Int;
