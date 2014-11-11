@@ -1,5 +1,5 @@
-﻿import Implementation = require("./Implementation");
-import Array2D = Implementation.Array2D;
+﻿import Arrays = require("./Imports/Core/Arrays");
+import Array2D = Arrays.Array2D;
 import Integers = require("./Imports/Core/Integers");
 import Int = Integers.Int;
 

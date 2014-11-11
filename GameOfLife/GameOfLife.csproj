@@ -27,9 +27,7 @@
     <Content Include="karmaRequireAndStart.js" />
   </ItemGroup>
   <ItemGroup>
-    <TypeScriptCompile Include="Implementation_test_ArrayScene.ts" />
     <TypeScriptCompile Include="Interface.ts" />
-    <TypeScriptCompile Include="Implementation.ts" />
     <TypeScriptCompile Include="main.ts" />
   </ItemGroup>
   <ItemGroup>

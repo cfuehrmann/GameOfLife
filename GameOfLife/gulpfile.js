@@ -29,7 +29,7 @@ gulp.task('runtests', ['transpile', 'copyImports', 'copyHtml'], function () {
 // grunt or gulp soon, we defer the required change.
 
 gulp.task('transpile', ['tslint', 'jscs', 'jshint'], function () {
-    return gulp.src(["main.ts", "Implementation_test_ArrayScene.ts"])
+    return gulp.src(["main.ts"])
         .pipe(transpile({ emitError: false, noImplicitAny: true, module: "amd" }))
         .pipe(gulp.dest('BuildOutput/'));
 });
