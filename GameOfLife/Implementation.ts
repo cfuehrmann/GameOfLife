@@ -1,17 +1,12 @@
 ﻿import Integers = require("./Imports/Core/Integers");
 import Int = Integers.Int;
-import EagerRange = Integers.EagerRange;
-import Interface = require("./Interface");
-import Scene = Interface.Scene;
 import Exceptions = require("Imports/Core/Exceptions");
 import ArgumentException = Exceptions.ArgumentException;
 
-export class ArrayScene implements Scene {
+export class ArrayScene {
     private matrix: Array<Array<boolean>>;
     private _width: Int;
     private _height: Int;
-    private xRange: EagerRange;
-    private yRange: EagerRange;
 
     constructor(public width: Int, public height: Int) {
         var w = width.getValue();
@@ -23,25 +18,23 @@ export class ArrayScene implements Scene {
             throw new ArgumentException("height");
         }
 
-        this.xRange = new EagerRange(width);
-        this.yRange = new EagerRange(height);
-
         this._width = width;
         this._height = height;
 
         this.matrix = [];
-        this.xRange.For(x => {
-            var xv = x.getValue();
-            this.matrix[xv] = [];
-            this.yRange.For(y => { this.matrix[xv][y.getValue()] = false; });
-        });
+        for (var x = 0; x < w; x++) {
+            this.matrix[x] = [];
+            for (var y = 0; y < h; y++) {
+                this.matrix[x][y] = false;
+            }
+        }
     }
 
-    setPoint(x: Int, y: Int, value: boolean) {
+    set(x: Int, y: Int, value: boolean) {
         this.matrix[x.getValue()][y.getValue()] = value;
     }
 
-    getPoint(x: Int, y: Int): boolean {
+    get(x: Int, y: Int): boolean {
         return this.matrix[x.getValue()][y.getValue()];
     }
 

@@ -3,8 +3,6 @@
 import Integers = require("Imports/Core/Integers");
 import Int = Integers.Int;
 import EagerRange = Integers.EagerRange;
-import Interface = require("Interface");
-import Scene = Interface.Scene;
 import Implementation = require("Implementation");
 import ArrayScene = Implementation.ArrayScene;
 import Exceptions = require("Imports/Core/Exceptions");
@@ -17,7 +15,7 @@ test("Get", () => {
 
     new Int(5).each(x => {
         new Int(7).each(y => {
-            strictEqual(a.getPoint(x, y), false);
+            strictEqual(a.get(x, y), false);
         });
     });
 });
@@ -36,23 +34,23 @@ test("HeightNonPositive", () =>
         )
     );
 
-var a: Scene;
+var a: ArrayScene;
 
-QUnit.module("ArrayScene setPoint", {
+QUnit.module("ArrayScene set", {
     setup: () => { a = new ArrayScene(new Int(5), new Int(7)); }
 });
 
 test("TrueGet", () => {
-    a.setPoint(new Int(2), new Int(3), true);
-    var p = a.getPoint(new Int(2), new Int(3));
+    a.set(new Int(2), new Int(3), true);
+    var p = a.get(new Int(2), new Int(3));
 
     strictEqual(p, true);
 });
 
 test("FalseGet", () => {
-    a.setPoint(new Int(2), new Int(3), true);
-    a.setPoint(new Int(2), new Int(3), false);
-    var p = a.getPoint(new Int(2), new Int(3));
+    a.set(new Int(2), new Int(3), true);
+    a.set(new Int(2), new Int(3), false);
+    var p = a.get(new Int(2), new Int(3));
 
     strictEqual(p, false);
 });
@@ -65,20 +63,20 @@ test("GetPerformanceWithInt", () => {
     var range = new EagerRange(new Int(2000));
     var startTime = new Date().getTime();
 
-    range.For(x => range.For(y => a.getPoint(x, y)));
+    range.For(x => range.For(y => a.get(x, y)));
 
     var duration = new Date().getTime() - startTime;
     strictEqual(false, false, "Duration: " + duration);
 });
 
 test("getWidth", () => {
-    var s: Scene = new ArrayScene(new Int(42), new Int(43));
+    var s = new ArrayScene(new Int(42), new Int(43));
 
     strictEqual(s.getWidth().getValue(), 42);
 });
 
 test("getHeight", () => {
-    var s: Scene = new ArrayScene(new Int(42), new Int(43));
+    var s = new ArrayScene(new Int(42), new Int(43));
 
     strictEqual(s.getHeight().getValue(), 43);
 });
