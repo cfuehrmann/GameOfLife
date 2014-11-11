@@ -56,6 +56,8 @@
     <TypeScriptModuleKind>AMD</TypeScriptModuleKind>
   </PropertyGroup>
   <ItemGroup>
+    <TypeScriptCompile Include="Arrays.ts" />
+    <TypeScriptCompile Include="Arrays_test.ts" />
     <TypeScriptCompile Include="Exceptions.ts" />
     <TypeScriptCompile Include="Exceptions_test.ts" />
     <TypeScriptCompile Include="Integers_test.ts" />

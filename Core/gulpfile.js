@@ -28,7 +28,7 @@ gulp.task('runtests', ['transpile'], function () {
 // grunt or gulp soon, we defer the required change.
 
 gulp.task('transpile', ['tslint', 'jscs', 'jshint'], function () {
-    return gulp.src(["Integers.ts", "Exceptions.ts", "Integers_test.ts", "Exceptions_test.ts"])
+    return gulp.src(["Exceptions.ts", "Exceptions_test.ts", "Integers.ts", "Integers_test.ts", "Arrays.ts", "Arrays_test.ts"])
       .pipe(transpile({ emitError: false, noImplicitAny: true, declaration: true, module: "amd" }))
       .pipe(gulp.dest('BuildOutput/'));
 });
