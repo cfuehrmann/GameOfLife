@@ -1,10 +1,10 @@
-define(["require", "exports", "./Exceptions"], function(require, exports, Exceptions) {
+define(["require", "exports", "./Integers", "./Exceptions"], function(require, exports, Integers, Exceptions) {
+    var Int = Integers.Int;
+
     var ArgumentException = Exceptions.ArgumentException;
 
     var Array2D = (function () {
         function Array2D(width, height) {
-            this.width = width;
-            this.height = height;
             var w = width.getValue();
             if (w <= 0) {
                 throw new ArgumentException("width");
@@ -14,31 +14,50 @@ define(["require", "exports", "./Exceptions"], function(require, exports, Except
                 throw new ArgumentException("height");
             }
 
-            this._width = width;
-            this._height = height;
+            this.width = width;
+            this.height = height;
 
-            this.matrix = [];
-            for (var x = 0; x < w; x++) {
-                this.matrix[x] = [];
-                for (var y = 0; y < h; y++) {
-                    this.matrix[x][y] = false;
+            this.isRangeEmpty = true;
+
+            this.elements = [];
+            for (var i = 0; i < w; i++) {
+                this.elements[i] = [];
+                for (var j = 0; j < h; j++) {
+                    this.elements[i][j] = false;
                 }
             }
         }
-        Array2D.prototype.set = function (x, y, value) {
-            this.matrix[x.getValue()][y.getValue()] = value;
+        Array2D.prototype.set = function (i, j, value) {
+            this.elements[i.getValue()][j.getValue()] = value;
         };
 
-        Array2D.prototype.get = function (x, y) {
-            return this.matrix[x.getValue()][y.getValue()];
+        Array2D.prototype.get = function (i, j) {
+            return this.elements[i.getValue()][j.getValue()];
         };
 
         Array2D.prototype.getWidth = function () {
-            return this._width;
+            return this.width;
         };
 
         Array2D.prototype.getHeight = function () {
-            return this._height;
+            return this.height;
+        };
+
+        Array2D.prototype.each = function (body) {
+            if (this.isRangeEmpty) {
+                this.ints = [];
+                var w = this.width.getValue();
+                var h = this.height.getValue();
+                var max = Math.max(w, h);
+                for (var n = 0; n < max; n++) {
+                    this.ints.push(new Int(n));
+                }
+            }
+            for (var i = 0; i < w; i++) {
+                for (var j = 0; j < h; j++) {
+                    body(this.ints[i], this.ints[j]);
+                }
+            }
         };
         return Array2D;
     })();
