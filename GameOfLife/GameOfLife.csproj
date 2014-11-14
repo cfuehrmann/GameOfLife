@@ -29,6 +29,8 @@
   <ItemGroup>
     <TypeScriptCompile Include="Interface.ts" />
     <TypeScriptCompile Include="main.ts" />
+    <TypeScriptCompile Include="Rendering.ts" />
+    <TypeScriptCompile Include="Rendering_test.ts" />
   </ItemGroup>
   <ItemGroup>
     <Content Include=".jshintignore" />
