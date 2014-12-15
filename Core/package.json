@@ -26,8 +26,11 @@
     "del": "0.1.x"
   },
   "scripts": {
-    "gulp": "gulp",
-    "tsc": "tsc"
+    "build": "gulp",
+    "jscs": "gulp jscs",
+    "tests": "gulp runtests",
+    "sourceCleanCheck": "gulp sourceCleanCheck",
+    "sourceClean": "gulp sourceClean"	
   },
   "repository": {
     "type": "git",
