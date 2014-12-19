@@ -1,5 +1,6 @@
 ﻿/// <reference path="Imports/QUnit/qunit.d.ts" />
 
+/* tslint:disable no-unused-variable*/
 import Integers = require("Integers");
 import Int = Integers.Int;
 import EagerRange = Integers.EagerRange;
@@ -7,12 +8,12 @@ import Arrays = require("Arrays");
 import Array2D = Arrays.Array2D;
 import Exceptions = require("Exceptions");
 import ArgumentException = Exceptions.ArgumentException;
+/* tslint:enable no-unused-variable*/
 
 QUnit.module("Array2D constructor");
 
 test("Get", () => {
     var a = new Array2D(new Int(5), new Int(7));
-
     new Int(5).each(x => {
         new Int(7).each(y => {
             strictEqual(a.get(x, y), false);

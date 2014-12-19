@@ -52,7 +52,6 @@
     "typedef": [true,
         "catchClause",
         "indexSignature",
-        "parameter",
         "propertySignature"
     ],
     "typedef-whitespace": [true,

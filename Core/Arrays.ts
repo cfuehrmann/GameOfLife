@@ -1,7 +1,9 @@
-﻿import Integers = require("./Integers");
+﻿/* tslint:disable no-unused-variable*/
+import Integers = require("./Integers");
 import Int = Integers.Int;
 import Exceptions = require("./Exceptions");
 import ArgumentException = Exceptions.ArgumentException;
+/* tslint:enable no-unused-variable*/
 
 export class Array2D {
     private matrix: Array<Array<boolean>>;

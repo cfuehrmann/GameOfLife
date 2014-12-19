@@ -1,10 +1,12 @@
 ﻿/// <reference path="Imports/QUnit/qunit.d.ts" />
 
+/* tslint:disable no-unused-variable*/
 import Integers = require("Integers");
 import Int = Integers.Int;
 import EagerRange = Integers.EagerRange;
 import Exceptions = require("Exceptions");
 import ArgumentException = Exceptions.ArgumentException;
+/* tslint:enable no-unused-variable*/
 
 QUnit.module("Int");
 

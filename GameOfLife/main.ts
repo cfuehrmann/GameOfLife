@@ -1,9 +1,11 @@
-﻿import Arrays = require("./Imports/Core/Arrays");
+﻿/* tslint:disable no-unused-variable*/
+import Arrays = require("./Imports/Core/Arrays");
 import Array2D = Arrays.Array2D;
 import Integers = require("./Imports/Core/Integers");
 import Int = Integers.Int;
 import Rendering = require("./Rendering");
 import Renderer = Rendering.Renderer;
+/* tslint:enable no-unused-variable*/
 
 module Bla {
     "use strict";

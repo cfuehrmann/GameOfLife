@@ -73,5 +73,13 @@
   <ItemGroup>
     <Content Include=".jshintignore" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="package.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include=".jscsrc" />
+    <Content Include=".jshintrc" />
+    <Content Include="tslint.json" />
+  </ItemGroup>
   <Import Project="$(VSToolsPath)\TypeScript\Microsoft.TypeScript.targets" Condition="Exists('$(VSToolsPath)\TypeScript\Microsoft.TypeScript.targets')" />
 </Project>

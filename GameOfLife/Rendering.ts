@@ -1,7 +1,9 @@
-﻿import Arrays = require("./Imports/Core/Arrays");
+﻿/* tslint:disable no-unused-variable*/
+import Arrays = require("./Imports/Core/Arrays");
 import Array2D = Arrays.Array2D;
 import Integers = require("./Imports/Core/Integers");
 import Int = Integers.Int;
+/* tslint:enable no-unused-variable*/
 
 export class Renderer {
     render(ctx: CanvasRenderingContext2D, scene: Array2D) {

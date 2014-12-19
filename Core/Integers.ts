@@ -1,5 +1,7 @@
-﻿import Exceptions = require("./Exceptions");
+﻿/* tslint:disable no-unused-variable*/
+import Exceptions = require("./Exceptions");
 import ArgumentException = Exceptions.ArgumentException;
+/* tslint:enable no-unused-variable*/
 
 export class Int {
     private value: number;
