@@ -21,7 +21,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Content Include="app.css" />
-    <Content Include="gulpfile.js" />
+    <Content Include="Gruntfile.js" />
     <Content Include="index.html" />
     <Content Include="karma.conf.js" />
     <Content Include="karmaRequireAndStart.js" />
@@ -31,9 +31,6 @@
     <TypeScriptCompile Include="main.ts" />
     <TypeScriptCompile Include="Rendering.ts" />
     <TypeScriptCompile Include="Rendering_test.ts" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include=".jshintignore" />
   </ItemGroup>
   <ItemGroup>
     <Content Include=".jscsrc" />

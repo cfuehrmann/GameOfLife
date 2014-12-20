@@ -64,14 +64,11 @@
     <TypeScriptCompile Include="Integers.ts" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="gulpfile.js" />
+    <Content Include="Gruntfile.js" />
     <Content Include="karmaRequireAndStart.js" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="karma.conf.js" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include=".jshintignore" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="package.json" />
