@@ -1,10 +1,24 @@
 module.exports = function (grunt) { // jshint ignore:line
 
     grunt.initConfig({
+copy: {
+  imports: {
+files: [
+      // includes files within path and its sub-directories
+      {expand: true, src: ['Imports/**/*.js'], dest: 'BuildOutput'},
+   ],
+  }, html: {
+files: [
+      // includes files within path and its sub-directories
+      {expand: true, src: ['index.html'], dest: 'BuildOutput'},
+   ],
+  },
 
+},
+        clean: ["BuildOutput/Imports"],
         typescript: {
             base: {
-                src: ["Exceptions.ts", "Exceptions_test.ts", "Integers.ts", "Integers_test.ts", "Arrays.ts", "Arrays_test.ts"],
+                src: ["main.ts", "Rendering.ts", "Rendering_test.ts"],
                 dest: 'BuildOutput',
                 options: {
                     module: 'amd',
@@ -54,6 +68,10 @@ module.exports = function (grunt) { // jshint ignore:line
     grunt.loadNpmTasks('grunt-tslint');
     grunt.loadNpmTasks('grunt-contrib-jshint');
     grunt.loadNpmTasks('grunt-karma');
+    grunt.loadNpmTasks('grunt-contrib-clean');
+    grunt.loadNpmTasks('grunt-contrib-copy');
 
-    grunt.registerTask('default', ['jscs', 'tslint', 'jshint', 'typescript', 'karma']);
+    //grunt.registerTask('default', ['jscs', 'tslint', 'jshint', 'typescript', 'karma']);
+    grunt.registerTask('default', ['jscs', 'tslint', 'jshint', 'typescript','clean', 'copy:imports','copy:html', 'karma']);
+
 };
