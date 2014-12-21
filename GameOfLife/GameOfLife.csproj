@@ -37,6 +37,12 @@
     <Content Include="package.json" />
     <Content Include="tslint.json" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include=".jshintignore" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include=".jshintrc" />
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

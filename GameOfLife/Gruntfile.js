@@ -1,42 +1,28 @@
 module.exports = function (grunt) { // jshint ignore:line
 
-    grunt.initConfig({
-copy: {
-  imports: {
-files: [
-      // includes files within path and its sub-directories
-      {expand: true, src: ['Imports/**/*.js'], dest: 'BuildOutput'},
-   ],
-  }, html: {
-files: [
-      // includes files within path and its sub-directories
-      {expand: true, src: ['index.html'], dest: 'BuildOutput'},
-   ],
-  },
+    require('load-grunt-tasks')(grunt); // jshint ignore:line
+    require('time-grunt')(grunt); // jshint ignore:line
 
-},
-        clean: ["BuildOutput/Imports"],
-        typescript: {
-            base: {
-                src: ["main.ts", "Rendering.ts", "Rendering_test.ts"],
-                dest: 'BuildOutput',
-                options: {
-                    module: 'amd',
-                    noImplicitAny: true,
-                    target: 'es5', //or es3
-                    //  sourceMap: true,
-                    declaration: true
-                }
-            }
+    grunt.initConfig({
+
+        copy: {
+            imports: {
+                files: [
+                      { expand: true, src: ['Imports/**/*.js'], dest: 'BuildOutput' },
+                ],
+            },
+            html: {
+                files: [
+                      { expand: true, src: ['index.html'], dest: 'BuildOutput' },
+                ],
+            },
         },
 
         jscs: {
-            all: {
-                options: {
-                },
-                files: {
-                    src: [ "*.js" ] 
-                }
+            options: {
+            },
+            files: {
+                src: ['*.js']
             }
         },
 
@@ -48,30 +34,38 @@ files: [
                 src: ['*.ts']
             },
         },
+
         jshint: {
             options: {
                 jshintrc: true
             },
-            all: ['*.js']
+            files: {
+                src: ['*.js']
+            }
         },
+
+        typescript: {
+            base: {
+                src: ['*.ts'],
+                dest: 'BuildOutput',
+                options: {
+                    module: 'amd',
+                    noImplicitAny: true,
+                    target: 'es5', //or es3
+                    //  sourceMap: true
+                }
+            },
+        },
+
         karma: {
             unit: {
                 options: {
-                    configFile: 'karma.conf.js'
+                    configFile: 'karma.conf.js',
                 }
             }
         }
     });
 
-    grunt.loadNpmTasks('grunt-typescript');
-    grunt.loadNpmTasks('grunt-jscs');
-    grunt.loadNpmTasks('grunt-tslint');
-    grunt.loadNpmTasks('grunt-contrib-jshint');
-    grunt.loadNpmTasks('grunt-karma');
-    grunt.loadNpmTasks('grunt-contrib-clean');
-    grunt.loadNpmTasks('grunt-contrib-copy');
-
-    //grunt.registerTask('default', ['jscs', 'tslint', 'jshint', 'typescript', 'karma']);
-    grunt.registerTask('default', ['jscs', 'tslint', 'jshint', 'typescript','clean', 'copy:imports','copy:html', 'karma']);
-
+    grunt.registerTask('default',
+        ['newer:jscs', 'newer:tslint', 'newer:jshint', 'typescript', 'copy:html', 'copy:imports', 'karma']);
 };
