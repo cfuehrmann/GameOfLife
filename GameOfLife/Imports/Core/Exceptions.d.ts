@@ -1,5 +1,5 @@
 export declare class ArgumentException {
     private argumentName;
-    public getArgumentName(): string;
+    getArgumentName(): string;
     constructor(argumentName: string);
 }

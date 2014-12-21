@@ -1,6 +1,6 @@
-define(["require", "exports", "./Exceptions"], function(require, exports, Exceptions) {
+define(["require", "exports", "./Exceptions"], function (require, exports, Exceptions) {
     var ArgumentException = Exceptions.ArgumentException;
-
+    /* tslint:enable no-unused-variable*/
     var Int = (function () {
         function Int(value) {
             if (value % 1 !== 0) {
@@ -11,7 +11,6 @@ define(["require", "exports", "./Exceptions"], function(require, exports, Except
         Int.prototype.getValue = function () {
             return this.value;
         };
-
         Int.prototype.each = function (body) {
             for (var i = 0; i < this.value; i++) {
                 body(new Int(i));
@@ -20,7 +19,6 @@ define(["require", "exports", "./Exceptions"], function(require, exports, Except
         return Int;
     })();
     exports.Int = Int;
-
     var EagerRange = (function () {
         function EagerRange(count) {
             if (count.getValue() < 0) {

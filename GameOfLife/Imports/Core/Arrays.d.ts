@@ -1,14 +1,17 @@
 import Integers = require("./Integers");
 export declare class Array2D {
-    private elements;
-    private width;
-    private height;
+    width: Integers.Int;
+    height: Integers.Int;
+    private matrix;
+    private _width;
+    private _height;
+    private w;
+    private h;
     private ints;
-    private isRangeEmpty;
     constructor(width: Integers.Int, height: Integers.Int);
-    public set(i: Integers.Int, j: Integers.Int, value: boolean): void;
-    public get(i: Integers.Int, j: Integers.Int): boolean;
-    public getWidth(): Integers.Int;
-    public getHeight(): Integers.Int;
-    public each(body: (i: Integers.Int, j: Integers.Int) => void): void;
+    set(x: Integers.Int, y: Integers.Int, value: boolean): void;
+    get(x: Integers.Int, y: Integers.Int): boolean;
+    getWidth(): Integers.Int;
+    getHeight(): Integers.Int;
+    each(body: (x: Integers.Int, y: Integers.Int) => void): void;
 }

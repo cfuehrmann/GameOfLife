@@ -1,10 +1,13 @@
 module.exports = function (grunt) { // jshint ignore:line
 
+    require('load-grunt-tasks')(grunt); // jshint ignore:line
+    require('time-grunt')(grunt); // jshint ignore:line
+
     grunt.initConfig({
 
         typescript: {
             base: {
-                src: ["Exceptions.ts", "Exceptions_test.ts", "Integers.ts", "Integers_test.ts", "Arrays.ts", "Arrays_test.ts"],
+                src: ["*.ts"],
                 dest: 'BuildOutput',
                 options: {
                     module: 'amd',
@@ -17,12 +20,10 @@ module.exports = function (grunt) { // jshint ignore:line
         },
 
         jscs: {
-            all: {
-                options: {
-                },
-                files: {
-                    src: [ "*.js" ] 
-                }
+            options: {
+            },
+            files: {
+                src: ["*.js"]
             }
         },
 
@@ -34,12 +35,16 @@ module.exports = function (grunt) { // jshint ignore:line
                 src: ['*.ts']
             },
         },
+
         jshint: {
             options: {
                 jshintrc: true
             },
-            all: ['*.js']
+            files: {
+                src: ['*.js']
+            },
         },
+
         karma: {
             unit: {
                 options: {
@@ -49,11 +54,5 @@ module.exports = function (grunt) { // jshint ignore:line
         }
     });
 
-    grunt.loadNpmTasks('grunt-typescript');
-    grunt.loadNpmTasks('grunt-jscs');
-    grunt.loadNpmTasks('grunt-tslint');
-    grunt.loadNpmTasks('grunt-contrib-jshint');
-    grunt.loadNpmTasks('grunt-karma');
-
-    grunt.registerTask('default', ['jscs', 'tslint', 'jshint', 'typescript', 'karma']);
+    grunt.registerTask('default', ['newer:jscs', 'newer:tslint', 'newer:jshint', 'typescript', 'karma']);
 };

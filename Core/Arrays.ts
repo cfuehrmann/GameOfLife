@@ -9,14 +9,17 @@ export class Array2D {
     private matrix: Array<Array<boolean>>;
     private _width: Int;
     private _height: Int;
+    private w: number;
+    private h: number;
+    private ints: Int[] = [];
 
     constructor(public width: Int, public height: Int) {
-        var w = width.getValue();
-        if (w <= 0) {
+        this.w = width.getValue();
+        if (this.w <= 0) {
             throw new ArgumentException("width");
         }
-        var h = height.getValue();
-        if (h <= 0) {
+        this.h = height.getValue();
+        if (this.h <= 0) {
             throw new ArgumentException("height");
         }
 
@@ -24,9 +27,9 @@ export class Array2D {
         this._height = height;
 
         this.matrix = [];
-        for (var x = 0; x < w; x++) {
+        for (var x = 0; x < this.w; x++) {
             this.matrix[x] = [];
-            for (var y = 0; y < h; y++) {
+            for (var y = 0; y < this.h; y++) {
                 this.matrix[x][y] = false;
             }
         }
@@ -46,6 +49,20 @@ export class Array2D {
 
     getHeight(): Int {
         return this._height;
+    }
+
+    each(body: (x: Int, y: Int) => void): void {
+        if (this.ints.length === 0) {
+            for (var i = 0; i < Math.max(this.w, this.h); i++) {
+                this.ints.push(new Int(i));
+            }
+        }
+
+        for (var i2 = 0; i2 < this.w; i2++) {
+            for (var j = 0; j < this.h; j++) {
+                body(this.ints[i2], this.ints[j]);
+            }
+        }
     }
 }
 
