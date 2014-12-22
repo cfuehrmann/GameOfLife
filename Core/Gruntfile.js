@@ -46,13 +46,23 @@ module.exports = function (grunt) { // jshint ignore:line
         },
 
         karma: {
-            unit: {
+            chrome: {
                 options: {
-                    configFile: 'karma.conf.js'
+                    configFile: 'karma.conf.js',
+                    browsers: ['Chrome']
                 }
+            },
+            phantomjs: {
+                options: {
+                    configFile: 'karma.conf.js',
+                    browsers: ['PhantomJS']
+                }
+
             }
         }
     });
 
-    grunt.registerTask('default', ['newer:jscs', 'newer:tslint', 'newer:jshint', 'typescript', 'karma']);
+    grunt.registerTask('build', ['newer:jscs', 'newer:tslint', 'newer:jshint', 'typescript']);
+    grunt.registerTask('chrome', ['karma:chrome']);
+    grunt.registerTask('phantomjs', ['karma:phantomjs']);
 };

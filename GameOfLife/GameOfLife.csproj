@@ -38,9 +38,6 @@
     <Content Include="tslint.json" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include=".jshintignore" />
-  </ItemGroup>
-  <ItemGroup>
     <Content Include=".jshintrc" />
   </ItemGroup>
   <PropertyGroup>

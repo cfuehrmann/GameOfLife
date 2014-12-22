@@ -25,9 +25,10 @@ module.exports = function (config) { // jshint ignore:line
         // enable / disable watching file and executing tests whenever any file changes
         autoWatch: false,
 
-        // start these browsers
-        // available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
-        browsers: ['Chrome'],
+        // Start these browsers.
+        // Available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
+        // This setting has been moved into the gruntfile
+        // browsers: ['Chrome'], 
 
         phantomjsLauncher: {
             // Here we could configure the path to the PhantomJS executable for each 

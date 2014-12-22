@@ -27,7 +27,8 @@ module.exports = function (config) { // jshint ignore:line
 
         // start these browsers
         // available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
-        browsers: ['Chrome'],
+        // This setting has been moved into the gruntfile
+        // browsers: ['Chrome'], 
 
         phantomjsLauncher: {
             // Here we could configure the path to the PhantomJS executable for each 
