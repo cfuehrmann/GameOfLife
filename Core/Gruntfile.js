@@ -63,6 +63,11 @@ module.exports = function (grunt) { // jshint ignore:line
     });
 
     grunt.registerTask('build', ['newer:jscs', 'newer:tslint', 'newer:jshint', 'typescript']);
-    grunt.registerTask('chrome', ['karma:chrome']);
-    grunt.registerTask('phantomjs', ['karma:phantomjs']);
+    grunt.registerTask('test', function (browser) {
+        grunt.task.run('karma:' + browser);
+    });
+    grunt.registerTask('buildAndTest', function (browser) {
+        grunt.task.run('build');
+        grunt.task.run('test:' + browser);
+    });
 };
