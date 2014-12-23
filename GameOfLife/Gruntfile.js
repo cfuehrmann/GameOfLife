@@ -74,7 +74,7 @@ module.exports = function (grunt) { // jshint ignore:line
         }
     });
 
-    grunt.registerTask('build', ['newer:jscs', 'newer:tslint', 'newer:jshint', 'typescript']);
+    grunt.registerTask('build', ['newer:jscs', 'newer:tslint', 'newer:jshint', 'typescript', 'copy:imports', 'copy:html']);
     grunt.registerTask('chrome', ['karma:chrome']);
     grunt.registerTask('phantomjs', ['karma:phantomjs']);
 };
