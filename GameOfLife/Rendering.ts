@@ -6,7 +6,7 @@ import Int = Integers.Int;
 /* tslint:enable no-unused-variable*/
 
 export class Renderer {
-    render(ctx: CanvasRenderingContext2D, scene: Array2D) {
+    render(ctx: CanvasRenderingContext2D, scene: Array2D<boolean>) {
         ctx.fillStyle = "rgb(" + String(255) + ", " + String(0) + ", " + String(0) + ")";
 
         scene.getWidth().each(x => {

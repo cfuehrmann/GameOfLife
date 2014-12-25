@@ -2,7 +2,7 @@ define(["require", "exports", "./Integers", "./Exceptions"], function (require, 
     var ArgumentException = Exceptions.ArgumentException;
     /* tslint:enable no-unused-variable*/
     var Array2D = (function () {
-        function Array2D(width, height) {
+        function Array2D(width, height, initialValue) {
             this.width = width;
             this.height = height;
             this.w = width.getValue();
@@ -19,7 +19,7 @@ define(["require", "exports", "./Integers", "./Exceptions"], function (require, 
             for (var x = 0; x < this.w; x++) {
                 this.matrix[x] = [];
                 for (var y = 0; y < this.h; y++) {
-                    this.matrix[x][y] = false;
+                    this.matrix[x][y] = initialValue;
                 }
             }
         }

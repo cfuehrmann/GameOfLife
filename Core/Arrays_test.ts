@@ -12,7 +12,7 @@ import ArgumentException = Exceptions.ArgumentException;
 QUnit.module("Array2D constructor");
 
 test("Get", () => {
-    var a = new Array2D(new Int(5), new Int(7));
+    var a = new Array2D(new Int(5), new Int(7), false);
     new Int(5).each(x => {
         new Int(7).each(y => {
             strictEqual(a.get(x, y), false);
@@ -21,23 +21,23 @@ test("Get", () => {
 });
 
 test("WidthNonPositive", () =>
-    throws(() => new Array2D(new Int(0), new Int(7)),
+    throws(() => new Array2D(new Int(0), new Int(7), false),
         (e: ArgumentException) => e.getArgumentName() === "width",
         "No ArgumentException with argument name 'width' is thrown"
         )
     );
 
 test("HeightNonPositive", () =>
-    throws(() => new Array2D(new Int(7), new Int(0)),
+    throws(() => new Array2D(new Int(7), new Int(0), false),
         (e: ArgumentException) => e.getArgumentName() === "height",
         "No ArgumentException with argument name 'height' is thrown"
         )
     );
 
-var a: Array2D;
+var a: Array2D<boolean>;
 
 QUnit.module("Array2D set", {
-    setup: () => { a = new Array2D(new Int(5), new Int(7)); }
+    setup: () => { a = new Array2D(new Int(5), new Int(7), false); }
 });
 
 test("TrueGet", () => {
@@ -56,7 +56,7 @@ test("FalseGet", () => {
 });
 
 QUnit.module("Array2D performance", {
-    setup: () => { a = new Array2D(new Int(2000), new Int(2000)); }
+    setup: () => { a = new Array2D(new Int(2000), new Int(2000), false); }
 });
 
 test("GetPerformancePrepare", () => {
@@ -70,13 +70,13 @@ test("GetPerformance", () => {
 });
 
 test("getWidth", () => {
-    var s = new Array2D(new Int(2), new Int(3));
+    var s = new Array2D(new Int(2), new Int(3), false);
 
     strictEqual(s.getWidth().getValue(), 2);
 });
 
 test("getHeight", () => {
-    var s = new Array2D(new Int(2), new Int(3));
+    var s = new Array2D(new Int(2), new Int(3), false);
 
     strictEqual(s.getHeight().getValue(), 3);
 });

@@ -16,7 +16,7 @@ module Bla {
         document.body.appendChild(canv);
         var ctx = canv.getContext("2d");
         var renderer = new Renderer();
-        var scene = new Array2D(new Int(100), new Int(100));
+        var scene = new Array2D(new Int(100), new Int(100), false);
         scene.set(new Int(10), new Int(10), true);
         return renderer.render(ctx, scene);
     }

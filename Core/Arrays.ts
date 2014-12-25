@@ -5,14 +5,14 @@ import Exceptions = require("./Exceptions");
 import ArgumentException = Exceptions.ArgumentException;
 /* tslint:enable no-unused-variable*/
 
-export class Array2D {
-    private matrix: boolean[][];
+export class Array2D<T> {
+    private matrix: T[][];
     private _width: Int;
     private _height: Int;
     private w: number;
     private h: number;
 
-    constructor(public width: Int, public height: Int) {
+    constructor(public width: Int, public height: Int, initialValue: T) {
         this.w = width.getValue();
         if (this.w <= 0) {
             throw new ArgumentException("width");
@@ -29,16 +29,16 @@ export class Array2D {
         for (var x = 0; x < this.w; x++) {
             this.matrix[x] = [];
             for (var y = 0; y < this.h; y++) {
-                this.matrix[x][y] = false;
+                this.matrix[x][y] = initialValue;
             }
         }
     }
 
-    set(x: Int, y: Int, value: boolean) {
+    set(x: Int, y: Int, value: T) {
         this.matrix[x.getValue()][y.getValue()] = value;
     }
 
-    get(x: Int, y: Int): boolean {
+    get(x: Int, y: Int): T {
         return this.matrix[x.getValue()][y.getValue()];
     }
 
