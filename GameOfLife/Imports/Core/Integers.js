@@ -12,30 +12,15 @@ define(["require", "exports", "./Exceptions"], function (require, exports, Excep
             return this.value;
         };
         Int.prototype.each = function (body) {
+            for (var j = Int.range.length; j < this.value; j++) {
+                Int.range.push(new Int(j));
+            }
             for (var i = 0; i < this.value; i++) {
-                body(new Int(i));
+                body(Int.range[i]);
             }
         };
+        Int.range = [];
         return Int;
     })();
     exports.Int = Int;
-    var EagerRange = (function () {
-        function EagerRange(count) {
-            if (count.getValue() < 0) {
-                throw new ArgumentException("value");
-            }
-            this.count = count.getValue();
-            this.a = new Array();
-            for (var i = 0; i < count.getValue(); i++) {
-                this.a.push(new Int(i));
-            }
-        }
-        EagerRange.prototype.For = function (body) {
-            for (var i = 0; i < this.count; i++) {
-                body(this.a[i]);
-            }
-        };
-        return EagerRange;
-    })();
-    exports.EagerRange = EagerRange;
 });

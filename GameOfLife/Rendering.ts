@@ -9,10 +9,12 @@ export class Renderer {
     render(ctx: CanvasRenderingContext2D, scene: Array2D) {
         ctx.fillStyle = "rgb(" + String(255) + ", " + String(0) + ", " + String(0) + ")";
 
-        scene.each((x: Int, y: Int) => {
-            if (scene.get(x, y)) {
-                ctx.fillRect(x.getValue() * 10, y.getValue() * 10, 10, 10);
-            }
+        scene.getWidth().each(x => {
+            scene.getHeight().each(y => {
+                if (scene.get(x, y)) {
+                    ctx.fillRect(x.getValue() * 10, y.getValue() * 10, 10, 10);
+                };
+            });
         });
     }
 }

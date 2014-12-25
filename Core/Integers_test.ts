@@ -3,7 +3,6 @@
 /* tslint:disable no-unused-variable*/
 import Integers = require("Integers");
 import Int = Integers.Int;
-import EagerRange = Integers.EagerRange;
 import Exceptions = require("Exceptions");
 import ArgumentException = Exceptions.ArgumentException;
 /* tslint:enable no-unused-variable*/
@@ -45,22 +44,35 @@ test("getValue", () => {
 });
 
 test("each", () => {
-    var calls: Array<Number> = new Array<Number>();
-    function body(i: Int) {
-        calls.push(i.getValue());
-    }
-    var i = new Int(42);
+    var calls: Number[] = [];
 
-    i.each(body);
+    new Int(7).each(i => calls.push(i.getValue()));
 
-    strictEqual(calls.length, 42);
-    for (var j = 0; j < 42; j++) {
+    strictEqual(calls.length, 7);
+    for (var j = 0; j < 7; j++) {
         strictEqual(calls[j], j);
     }
 });
 
+test("eachNested", () => {
+    var calls: [number, number][] = [];
+
+    new Int(5).each(i =>
+        new Int(7).each(j => {
+            calls.push([i.getValue(), j.getValue()]);
+        }));
+
+    strictEqual(calls.length, 5 * 7);
+    for (var i = 0; i < 5; i++) {
+        for (var j = 0; j < 7; j++) {
+            strictEqual(calls[i * 7 + j][0], i);
+            strictEqual(calls[i * 7 + j][1], j);
+        }
+    }
+});
+
 test("eachWhenBodyThrows", () => {
-    var calls: Array<Number> = new Array<Number>();
+    var calls: Number[] = [];
     function body(x: Int) {
         if (x.getValue() === 3) {
             throw "foo";
@@ -102,59 +114,17 @@ test("eachOnNegative", () => {
     strictEqual(bodyHasBeenCalled, false);
 });
 
-
-QUnit.module("EagerRange");
-
-test("ConstructorWithNegativeArgument", () => {
-    throws(() => new EagerRange(new Int(-1)),
-        (e: ArgumentException) => e.getArgumentName() === "value",
-        "No ArgumentException with argument name 'value' is thrown");
+test("eachPerformance1", () => {
+    new Int(1000000).each(x => { ; });
+    strictEqual(0, 0); // to satisfy qunit
 });
 
-test("For", () => {
-    var calls: Array<Number> = new Array<Number>();
-    function body(i: Int) {
-        calls.push(i.getValue());
-    }
-    var range = new EagerRange(new Int(42));
-
-    range.For(body);
-
-    strictEqual(calls.length, 42);
-    for (var i = 0; i < 42; i++) {
-        strictEqual(calls[i], i);
-    }
+test("eachPerformance2", () => {
+    new Int(1000000).each(x => { ; });
+    strictEqual(0, 0); // to satisfy qunit
 });
 
-test("ForWhenBodyThrows", () => {
-    var calls: Array<Number> = new Array<Number>();
-    function body(i: Int) {
-        if (i.getValue() === 3) {
-            throw "foo";
-        } else {
-            calls.push(i.getValue());
-        }
-    }
-    var range = new EagerRange(new Int(42));
-
-    throws(() => range.For(body), "foo", "The exception from the body is not propagated!");
-
-    strictEqual(calls.length, 3);
-    for (var i = 0; i < 3; i++) {
-        strictEqual(calls[i], i);
-    }
+test("eachPerformance3", () => {
+    new Int(1000000).each(x => { ; });
+    strictEqual(0, 0); // to satisfy qunit
 });
-
-test("ForOnZeroRange", () => {
-    var bodyHasBeenCalled: boolean = false;
-    function body(i: Int) {
-        bodyHasBeenCalled = true;
-    }
-    var range = new EagerRange(new Int(0));
-
-    range.For(body);
-
-    strictEqual(bodyHasBeenCalled, false);
-});
-
-

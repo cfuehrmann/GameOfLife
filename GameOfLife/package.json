@@ -1,52 +1,53 @@
 {
-    "name": "GameOfLife",
-    "version": "0.0.0",
-    "description": "All dependencies of the GameOfLife project ",
-    "main": "index.js",
-    "dependencies": { },
-    "devDependencies": {
-        "grunt-contrib-copy": "~0.7.0",
-        "grunt": "^0.4.5",
-        "grunt-cli": "^0.1.13",
-        "grunt-contrib-jshint": "^0.10.0",
-        "grunt-jscs": "^1.0.0",
-        "grunt-karma": "^0.9.0",
-        "grunt-newer": "^0.8.0",
-        "grunt-tslint": "^1.0.1",
-        "grunt-typescript": "^0.4.6",
-        "karma": "^0.12.28",
-        "karma-chrome-launcher": "^0.1.7",
-        "karma-firefox-launcher": "^0.1.3",
-        "karma-ie-launcher": "^0.1.5",
-        "karma-opera-launcher": "^0.1.0",
-        "karma-phantomjs-launcher-nonet": "^0.1.3",
-        "karma-qunit": "^0.1.4",
-        "karma-requirejs": "^0.2.2",
-        "load-grunt-tasks": "^1.0.0",
-        "qunitjs": "^1.16.0",
-        "requirejs": "^2.1.15",
-        "time-grunt": "^1.0.0",
-        "typescript": "^1.3.0"
-    },
-   "scripts": {
-        "build": "grunt build",
-        "testPhantomjs": "grunt test:phantomjs",
-        "testChrome": "grunt test:chrome",
-        "buildPhantomjs": "grunt buildAndTest:phantomjs",
-        "buildChrome": "grunt buildAndTest:chrome"
-    },
-    "repository": {
-        "type": "git",
-        "url": "https://github.com/cfuehrmann/GameOfLife.git"
-    },
-    "keywords": [
-        "key1",
-        "key2"
-    ],
-    "author": "Carsten Führmann",
-    "license": "LicenceToDo",
-    "bugs": {
-        "url": "https://github.com/cfuehrmann/GameOfLife/issues"
-    },
-    "homepage": "https://github.com/cfuehrmann/GameOfLife"
+  "name": "GameOfLife",
+  "version": "0.0.0",
+  "description": "All dependencies of the GameOfLife project ",
+  "main": "index.js",
+  "dependencies": {},
+  "devDependencies": {
+    "grunt": "^0.4.5",
+    "grunt-cli": "^0.1.13",
+    "grunt-contrib-copy": "~0.7.0",
+    "grunt-contrib-jshint": "^0.10.0",
+    "grunt-jscs": "^1.0.0",
+    "grunt-karma": "^0.9.0",
+    "grunt-newer": "^0.8.0",
+    "grunt-tslint": "^1.0.1",
+    "grunt-typescript": "^0.4.6",
+    "karma": "^0.12.28",
+    "karma-chrome-launcher": "^0.1.7",
+    "karma-firefox-launcher": "^0.1.3",
+    "karma-ie-launcher": "^0.1.5",
+    "karma-junit-reporter": "^0.2.2",
+    "karma-opera-launcher": "^0.1.0",
+    "karma-phantomjs-launcher-nonet": "^0.1.3",
+    "karma-qunit": "^0.1.4",
+    "karma-requirejs": "^0.2.2",
+    "load-grunt-tasks": "^1.0.0",
+    "qunitjs": "^1.16.0",
+    "requirejs": "^2.1.15",
+    "time-grunt": "^1.0.0",
+    "typescript": "^1.3.0"
+  },
+  "scripts": {
+    "build": "grunt build",
+    "testPhantomjs": "grunt test:phantomjs",
+    "testChrome": "grunt test:chrome",
+    "buildPhantomjs": "grunt buildAndTest:phantomjs",
+    "buildChrome": "grunt buildAndTest:chrome"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/cfuehrmann/GameOfLife.git"
+  },
+  "keywords": [
+    "key1",
+    "key2"
+  ],
+  "author": "Carsten Führmann",
+  "license": "LicenceToDo",
+  "bugs": {
+    "url": "https://github.com/cfuehrmann/GameOfLife/issues"
+  },
+  "homepage": "https://github.com/cfuehrmann/GameOfLife"
 }

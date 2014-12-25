@@ -5,6 +5,7 @@ import ArgumentException = Exceptions.ArgumentException;
 
 export class Int {
     private value: number;
+    private static range: Int[] = [];
 
     constructor(value: number) {
         if (value % 1 !== 0) {
@@ -16,30 +17,11 @@ export class Int {
     getValue(): number { return this.value; }
 
     each(body: (x: Int) => void): void {
+        for (var j = Int.range.length; j < this.value; j++) {
+            Int.range.push(new Int(j));
+        }
         for (var i = 0; i < this.value; i++) {
-            body(new Int(i));
-        }
-    }
-}
-
-export class EagerRange {
-    private count: number;
-    private a: Array<Int>;
-
-    constructor(count: Int) {
-        if (count.getValue() < 0) {
-            throw new ArgumentException("value");
-        }
-        this.count = count.getValue();
-        this.a = new Array<Int>();
-        for (var i = 0; i < count.getValue(); i++) {
-            this.a.push(new Int(i));
-        }
-    }
-
-    For(body: (i: Int) => void): void {
-        for (var i = 0; i < this.count; i++) {
-            body(this.a[i]);
+            body(Int.range[i]);
         }
     }
 }

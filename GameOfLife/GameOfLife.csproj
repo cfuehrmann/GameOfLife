@@ -9,7 +9,7 @@
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <DebugType>full</DebugType>
     <DebugSymbols>true</DebugSymbols>
-    <TypeScriptToolsVersion>1.0</TypeScriptToolsVersion>
+    <TypeScriptToolsVersion>1.1</TypeScriptToolsVersion>
     <UseIISExpress>true</UseIISExpress>
     <IISExpressSSLPort />
     <IISExpressAnonymousAuthentication />
@@ -20,11 +20,11 @@
     <TypeScriptNoImplicitAny>true</TypeScriptNoImplicitAny>
   </PropertyGroup>
   <ItemGroup>
-    <Content Include="app.css" />
     <Content Include="Gruntfile.js" />
-    <Content Include="index.html" />
     <Content Include="karma.conf.js" />
     <Content Include="karmaRequireAndStart.js" />
+    <Content Include="Static\app.css" />
+    <Content Include="Static\index.html" />
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="Interface.ts" />
@@ -70,9 +70,10 @@
   <PropertyGroup Condition="'$(Configuration)' == 'Debug'">
     <TypeScriptTarget>ES5</TypeScriptTarget>
     <TypeScriptRemoveComments>false</TypeScriptRemoveComments>
-    <TypeScriptSourceMap>True</TypeScriptSourceMap>
+    <TypeScriptSourceMap>False</TypeScriptSourceMap>
     <TypeScriptModuleKind>amd</TypeScriptModuleKind>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <TypeScriptCompileOnSaveEnabled>False</TypeScriptCompileOnSaveEnabled>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)' == 'Release'">
     <TypeScriptTarget>ES5</TypeScriptTarget>

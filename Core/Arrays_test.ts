@@ -3,7 +3,6 @@
 /* tslint:disable no-unused-variable*/
 import Integers = require("Integers");
 import Int = Integers.Int;
-import EagerRange = Integers.EagerRange;
 import Arrays = require("Arrays");
 import Array2D = Arrays.Array2D;
 import Exceptions = require("Exceptions");
@@ -60,24 +59,24 @@ QUnit.module("Array2D performance", {
     setup: () => { a = new Array2D(new Int(2000), new Int(2000)); }
 });
 
-test("GetPerformanceWithInt", () => {
-    var range = new EagerRange(new Int(2000));
-    var startTime = new Date().getTime();
+test("GetPerformancePrepare", () => {
+    new Int(1000).each(x => { ; });
+    strictEqual(0, 0); // to satisfy qunit
+});
 
-    range.For(x => range.For(y => a.get(x, y)));
-
-    var duration = new Date().getTime() - startTime;
-    strictEqual(false, false, "Duration: " + duration);
+test("GetPerformance", () => {
+    new Int(1000).each(x => new Int(1000).each(y => a.get(x, y)));
+    strictEqual(0, 0); // to satisfy qunit
 });
 
 test("getWidth", () => {
-    var s = new Array2D(new Int(42), new Int(43));
+    var s = new Array2D(new Int(2), new Int(3));
 
-    strictEqual(s.getWidth().getValue(), 42);
+    strictEqual(s.getWidth().getValue(), 2);
 });
 
 test("getHeight", () => {
-    var s = new Array2D(new Int(42), new Int(43));
+    var s = new Array2D(new Int(2), new Int(3));
 
-    strictEqual(s.getHeight().getValue(), 43);
+    strictEqual(s.getHeight().getValue(), 3);
 });

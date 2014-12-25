@@ -43,6 +43,8 @@ module.exports = function (config) { // jshint ignore:line
             // }
         },
 
+        reporters: ['progress', 'junit'],
+
         // Continuous Integration mode
         // if true, Karma captures browsers, runs the tests and exits
         singleRun: true
