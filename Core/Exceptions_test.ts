@@ -5,9 +5,7 @@ import Exceptions = require("Exceptions");
 import ArgumentException = Exceptions.ArgumentException;
 /* tslint:enable no-unused-variable*/
 
-QUnit.module("Foo");
-
-test("FooTest", () => {
+test("ArgumentName", () => {
     var e = new ArgumentException("foo");
     strictEqual(e.getArgumentName(), "foo");
 });
