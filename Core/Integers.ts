@@ -8,7 +8,7 @@ export class Int {
     private static range: Int[] = [];
 
     constructor(value: number) {
-        if (value % 1 !== 0) {
+        if (value % 1 !== 0 || value == null) {
             throw new ArgumentException("value");
         }
         this.value = value;
@@ -17,6 +17,10 @@ export class Int {
     getValue(): number { return this.value; }
 
     each(body: (x: Int) => void): void {
+        if (body == null || typeof body === "undefined") {
+            throw new ArgumentException("body");
+        }
+
         for (var j = Int.range.length; j < this.value; j++) {
             Int.range.push(new Int(j));
         }

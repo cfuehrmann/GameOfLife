@@ -9,7 +9,19 @@ import ArgumentException = Exceptions.ArgumentException;
 
 QUnit.module("Int");
 
-test("ConstructorWithFiniteNonInteger", () => {
+test("ConstructorWithUndefined", () => {
+    throws(() => new Int(undefined),
+        (e: ArgumentException) => e.getArgumentName() === "value",
+        "No ArgumentException with argument name 'value' is thrown");
+});
+
+test("ConstructorWithNull", () => {
+    throws(() => new Int(null),
+        (e: ArgumentException) => e.getArgumentName() === "value",
+        "No ArgumentException with argument name 'value' is thrown");
+});
+
+test("ConstructorWithNonInteger", () => {
     throws(() => new Int(0.5),
         (e: ArgumentException) => e.getArgumentName() === "value",
         "No ArgumentException with argument name 'value' is thrown");
@@ -23,12 +35,6 @@ test("ConstructorWithInfinity", () => {
 
 test("ConstructorWithMinusInfinity", () => {
     throws(() => new Int(-Infinity),
-        (e: ArgumentException) => e.getArgumentName() === "value",
-        "No ArgumentException with argument name 'value' is thrown");
-});
-
-test("ConstructorWithNaN", () => {
-    throws(() => new Int(NaN),
         (e: ArgumentException) => e.getArgumentName() === "value",
         "No ArgumentException with argument name 'value' is thrown");
 });
@@ -71,47 +77,51 @@ test("eachNested", () => {
     }
 });
 
-test("eachWhenBodyThrows", () => {
-    var calls: Number[] = [];
-    function body(x: Int) {
-        if (x.getValue() === 3) {
-            throw "foo";
-        } else {
-            calls.push(x.getValue());
-        }
-    }
-    var i = new Int(42);
-
-    throws(() => i.each(body), "foo", "The exception from the body is not propagated!");
-
-    strictEqual(calls.length, 3);
-    for (var j = 0; j < 3; j++) {
-        strictEqual(calls[j], j);
-    }
-});
-
 test("eachOnZero", () => {
     var bodyHasBeenCalled: boolean = false;
-    function body(x: Int) {
-        bodyHasBeenCalled = true;
-    }
-    var i = new Int(0);
 
-    i.each(body);
+    new Int(0).each(_ => bodyHasBeenCalled = true);
 
     strictEqual(bodyHasBeenCalled, false);
 });
 
 test("eachOnNegative", () => {
     var bodyHasBeenCalled: boolean = false;
-    function body(x: Int) {
-        bodyHasBeenCalled = true;
-    }
-    var i = new Int(-42);
 
-    i.each(body);
+    new Int(-42).each(_=> bodyHasBeenCalled = true);
 
     strictEqual(bodyHasBeenCalled, false);
+});
+
+test("eachWhenBodyNull", () => {
+    throws(() => new Int(42).each(null),
+        (e: ArgumentException) => e.getArgumentName() === "body",
+        "No ArgumentException with argument name 'width' is thrown"
+        );
+});
+
+test("eachWhenBodyUndefined", () => {
+    throws(() => new Int(42).each(undefined),
+        (e: ArgumentException) => e.getArgumentName() === "body",
+        "No ArgumentException with argument name 'width' is thrown"
+        );
+});
+
+test("eachWhenBodyThrows", () => {
+    var calls: Number[] = [];
+
+    throws(() => new Int(42).each(x => {
+        if (x.getValue() === 3) {
+            throw "foo";
+        } else {
+            calls.push(x.getValue());
+        }
+    }), "foo", "The exception from the body is not propagated!");
+
+    strictEqual(calls.length, 3);
+    for (var j = 0; j < 3; j++) {
+        strictEqual(calls[j], j);
+    }
 });
 
 test("eachPerformance1", () => {
