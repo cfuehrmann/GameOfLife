@@ -9,12 +9,15 @@ import Exceptions = require("Exceptions");
 import ArgumentException = Exceptions.ArgumentException;
 /* tslint:enable no-unused-variable*/
 
-var testClass = "Array2D";
-var method = "constructor";
+var testClass: string;
+var method: string;
 
 function check(testCase: string, testBody: (assert?: QUnitAssert) => any) {
     test(testClass + "_" + method + "_" + testCase, testBody);
 }
+
+testClass = "Array2D";
+method = "constructor";
 
 check("widthNull", () => {
     throws(() => new Array2D(null, new Int(7), 0),
@@ -160,13 +163,13 @@ method = "get";
 
 var a: Array2D<boolean>;
 
-check("getPerformancePrepare", () => {
+check("performancePrepare", () => {
     a = new Array2D(new Int(1000), new Int(1000), false);
     new Int(1000).each(x => { ; });
     strictEqual(0, 0); // to satisfy qunit
 });
 
-check("getPerformance", () => {
+check("performance", () => {
     new Int(1000).each(x => new Int(1000).each(y => a.get(x, y)));
     strictEqual(0, 0); // to satisfy qunit
 });

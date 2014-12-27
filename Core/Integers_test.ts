@@ -7,49 +7,61 @@ import Exceptions = require("Exceptions");
 import ArgumentException = Exceptions.ArgumentException;
 /* tslint:enable no-unused-variable*/
 
-QUnit.module("Int");
+var testClass: string;
+var method: string;
 
-test("ConstructorWithUndefined", () => {
+function check(testCase: string, testBody: (assert?: QUnitAssert) => any) {
+    test(testClass + "_" + method + "_" + testCase, testBody);
+}
+
+testClass = "Int";
+method = "constructor";
+
+check("valueUndefined", () => {
     throws(() => new Int(undefined),
         (e: ArgumentException) => e.getArgumentName() === "value",
         "No ArgumentException with argument name 'value' is thrown");
 });
 
-test("ConstructorWithNull", () => {
+check("valueNull", () => {
     throws(() => new Int(null),
         (e: ArgumentException) => e.getArgumentName() === "value",
         "No ArgumentException with argument name 'value' is thrown");
 });
 
-test("ConstructorWithNonInteger", () => {
+check("valueNonInteger", () => {
     throws(() => new Int(0.5),
         (e: ArgumentException) => e.getArgumentName() === "value",
         "No ArgumentException with argument name 'value' is thrown");
 });
 
-test("ConstructorWithInfinity", () => {
+check("valueInfinity", () => {
     throws(() => new Int(Infinity),
         (e: ArgumentException) => e.getArgumentName() === "value",
         "No ArgumentException with argument name 'value' is thrown");
 });
 
-test("ConstructorWithMinusInfinity", () => {
+check("valueMinusInfinity", () => {
     throws(() => new Int(-Infinity),
         (e: ArgumentException) => e.getArgumentName() === "value",
         "No ArgumentException with argument name 'value' is thrown");
 });
 
-test("ConstructorWithNaN", () => {
+check("valueNaN", () => {
     throws(() => new Int(NaN),
         (e: ArgumentException) => e.getArgumentName() === "value",
         "No ArgumentException with argument name 'value' is thrown");
 });
 
-test("getValue", () => {
+method = "getValue";
+
+check("correctValue", () => {
     strictEqual(new Int(-42).getValue(), -42);
 });
 
-test("each", () => {
+method = "each";
+
+check("oneLoop", () => {
     var calls: Number[] = [];
 
     new Int(7).each(i => calls.push(i.getValue()));
@@ -60,7 +72,7 @@ test("each", () => {
     }
 });
 
-test("eachNested", () => {
+check("nested", () => {
     var calls: [number, number][] = [];
 
     new Int(5).each(i =>
@@ -77,7 +89,7 @@ test("eachNested", () => {
     }
 });
 
-test("eachOnZero", () => {
+check("IntZero", () => {
     var bodyHasBeenCalled: boolean = false;
 
     new Int(0).each(_ => bodyHasBeenCalled = true);
@@ -85,7 +97,7 @@ test("eachOnZero", () => {
     strictEqual(bodyHasBeenCalled, false);
 });
 
-test("eachOnNegative", () => {
+check("IntNegative", () => {
     var bodyHasBeenCalled: boolean = false;
 
     new Int(-42).each(_=> bodyHasBeenCalled = true);
@@ -93,21 +105,21 @@ test("eachOnNegative", () => {
     strictEqual(bodyHasBeenCalled, false);
 });
 
-test("eachWhenBodyNull", () => {
+check("bodyNull", () => {
     throws(() => new Int(42).each(null),
         (e: ArgumentException) => e.getArgumentName() === "body",
         "No ArgumentException with argument name 'width' is thrown"
         );
 });
 
-test("eachWhenBodyUndefined", () => {
+check("bodyUndefined", () => {
     throws(() => new Int(42).each(undefined),
         (e: ArgumentException) => e.getArgumentName() === "body",
         "No ArgumentException with argument name 'width' is thrown"
         );
 });
 
-test("eachWhenBodyThrows", () => {
+check("bodyThrows", () => {
     var calls: Number[] = [];
 
     throws(() => new Int(42).each(x => {
@@ -124,17 +136,17 @@ test("eachWhenBodyThrows", () => {
     }
 });
 
-test("eachPerformance1", () => {
+check("performance1", () => {
     new Int(1000000).each(x => { ; });
     strictEqual(0, 0); // to satisfy qunit
 });
 
-test("eachPerformance2", () => {
+check("performance2", () => {
     new Int(1000000).each(x => { ; });
     strictEqual(0, 0); // to satisfy qunit
 });
 
-test("eachPerformance3", () => {
+check("performance3", () => {
     new Int(1000000).each(x => { ; });
     strictEqual(0, 0); // to satisfy qunit
 });
