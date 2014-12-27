@@ -20,42 +20,42 @@ define(["require", "exports", "./Integers", "./Exceptions"], function (require, 
             if (this.h <= 0) {
                 throw new ArgumentException("height");
             }
-            this._width = width;
-            this._height = height;
+            this.width = width;
+            this.height = height;
             this.matrix = [];
-            for (var x = 0; x < this.w; x++) {
-                this.matrix[x] = [];
-                for (var y = 0; y < this.h; y++) {
-                    this.matrix[x][y] = initialValue;
+            for (var row = 0; row < this.w; row++) {
+                this.matrix[row] = [];
+                for (var column = 0; column < this.h; column++) {
+                    this.matrix[row][column] = initialValue;
                 }
             }
         }
-        Array2D.prototype.set = function (x, y, value) {
-            if (x == null || typeof (x) === "undefined") {
-                throw new ArgumentException("x");
+        Array2D.prototype.set = function (row, column, value) {
+            if (row == null || typeof (row) === "undefined") {
+                throw new ArgumentException("row");
             }
-            if (y == null || typeof (y) === "undefined") {
-                throw new ArgumentException("y");
+            if (column == null || typeof (column) === "undefined") {
+                throw new ArgumentException("column");
             }
             if (value == null || typeof (value) === "undefined") {
                 throw new ArgumentException("value");
             }
-            this.matrix[x.getValue()][y.getValue()] = value;
+            this.matrix[row.getValue()][column.getValue()] = value;
         };
-        Array2D.prototype.get = function (x, y) {
-            if (x == null || typeof (x) === "undefined") {
-                throw new ArgumentException("x");
+        Array2D.prototype.get = function (row, column) {
+            if (row == null || typeof (row) === "undefined") {
+                throw new ArgumentException("row");
             }
-            if (y == null || typeof (y) === "undefined") {
-                throw new ArgumentException("y");
+            if (column == null || typeof (column) === "undefined") {
+                throw new ArgumentException("column");
             }
-            return this.matrix[x.getValue()][y.getValue()];
+            return this.matrix[row.getValue()][column.getValue()];
         };
         Array2D.prototype.getWidth = function () {
-            return this._width;
+            return this.width;
         };
         Array2D.prototype.getHeight = function () {
-            return this._height;
+            return this.height;
         };
         return Array2D;
     })();

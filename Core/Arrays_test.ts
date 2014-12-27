@@ -61,57 +61,57 @@ check("heightNonPositive", () =>
 
 check("initialValue", () => {
     var a = new Array2D(new Int(5), new Int(7), 42);
-    new Int(5).each(x => {
-        new Int(7).each(y => {
-            strictEqual(a.get(x, y), 42);
+    new Int(5).each(row => {
+        new Int(7).each(column => {
+            strictEqual(a.get(row, column), 42);
         });
     });
 });
 
 method = "get";
 
-check("xUndefined", () => {
+check("rowUndefined", () => {
     var a = new Array2D(new Int(5), new Int(7), 0);
 
     throws(() => { a.get(undefined, new Int(3)); },
-        (e: ArgumentException) => e.getArgumentName() === "x");
+        (e: ArgumentException) => e.getArgumentName() === "row");
 });
 
-check("yUndefined", () => {
+check("columnUndefined", () => {
     var a = new Array2D(new Int(5), new Int(7), 0);
 
     throws(() => { a.get(new Int(3), undefined); },
-        (e: ArgumentException) => e.getArgumentName() === "y");
+        (e: ArgumentException) => e.getArgumentName() === "column");
 });
 
-check("xNull", () => {
+check("rowNull", () => {
     var a = new Array2D(new Int(5), new Int(7), 0);
 
     throws(() => { a.get(null, new Int(3)); },
-        (e: ArgumentException) => e.getArgumentName() === "x");
+        (e: ArgumentException) => e.getArgumentName() === "row");
 });
 
-check("yNull", () => {
+check("columnNull", () => {
     var a = new Array2D(new Int(5), new Int(7), 0);
 
     throws(() => { a.get(new Int(3), null); },
-        (e: ArgumentException) => e.getArgumentName() === "y");
+        (e: ArgumentException) => e.getArgumentName() === "column");
 });
 
 method = "set";
 
-check("xUndefined", () => {
+check("rowUndefined", () => {
     var a = new Array2D(new Int(5), new Int(7), 0);
 
     throws(() => { a.set(undefined, new Int(3), 0); },
-        (e: ArgumentException) => e.getArgumentName() === "x");
+        (e: ArgumentException) => e.getArgumentName() === "row");
 });
 
-check("yUndefined", () => {
+check("columnUndefined", () => {
     var a = new Array2D(new Int(5), new Int(7), 0);
 
     throws(() => { a.set(new Int(3), undefined, 0); },
-        (e: ArgumentException) => e.getArgumentName() === "y");
+        (e: ArgumentException) => e.getArgumentName() === "column");
 });
 
 check("valueUndefined", () => {
@@ -121,18 +121,18 @@ check("valueUndefined", () => {
         (e: ArgumentException) => e.getArgumentName() === "value");
 });
 
-check("xNull", () => {
+check("rowNull", () => {
     var a = new Array2D(new Int(5), new Int(7), 0);
 
     throws(() => { a.set(null, new Int(3), 0); },
-        (e: ArgumentException) => e.getArgumentName() === "x");
+        (e: ArgumentException) => e.getArgumentName() === "row");
 });
 
-check("yNull", () => {
+check("columnNull", () => {
     var a = new Array2D(new Int(5), new Int(7), 0);
 
     throws(() => { a.set(new Int(3), null, 0); },
-        (e: ArgumentException) => e.getArgumentName() === "y");
+        (e: ArgumentException) => e.getArgumentName() === "column");
 });
 
 check("valueNull", () => {
