@@ -3,8 +3,15 @@ define(["require", "exports", "./Integers", "./Exceptions"], function (require, 
     /* tslint:enable no-unused-variable*/
     var Array2D = (function () {
         function Array2D(width, height, initialValue) {
-            this.width = width;
-            this.height = height;
+            if (width == null || typeof (width) === "undefined") {
+                throw new ArgumentException("width");
+            }
+            if (height == null || typeof (height) === "undefined") {
+                throw new ArgumentException("height");
+            }
+            if (initialValue == null || typeof (initialValue) === "undefined") {
+                throw new ArgumentException("initialValue");
+            }
             this.w = width.getValue();
             if (this.w <= 0) {
                 throw new ArgumentException("width");
@@ -24,9 +31,24 @@ define(["require", "exports", "./Integers", "./Exceptions"], function (require, 
             }
         }
         Array2D.prototype.set = function (x, y, value) {
+            if (x == null || typeof (x) === "undefined") {
+                throw new ArgumentException("x");
+            }
+            if (y == null || typeof (y) === "undefined") {
+                throw new ArgumentException("y");
+            }
+            if (value == null || typeof (value) === "undefined") {
+                throw new ArgumentException("value");
+            }
             this.matrix[x.getValue()][y.getValue()] = value;
         };
         Array2D.prototype.get = function (x, y) {
+            if (x == null || typeof (x) === "undefined") {
+                throw new ArgumentException("x");
+            }
+            if (y == null || typeof (y) === "undefined") {
+                throw new ArgumentException("y");
+            }
             return this.matrix[x.getValue()][y.getValue()];
         };
         Array2D.prototype.getWidth = function () {

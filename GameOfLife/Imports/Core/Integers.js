@@ -3,7 +3,7 @@ define(["require", "exports", "./Exceptions"], function (require, exports, Excep
     /* tslint:enable no-unused-variable*/
     var Int = (function () {
         function Int(value) {
-            if (value % 1 !== 0) {
+            if (value % 1 !== 0 || value == null) {
                 throw new ArgumentException("value");
             }
             this.value = value;
@@ -12,6 +12,9 @@ define(["require", "exports", "./Exceptions"], function (require, exports, Excep
             return this.value;
         };
         Int.prototype.each = function (body) {
+            if (body == null || typeof body === "undefined") {
+                throw new ArgumentException("body");
+            }
             for (var j = Int.range.length; j < this.value; j++) {
                 Int.range.push(new Int(j));
             }

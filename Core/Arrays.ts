@@ -12,7 +12,16 @@ export class Array2D<T> {
     private w: number;
     private h: number;
 
-    constructor(public width: Int, public height: Int, initialValue: T) {
+    constructor(width: Int, height: Int, initialValue: T) {
+        if (width == null || typeof (width) === "undefined") {
+            throw new ArgumentException("width");
+        }
+        if (height == null || typeof (height) === "undefined") {
+            throw new ArgumentException("height");
+        }
+        if (initialValue == null || typeof (initialValue) === "undefined") {
+            throw new ArgumentException("initialValue");
+        }
         this.w = width.getValue();
         if (this.w <= 0) {
             throw new ArgumentException("width");
@@ -35,10 +44,27 @@ export class Array2D<T> {
     }
 
     set(x: Int, y: Int, value: T) {
+        if (x == null || typeof (x) === "undefined") {
+            throw new ArgumentException("x");
+        }
+        if (y == null || typeof (y) === "undefined") {
+            throw new ArgumentException("y");
+        }
+        if (value == null || typeof (value) === "undefined") {
+            throw new ArgumentException("value");
+        }
+
         this.matrix[x.getValue()][y.getValue()] = value;
     }
 
     get(x: Int, y: Int): T {
+        if (x == null || typeof (x) === "undefined") {
+            throw new ArgumentException("x");
+        }
+        if (y == null || typeof (y) === "undefined") {
+            throw new ArgumentException("y");
+        }
+
         return this.matrix[x.getValue()][y.getValue()];
     }
 

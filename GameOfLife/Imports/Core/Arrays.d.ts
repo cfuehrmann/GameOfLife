@@ -1,7 +1,5 @@
 import Integers = require("./Integers");
 export declare class Array2D<T> {
-    width: Integers.Int;
-    height: Integers.Int;
     private matrix;
     private _width;
     private _height;
