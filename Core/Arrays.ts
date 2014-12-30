@@ -12,7 +12,7 @@ export class Array2D<T> {
     private w: number;
     private h: number;
 
-    constructor(width: Int, height: Int, initialValue: T) {
+    constructor(height: Int, width: Int, initialValue: T) {
         if (width == null || typeof (width) === "undefined") {
             throw new ArgumentException("width");
         }
@@ -35,9 +35,9 @@ export class Array2D<T> {
         this.height = height;
 
         this.matrix = [];
-        for (var row = 0; row < this.w; row++) {
+        for (var row = 0; row < this.h; row++) {
             this.matrix[row] = [];
-            for (var column = 0; column < this.h; column++) {
+            for (var column = 0; column < this.w; column++) {
                 this.matrix[row][column] = initialValue;
             }
         }
@@ -54,7 +54,18 @@ export class Array2D<T> {
             throw new ArgumentException("value");
         }
 
-        this.matrix[row.getValue()][column.getValue()] = value;
+        var r = row.getValue();
+        var c = column.getValue();
+
+        if (r < 0 || r >= this.h) {
+            throw new ArgumentException("row");
+        }
+
+        if (c < 0 || c >= this.w) {
+            throw new ArgumentException("column");
+        }
+
+        this.matrix[r][c] = value;
     }
 
     get(row: Int, column: Int): T {
@@ -65,7 +76,18 @@ export class Array2D<T> {
             throw new ArgumentException("column");
         }
 
-        return this.matrix[row.getValue()][column.getValue()];
+        var r = row.getValue();
+        var c = column.getValue();
+
+        if (r < 0 || r >= this.h) {
+            throw new ArgumentException("row");
+        }
+
+        if (c < 0 || c >= this.w) {
+            throw new ArgumentException("column");
+        }
+
+        return this.matrix[r][c];
     }
 
     getWidth(): Int {

@@ -28,4 +28,24 @@ export class Int {
             body(Int.range[i]);
         }
     }
+
+    mod(n: Int) {
+        var nv = n.getValue();
+
+        return new Int(((this.value % nv) + nv) % nv);
+    }
+
+    minus(n: Int) {
+
+        return new Int(this.value - n.getValue());
+    }
+
+    pred() {
+        return new Int(this.value - 1);
+    }
+
+    succ() {
+        return new Int(this.value + 1);
+    }
+
 }

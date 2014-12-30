@@ -20,22 +20,22 @@ testClass = "Array2D";
 method = "constructor";
 
 check("widthNull", () => {
-    throws(() => new Array2D(null, new Int(7), 0),
+    throws(() => new Array2D(new Int(7), null, 0),
         (e: ArgumentException) => e.getArgumentName() === "width");
 });
 
 check("widthUndefined", () => {
-    throws(() => new Array2D(null, new Int(7), 0),
+    throws(() => new Array2D(new Int(7), undefined, 0),
         (e: ArgumentException) => e.getArgumentName() === "width");
 });
 
 check("heightNull", () => {
-    throws(() => new Array2D(new Int(7), null, 0),
+    throws(() => new Array2D(null, new Int(7), 0),
         (e: ArgumentException) => e.getArgumentName() === "height");
 });
 
 check("heightUndefined", () => {
-    throws(() => new Array2D(new Int(7), null, 0),
+    throws(() => new Array2D(undefined, new Int(7), 0),
         (e: ArgumentException) => e.getArgumentName() === "height");
 });
 
@@ -50,12 +50,12 @@ check("initialValueUndefined", () => {
 });
 
 check("widthNonPositive", () =>
-    throws(() => new Array2D(new Int(0), new Int(7), 0),
+    throws(() => new Array2D(new Int(7), new Int(0), 0),
         (e: ArgumentException) => e.getArgumentName() === "width")
     );
 
 check("heightNonPositive", () =>
-    throws(() => new Array2D(new Int(7), new Int(0), 0),
+    throws(() => new Array2D(new Int(0), new Int(7), 0),
         (e: ArgumentException) => e.getArgumentName() === "height")
     );
 
@@ -97,6 +97,35 @@ check("columnNull", () => {
     throws(() => { a.get(new Int(3), null); },
         (e: ArgumentException) => e.getArgumentName() === "column");
 });
+
+check("rowNegative", () => {
+    var a = new Array2D(new Int(5), new Int(7), 0);
+
+    throws(() => { a.get(new Int(-1), new Int(3)); },
+        (e: ArgumentException) => e.getArgumentName() === "row");
+});
+
+check("rowTooGreat", () => {
+    var a = new Array2D(new Int(5), new Int(7), 0);
+
+    throws(() => { a.get(new Int(5), new Int(3)); },
+        (e: ArgumentException) => e.getArgumentName() === "row");
+});
+
+check("columnNegative", () => {
+    var a = new Array2D(new Int(5), new Int(7), 0);
+
+    throws(() => { a.get(new Int(3), new Int(-1)); },
+        (e: ArgumentException) => e.getArgumentName() === "column");
+});
+
+check("columnTooGreat", () => {
+    var a = new Array2D(new Int(5), new Int(7), 0);
+
+    throws(() => { a.get(new Int(3), new Int(7)); },
+        (e: ArgumentException) => e.getArgumentName() === "column");
+});
+
 
 method = "set";
 
@@ -141,6 +170,35 @@ check("valueNull", () => {
     throws(() => { a.set(new Int(3), new Int(7), undefined); },
         (e: ArgumentException) => e.getArgumentName() === "value");
 });
+
+check("rowNegative", () => {
+    var a = new Array2D(new Int(5), new Int(7), 0);
+
+    throws(() => { a.set(new Int(-1), new Int(3), 42); },
+        (e: ArgumentException) => e.getArgumentName() === "row");
+});
+
+check("rowTooGreat", () => {
+    var a = new Array2D(new Int(5), new Int(7), 0);
+
+    throws(() => { a.set(new Int(5), new Int(3), 42); },
+        (e: ArgumentException) => e.getArgumentName() === "row");
+});
+
+check("columnNegative", () => {
+    var a = new Array2D(new Int(5), new Int(7), 0);
+
+    throws(() => { a.set(new Int(3), new Int(-1), 42); },
+        (e: ArgumentException) => e.getArgumentName() === "column");
+});
+
+check("columnTooGreat", () => {
+    var a = new Array2D(new Int(5), new Int(7), 0);
+
+    throws(() => { a.set(new Int(3), new Int(7), 42); },
+        (e: ArgumentException) => e.getArgumentName() === "column");
+});
+
 check("once", () => {
     var a = new Array2D(new Int(5), new Int(7), 0);
     a.set(new Int(2), new Int(3), 42);
@@ -179,7 +237,7 @@ method = "getWidth";
 check("getWidth", () => {
     var s = new Array2D(new Int(2), new Int(3), false);
 
-    strictEqual(s.getWidth().getValue(), 2);
+    strictEqual(s.getWidth().getValue(), 3);
 });
 
 method = "getHeight";
@@ -187,5 +245,5 @@ method = "getHeight";
 check("getHeight", () => {
     var s = new Array2D(new Int(2), new Int(3), false);
 
-    strictEqual(s.getHeight().getValue(), 3);
+    strictEqual(s.getHeight().getValue(), 2);
 });

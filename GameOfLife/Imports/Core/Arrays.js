@@ -2,7 +2,7 @@ define(["require", "exports", "./Integers", "./Exceptions"], function (require, 
     var ArgumentException = Exceptions.ArgumentException;
     /* tslint:enable no-unused-variable*/
     var Array2D = (function () {
-        function Array2D(width, height, initialValue) {
+        function Array2D(height, width, initialValue) {
             if (width == null || typeof (width) === "undefined") {
                 throw new ArgumentException("width");
             }
@@ -23,9 +23,9 @@ define(["require", "exports", "./Integers", "./Exceptions"], function (require, 
             this.width = width;
             this.height = height;
             this.matrix = [];
-            for (var row = 0; row < this.w; row++) {
+            for (var row = 0; row < this.h; row++) {
                 this.matrix[row] = [];
-                for (var column = 0; column < this.h; column++) {
+                for (var column = 0; column < this.w; column++) {
                     this.matrix[row][column] = initialValue;
                 }
             }
@@ -40,7 +40,15 @@ define(["require", "exports", "./Integers", "./Exceptions"], function (require, 
             if (value == null || typeof (value) === "undefined") {
                 throw new ArgumentException("value");
             }
-            this.matrix[row.getValue()][column.getValue()] = value;
+            var r = row.getValue();
+            var c = column.getValue();
+            if (r < 0 || r >= this.h) {
+                throw new ArgumentException("row");
+            }
+            if (c < 0 || c >= this.w) {
+                throw new ArgumentException("column");
+            }
+            this.matrix[r][c] = value;
         };
         Array2D.prototype.get = function (row, column) {
             if (row == null || typeof (row) === "undefined") {
@@ -49,7 +57,15 @@ define(["require", "exports", "./Integers", "./Exceptions"], function (require, 
             if (column == null || typeof (column) === "undefined") {
                 throw new ArgumentException("column");
             }
-            return this.matrix[row.getValue()][column.getValue()];
+            var r = row.getValue();
+            var c = column.getValue();
+            if (r < 0 || r >= this.h) {
+                throw new ArgumentException("row");
+            }
+            if (c < 0 || c >= this.w) {
+                throw new ArgumentException("column");
+            }
+            return this.matrix[r][c];
         };
         Array2D.prototype.getWidth = function () {
             return this.width;

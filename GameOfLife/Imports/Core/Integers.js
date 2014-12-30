@@ -22,6 +22,19 @@ define(["require", "exports", "./Exceptions"], function (require, exports, Excep
                 body(Int.range[i]);
             }
         };
+        Int.prototype.mod = function (n) {
+            var nv = n.getValue();
+            return new Int(((this.value % nv) + nv) % nv);
+        };
+        Int.prototype.minus = function (n) {
+            return new Int(this.value - n.getValue());
+        };
+        Int.prototype.pred = function () {
+            return new Int(this.value - 1);
+        };
+        Int.prototype.succ = function () {
+            return new Int(this.value + 1);
+        };
         Int.range = [];
         return Int;
     })();

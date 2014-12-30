@@ -5,7 +5,7 @@ export declare class Array2D<T> {
     private height;
     private w;
     private h;
-    constructor(width: Integers.Int, height: Integers.Int, initialValue: T);
+    constructor(height: Integers.Int, width: Integers.Int, initialValue: T);
     set(row: Integers.Int, column: Integers.Int, value: T): void;
     get(row: Integers.Int, column: Integers.Int): T;
     getWidth(): Integers.Int;
