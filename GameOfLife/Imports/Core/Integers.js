@@ -1,42 +1,47 @@
 define(["require", "exports", "./Exceptions"], function (require, exports, Exceptions) {
     var ArgumentException = Exceptions.ArgumentException;
-    /* tslint:enable no-unused-variable*/
-    var Int = (function () {
-        function Int(value) {
+    var range = [];
+    function int(value) {
+        var result = range[value];
+        if (typeof result === "undefined") {
+            result = new PrivateInt(value);
+            range[value] = result;
+        }
+        return result;
+    }
+    exports.int = int;
+    var PrivateInt = (function () {
+        function PrivateInt(value) {
+            this.value = value;
             if (value % 1 !== 0 || value == null) {
                 throw new ArgumentException("value");
             }
             this.value = value;
         }
-        Int.prototype.getValue = function () {
+        PrivateInt.prototype.getValue = function () {
             return this.value;
         };
-        Int.prototype.each = function (body) {
+        PrivateInt.prototype.each = function (body) {
             if (body == null || typeof body === "undefined") {
                 throw new ArgumentException("body");
             }
-            for (var j = Int.range.length; j < this.value; j++) {
-                Int.range.push(new Int(j));
-            }
             for (var i = 0; i < this.value; i++) {
-                body(Int.range[i]);
+                body(int(i));
             }
         };
-        Int.prototype.mod = function (n) {
+        PrivateInt.prototype.mod = function (n) {
             var nv = n.getValue();
-            return new Int(((this.value % nv) + nv) % nv);
+            return new PrivateInt(((this.value % nv) + nv) % nv);
         };
-        Int.prototype.minus = function (n) {
-            return new Int(this.value - n.getValue());
+        PrivateInt.prototype.minus = function (n) {
+            return new PrivateInt(this.value - n.getValue());
         };
-        Int.prototype.pred = function () {
-            return new Int(this.value - 1);
+        PrivateInt.prototype.pred = function () {
+            return new PrivateInt(this.value - 1);
         };
-        Int.prototype.succ = function () {
-            return new Int(this.value + 1);
+        PrivateInt.prototype.succ = function () {
+            return new PrivateInt(this.value + 1);
         };
-        Int.range = [];
-        return Int;
+        return PrivateInt;
     })();
-    exports.Int = Int;
 });

@@ -1,7 +1,4 @@
-export declare class Int {
-    private value;
-    private static range;
-    constructor(value: number);
+export interface Int {
     getValue(): number;
     each(body: (x: Int) => void): void;
     mod(n: Int): Int;
@@ -9,3 +6,4 @@ export declare class Int {
     pred(): Int;
     succ(): Int;
 }
+export declare function int(value: number): Int;

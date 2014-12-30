@@ -7,13 +7,14 @@ import Rendering = require("./Rendering");
 import Renderer = Rendering.Renderer;
 import Interface = require("./Interface");
 import PointMap = Interface.PointMap;
+import int = Integers.int;
 /* tslint:enable no-unused-variable*/
 
 module Main {
     "use strict";
     export function exec() {
-        var size = new Int(150);
-        var canvas = new HTMLCanvas(size, size, new Int(3));
+        var size = int(100);
+        var canvas = new HTMLCanvas(size, size, int(5));
         document.body.appendChild(canvas.node);
         var renderer = new Renderer(canvas);
         var scenes = [new Array2D(size, size, false),

@@ -11,6 +11,7 @@ import Integers = require("Imports/Core/Integers");
 import Int = Integers.Int;
 import Arrays = require("Imports/Core/Arrays");
 import Array2D = Arrays.Array2D;
+import int = Integers.int;
 /* tslint:enable no-unused-variable*/
 
 var testClass: string;
@@ -55,13 +56,13 @@ check("PointMapCallSequence", () => {
     var renderer = new Renderer(pointMap);
     var width = 5;
     var height = 7;
-    var scene = new Array2D(new Int(height), new Int(width), 0);
-    new Int(height).each(row => {
-        new Int(width).each(column => {
+    var scene = new Array2D(int(height), int(width), 0);
+    int(height).each(row => {
+        int(width).each(column => {
             scene.set(row, column, row.getValue() * width + column.getValue());
         });
     });
-    var drawnPoints = new Array2D(new Int(height), new Int(width), false);
+    var drawnPoints = new Array2D(int(height), int(width), false);
 
     renderer.render(scene);
 

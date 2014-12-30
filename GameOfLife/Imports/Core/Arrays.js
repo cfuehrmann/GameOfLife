@@ -1,8 +1,10 @@
-define(["require", "exports", "./Integers", "./Exceptions"], function (require, exports, Integers, Exceptions) {
+define(["require", "exports", "./Exceptions"], function (require, exports, Exceptions) {
     var ArgumentException = Exceptions.ArgumentException;
     /* tslint:enable no-unused-variable*/
     var Array2D = (function () {
         function Array2D(height, width, initialValue) {
+            this.height = height;
+            this.width = width;
             if (width == null || typeof (width) === "undefined") {
                 throw new ArgumentException("width");
             }

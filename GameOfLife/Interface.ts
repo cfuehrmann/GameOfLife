@@ -7,5 +7,3 @@ export interface PointMap<T> {
     clear(): void;
     drawPoint(x: Int, y: Int, value: T): void;
 }
-
-
