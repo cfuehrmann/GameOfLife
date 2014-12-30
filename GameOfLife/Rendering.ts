@@ -10,9 +10,8 @@ import ArgumentException = Exceptions.ArgumentException;
 /* tslint:enable no-unused-variable*/
 
 export class Renderer<T> {
-    private pointMap: PointMap<T>;
 
-    constructor(pointMap: PointMap<T>) {
+    constructor(private pointMap: PointMap<T>) {
         if (pointMap == null || typeof pointMap === "undefined") {
             throw new ArgumentException("pointMap");
         }

@@ -120,7 +120,7 @@ class Clear<TResult, TPoint> implements PointMapCall<TPoint>  {
 }
 
 class DrawPoint<TResult, TPoint> implements PointMapCall<TPoint> {
-    constructor(public row: Int, public column: Int, public value: TPoint) { }
+    constructor(private row: Int, private column: Int, private value: TPoint) { }
 
     match<T>(cases: PointMapCallCases<T, TPoint>) {
         return cases.drawPoint(this.row, this.column, this.value);

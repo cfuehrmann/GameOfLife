@@ -7,12 +7,10 @@ import ArgumentException = Exceptions.ArgumentException;
 
 export class Array2D<T> {
     private matrix: T[][];
-    private width: Int;
-    private height: Int;
     private w: number;
     private h: number;
 
-    constructor(height: Int, width: Int, initialValue: T) {
+    constructor(private height: Int, private width: Int, initialValue: T) {
         if (width == null || typeof (width) === "undefined") {
             throw new ArgumentException("width");
         }

@@ -1,13 +1,11 @@
 ﻿export class ArgumentException {
-    private argumentName: string;
-
     getArgumentName(): string { return this.argumentName; }
 
     toString(): string {
         return "The argument '" + this.argumentName + "' is invalid!";
     }
 
-    constructor(argumentName: string) {
+    constructor(private argumentName: string) {
         this.argumentName = argumentName;
     }
 } 

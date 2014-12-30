@@ -4,10 +4,9 @@ import ArgumentException = Exceptions.ArgumentException;
 /* tslint:enable no-unused-variable*/
 
 export class Int {
-    private value: number;
     private static range: Int[] = [];
 
-    constructor(value: number) {
+    constructor(private value: number) {
         if (value % 1 !== 0 || value == null) {
             throw new ArgumentException("value");
         }
