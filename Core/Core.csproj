@@ -79,8 +79,10 @@
     <Content Include="tslint.json" />
   </ItemGroup>
   <PropertyGroup Condition="'$(Configuration)' == 'Debug'">
-    <TypeScriptCompileOnSaveEnabled>False</TypeScriptCompileOnSaveEnabled>
+    <TypeScriptCompileOnSaveEnabled>True</TypeScriptCompileOnSaveEnabled>
     <TypeScriptNoImplicitAny>True</TypeScriptNoImplicitAny>
+    <TypeScriptOutDir>C:\Users\kakimena\GameOfLife\Core\BuildOutput</TypeScriptOutDir>
+    <TypeScriptGeneratesDeclarations>True</TypeScriptGeneratesDeclarations>
   </PropertyGroup>
   <Import Project="$(VSToolsPath)\TypeScript\Microsoft.TypeScript.targets" Condition="Exists('$(VSToolsPath)\TypeScript\Microsoft.TypeScript.targets')" />
 </Project>

@@ -73,7 +73,9 @@
     <TypeScriptSourceMap>False</TypeScriptSourceMap>
     <TypeScriptModuleKind>amd</TypeScriptModuleKind>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
-    <TypeScriptCompileOnSaveEnabled>False</TypeScriptCompileOnSaveEnabled>
+    <TypeScriptCompileOnSaveEnabled>True</TypeScriptCompileOnSaveEnabled>
+    <TypeScriptOutDir>C:\Users\kakimena\GameOfLife\GameOfLife\BuildOutput</TypeScriptOutDir>
+    <TypeScriptGeneratesDeclarations>True</TypeScriptGeneratesDeclarations>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)' == 'Release'">
     <TypeScriptTarget>ES5</TypeScriptTarget>
