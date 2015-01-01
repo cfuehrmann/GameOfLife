@@ -1,11 +1,11 @@
 ﻿/* tslint:disable no-unused-variable*/
 import Arrays = require("./Imports/Core/Arrays");
 import Array2D = Arrays.Array2D;
-import Integers = require("./Imports/Core/Integers");
-import Int = Integers.Int;
 import Interface = require("./Interface");
 import PointMap = Interface.PointMap;
 import Exceptions = require("./Imports/Core/Exceptions");
+import Int = require("./Imports/Core/Integers");
+import xxx = Int.isNoInt;
 import ArgumentException = Exceptions.ArgumentException;
 /* tslint:enable no-unused-variable*/
 
@@ -25,10 +25,10 @@ export class Renderer<T> {
 
         this.pointMap.clear();
 
-        scene.getHeight().each(row => {
-            scene.getWidth().each(column => {
+        for (var row = 0; row < scene.height; row++) {
+            for (var column = 0; column < scene.width; column++) {
                 this.pointMap.drawPoint(row, column, scene.get(row, column));
-            });
-        });
+            }
+        }
     }
 }

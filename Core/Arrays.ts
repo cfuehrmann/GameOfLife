@@ -1,98 +1,57 @@
 ﻿/* tslint:disable no-unused-variable*/
-import Integers = require("./Integers");
-import Int = Integers.Int;
 import Exceptions = require("./Exceptions");
 import ArgumentException = Exceptions.ArgumentException;
+import Int = require("./Integers");
 /* tslint:enable no-unused-variable*/
+
+function checkInt(argumentName: string, n: number) {
+    if (Int.isNoInt(n)) {
+        throw new ArgumentException(argumentName);
+    }
+}
 
 export class Array2D<T> {
     private matrix: T[][];
-    private w: number;
-    private h: number;
 
-    constructor(private height: Int, private width: Int, initialValue: T) {
-        if (width == null || typeof (width) === "undefined") {
+    constructor(public height: number, public width: number, initialValue: T) {
+        checkInt("width", width);
+        checkInt("height", height);
+        if (width <= 0) {
             throw new ArgumentException("width");
         }
-        if (height == null || typeof (height) === "undefined") {
+        if (height <= 0) {
             throw new ArgumentException("height");
         }
-        if (initialValue == null || typeof (initialValue) === "undefined") {
-            throw new ArgumentException("initialValue");
-        }
-        this.w = width.getValue();
-        if (this.w <= 0) {
-            throw new ArgumentException("width");
-        }
-        this.h = height.getValue();
-        if (this.h <= 0) {
-            throw new ArgumentException("height");
-        }
-
-        this.width = width;
-        this.height = height;
-
         this.matrix = [];
-        for (var row = 0; row < this.h; row++) {
+        for (var row = 0; row < height; row++) {
             this.matrix[row] = [];
-            for (var column = 0; column < this.w; column++) {
+            for (var column = 0; column < width; column++) {
                 this.matrix[row][column] = initialValue;
             }
         }
     }
 
-    set(row: Int, column: Int, value: T) {
-        if (row == null || typeof (row) === "undefined") {
+    set(row: number, column: number, value: T) {
+        checkInt("row", row);
+        checkInt("column", column);
+        if (row < 0 || row >= this.height) {
             throw new ArgumentException("row");
         }
-        if (column == null || typeof (column) === "undefined") {
+        if (column < 0 || column >= this.width) {
             throw new ArgumentException("column");
         }
-        if (value == null || typeof (value) === "undefined") {
-            throw new ArgumentException("value");
-        }
-
-        var r = row.getValue();
-        var c = column.getValue();
-
-        if (r < 0 || r >= this.h) {
-            throw new ArgumentException("row");
-        }
-
-        if (c < 0 || c >= this.w) {
-            throw new ArgumentException("column");
-        }
-
-        this.matrix[r][c] = value;
+        this.matrix[row][column] = value;
     }
 
-    get(row: Int, column: Int): T {
-        if (row == null || typeof (row) === "undefined") {
+    get(row: number, column: number): T {
+        checkInt("row", row);
+        checkInt("column", column);
+        if (row < 0 || row >= this.height) {
             throw new ArgumentException("row");
         }
-        if (column == null || typeof (column) === "undefined") {
+        if (column < 0 || column >= this.width) {
             throw new ArgumentException("column");
         }
-
-        var r = row.getValue();
-        var c = column.getValue();
-
-        if (r < 0 || r >= this.h) {
-            throw new ArgumentException("row");
-        }
-
-        if (c < 0 || c >= this.w) {
-            throw new ArgumentException("column");
-        }
-
-        return this.matrix[r][c];
-    }
-
-    getWidth(): Int {
-        return this.width;
-    }
-
-    getHeight(): Int {
-        return this.height;
+        return this.matrix[row][column];
     }
 }

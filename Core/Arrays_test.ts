@@ -2,249 +2,225 @@
 
 /* tslint:disable no-unused-variable*/
 import Integers = require("Integers");
-import Int = Integers.Int;
 import Arrays = require("Arrays");
 import Array2D = Arrays.Array2D;
-import Exceptions = require("Exceptions");
 import ArgumentException = Exceptions.ArgumentException;
-import int = Integers.int;
+import Exceptions = require("Exceptions");
 /* tslint:enable no-unused-variable*/
 
 var testClass: string;
 var method: string;
 
 function check(testCase: string, testBody: (assert?: QUnitAssert) => any) {
-    test(testClass + "_" + method + "_" + testCase, testBody);
+    test(testClass + ", " + method + ": " + testCase, testBody);
 }
 
 testClass = "Array2D";
+
 method = "constructor";
 
-check("widthNull", () => {
-    throws(() => new Array2D(int(7), null, 0),
-        (e: ArgumentException) => e.getArgumentName() === "width");
-});
-
-check("widthUndefined", () => {
-    throws(() => new Array2D(int(7), undefined, 0),
-        (e: ArgumentException) => e.getArgumentName() === "width");
-});
-
-check("heightNull", () => {
-    throws(() => new Array2D(null, int(7), 0),
-        (e: ArgumentException) => e.getArgumentName() === "height");
-});
-
-check("heightUndefined", () => {
-    throws(() => new Array2D(undefined, int(7), 0),
-        (e: ArgumentException) => e.getArgumentName() === "height");
-});
-
-check("initialValueNull", () => {
-    throws(() => new Array2D(int(7), int(7), null),
-        (e: ArgumentException) => e.getArgumentName() === "initialValue");
-});
-
-check("initialValueUndefined", () => {
-    throws(() => new Array2D(int(7), int(7), undefined),
-        (e: ArgumentException) => e.getArgumentName() === "initialValue");
-});
-
-check("widthNonPositive", () =>
-    throws(() => new Array2D(int(7), int(0), 0),
-        (e: ArgumentException) => e.getArgumentName() === "width")
-    );
-
-check("heightNonPositive", () =>
-    throws(() => new Array2D(int(0), int(7), 0),
+check("heightNull", () =>
+    throws(() => new Array2D(null, 7, 0),
         (e: ArgumentException) => e.getArgumentName() === "height")
     );
 
+check("heightUndefined", () =>
+    throws(() => new Array2D(undefined, 7, 0),
+        (e: ArgumentException) => e.getArgumentName() === "height")
+    );
+
+check("heightNaN", () =>
+    throws(() => new Array2D(NaN, 7, 0),
+        (e: ArgumentException) => e.getArgumentName() === "height")
+    );
+
+check("heightInfinity", () =>
+    throws(() => new Array2D(Infinity, 7, 0),
+        (e: ArgumentException) => e.getArgumentName() === "height")
+    );
+
+check("heightMinusInfinity", () =>
+    throws(() => new Array2D(-Infinity, 7, 0),
+        (e: ArgumentException) => e.getArgumentName() === "height")
+    );
+
+check("heightNonIntegerReal", () =>
+    throws(() => new Array2D(0.5, 7, 0),
+        (e: ArgumentException) => e.getArgumentName() === "height")
+    );
+
+check("heightNonPositive", () =>
+    throws(() => new Array2D(0, 7, 0),
+        (e: ArgumentException) => e.getArgumentName() === "height")
+    );
+
+check("widthNull", () =>
+    throws(() => new Array2D(7, null, 0),
+        (e: ArgumentException) => e.getArgumentName() === "width")
+    );
+
+check("widthUndefined", () =>
+    throws(() => new Array2D(7, undefined, 0),
+        (e: ArgumentException) => e.getArgumentName() === "width")
+    );
+
+check("widthNaN", () =>
+    throws(() => new Array2D(7, NaN, 0),
+        (e: ArgumentException) => e.getArgumentName() === "width")
+    );
+
+check("widthInfinity", () =>
+    throws(() => new Array2D(7, Infinity, 0),
+        (e: ArgumentException) => e.getArgumentName() === "width")
+    );
+
+check("widthMinusInfinity", () =>
+    throws(() => new Array2D(7, -Infinity, 0),
+        (e: ArgumentException) => e.getArgumentName() === "width")
+    );
+
+check("widthNonIntegerReal", () =>
+    throws(() => new Array2D(7, 0.5, 0),
+        (e: ArgumentException) => e.getArgumentName() === "width")
+    );
+
+check("widthNonPositive", () =>
+    throws(() => new Array2D(7, 0, 0),
+        (e: ArgumentException) => e.getArgumentName() === "width")
+    );
+
 check("initialValue", () => {
-    var a = new Array2D(int(5), int(7), 42);
-    int(5).each(row => {
-        int(7).each(column => {
+    var a = new Array2D(5, 7, 42);
+    for (var row = 0; row < 5; row++) {
+        for (var column = 0; column < 5; column++) {
             strictEqual(a.get(row, column), 42);
-        });
-    });
+        }
+    }
 });
+
 
 method = "get";
 
-check("rowUndefined", () => {
-    var a = new Array2D(int(5), int(7), 0);
+check("rowUndefined", () =>
+    throws(() => { new Array2D(5, 7, 0).get(undefined, 3); },
+        (e: ArgumentException) => e.getArgumentName() === "row")
+    );
 
-    throws(() => { a.get(undefined, int(3)); },
-        (e: ArgumentException) => e.getArgumentName() === "row");
-});
+check("rowNull", () =>
+    throws(() => { new Array2D(5, 7, 0).get(null, 3); },
+        (e: ArgumentException) => e.getArgumentName() === "row")
+    );
 
-check("columnUndefined", () => {
-    var a = new Array2D(int(5), int(7), 0);
+check("rowNegative", () =>
+    throws(() => { new Array2D(5, 7, 0).get(-1, 3); },
+        (e: ArgumentException) => e.getArgumentName() === "row")
+    );
 
-    throws(() => { a.get(int(3), undefined); },
-        (e: ArgumentException) => e.getArgumentName() === "column");
-});
+check("rowTooGreat", () =>
+    throws(() => { new Array2D(5, 7, 0).get(5, 3); },
+        (e: ArgumentException) => e.getArgumentName() === "row")
+    );
 
-check("rowNull", () => {
-    var a = new Array2D(int(5), int(7), 0);
+check("columnUndefined", () =>
+    throws(() => { new Array2D(5, 7, 0).get(3, undefined); },
+        (e: ArgumentException) => e.getArgumentName() === "column")
+    );
 
-    throws(() => { a.get(null, int(3)); },
-        (e: ArgumentException) => e.getArgumentName() === "row");
-});
+check("columnNull", () =>
 
-check("columnNull", () => {
-    var a = new Array2D(int(5), int(7), 0);
+    throws(() => { new Array2D(5, 7, 0).get(3, null); },
+        (e: ArgumentException) => e.getArgumentName() === "column")
+    );
 
-    throws(() => { a.get(int(3), null); },
-        (e: ArgumentException) => e.getArgumentName() === "column");
-});
+check("columnNegative", () =>
+    throws(() => { new Array2D(5, 7, 0).get(3, -1); },
+        (e: ArgumentException) => e.getArgumentName() === "column")
+    );
 
-check("rowNegative", () => {
-    var a = new Array2D(int(5), int(7), 0);
-
-    throws(() => { a.get(int(-1), int(3)); },
-        (e: ArgumentException) => e.getArgumentName() === "row");
-});
-
-check("rowTooGreat", () => {
-    var a = new Array2D(int(5), int(7), 0);
-
-    throws(() => { a.get(int(5), int(3)); },
-        (e: ArgumentException) => e.getArgumentName() === "row");
-});
-
-check("columnNegative", () => {
-    var a = new Array2D(int(5), int(7), 0);
-
-    throws(() => { a.get(int(3), int(-1)); },
-        (e: ArgumentException) => e.getArgumentName() === "column");
-});
-
-check("columnTooGreat", () => {
-    var a = new Array2D(int(5), int(7), 0);
-
-    throws(() => { a.get(int(3), int(7)); },
-        (e: ArgumentException) => e.getArgumentName() === "column");
-});
+check("columnTooGreat", () =>
+    throws(() => { new Array2D(5, 7, 0).get(3, 7); },
+        (e: ArgumentException) => e.getArgumentName() === "column")
+    );
 
 
 method = "set";
 
-check("rowUndefined", () => {
-    var a = new Array2D(int(5), int(7), 0);
+check("rowUndefined", () =>
+    throws(() => { new Array2D(5, 7, 0).set(undefined, 3, 0); },
+        (e: ArgumentException) => e.getArgumentName() === "row")
+    );
 
-    throws(() => { a.set(undefined, int(3), 0); },
-        (e: ArgumentException) => e.getArgumentName() === "row");
-});
+check("rowNull", () =>
+    throws(() => { new Array2D(5, 7, 0).set(null, 3, 0); },
+        (e: ArgumentException) => e.getArgumentName() === "row")
+    );
 
-check("columnUndefined", () => {
-    var a = new Array2D(int(5), int(7), 0);
+check("rowNegative", () =>
+    throws(() => new Array2D(5, 7, 0).set(-1, 3, 42),
+        (e: ArgumentException) => e.getArgumentName() === "row")
+    );
 
-    throws(() => { a.set(int(3), undefined, 0); },
-        (e: ArgumentException) => e.getArgumentName() === "column");
-});
+check("rowTooGreat", () =>
+    throws(() => new Array2D(5, 7, 0).set(5, 3, 42),
+        (e: ArgumentException) => e.getArgumentName() === "row")
+    );
 
-check("valueUndefined", () => {
-    var a = new Array2D(int(5), int(7), 0);
+check("columnUndefined", () =>
+    throws(() => new Array2D(5, 7, 0).set(3, undefined, 0),
+        (e: ArgumentException) => e.getArgumentName() === "column")
+    );
 
-    throws(() => { a.set(int(3), int(7), undefined); },
-        (e: ArgumentException) => e.getArgumentName() === "value");
-});
+check("columnNull", () =>
+    throws(() => new Array2D(5, 7, 0).set(3, null, 0),
+        (e: ArgumentException) => e.getArgumentName() === "column")
+    );
 
-check("rowNull", () => {
-    var a = new Array2D(int(5), int(7), 0);
+check("columnNegative", () =>
+    throws(() => new Array2D(5, 7, 0).set(3, -1, 42),
+        (e: ArgumentException) => e.getArgumentName() === "column")
+    );
 
-    throws(() => { a.set(null, int(3), 0); },
-        (e: ArgumentException) => e.getArgumentName() === "row");
-});
-
-check("columnNull", () => {
-    var a = new Array2D(int(5), int(7), 0);
-
-    throws(() => { a.set(int(3), null, 0); },
-        (e: ArgumentException) => e.getArgumentName() === "column");
-});
-
-check("valueNull", () => {
-    var a = new Array2D(int(5), int(7), 0);
-
-    throws(() => { a.set(int(3), int(7), undefined); },
-        (e: ArgumentException) => e.getArgumentName() === "value");
-});
-
-check("rowNegative", () => {
-    var a = new Array2D(int(5), int(7), 0);
-
-    throws(() => { a.set(int(-1), int(3), 42); },
-        (e: ArgumentException) => e.getArgumentName() === "row");
-});
-
-check("rowTooGreat", () => {
-    var a = new Array2D(int(5), int(7), 0);
-
-    throws(() => { a.set(int(5), int(3), 42); },
-        (e: ArgumentException) => e.getArgumentName() === "row");
-});
-
-check("columnNegative", () => {
-    var a = new Array2D(int(5), int(7), 0);
-
-    throws(() => { a.set(int(3), int(-1), 42); },
-        (e: ArgumentException) => e.getArgumentName() === "column");
-});
-
-check("columnTooGreat", () => {
-    var a = new Array2D(int(5), int(7), 0);
-
-    throws(() => { a.set(int(3), int(7), 42); },
-        (e: ArgumentException) => e.getArgumentName() === "column");
-});
+check("columnTooGreat", () =>
+    throws(() => new Array2D(5, 7, 0).set(3, 7, 42),
+        (e: ArgumentException) => e.getArgumentName() === "column")
+    );
 
 check("once", () => {
-    var a = new Array2D(int(5), int(7), 0);
-    a.set(int(2), int(3), 42);
+    var a = new Array2D(5, 7, 0);
+    a.set(2, 3, 42);
 
-    var p = a.get(int(2), int(3));
+    var p = a.get(2, 3);
     strictEqual(p, 42);
 });
 
 check("twice", () => {
-    var a = new Array2D(int(5), int(7), 0);
+    var a = new Array2D(5, 7, 0);
 
-    a.set(int(2), int(3), 42);
-    a.set(int(2), int(3), 43);
+    a.set(2, 3, 42);
+    a.set(2, 3, 43);
 
-    var p = a.get(int(2), int(3));
+    var p = a.get(2, 3);
     strictEqual(p, 43);
 });
 
+
 method = "get";
 
-var a: Array2D<boolean>;
-
-check("performancePrepare", () => {
-    a = new Array2D(int(1000), int(1000), false);
-    int(1000).each(x => { ; });
-    strictEqual(0, 0); // to satisfy qunit
-});
+var a: Array2D<boolean> = new Array2D(1000, 1000, false);
 
 check("performance", () => {
-    int(1000).each(x => int(1000).each(y => a.get(x, y)));
-    strictEqual(0, 0); // to satisfy qunit
+    for (var x = 0; x < 1000; x++) {
+        for (var y = 0; y < 1000; y++) {
+            a.get(x, y);
+        }
+    }
+    ok(true); // to satisfy qunit
 });
 
-method = "getWidth";
+method = "width";
 
-check("getWidth", () => {
-    var s = new Array2D(int(2), int(3), false);
+check("width", () => strictEqual(new Array2D(2, 3, false).width, 3));
 
-    strictEqual(s.getWidth().getValue(), 3);
-});
+method = "height";
 
-method = "getHeight";
-
-check("getHeight", () => {
-    var s = new Array2D(int(2), int(3), false);
-
-    strictEqual(s.getHeight().getValue(), 2);
-});
+check("height", () => strictEqual(new Array2D(2, 3, false).height, 2));

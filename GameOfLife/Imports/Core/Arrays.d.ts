@@ -1,13 +1,8 @@
-import Integers = require("./Integers");
 export declare class Array2D<T> {
-    private height;
-    private width;
+    height: number;
+    width: number;
     private matrix;
-    private w;
-    private h;
-    constructor(height: Integers.Int, width: Integers.Int, initialValue: T);
-    set(row: Integers.Int, column: Integers.Int, value: T): void;
-    get(row: Integers.Int, column: Integers.Int): T;
-    getWidth(): Integers.Int;
-    getHeight(): Integers.Int;
+    constructor(height: number, width: number, initialValue: T);
+    set(row: number, column: number, value: T): void;
+    get(row: number, column: number): T;
 }

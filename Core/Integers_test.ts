@@ -1,153 +1,110 @@
 ﻿/// <reference path="Imports/QUnit/qunit.d.ts" />
 
 /* tslint:disable no-unused-variable*/
-import Integers = require("Integers");
-import Int = Integers.Int;
-import int = Integers.int;
+import Int = require("Integers");
 import Exceptions = require("Exceptions");
 import ArgumentException = Exceptions.ArgumentException;
 /* tslint:enable no-unused-variable*/
 
-var testClass: string;
 var method: string;
 
 function check(testCase: string, testBody: (assert?: QUnitAssert) => any) {
-    test(testClass + "_" + method + "_" + testCase, testBody);
+    test("Integers, " + method + ": " + testCase, testBody);
 }
 
-testClass = "Int";
-method = "int";
+method = "mod";
 
-check("valueUndefined", () => {
-    throws(() => int(undefined),
-        (e: ArgumentException) => e.getArgumentName() === "value",
-        "No ArgumentException with argument name 'value' is thrown");
-});
+check("numerator is null", () =>
+    throws(() => Int.mod(null, 1),
+        (e: ArgumentException) => e.getArgumentName() === "numerator")
+    );
 
-check("valueNull", () => {
-    throws(() => int(null),
-        (e: ArgumentException) => e.getArgumentName() === "value",
-        "No ArgumentException with argument name 'value' is thrown");
-});
+check("numerator is undefined", () =>
+    throws(() => Int.mod(undefined, 1),
+        (e: ArgumentException) => e.getArgumentName() === "numerator")
+    );
 
-check("valueNonInteger", () => {
-    throws(() => int(0.5),
-        (e: ArgumentException) => e.getArgumentName() === "value",
-        "No ArgumentException with argument name 'value' is thrown");
-});
+check("numerator is NaN", () =>
+    throws(() => Int.mod(NaN, 1),
+        (e: ArgumentException) => e.getArgumentName() === "numerator")
+    );
 
-check("valueInfinity", () => {
-    throws(() => int(Infinity),
-        (e: ArgumentException) => e.getArgumentName() === "value",
-        "No ArgumentException with argument name 'value' is thrown");
-});
+check("numerator is Infinity", () =>
+    throws(() => Int.mod(Infinity, 1),
+        (e: ArgumentException) => e.getArgumentName() === "numerator")
+    );
 
-check("valueMinusInfinity", () => {
-    throws(() => int(-Infinity),
-        (e: ArgumentException) => e.getArgumentName() === "value",
-        "No ArgumentException with argument name 'value' is thrown");
-});
+check("numerator is -Infinity", () =>
+    throws(() => Int.mod(-Infinity, 1),
+        (e: ArgumentException) => e.getArgumentName() === "numerator")
+    );
 
-check("valueNaN", () => {
-    throws(() => int(NaN),
-        (e: ArgumentException) => e.getArgumentName() === "value",
-        "No ArgumentException with argument name 'value' is thrown");
-});
+check("numerator is non-integer real", () =>
+    strictEqual(Int.mod(7.5, 5), 2.5)
+    );
 
-method = "getValue";
+check("numerator is negative", () =>
+    strictEqual(Int.mod(-2, 5), 3)
+    );
 
-check("correctValue", () => {
-    strictEqual(int(-42).getValue(), -42);
-});
 
-method = "each";
+check("denominator is null", () =>
+    throws(() => Int.mod(1, null),
+        (e: ArgumentException) => e.getArgumentName() === "denominator")
+    );
 
-check("oneLoop", () => {
-    var calls: Number[] = [];
+check("denominator is undefined", () =>
+    throws(() => Int.mod(1, undefined),
+        (e: ArgumentException) => e.getArgumentName() === "denominator")
+    );
 
-    int(7).each(i => calls.push(i.getValue()));
+check("denominator is NaN", () =>
+    throws(() => Int.mod(1, NaN),
+        (e: ArgumentException) => e.getArgumentName() === "denominator")
+    );
 
-    strictEqual(calls.length, 7);
-    for (var j = 0; j < 7; j++) {
-        strictEqual(calls[j], j);
-    }
-});
+check("denominator is Infinity", () =>
+    throws(() => Int.mod(1, Infinity),
+        (e: ArgumentException) => e.getArgumentName() === "denominator")
+    );
 
-check("nested", () => {
-    var calls: [number, number][] = [];
+check("denominator is -Infinity", () =>
+    throws(() => Int.mod(1, -Infinity),
+        (e: ArgumentException) => e.getArgumentName() === "denominator")
+    );
 
-    int(5).each(i =>
-        int(7).each(j => {
-            calls.push([i.getValue(), j.getValue()]);
-        }));
+check("denominator is 0", () =>
+    throws(() => Int.mod(1, 0),
+        (e: ArgumentException) => e.getArgumentName() === "denominator")
+    );
 
-    strictEqual(calls.length, 5 * 7);
-    for (var i = 0; i < 5; i++) {
-        for (var j = 0; j < 7; j++) {
-            strictEqual(calls[i * 7 + j][0], i);
-            strictEqual(calls[i * 7 + j][1], j);
-        }
-    }
-});
+check("numerator positive real and denominator positive real", () =>
+    strictEqual(Int.mod(7.3, 2.5), 2.3)
+    );
 
-check("IntZero", () => {
-    var bodyHasBeenCalled: boolean = false;
+check("numerator negative real and denominator positive real", () =>
+    strictEqual(Int.mod(-4, 3), 2)
+    );
 
-    int(0).each(_ => bodyHasBeenCalled = true);
+check("numerator positive real and denominator negative real", () =>
+    strictEqual(Int.mod(5, -3), 2)
+    );
 
-    strictEqual(bodyHasBeenCalled, false);
-});
 
-check("IntNegative", () => {
-    var bodyHasBeenCalled: boolean = false;
+method = "isNoInt";
 
-    int(-42).each(_=> bodyHasBeenCalled = true);
+check("null", () => ok(Int.isNoInt(null)));
 
-    strictEqual(bodyHasBeenCalled, false);
-});
+check("undefined", () => ok(Int.isNoInt(undefined)));
 
-check("bodyNull", () => {
-    throws(() => int(42).each(null),
-        (e: ArgumentException) => e.getArgumentName() === "body",
-        "No ArgumentException with argument name 'width' is thrown"
-        );
-});
+check("NaN", () => ok(Int.isNoInt(NaN)));
 
-check("bodyUndefined", () => {
-    throws(() => int(42).each(undefined),
-        (e: ArgumentException) => e.getArgumentName() === "body",
-        "No ArgumentException with argument name 'width' is thrown"
-        );
-});
+check("Infinity", () => ok(Int.isNoInt(Infinity)));
 
-check("bodyThrows", () => {
-    var calls: Number[] = [];
+check("-Infinity", () => ok(Int.isNoInt(-Infinity)));
 
-    throws(() => int(42).each(x => {
-        if (x.getValue() === 3) {
-            throw "foo";
-        } else {
-            calls.push(x.getValue());
-        }
-    }), "foo", "The exception from the body is not propagated!");
+check("non-Integer real", () => ok(Int.isNoInt(2.5)));
 
-    strictEqual(calls.length, 3);
-    for (var j = 0; j < 3; j++) {
-        strictEqual(calls[j], j);
-    }
-});
+check("negative integer", () => ok(!Int.isNoInt(-42)));
 
-check("performance1", () => {
-    int(1000000).each(x => { ; });
-    strictEqual(0, 0); // to satisfy qunit
-});
-
-check("performance2", () => {
-    int(1000000).each(x => { ; });
-    strictEqual(0, 0); // to satisfy qunit
-});
-
-check("performance3", () => {
-    int(1000000).each(x => { ; });
-    strictEqual(0, 0); // to satisfy qunit
-});
+check("positive integer", () => ok(!Int.isNoInt(42)));

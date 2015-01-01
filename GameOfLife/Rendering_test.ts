@@ -7,11 +7,8 @@ import Rendering = require("Rendering");
 import Renderer = Rendering.Renderer;
 import Interface = require("Interface");
 import PointMap = Interface.PointMap;
-import Integers = require("Imports/Core/Integers");
-import Int = Integers.Int;
 import Arrays = require("Imports/Core/Arrays");
 import Array2D = Arrays.Array2D;
-import int = Integers.int;
 /* tslint:enable no-unused-variable*/
 
 var testClass: string;
@@ -56,13 +53,13 @@ check("PointMapCallSequence", () => {
     var renderer = new Renderer(pointMap);
     var width = 5;
     var height = 7;
-    var scene = new Array2D(int(height), int(width), 0);
-    int(height).each(row => {
-        int(width).each(column => {
-            scene.set(row, column, row.getValue() * width + column.getValue());
-        });
-    });
-    var drawnPoints = new Array2D(int(height), int(width), false);
+    var scene = new Array2D(height, width, 0);
+    for (var row = 0; row < height; row++) {
+        for (var column = 0; column < width; column++) {
+            scene.set(row, column, row * width + column);
+        }
+    }
+    var drawnPoints = new Array2D(height, width, false);
 
     renderer.render(scene);
 
@@ -100,7 +97,7 @@ class TestPointMap implements PointMap<number>{
         this.calls.push(new Clear());
     }
 
-    drawPoint(row: Int, column: Int, value: number) {
+    drawPoint(row: number, column: number, value: number) {
         this.calls.push(new DrawPoint(row, column, value));
     }
 }
@@ -111,7 +108,7 @@ interface PointMapCall<TPoint> {
 
 interface PointMapCallCases<TResult, TPoint> {
     clear(): TResult;
-    drawPoint(row: Int, column: Int, value: TPoint): TResult;
+    drawPoint(row: number, column: number, value: TPoint): TResult;
 }
 
 class Clear<TResult, TPoint> implements PointMapCall<TPoint>  {
@@ -121,7 +118,7 @@ class Clear<TResult, TPoint> implements PointMapCall<TPoint>  {
 }
 
 class DrawPoint<TResult, TPoint> implements PointMapCall<TPoint> {
-    constructor(private row: Int, private column: Int, private value: TPoint) { }
+    constructor(private row: number, private column: number, private value: TPoint) { }
 
     match<T>(cases: PointMapCallCases<T, TPoint>) {
         return cases.drawPoint(this.row, this.column, this.value);

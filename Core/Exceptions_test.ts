@@ -9,7 +9,7 @@ var testClass: string;
 var method: string;
 
 function check(testCase: string, testBody: (assert?: QUnitAssert) => any) {
-    test(testClass + "_" + method + "_" + testCase, testBody);
+    test(testClass + ", " + method + ": " + testCase, testBody);
 }
 
 testClass = "ArgumentException";
