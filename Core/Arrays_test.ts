@@ -1,7 +1,7 @@
 ﻿/// <reference path="Imports/QUnit/qunit.d.ts" />
 
 /* tslint:disable no-unused-variable*/
-import Integers = require("Integers");
+import Integers = require("Numbers");
 import Arrays = require("Arrays");
 import Array2D = Arrays.Array2D;
 import ArgumentException = Exceptions.ArgumentException;

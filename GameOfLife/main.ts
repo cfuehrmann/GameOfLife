@@ -1,7 +1,7 @@
 ﻿/* tslint:disable no-unused-variable*/
 import Arrays = require("./Imports/Core/Arrays");
 import Array2D = Arrays.Array2D;
-import Int = require("./Imports/Core/Integers");
+import Int = require("./Imports/Core/Numbers");
 import Rendering = require("./Rendering");
 import Renderer = Rendering.Renderer;
 import Interface = require("./Interface");

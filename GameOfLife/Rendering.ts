@@ -4,7 +4,7 @@ import Array2D = Arrays.Array2D;
 import Interface = require("./Interface");
 import PointMap = Interface.PointMap;
 import Exceptions = require("./Imports/Core/Exceptions");
-import Int = require("./Imports/Core/Integers");
+import Int = require("./Imports/Core/Numbers");
 import xxx = Int.isNoInt;
 import ArgumentException = Exceptions.ArgumentException;
 /* tslint:enable no-unused-variable*/

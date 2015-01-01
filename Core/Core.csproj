@@ -60,8 +60,8 @@
     <TypeScriptCompile Include="Arrays_test.ts" />
     <TypeScriptCompile Include="Exceptions.ts" />
     <TypeScriptCompile Include="Exceptions_test.ts" />
-    <TypeScriptCompile Include="Integers_test.ts" />
-    <TypeScriptCompile Include="Integers.ts" />
+    <TypeScriptCompile Include="Numbers_test.ts" />
+    <TypeScriptCompile Include="Numbers.ts" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Gruntfile.js" />
@@ -81,7 +81,7 @@
   <PropertyGroup Condition="'$(Configuration)' == 'Debug'">
     <TypeScriptCompileOnSaveEnabled>True</TypeScriptCompileOnSaveEnabled>
     <TypeScriptNoImplicitAny>True</TypeScriptNoImplicitAny>
-    <TypeScriptOutDir>C:\Users\kakimena\GameOfLife\Core\BuildOutput</TypeScriptOutDir>
+    <TypeScriptOutDir>C:\Users\kakimena\GameOfLife\Core\VisualStudioOutput</TypeScriptOutDir>
     <TypeScriptGeneratesDeclarations>True</TypeScriptGeneratesDeclarations>
   </PropertyGroup>
   <Import Project="$(VSToolsPath)\TypeScript\Microsoft.TypeScript.targets" Condition="Exists('$(VSToolsPath)\TypeScript\Microsoft.TypeScript.targets')" />

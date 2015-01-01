@@ -74,7 +74,7 @@
     <TypeScriptModuleKind>amd</TypeScriptModuleKind>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
     <TypeScriptCompileOnSaveEnabled>True</TypeScriptCompileOnSaveEnabled>
-    <TypeScriptOutDir>C:\Users\kakimena\GameOfLife\GameOfLife\BuildOutput</TypeScriptOutDir>
+    <TypeScriptOutDir>C:\Users\kakimena\GameOfLife\GameOfLife\VisualStudioOutput</TypeScriptOutDir>
     <TypeScriptGeneratesDeclarations>True</TypeScriptGeneratesDeclarations>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)' == 'Release'">

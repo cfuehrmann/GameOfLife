@@ -1,4 +1,4 @@
-define(["require", "exports", "./Exceptions", "./Integers"], function (require, exports, Exceptions, Int) {
+define(["require", "exports", "./Exceptions", "./Numbers"], function (require, exports, Exceptions, Int) {
     var ArgumentException = Exceptions.ArgumentException;
     /* tslint:enable no-unused-variable*/
     function checkInt(argumentName, n) {

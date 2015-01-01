@@ -1,7 +1,7 @@
 ﻿/* tslint:disable no-unused-variable*/
 import Exceptions = require("./Exceptions");
 import ArgumentException = Exceptions.ArgumentException;
-import Int = require("./Integers");
+import Int = require("./Numbers");
 /* tslint:enable no-unused-variable*/
 
 function checkInt(argumentName: string, n: number) {
