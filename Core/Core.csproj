@@ -58,6 +58,8 @@
   <ItemGroup>
     <TypeScriptCompile Include="Arrays.ts" />
     <TypeScriptCompile Include="Arrays_test.ts" />
+    <TypeScriptCompile Include="List.ts" />
+    <TypeScriptCompile Include="List_test.ts" />
     <TypeScriptCompile Include="Exceptions.ts" />
     <TypeScriptCompile Include="Exceptions_test.ts" />
     <TypeScriptCompile Include="Numbers_test.ts" />

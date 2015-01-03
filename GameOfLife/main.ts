@@ -1,9 +1,10 @@
 ﻿/* tslint:disable no-unused-variable*/
 import Arrays = require("./Imports/Core/Arrays");
 import Array2D = Arrays.Array2D;
-import Int = require("./Imports/Core/Numbers");
+import Numbers = require("./Imports/Core/Numbers");
 import Rendering = require("./Rendering");
 import Renderer = Rendering.Renderer;
+import List = require("./Imports/Core/List");
 import Interface = require("./Interface");
 import PointMap = Interface.PointMap;
 /* tslint:enable no-unused-variable*/
@@ -12,7 +13,7 @@ module Main {
     "use strict";
     export function exec() {
         var size = 200;
-        var canvas = new HTMLCanvas(size, size, 2);
+        var canvas = new CanvasPointMap(size, size, 2);
         document.body.appendChild(canvas.node);
         var renderer = new Renderer(canvas);
         var scenes = [new Array2D(size, size, false),
@@ -29,7 +30,6 @@ module Main {
         var target = scenes[1];
 
         setInterval(function () {
-
             renderer.render(source);
             transform(source, target);
             var h = source;
@@ -41,36 +41,42 @@ module Main {
     }
 
     function transform(sceneA: Array2D<boolean>, sceneB: Array2D<boolean>) {
-        for (var column = 0; column < sceneA.width; column++) {
-            for (var row = 0; row < sceneA.width; row++) {
-                var w = sceneA.width;
-                var h = sceneA.height;
+        var w = sceneA.width;
+        var h = sceneA.height;
 
-                var up = Int.mod(row - 1, h);
-                var right = Int.mod(column + 1, w);
-                var down = Int.mod(row + 1, h);
-                var left = Int.mod(column - 1, w);
+        for (var column = 0; column < w; column++) {
+            for (var row = 0; row < h; row++) {
 
-                var count = 0;
-                if (sceneA.get(up, column)) { count++; }
-                if (sceneA.get(up, right)) { count++; }
-                if (sceneA.get(row, right)) { count++; }
-                if (sceneA.get(down, right)) { count++; }
-                if (sceneA.get(down, column)) { count++; }
-                if (sceneA.get(down, left)) { count++; }
-                if (sceneA.get(row, left)) { count++; }
-                if (sceneA.get(up, left)) { count++; }
+                var u = Numbers.mod(row - 1, h);
+                var r = Numbers.mod(column + 1, w);
+                var d = Numbers.mod(row + 1, h);
+                var l = Numbers.mod(column - 1, w);
 
-                if (!sceneA.get(row, column)) {
-                    sceneB.set(row, column, count === 3);
-                } else {
-                    sceneB.set(row, column, count >= 2 && count <= 3);
-                }
+                // the following is too slow to be run inside this loop;
+                // var count =
+                //    List.from([[u, column], [u, r], [row, r], [d, r], [d, column], [d, l], [row, l], [u, l]]).
+                //        map((pair: [number, number]) => sceneA.get(pair[0], pair[1]) ? 1 : 0).
+                //        fold(0, (x: number, y: number) => x + y);
+
+                var count =
+                    (sceneA.get(u, column) ? 1 : 0) +
+                    (sceneA.get(u, r) ? 1 : 0) +
+                    (sceneA.get(row, r) ? 1 : 0) +
+                    (sceneA.get(d, r) ? 1 : 0) +
+                    (sceneA.get(d, column) ? 1 : 0) +
+                    (sceneA.get(d, l) ? 1 : 0) +
+                    (sceneA.get(row, l) ? 1 : 0) +
+                    (sceneA.get(u, l) ? 1 : 0);
+
+                sceneB.set(row, column,
+                    sceneA.get(row, column) ?
+                    count >= 2 && count <= 3 :
+                    count === 3);
             }
         }
     }
 
-    class HTMLCanvas implements PointMap<boolean> {
+    class CanvasPointMap implements PointMap<boolean> {
 
         private canvasElement: HTMLCanvasElement;
         private width: number;
