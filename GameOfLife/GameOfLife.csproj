@@ -31,6 +31,7 @@
     <TypeScriptCompile Include="main.ts" />
     <TypeScriptCompile Include="Rendering.ts" />
     <TypeScriptCompile Include="Rendering_test.ts" />
+    <TypeScriptCompile Include="Transformation.ts" />
   </ItemGroup>
   <ItemGroup>
     <Content Include=".jscsrc" />
