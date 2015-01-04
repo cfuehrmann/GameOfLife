@@ -4,7 +4,6 @@ import Array2D = Arrays.Array2D;
 import Numbers = require("./Imports/Core/Numbers");
 import Rendering = require("./Rendering");
 import Renderer = Rendering.Renderer;
-import List = require("./Imports/Core/List");
 import Interface = require("./Interface");
 import PointMap = Interface.PointMap;
 import Transformation = require("./Transformation");
@@ -23,11 +22,11 @@ module Main {
 
         for (var row = 0; row < height; row++) {
             for (var column = 0; column < width; column++) {
-                currentWorld.set(row, column, Math.random() < 0.5);
+                currentWorld.set(row, column, Math.random() < 0.5001);
             }
         }
 
-        var transformer = Transformation.getTransformer([1, 2], [1]);
+        var transformer = Transformation.getTransformer([2, 3], [3]);
 
         var i = 0;
 

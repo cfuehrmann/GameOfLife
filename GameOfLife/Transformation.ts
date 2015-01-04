@@ -35,11 +35,6 @@ class PrivateTransformer implements Transformer {
 
         var count =
             // the following is too slow to be run inside this loop:
-            //List.from([[up, column], [up, right], [row, right], [down, right],
-            //    [down, column], [down, left], [row, left], [up, left]])
-            //    .map(pair => world.get(pair[0], pair[1]) ? 1 : 0)
-            //    .fold(0, (x: number, y: number) => x + y);
-            // this is too slow also:
             //[[up, column], [up, right], [row, right], [down, right],
             //    [down, column], [down, left], [row, left], [up, left]]
             //    .map(pair => world.get(pair[0], pair[1]) ? 1 : 0)
@@ -58,4 +53,3 @@ class PrivateTransformer implements Transformer {
             this.birthCondition.indexOf(count) >= 0;
     }
 }
-
