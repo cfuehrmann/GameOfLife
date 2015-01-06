@@ -16,7 +16,7 @@ module.exports = function (config) { // jshint ignore:line
 
         // list of files to exclude
         exclude: [
-            'BuildOutput/main.js',
+            'BuildOutput/Main.js',
             'BuildOutput/Interface.js',
             'BuildOutput/Imports/RequireJS/*.*',
             'BuildOutput/Imports/QUnit/*.*'

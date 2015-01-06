@@ -27,11 +27,13 @@
     <Content Include="Static\index.html" />
   </ItemGroup>
   <ItemGroup>
-    <TypeScriptCompile Include="Interface.ts" />
-    <TypeScriptCompile Include="main.ts" />
-    <TypeScriptCompile Include="Rendering.ts" />
-    <TypeScriptCompile Include="Rendering_test.ts" />
-    <TypeScriptCompile Include="Transformation.ts" />
+    <TypeScriptCompile Include="Interfaces.ts" />
+    <TypeScriptCompile Include="Main.ts" />
+    <TypeScriptCompile Include="CanvasPointMap.ts" />
+    <TypeScriptCompile Include="StandardRenderer.ts" />
+    <TypeScriptCompile Include="StandardTransformer_test.ts" />
+    <TypeScriptCompile Include="StandardRenderer_test.ts" />
+    <TypeScriptCompile Include="StandardTransformer.ts" />
   </ItemGroup>
   <ItemGroup>
     <Content Include=".jscsrc" />

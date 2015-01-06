@@ -3,12 +3,11 @@
 /* tslint:disable no-unused-variable*/
 import Exceptions = require("Imports/Core/Exceptions");
 import ArgumentException = Exceptions.ArgumentException;
-import Rendering = require("Rendering");
-import Renderer = Rendering.Renderer;
-import Interface = require("Interface");
-import PointMap = Interface.PointMap;
 import Arrays = require("Imports/Core/Arrays");
 import Array2D = Arrays.Array2D;
+import Interface = require("Interfaces");
+import StandardRenderer = require("StandardRenderer");
+import PointMap = Interface.PointMap;
 /* tslint:enable no-unused-variable*/
 
 var testClass: string;
@@ -18,31 +17,33 @@ function check(testCase: string, testBody: (assert?: QUnitAssert) => any) {
     test(testClass + "_" + method + "_" + testCase, testBody);
 }
 
-testClass = "Renderer";
+testClass = "StandardRenderer";
 
-method = "constructor";
+
+method = "create";
 
 check("pointMapNull", () => {
-    throws(() => new Renderer(null),
+    throws(() => StandardRenderer.create(null),
         (e: ArgumentException) => e.getArgumentName() === "pointMap");
 });
 
 check("pointMapUndefined", () => {
-    throws(() => new Renderer(undefined),
+    throws(() => StandardRenderer.create(undefined),
         (e: ArgumentException) => e.getArgumentName() === "pointMap");
 });
+
 
 method = "render";
 
 check("sceneNull", () => {
-    var r = new Renderer(new TestPointMap());
+    var r = StandardRenderer.create(new TestPointMap());
 
     throws(() => r.render(null),
         (e: ArgumentException) => e.getArgumentName() === "scene");
 });
 
 check("sceneUndefined", () => {
-    var r = new Renderer(new TestPointMap());
+    var r = StandardRenderer.create(new TestPointMap());
 
     throws(() => r.render(undefined),
         (e: ArgumentException) => e.getArgumentName() === "scene");
@@ -50,7 +51,7 @@ check("sceneUndefined", () => {
 
 check("PointMapCallSequence", () => {
     var pointMap = new TestPointMap();
-    var renderer = new Renderer(pointMap);
+    var renderer = StandardRenderer.create(pointMap);
     var width = 5;
     var height = 7;
     var scene = new Array2D(height, width, 0);
@@ -100,6 +101,8 @@ class TestPointMap implements PointMap<number>{
     drawPoint(row: number, column: number, value: number) {
         this.calls.push(new DrawPoint(row, column, value));
     }
+
+    node: any;
 }
 
 interface PointMapCall<TPoint> {

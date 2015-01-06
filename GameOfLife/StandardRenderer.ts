@@ -1,12 +1,18 @@
 ﻿/* tslint:disable no-unused-variable*/
 import Arrays = require("./Imports/Core/Arrays");
 import Array2D = Arrays.Array2D;
-import Interface = require("./Interface");
-import PointMap = Interface.PointMap;
 import Exceptions = require("./Imports/Core/Exceptions");
 import ArgumentException = Exceptions.ArgumentException;
+import Interface = require("./Interfaces");
+import PointMap = Interface.PointMap;
+import Renderer = Interface.Renderer;
 /* tslint:enable no-unused-variable*/
-export class Renderer<T> {
+
+export function create<T>(pointMap: PointMap<T>): Renderer<T> {
+    return new StandardRenderer(pointMap);
+}
+
+class StandardRenderer<T> {
 
     constructor(private pointMap: PointMap<T>) {
         if (pointMap == null || typeof pointMap === "undefined") {

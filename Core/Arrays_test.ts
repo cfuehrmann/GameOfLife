@@ -39,6 +39,25 @@ check("heightInfinity", () =>
         (e: ArgumentException) => e.getArgumentName() === "height")
     );
 
+//function checkInt<T>(argumentName: string, method: (n: number) => T) {
+//    return () => {
+//        throws(() => method(null),
+//            (e: ArgumentException) => e.getArgumentName() === argumentName);
+//        throws(() => method(undefined),
+//            (e: ArgumentException) => e.getArgumentName() === argumentName);
+//        throws(() => method(NaN),
+//            (e: ArgumentException) => e.getArgumentName() === argumentName);
+//        throws(() => method(Infinity),
+//            (e: ArgumentException) => e.getArgumentName() === argumentName);
+//        throws(() => method(-Infinity),
+//            (e: ArgumentException) => e.getArgumentName() === argumentName);
+//        throws(() => method(0.5),
+//            (e: ArgumentException) => e.getArgumentName() === argumentName);
+//    };
+//}
+
+//check("height is integer", checkInt("height", height => new Array2D(height, 7, 0)));
+
 check("heightMinusInfinity", () =>
     throws(() => new Array2D(-Infinity, 7, 0),
         (e: ArgumentException) => e.getArgumentName() === "height")

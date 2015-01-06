@@ -1,18 +1,25 @@
 ﻿/* tslint:disable no-unused-variable*/
+import Exceptions = require("Imports/Core/Exceptions");
+import ArgumentException = Exceptions.ArgumentException;
 import Arrays = require("./Imports/Core/Arrays");
 import Array2D = Arrays.Array2D;
 import Numbers = require("./Imports/Core/Numbers");
+import Interface = require("./Interfaces");
+import Transformer = Interface.Transformer;
+
 /* tslint:enable no-unused-variable*/
 
-export interface Transformer {
-    transform(currentWorld: Array2D<boolean>, nextWorld: Array2D<boolean>): void
+export function create(survivalCondition: number[], birthCondition: number[]): Transformer<boolean> {
+    if (survivalCondition == null || typeof survivalCondition === "undefined") {
+        throw new ArgumentException("survivalCondition");
+    }
+    if (birthCondition == null || typeof birthCondition === "undefined") {
+        throw new ArgumentException("birthCondition");
+    }
+    return new StandardTransformer(survivalCondition, birthCondition);
 }
 
-export function getTransformer(survivalCondition: number[], birthCondition: number[]): Transformer {
-    return new PrivateTransformer(survivalCondition, birthCondition);
-}
-
-class PrivateTransformer implements Transformer {
+class StandardTransformer implements Transformer<boolean> {
     constructor(private survivalCondition: number[], private birthCondition: number[]) {
     }
 

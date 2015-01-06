@@ -2,11 +2,10 @@
 import Arrays = require("./Imports/Core/Arrays");
 import Array2D = Arrays.Array2D;
 import Numbers = require("./Imports/Core/Numbers");
-import Rendering = require("./Rendering");
-import Renderer = Rendering.Renderer;
-import Interface = require("./Interface");
-import PointMap = Interface.PointMap;
-import Transformation = require("./Transformation");
+import Interface = require("./Interfaces");
+import StandardRenderer = require("./StandardRenderer");
+import CanvasPointMap = require("./CanvasPointMap");
+import StandardTransformer = require("./StandardTransformer");
 /* tslint:enable no-unused-variable*/
 
 module Main {
@@ -14,9 +13,9 @@ module Main {
     export function exec() {
         var width = 400;
         var height = 200;
-        var pointMap = new CanvasPointMap(height, width, 2);
+        var pointMap = CanvasPointMap.create(height, width, 2);
         document.body.appendChild(pointMap.node);
-        var renderer = new Renderer(pointMap);
+        var renderer = StandardRenderer.create(pointMap);
         var currentWorld = new Array2D(height, width, false);
         var nextWorld = new Array2D(height, width, false);
 
@@ -26,7 +25,7 @@ module Main {
             }
         }
 
-        var transformer = Transformation.getTransformer([2, 3], [3]);
+        var transformer = StandardTransformer.create([2, 3], [3]);
 
         var i = 0;
 
@@ -39,36 +38,6 @@ module Main {
 
             i++;
         }, 50);
-    }
-
-    class CanvasPointMap implements PointMap<boolean> {
-
-        private canvasElement: HTMLCanvasElement;
-        private ctx: CanvasRenderingContext2D;
-        public node: Node;
-
-        constructor(private height: number, private width: number, private pointSize: number) {
-            this.canvasElement = document.createElement("canvas");
-            this.canvasElement.width = width * pointSize;
-            this.canvasElement.height = height * pointSize;
-            this.ctx = this.canvasElement.getContext("2d");
-            this.ctx.fillStyle = "rgb(" + String(255) + ", " + String(0) + ", " + String(0) + ")";
-            this.node = this.canvasElement;
-        }
-
-        clear(): void {
-            this.ctx.clearRect(0, 0, this.width * this.pointSize, this.height * this.pointSize);
-        }
-
-        drawPoint(row: number, column: number, value: boolean) {
-            if (value) {
-                this.ctx.fillRect(
-                    column * this.pointSize,
-                    row * this.pointSize,
-                    this.pointSize,
-                    this.pointSize);
-            }
-        }
     }
 }
 
