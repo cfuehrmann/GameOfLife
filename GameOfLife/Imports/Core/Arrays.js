@@ -1,17 +1,13 @@
-define(["require", "exports", "./Exceptions", "./Numbers"], function (require, exports, Exceptions, Int) {
+define(["require", "exports", "./Exceptions", "./TypeChecking"], function (require, exports, Exceptions, TypeChecking) {
     var ArgumentException = Exceptions.ArgumentException;
+    var assertInt = TypeChecking.assertInt;
     /* tslint:enable no-unused-variable*/
-    function checkInt(argumentName, n) {
-        if (Int.isNoInt(n)) {
-            throw new ArgumentException(argumentName);
-        }
-    }
     var Array2D = (function () {
         function Array2D(height, width, initialValue) {
             this.height = height;
             this.width = width;
-            checkInt("width", width);
-            checkInt("height", height);
+            assertInt("height", height);
+            assertInt("width", width);
             if (width <= 0) {
                 throw new ArgumentException("width");
             }
@@ -27,8 +23,8 @@ define(["require", "exports", "./Exceptions", "./Numbers"], function (require, e
             }
         }
         Array2D.prototype.set = function (row, column, value) {
-            checkInt("row", row);
-            checkInt("column", column);
+            assertInt("row", row);
+            assertInt("column", column);
             if (row < 0 || row >= this.height) {
                 throw new ArgumentException("row");
             }
@@ -38,8 +34,8 @@ define(["require", "exports", "./Exceptions", "./Numbers"], function (require, e
             this.matrix[row][column] = value;
         };
         Array2D.prototype.get = function (row, column) {
-            checkInt("row", row);
-            checkInt("column", column);
+            assertInt("row", row);
+            assertInt("column", column);
             if (row < 0 || row >= this.height) {
                 throw new ArgumentException("row");
             }

@@ -1,21 +1,16 @@
 ﻿/* tslint:disable no-unused-variable*/
 import Exceptions = require("./Exceptions");
 import ArgumentException = Exceptions.ArgumentException;
-import Int = require("./Numbers");
+import Numbers = require("./Numbers");
+import TypeChecking = require("./TypeChecking");
+import assertInt = TypeChecking.assertInt;
 /* tslint:enable no-unused-variable*/
-
-function checkInt(argumentName: string, n: number) {
-    if (Int.isNoInt(n)) {
-        throw new ArgumentException(argumentName);
-    }
-}
 
 export class Array2D<T> {
     private matrix: T[][];
 
     constructor(public height: number, public width: number, initialValue: T) {
-        checkInt("width", width);
-        checkInt("height", height);
+        assertInt("height", height); assertInt("width", width);
         if (width <= 0) {
             throw new ArgumentException("width");
         }
@@ -32,8 +27,7 @@ export class Array2D<T> {
     }
 
     set(row: number, column: number, value: T) {
-        checkInt("row", row);
-        checkInt("column", column);
+        assertInt("row", row); assertInt("column", column);
         if (row < 0 || row >= this.height) {
             throw new ArgumentException("row");
         }
@@ -44,8 +38,7 @@ export class Array2D<T> {
     }
 
     get(row: number, column: number): T {
-        checkInt("row", row);
-        checkInt("column", column);
+        assertInt("row", row); assertInt("column", column);
         if (row < 0 || row >= this.height) {
             throw new ArgumentException("row");
         }

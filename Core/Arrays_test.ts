@@ -1,11 +1,12 @@
 ﻿/// <reference path="Imports/QUnit/qunit.d.ts" />
 
 /* tslint:disable no-unused-variable*/
-import Integers = require("Numbers");
 import Arrays = require("Arrays");
 import Array2D = Arrays.Array2D;
 import ArgumentException = Exceptions.ArgumentException;
 import Exceptions = require("Exceptions");
+import TypeChecking = require("TypeChecking");
+import checkIntAssert = TypeChecking.checkIntAssert;
 /* tslint:enable no-unused-variable*/
 
 var testClass: string;
@@ -19,53 +20,8 @@ testClass = "Array2D";
 
 method = "constructor";
 
-check("heightNull", () =>
-    throws(() => new Array2D(null, 7, 0),
-        (e: ArgumentException) => e.getArgumentName() === "height")
-    );
-
-check("heightUndefined", () =>
-    throws(() => new Array2D(undefined, 7, 0),
-        (e: ArgumentException) => e.getArgumentName() === "height")
-    );
-
-check("heightNaN", () =>
-    throws(() => new Array2D(NaN, 7, 0),
-        (e: ArgumentException) => e.getArgumentName() === "height")
-    );
-
-check("heightInfinity", () =>
-    throws(() => new Array2D(Infinity, 7, 0),
-        (e: ArgumentException) => e.getArgumentName() === "height")
-    );
-
-//function checkInt<T>(argumentName: string, method: (n: number) => T) {
-//    return () => {
-//        throws(() => method(null),
-//            (e: ArgumentException) => e.getArgumentName() === argumentName);
-//        throws(() => method(undefined),
-//            (e: ArgumentException) => e.getArgumentName() === argumentName);
-//        throws(() => method(NaN),
-//            (e: ArgumentException) => e.getArgumentName() === argumentName);
-//        throws(() => method(Infinity),
-//            (e: ArgumentException) => e.getArgumentName() === argumentName);
-//        throws(() => method(-Infinity),
-//            (e: ArgumentException) => e.getArgumentName() === argumentName);
-//        throws(() => method(0.5),
-//            (e: ArgumentException) => e.getArgumentName() === argumentName);
-//    };
-//}
-
-//check("height is integer", checkInt("height", height => new Array2D(height, 7, 0)));
-
-check("heightMinusInfinity", () =>
-    throws(() => new Array2D(-Infinity, 7, 0),
-        (e: ArgumentException) => e.getArgumentName() === "height")
-    );
-
-check("heightNonIntegerReal", () =>
-    throws(() => new Array2D(0.5, 7, 0),
-        (e: ArgumentException) => e.getArgumentName() === "height")
+check("height has int assert",
+    checkIntAssert("height", height => new Array2D(height, 7, 0))
     );
 
 check("heightNonPositive", () =>
@@ -73,34 +29,8 @@ check("heightNonPositive", () =>
         (e: ArgumentException) => e.getArgumentName() === "height")
     );
 
-check("widthNull", () =>
-    throws(() => new Array2D(7, null, 0),
-        (e: ArgumentException) => e.getArgumentName() === "width")
-    );
-
-check("widthUndefined", () =>
-    throws(() => new Array2D(7, undefined, 0),
-        (e: ArgumentException) => e.getArgumentName() === "width")
-    );
-
-check("widthNaN", () =>
-    throws(() => new Array2D(7, NaN, 0),
-        (e: ArgumentException) => e.getArgumentName() === "width")
-    );
-
-check("widthInfinity", () =>
-    throws(() => new Array2D(7, Infinity, 0),
-        (e: ArgumentException) => e.getArgumentName() === "width")
-    );
-
-check("widthMinusInfinity", () =>
-    throws(() => new Array2D(7, -Infinity, 0),
-        (e: ArgumentException) => e.getArgumentName() === "width")
-    );
-
-check("widthNonIntegerReal", () =>
-    throws(() => new Array2D(7, 0.5, 0),
-        (e: ArgumentException) => e.getArgumentName() === "width")
+check("width has int assert",
+    checkIntAssert("width", width => new Array2D(5, width, 0))
     );
 
 check("widthNonPositive", () =>
@@ -120,14 +50,8 @@ check("initialValue", () => {
 
 method = "get";
 
-check("rowUndefined", () =>
-    throws(() => { new Array2D(5, 7, 0).get(undefined, 3); },
-        (e: ArgumentException) => e.getArgumentName() === "row")
-    );
-
-check("rowNull", () =>
-    throws(() => { new Array2D(5, 7, 0).get(null, 3); },
-        (e: ArgumentException) => e.getArgumentName() === "row")
+check("row has int assert",
+    checkIntAssert("row", row => new Array2D(5, 7, 0).get(row, 3))
     );
 
 check("rowNegative", () =>
@@ -140,15 +64,8 @@ check("rowTooGreat", () =>
         (e: ArgumentException) => e.getArgumentName() === "row")
     );
 
-check("columnUndefined", () =>
-    throws(() => { new Array2D(5, 7, 0).get(3, undefined); },
-        (e: ArgumentException) => e.getArgumentName() === "column")
-    );
-
-check("columnNull", () =>
-
-    throws(() => { new Array2D(5, 7, 0).get(3, null); },
-        (e: ArgumentException) => e.getArgumentName() === "column")
+check("column has int assert",
+    checkIntAssert("column", column => new Array2D(5, 7, 0).get(3, column))
     );
 
 check("columnNegative", () =>
@@ -164,14 +81,8 @@ check("columnTooGreat", () =>
 
 method = "set";
 
-check("rowUndefined", () =>
-    throws(() => { new Array2D(5, 7, 0).set(undefined, 3, 0); },
-        (e: ArgumentException) => e.getArgumentName() === "row")
-    );
-
-check("rowNull", () =>
-    throws(() => { new Array2D(5, 7, 0).set(null, 3, 0); },
-        (e: ArgumentException) => e.getArgumentName() === "row")
+check("row has int assert",
+    checkIntAssert("row", row => new Array2D(5, 7, 0).set(row, 3, 0))
     );
 
 check("rowNegative", () =>
@@ -184,14 +95,8 @@ check("rowTooGreat", () =>
         (e: ArgumentException) => e.getArgumentName() === "row")
     );
 
-check("columnUndefined", () =>
-    throws(() => new Array2D(5, 7, 0).set(3, undefined, 0),
-        (e: ArgumentException) => e.getArgumentName() === "column")
-    );
-
-check("columnNull", () =>
-    throws(() => new Array2D(5, 7, 0).set(3, null, 0),
-        (e: ArgumentException) => e.getArgumentName() === "column")
+check("column has int assert",
+    checkIntAssert("column", column => new Array2D(5, 7, 0).set(3, column, 0))
     );
 
 check("columnNegative", () =>
