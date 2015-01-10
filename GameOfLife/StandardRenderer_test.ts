@@ -22,12 +22,12 @@ testClass = "StandardRenderer";
 
 method = "create";
 
-check("pointMapNull", () => {
+check("pointMap when null", () => {
     throws(() => StandardRenderer.create(null),
         (e: ArgumentException) => e.getArgumentName() === "pointMap");
 });
 
-check("pointMapUndefined", () => {
+check("pointMap when undefined", () => {
     throws(() => StandardRenderer.create(undefined),
         (e: ArgumentException) => e.getArgumentName() === "pointMap");
 });
@@ -35,14 +35,14 @@ check("pointMapUndefined", () => {
 
 method = "render";
 
-check("sceneNull", () => {
+check("scene when null", () => {
     var r = StandardRenderer.create(new TestPointMap());
 
     throws(() => r.render(null),
         (e: ArgumentException) => e.getArgumentName() === "scene");
 });
 
-check("sceneUndefined", () => {
+check("scene when undefined", () => {
     var r = StandardRenderer.create(new TestPointMap());
 
     throws(() => r.render(undefined),

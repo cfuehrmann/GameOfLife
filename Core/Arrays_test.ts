@@ -20,20 +20,20 @@ testClass = "Array2D";
 
 method = "constructor";
 
-check("height has int assert",
+check("height when not int",
     checkIntAssert("height", height => new Array2D(height, 7, 0))
     );
 
-check("heightNonPositive", () =>
+check("height when not positive", () =>
     throws(() => new Array2D(0, 7, 0),
         (e: ArgumentException) => e.getArgumentName() === "height")
     );
 
-check("width has int assert",
+check("width when not int",
     checkIntAssert("width", width => new Array2D(5, width, 0))
     );
 
-check("widthNonPositive", () =>
+check("width when not positive", () =>
     throws(() => new Array2D(7, 0, 0),
         (e: ArgumentException) => e.getArgumentName() === "width")
     );
@@ -50,30 +50,30 @@ check("initialValue", () => {
 
 method = "get";
 
-check("row has int assert",
+check("row when not int",
     checkIntAssert("row", row => new Array2D(5, 7, 0).get(row, 3))
     );
 
-check("rowNegative", () =>
+check("row when negative", () =>
     throws(() => { new Array2D(5, 7, 0).get(-1, 3); },
         (e: ArgumentException) => e.getArgumentName() === "row")
     );
 
-check("rowTooGreat", () =>
+check("row when too great", () =>
     throws(() => { new Array2D(5, 7, 0).get(5, 3); },
         (e: ArgumentException) => e.getArgumentName() === "row")
     );
 
-check("column has int assert",
+check("column when not int",
     checkIntAssert("column", column => new Array2D(5, 7, 0).get(3, column))
     );
 
-check("columnNegative", () =>
+check("column when negative", () =>
     throws(() => { new Array2D(5, 7, 0).get(3, -1); },
         (e: ArgumentException) => e.getArgumentName() === "column")
     );
 
-check("columnTooGreat", () =>
+check("column when too great", () =>
     throws(() => { new Array2D(5, 7, 0).get(3, 7); },
         (e: ArgumentException) => e.getArgumentName() === "column")
     );
@@ -81,30 +81,30 @@ check("columnTooGreat", () =>
 
 method = "set";
 
-check("row has int assert",
+check("row when not int",
     checkIntAssert("row", row => new Array2D(5, 7, 0).set(row, 3, 0))
     );
 
-check("rowNegative", () =>
+check("row when negative", () =>
     throws(() => new Array2D(5, 7, 0).set(-1, 3, 42),
         (e: ArgumentException) => e.getArgumentName() === "row")
     );
 
-check("rowTooGreat", () =>
+check("row when too great", () =>
     throws(() => new Array2D(5, 7, 0).set(5, 3, 42),
         (e: ArgumentException) => e.getArgumentName() === "row")
     );
 
-check("column has int assert",
+check("column when not int",
     checkIntAssert("column", column => new Array2D(5, 7, 0).set(3, column, 0))
     );
 
-check("columnNegative", () =>
+check("column when negative", () =>
     throws(() => new Array2D(5, 7, 0).set(3, -1, 42),
         (e: ArgumentException) => e.getArgumentName() === "column")
     );
 
-check("columnTooGreat", () =>
+check("column when too great", () =>
     throws(() => new Array2D(5, 7, 0).set(3, 7, 42),
         (e: ArgumentException) => e.getArgumentName() === "column")
     );

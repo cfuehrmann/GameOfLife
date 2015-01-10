@@ -16,32 +16,32 @@ function check(testCase: string, testBody: (assert?: QUnitAssert) => any) {
 
 method = "mod";
 
-check("numerator has real assert",
+check("numerator when not real",
     checkRealAssert("numerator", numerator => Numbers.mod(numerator, 1))
     );
 
-check("numerator is negative", () =>
+check("numerator when negative", () =>
     strictEqual(Numbers.mod(-2, 5), 3)
     );
 
 
-check("denominator has real assert",
+check("denominator when not real",
     checkRealAssert("denominator", denominator => Numbers.mod(1, denominator))
     );
 
-check("denominator is 0", () =>
+check("denominator when 0", () =>
     throws(() => Numbers.mod(1, 0),
         (e: ArgumentException) => e.getArgumentName() === "denominator")
     );
 
-check("numerator positive real and denominator positive real", () =>
+check("numerator when positive real and denominator when positive real", () =>
     strictEqual(Numbers.mod(7.3, 2.5), 2.3)
     );
 
-check("numerator negative real and denominator positive real", () =>
+check("numerator when negative real and denominator when positive real", () =>
     strictEqual(Numbers.mod(-4, 3), 2)
     );
 
-check("numerator positive real and denominator negative real", () =>
+check("numerator when positive real and denominator when negative real", () =>
     strictEqual(Numbers.mod(5, -3), 2)
     );

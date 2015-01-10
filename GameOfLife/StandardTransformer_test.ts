@@ -20,22 +20,22 @@ testClass = "StandardTransformer";
 
 method = "create";
 
-check("survivalCondition is null", () => {
+check("survivalCondition when null", () => {
     throws(() => StandardTransformer.create(null, []),
         (e: ArgumentException) => e.getArgumentName() === "survivalCondition");
 });
 
-check("survivalCondition is undefined", () => {
+check("survivalCondition when undefined", () => {
     throws(() => StandardTransformer.create(undefined, []),
         (e: ArgumentException) => e.getArgumentName() === "survivalCondition");
 });
 
-check("birthCondition is null", () => {
+check("birthCondition when null", () => {
     throws(() => StandardTransformer.create([], null),
         (e: ArgumentException) => e.getArgumentName() === "birthCondition");
 });
 
-check("birthCondition is undefined", () => {
+check("birthCondition when undefined", () => {
     throws(() => StandardTransformer.create([], undefined),
         (e: ArgumentException) => e.getArgumentName() === "birthCondition");
 });
