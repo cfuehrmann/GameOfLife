@@ -13,6 +13,12 @@ define(["require", "exports", "./Exceptions"], function (require, exports, Excep
         }
     }
     exports.assertReal = assertReal;
+    function assertDefinedAndNotNull(argumentName, value) {
+        if (typeof (value) === "undefined" || value == null) {
+            throw new ArgumentException(argumentName);
+        }
+    }
+    exports.assertDefinedAndNotNull = assertDefinedAndNotNull;
     function checkIntAssert(argumentName, method) {
         return function () {
             checkRealAssert(argumentName, method)();
@@ -22,12 +28,18 @@ define(["require", "exports", "./Exceptions"], function (require, exports, Excep
     exports.checkIntAssert = checkIntAssert;
     function checkRealAssert(argumentName, method) {
         return function () {
-            throws(function () { return method(null); }, function (e) { return e.getArgumentName() === argumentName; });
-            throws(function () { return method(undefined); }, function (e) { return e.getArgumentName() === argumentName; });
+            checkDefinedAndNotNullAssert(argumentName, method)();
             throws(function () { return method(NaN); }, function (e) { return e.getArgumentName() === argumentName; });
             throws(function () { return method(Infinity); }, function (e) { return e.getArgumentName() === argumentName; });
             throws(function () { return method(-Infinity); }, function (e) { return e.getArgumentName() === argumentName; });
         };
     }
     exports.checkRealAssert = checkRealAssert;
+    function checkDefinedAndNotNullAssert(argumentName, method) {
+        return function () {
+            throws(function () { return method(null); }, function (e) { return e.getArgumentName() === argumentName; });
+            throws(function () { return method(undefined); }, function (e) { return e.getArgumentName() === argumentName; });
+        };
+    }
+    exports.checkDefinedAndNotNullAssert = checkDefinedAndNotNullAssert;
 });

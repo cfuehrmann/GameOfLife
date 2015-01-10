@@ -8,6 +8,9 @@ import Array2D = Arrays.Array2D;
 import Interface = require("Interfaces");
 import StandardRenderer = require("StandardRenderer");
 import PointMap = Interface.PointMap;
+import TypeChecking = require("Imports/Core/TypeChecking");
+import checkDefinedAndNotNullAssert = TypeChecking.checkDefinedAndNotNullAssert;
+
 /* tslint:enable no-unused-variable*/
 
 var testClass: string;
@@ -22,32 +25,19 @@ testClass = "StandardRenderer";
 
 method = "create";
 
-check("pointMap when null", () => {
-    throws(() => StandardRenderer.create(null),
-        (e: ArgumentException) => e.getArgumentName() === "pointMap");
-});
-
-check("pointMap when undefined", () => {
-    throws(() => StandardRenderer.create(undefined),
-        (e: ArgumentException) => e.getArgumentName() === "pointMap");
-});
+check("pointMap when undefined or null",
+    checkDefinedAndNotNullAssert("pointMap", pointMap => StandardRenderer.create(pointMap))
+    );
 
 
 method = "render";
 
-check("scene when null", () => {
+check("world when undefined or null", () => {
     var r = StandardRenderer.create(new TestPointMap());
 
-    throws(() => r.render(null),
-        (e: ArgumentException) => e.getArgumentName() === "scene");
+    checkDefinedAndNotNullAssert("world", scene => r.render(scene))();
 });
 
-check("scene when undefined", () => {
-    var r = StandardRenderer.create(new TestPointMap());
-
-    throws(() => r.render(undefined),
-        (e: ArgumentException) => e.getArgumentName() === "scene");
-});
 
 check("PointMapCallSequence", () => {
     var pointMap = new TestPointMap();

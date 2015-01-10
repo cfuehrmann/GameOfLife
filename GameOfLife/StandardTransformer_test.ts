@@ -6,6 +6,8 @@ import ArgumentException = Exceptions.ArgumentException;
 import Arrays = require("Imports/Core/Arrays");
 import Array2D = Arrays.Array2D;
 import StandardTransformer = require("StandardTransformer");
+import TypeChecking = require("Imports/Core/TypeChecking");
+import checkDefinedAndNotNullAssert = TypeChecking.checkDefinedAndNotNullAssert;
 /* tslint:enable no-unused-variable*/
 
 var testClass: string;
@@ -20,24 +22,15 @@ testClass = "StandardTransformer";
 
 method = "create";
 
-check("survivalCondition when null", () => {
-    throws(() => StandardTransformer.create(null, []),
-        (e: ArgumentException) => e.getArgumentName() === "survivalCondition");
-});
+check("survivalCondition when undefined or null",
+    checkDefinedAndNotNullAssert("survivalCondition",
+        survivalCondition => StandardTransformer.create(survivalCondition, []))
+    );
 
-check("survivalCondition when undefined", () => {
-    throws(() => StandardTransformer.create(undefined, []),
-        (e: ArgumentException) => e.getArgumentName() === "survivalCondition");
-});
+check("birthCondition when undefined or null",
+    checkDefinedAndNotNullAssert("birthCondition",
+        birthCondition => StandardTransformer.create([], birthCondition))
+    );
 
-check("birthCondition when null", () => {
-    throws(() => StandardTransformer.create([], null),
-        (e: ArgumentException) => e.getArgumentName() === "birthCondition");
-});
-
-check("birthCondition when undefined", () => {
-    throws(() => StandardTransformer.create([], undefined),
-        (e: ArgumentException) => e.getArgumentName() === "birthCondition");
-});
 
 // in principle, there should be more tests here

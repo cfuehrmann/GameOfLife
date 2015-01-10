@@ -6,16 +6,14 @@ import Array2D = Arrays.Array2D;
 import Numbers = require("./Imports/Core/Numbers");
 import Interface = require("./Interfaces");
 import Transformer = Interface.Transformer;
+import TypeChecking = require("Imports/Core/TypeChecking");
+import assertDefinedAndNotNull = TypeChecking.assertDefinedAndNotNull;
 
 /* tslint:enable no-unused-variable*/
 
 export function create(survivalCondition: number[], birthCondition: number[]): Transformer<boolean> {
-    if (survivalCondition == null || typeof survivalCondition === "undefined") {
-        throw new ArgumentException("survivalCondition");
-    }
-    if (birthCondition == null || typeof birthCondition === "undefined") {
-        throw new ArgumentException("birthCondition");
-    }
+    assertDefinedAndNotNull("survivalCondition", survivalCondition);
+    assertDefinedAndNotNull("birthCondition", birthCondition);
     return new StandardTransformer(survivalCondition, birthCondition);
 }
 

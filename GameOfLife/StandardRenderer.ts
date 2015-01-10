@@ -6,6 +6,9 @@ import ArgumentException = Exceptions.ArgumentException;
 import Interface = require("./Interfaces");
 import PointMap = Interface.PointMap;
 import Renderer = Interface.Renderer;
+import TypeChecking = require("Imports/Core/TypeChecking");
+import assertDefinedAndNotNull = TypeChecking.assertDefinedAndNotNull;
+
 /* tslint:enable no-unused-variable*/
 
 export function create<T>(pointMap: PointMap<T>): Renderer<T> {
@@ -15,15 +18,11 @@ export function create<T>(pointMap: PointMap<T>): Renderer<T> {
 class StandardRenderer<T> {
 
     constructor(private pointMap: PointMap<T>) {
-        if (pointMap == null || typeof pointMap === "undefined") {
-            throw new ArgumentException("pointMap");
-        }
+        assertDefinedAndNotNull("pointMap", pointMap);
     }
 
     render(world: Array2D<T>) {
-        if (world == null || typeof world === "undefined") {
-            throw new ArgumentException("scene");
-        }
+        assertDefinedAndNotNull("world", world);
 
         this.pointMap.clear();
 
