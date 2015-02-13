@@ -12,7 +12,7 @@ module.exports = function (grunt) { // jshint ignore:line
                 options: {
                     module: 'amd',
                     noImplicitAny: true,
-                    target: 'es5', //or es3
+                    target: 'es6',
                     //  sourceMap: true,
                     declaration: true
                 }
