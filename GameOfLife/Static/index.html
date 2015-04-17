@@ -5,10 +5,18 @@
     <meta charset="utf-8" />
     <title>Game of life</title>
     <link rel="stylesheet" href="app.css" type="text/css" />
-    <script data-main="Main" src="Imports\RequireJS\require.js">
-    </script>
+    <script data-main="Main0" src="Imports\RequireJS\require.js"></script>
 </head>
 <body>
-    <div id="content"></div>
+    <div id="content">
+        <p>Survival condition</p>
+        <fieldset>
+            <input type="checkbox" id="s0" name="survivalCondition" value="0"><label for="s0">0</label><br>
+            <input type="checkbox" id="s1" name="survivalCondition" value="1"><label for="s1">1</label><br>
+            <input type="checkbox" id="s2" name="survivalCondition" value="2" checked="checked"><label for="s2">2</label><br>
+            <input type="checkbox" id="s3" name="survivalCondition" value="3" checked="checked"><label for="s3">3</label>
+        </fieldset>
+        <button type="button" id="berechnen">Create world</button>
+    </div>
 </body>
 </html>

@@ -11,6 +11,7 @@ import StandardTransformer = require("./StandardTransformer");
 module Main {
     "use strict";
     export function exec() {
+        var survival = getParameterByName("survival").split(",").map(s => parseInt(s, 10));
         var width = 400;
         var height = 200;
         var pointMap = CanvasPointMap.create(height, width, 2);
@@ -25,7 +26,7 @@ module Main {
             }
         }
 
-        var transformer = StandardTransformer.create([2, 3], [3]);
+        var transformer = StandardTransformer.create(survival, [3]);
 
         var i = 0;
 
@@ -38,6 +39,13 @@ module Main {
 
             i++;
         }, 50);
+    }
+
+    function getParameterByName(name : string) {
+        name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+        var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+            results = regex.exec(location.search);
+        return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
     }
 }
 

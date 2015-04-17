@@ -24,10 +24,12 @@
     <Content Include="karma.conf.js" />
     <Content Include="karmaRequireAndStart.js" />
     <Content Include="Static\app.css" />
+    <Content Include="Static\world.html" />
     <Content Include="Static\index.html" />
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="Interfaces.ts" />
+    <TypeScriptCompile Include="Main0.ts" />
     <TypeScriptCompile Include="Main.ts" />
     <TypeScriptCompile Include="CanvasPointMap.ts" />
     <TypeScriptCompile Include="StandardRenderer.ts" />
