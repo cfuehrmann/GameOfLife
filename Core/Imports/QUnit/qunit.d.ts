@@ -1,4 +1,4 @@
-// Type definitions for QUnit 1.10
+// Type definitions for QUnit v1.16
 // Project: http://qunitjs.com/
 // Definitions by: Diullei Gomes <https://github.com/diullei>
 // Definitions: https://github.com/borisyankov/DefinitelyTyped
@@ -164,6 +164,15 @@ interface QUnitAssert {
     jsDump: any;
 
     /**
+    * Instruct QUnit to wait for an asynchronous operation.
+    * 
+    * When your test has any asynchronous exit points, call assert.async() to get a unique
+    * resolution callback for each async operation. The callback returned from assert.async()
+    * will throw an Error if is invoked more than once.
+    */
+    async(): () => void;
+
+    /**
     * A deep recursive comparison assertion, working on primitive types, arrays, objects, 
     * regular expressions, dates and functions.
     *
@@ -190,6 +199,17 @@ interface QUnitAssert {
     * @param message A short description of the assertion
     */
     equal(actual: any, expected: any, message?: string): any;
+
+    /**
+    * Specify how many assertions are expected to run within a test.
+    *
+    * To ensure that an explicit number of assertions are run within any test, use 
+    * expect( number ) to register an expected count. If the number of assertions 
+    * run does not match the expected count, the test will fail.
+    *
+    * @param amount Number of assertions in this test.
+    */
+    expect(amount: number): any;
 
     /**
     * An inverted deep recursive comparison assertion, working on primitive types, 
@@ -279,6 +299,31 @@ interface QUnitAssert {
     * @param message A short description of the assertion
     */
     throws(block: () => any, message?: string): any;
+
+    /**
+    * Alias of throws.
+    * 
+    * In very few environments, like Closure Compiler, throws is considered a reserved word
+    * and will cause an error. For that case, an alias is bundled called raises. It has the
+    * same signature and behaviour, just a different name.
+    * 
+    * @param block Function to execute
+    * @param expected Error Object to compare
+    * @param message A short description of the assertion
+    */
+    raises(block: () => any, expected: any, message?: string): any;
+
+    /**
+    * Alias of throws.
+    * 
+    * In very few environments, like Closure Compiler, throws is considered a reserved word
+    * and will cause an error. For that case, an alias is bundled called raises. It has the
+    * same signature and behaviour, just a different name.
+    * 
+    * @param block Function to execute
+    * @param message A short description of the assertion
+    */
+    raises(block: () => any, message?: string): any;
 }
 
 interface QUnitStatic extends QUnitAssert {
@@ -402,6 +447,7 @@ interface QUnitStatic extends QUnitAssert {
     * run does not match the expected count, the test will fail.
     *
     * @param amount Number of assertions in this test.
+    * @depricated since version 1.16
     */
     expect(amount: number): any;
 
@@ -441,9 +487,6 @@ interface QUnitStatic extends QUnitAssert {
     * https://github.com/jquery/qunit/blob/master/qunit/qunit.js#L1568
     */
     equiv(a: any, b: any): any;
-
-    // https://github.com/jquery/qunit/blob/master/qunit/qunit.js#L661
-    raises: any;
 
     /**
     * https://github.com/jquery/qunit/blob/master/qunit/qunit.js#L897
@@ -683,6 +726,7 @@ declare function asyncTest(name: string, test: (assert: QUnitAssert) => any): an
 * run does not match the expected count, the test will fail.
 *
 * @param amount Number of assertions in this test.
+* @depricated since version 1.16
 */
 declare function expect(amount: number): any;
 
@@ -721,3 +765,4 @@ declare var raises: any;
 
 /* QUNIT */
 declare var QUnit: QUnitStatic;
+
