@@ -10,7 +10,7 @@ export interface PointMap<T> {
 }
 
 export interface Transformer<T> {
-    transform(currentWorld: Array2D<T>, nextWorld: Array2D<T>): void
+    transform(currentWorld: Array2D<T>, nextWorld: Array2D<T>): void;
 }
 
 export interface Renderer<T> {

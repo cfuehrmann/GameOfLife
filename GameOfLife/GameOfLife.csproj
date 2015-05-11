@@ -9,7 +9,7 @@
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <DebugType>full</DebugType>
     <DebugSymbols>true</DebugSymbols>
-    <TypeScriptToolsVersion>1.1</TypeScriptToolsVersion>
+    <TypeScriptToolsVersion>1.4</TypeScriptToolsVersion>
     <UseIISExpress>true</UseIISExpress>
     <IISExpressSSLPort />
     <IISExpressAnonymousAuthentication />
@@ -25,12 +25,12 @@
     <Content Include="karmaRequireAndStart.js" />
     <Content Include="Static\app.css" />
     <Content Include="Static\world.html" />
-    <Content Include="Static\index.html" />
+    <Content Include="Static\start.html" />
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="Interfaces.ts" />
-    <TypeScriptCompile Include="Main0.ts" />
-    <TypeScriptCompile Include="Main.ts" />
+    <TypeScriptCompile Include="Start.ts" />
+    <TypeScriptCompile Include="World.ts" />
     <TypeScriptCompile Include="CanvasPointMap.ts" />
     <TypeScriptCompile Include="StandardRenderer.ts" />
     <TypeScriptCompile Include="StandardTransformer_test.ts" />

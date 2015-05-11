@@ -55,7 +55,7 @@ module.exports = function (grunt) { // jshint ignore:line
                 options: {
                     module: 'amd',
                     noImplicitAny: true,
-                    target: 'es6',
+                    target: 'es5',
                     //  sourceMap: true
                 }
             },

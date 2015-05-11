@@ -11,7 +11,9 @@ import StandardTransformer = require("./StandardTransformer");
 module Main {
     "use strict";
     export function exec() {
-        var survival = getParameterByName("survival").split(",").map(s => parseInt(s, 10));
+        var parameters = getParameters(location.search);
+        var survival = getParts(parameters, "survival");
+        var birth = getParts(parameters, "birth");
         var width = 400;
         var height = 200;
         var pointMap = CanvasPointMap.create(height, width, 2);
@@ -26,7 +28,7 @@ module Main {
             }
         }
 
-        var transformer = StandardTransformer.create(survival, [3]);
+        var transformer = StandardTransformer.create(survival, birth);
 
         var i = 0;
 
@@ -41,11 +43,23 @@ module Main {
         }, 50);
     }
 
-    function getParameterByName(name : string) {
-        name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
-        var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
-            results = regex.exec(location.search);
-        return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+    interface Parameter {
+        name: string;
+        value: string;
+    }
+
+    function getParameters(queryString: string): Parameter[] {
+        return queryString.substr(1).split("&").map(getParameter);
+    }
+
+    function getParameter(s: string): Parameter {
+        var nv = s.split("=");
+        return <Parameter>{ name: nv[0], value: nv[1] };
+    }
+
+    function getParts(parameters: Parameter[], parameterName: string) {
+        return parameters.filter(p => p.name === parameterName)[0].value.split(",")
+            .slice(0, -1).map(v => parseInt(v, 10));
     }
 }
 
