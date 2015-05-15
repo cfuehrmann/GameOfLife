@@ -8,32 +8,51 @@
     <script data-main="Start" src="Imports\RequireJS\require.js"></script>
 </head>
 <body>
-    <div id="content">
-        <p>Survival condition</p>
-        <fieldset>
-            <input type="checkbox" id="s0" name="survivalCondition" value="0"><label for="s0">0</label><br>
-            <input type="checkbox" id="s1" name="survivalCondition" value="1"><label for="s1">1</label><br>
-            <input type="checkbox" id="s2" name="survivalCondition" value="2" checked="checked"><label for="s2">2</label><br>
-            <input type="checkbox" id="s3" name="survivalCondition" value="3" checked="checked"><label for="s3">3</label><br>
-            <input type="checkbox" id="s4" name="survivalCondition" value="4"><label for="s4">4</label><br>
-            <input type="checkbox" id="s5" name="survivalCondition" value="5"><label for="s5">5</label><br>
-            <input type="checkbox" id="s6" name="survivalCondition" value="6"><label for="s6">6</label><br>
-            <input type="checkbox" id="s7" name="survivalCondition" value="7"><label for="s7">7</label><br>
-            <input type="checkbox" id="s8" name="survivalCondition" value="8"><label for="s8">8</label>
-        </fieldset>
-        <p>Birth condition</p>
-        <fieldset>
-            <input type="checkbox" id="b0" name="birthCondition" value="0"><label for="b0">0</label><br>
-            <input type="checkbox" id="b1" name="birthCondition" value="1"><label for="b1">1</label><br>
-            <input type="checkbox" id="b2" name="birthCondition" value="2"><label for="b2">2</label><br>
-            <input type="checkbox" id="b3" name="birthCondition" value="3" checked="checked"><label for="b3">3</label><br>
-            <input type="checkbox" id="b4" name="birthCondition" value="4"><label for="b4">4</label><br>
-            <input type="checkbox" id="b5" name="birthCondition" value="5"><label for="b5">5</label><br>
-            <input type="checkbox" id="b6" name="birthCondition" value="6"><label for="b6">6</label><br>
-            <input type="checkbox" id="b7" name="birthCondition" value="7"><label for="b7">7</label><br>
-            <input type="checkbox" id="b8" name="birthCondition" value="8"><label for="b8">8</label>
-        </fieldset>
-       <button type="button" id="createWorld">Create world</button>
+    <div id="content" style="display:flex;flex-wrap:wrap;justify-content:center;align-items:center;">
+        <table >
+            <tr>
+                <th>Survival</th>
+                <th>Birth</th>
+            </tr>
+            <tr>
+                <td><input type="checkbox" id="s0" name="survivalCondition" value="0"><label for="s0">0</label></td>
+                <td><input type="checkbox" id="b0" name="birthCondition" value="0"><label for="b0">0</label></td>
+            </tr>
+            <tr>
+                <td><input type="checkbox" id="s1" name="survivalCondition" value="1"><label for="s1">1</label></td>
+                <td><input type="checkbox" id="b1" name="birthCondition" value="1"><label for="b1">1</label></td>
+            </tr>
+            <tr>
+                <td><input type="checkbox" id="s2" name="survivalCondition" value="2" checked="checked"><label for="s2">2</label></td>
+                <td><input type="checkbox" id="b2" name="birthCondition" value="2"><label for="b2">2</label></td>
+            </tr>
+            <tr>
+                <td><input type="checkbox" id="s3" name="survivalCondition" value="3" checked="checked"><label for="s3">3</label></td>
+                <td><input type="checkbox" id="b3" name="birthCondition" value="3" checked="checked"><label for="b3">3</label></td>
+            </tr>
+            <tr>
+                <td><input type="checkbox" id="s4" name="survivalCondition" value="4"><label for="s4">4</label></td>
+                <td><input type="checkbox" id="b4" name="birthCondition" value="4"><label for="b4">4</label></td>
+            </tr>
+            <tr>
+                <td><input type="checkbox" id="s5" name="survivalCondition" value="5"><label for="s5">5</label></td>
+                <td><input type="checkbox" id="b5" name="birthCondition" value="5"><label for="b5">5</label></td>
+            </tr>
+            <tr>
+                <td><input type="checkbox" id="s6" name="survivalCondition" value="6"><label for="s6">6</label></td>
+                <td><input type="checkbox" id="b6" name="birthCondition" value="6"><label for="b6">6</label></td>
+            </tr>
+            <tr>
+                <td><input type="checkbox" id="s7" name="survivalCondition" value="7"><label for="s7">7</label></td>
+                <td><input type="checkbox" id="b7" name="birthCondition" value="7"><label for="b7">7</label></td>
+            </tr>
+            <tr>
+                <td><input type="checkbox" id="s8" name="survivalCondition" value="8"><label for="s8">8</label></td>
+                <td><input type="checkbox" id="b8" name="birthCondition" value="8"><label for="b8">8</label></td>
+            </tr>
+        </table>
+        <div style="width:1mm;height:1mm"></div>
+        <button type="button" id="createWorld" style="white-space:normal;width:1.5cm;text-align:center">Create world</button>
     </div>
 </body>
 </html>

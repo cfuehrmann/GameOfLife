@@ -14,10 +14,10 @@ module Main {
         var parameters = getParameters(location.search);
         var survival = getParts(parameters, "survival");
         var birth = getParts(parameters, "birth");
-        var width = 400;
-        var height = 200;
+        var width = Math.floor(window.innerWidth / 2) - 12;
+        var height = Math.floor(window.innerHeight / 2) - 12;
         var pointMap = CanvasPointMap.create(height, width, 2);
-        document.body.appendChild(pointMap.node);
+        document.getElementById("content").appendChild(pointMap.node);
         var renderer = StandardRenderer.create(pointMap);
         var currentWorld = new Array2D(height, width, false);
         var nextWorld = new Array2D(height, width, false);

@@ -18,7 +18,7 @@ class CanvasPointMap implements PointMap<boolean> {
         this.canvasElement.width = width * pointSize;
         this.canvasElement.height = height * pointSize;
         this.ctx = this.canvasElement.getContext("2d");
-        this.ctx.fillStyle = "rgb(" + String(255) + ", " + String(0) + ", " + String(0) + ")";
+        this.ctx.fillStyle = "rgb(" + String(0) + ", " + String(0) + ", " + String(0) + ")";
         this.node = this.canvasElement;
     }
 
