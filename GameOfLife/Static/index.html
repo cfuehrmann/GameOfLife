@@ -9,11 +9,11 @@
     <script data-main="Start" src="Imports\RequireJS\require.js"></script>
 </head>
 <body>
-    <div id="content" style="display:flex;flex-wrap:wrap;justify-content:center;align-items:center;">
-        <table >
+    <div id="content" style="display:flex;flex-wrap:wrap;justify-content:center;align-items:stretch;height:95%;max-height:12cm">
+        <table style="height:100%">
             <tr>
-                <th>Survival</th>
-                <th>Birth</th>
+                <th style="min-width:2cm"">Survival</th>
+                <th style="min-width:2cm">Birth</th>
             </tr>
             <tr>
                 <td><input type="checkbox" id="s0" name="survivalCondition" value="0"><label for="s0">0</label></td>
@@ -53,7 +53,7 @@
             </tr>
         </table>
         <div style="width:1mm;height:1mm"></div>
-        <button type="button" id="createWorld" style="white-space:normal;width:1.5cm;text-align:center">Create world</button>
+        <button type="button" id="createWorld" style="white-space:normal;text-align:center;font-size:6mm">Create</button>
     </div>
 </body>
 </html>
