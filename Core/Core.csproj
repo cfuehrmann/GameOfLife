@@ -64,6 +64,7 @@
     <TypeScriptCompile Include="Numbers.ts" />
     <TypeScriptCompile Include="Sequences.ts" />
     <TypeScriptCompile Include="ArraySeq_test.ts" />
+    <TypeScriptCompile Include="TypeChecking.ts" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Gruntfile.js" />

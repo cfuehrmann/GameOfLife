@@ -7,6 +7,7 @@ export interface Seq<T> {
     filter(condition: (element: T) => boolean): Seq<T>;
     map<R>(transform: (element: T) => R): Seq<R>;
     reduceRight<U>(f: (previous: U, current: T) => U, initialValue?: U): U;
+    toArray(): T[]; // todo: should this really be part of the interface?
 }
 
 export class ArraySeq<T> implements Seq<T> {
@@ -17,17 +18,22 @@ export class ArraySeq<T> implements Seq<T> {
         this.seq = seq;
     }
 
-    filter(condition: (element: T) => boolean): Seq<T> {
+    filter(condition: (element: T) => boolean): ArraySeq<T> { // ArraySeq, not Seq, to keep unit test from being bottomless
+        assertDefinedAndNotNull("condition", condition);
         return new ArraySeq(this.seq.filter(condition));
     }
 
-    map<R>(transform: (element: T) => R): Seq<R> {
+    map<R>(transform: (element: T) => R): ArraySeq<R> { // ArraySeq, not Seq, to keep unit test from being bottomless
         return new ArraySeq(this.seq.map(transform));
     }
 
     reduceRight<U>(f: (previous: U, current: T) => U, initialValue?: U): U {
         return this.seq.reduceRight(f, initialValue);
         // todo: deal properly with the case when there is no initial value
+    }
+
+    toArray(): T[] {
+        return this.seq;
     }
 }
 
@@ -38,17 +44,25 @@ export class NodeSeq implements Seq<Node> {
         this.seq = seq;
     }
 
-    filter(condition: (element: Node) => boolean): Seq<Node> {
-        return new ArraySeq(Array.prototype.filter.call(this.seq, condition));
+    filter(condition: (element: Node) => boolean): ArraySeq<Node> {  // ArraySeq, not Seq, to keep unit test from being bottomless
+        return new ArraySeq(<Node[]>Array.prototype.filter.call(this.seq, condition));
     }
 
-    map<R>(transform: (element: Node) => R): Seq<R> {
-        return new ArraySeq(Array.prototype.map.call(this.seq, transform));
+    map<R>(transform: (element: Node) => R): ArraySeq<R> { // ArraySeq, not Seq, to keep unit test from being bottomless
+        return new ArraySeq(<R[]>Array.prototype.map.call(this.seq, transform));
     }
 
     reduceRight<U>(f: (previous: U, current: Node) => U, initialValue?: U): U {
         return Array.prototype.reduceRight.call(this.seq, f, initialValue);
         // todo: deal properly with the case when there is no initial value
+    }
+
+    toArray() {
+        var result: Node[] = [];
+        for (var i = 0; i < this.seq.length; i++) {
+            result.push(this.seq[i]);
+        }
+        return result;
     }
 }
  
