@@ -1,15 +1,27 @@
 ﻿/* tslint:disable no-unused-variable*/
 import Arrays = require("./Imports/Core/Arrays");
 import Array2D = Arrays.Array2D;
-import Numbers = require("./Imports/Core/Numbers");
-import Interface = require("./Interfaces");
 import StandardRenderer = require("./StandardRenderer");
 import CanvasPointMap = require("./CanvasPointMap");
 import StandardTransformer = require("./StandardTransformer");
 /* tslint:enable no-unused-variable*/
-
 module Main {
     "use strict";
+
+    function getParts(parameters: Parameter[], parameterName: string) {
+        return parameters.filter(p => p.name === parameterName)[0].value.split(",")
+            .slice(0, -1).map(v => parseInt(v, 10));
+    }
+
+    function getParameter(s: string): Parameter {
+        var nv = s.split("=");
+        return <Parameter>{ name: nv[0], value: nv[1] };
+    }
+
+    function getParameters(queryString: string): Parameter[] {
+        return queryString.substr(1).split("&").map(getParameter);
+    }
+
     export function exec() {
         var parameters = getParameters(location.search);
         var survival = getParts(parameters, "survival");
@@ -32,7 +44,7 @@ module Main {
 
         var i = 0;
 
-        setInterval(function () {
+        setInterval(() => {
             renderer.render(currentWorld);
             transformer.transform(currentWorld, nextWorld);
             var h = currentWorld;
@@ -47,20 +59,7 @@ module Main {
         name: string;
         value: string;
     }
-
-    function getParameters(queryString: string): Parameter[] {
-        return queryString.substr(1).split("&").map(getParameter);
-    }
-
-    function getParameter(s: string): Parameter {
-        var nv = s.split("=");
-        return <Parameter>{ name: nv[0], value: nv[1] };
-    }
-
-    function getParts(parameters: Parameter[], parameterName: string) {
-        return parameters.filter(p => p.name === parameterName)[0].value.split(",")
-            .slice(0, -1).map(v => parseInt(v, 10));
-    }
 }
+
 
 Main.exec();

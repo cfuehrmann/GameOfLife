@@ -1,10 +1,6 @@
 ﻿/// <reference path="Imports/QUnit/qunit.d.ts" />
 
 /* tslint:disable no-unused-variable*/
-import Exceptions = require("Imports/Core/Exceptions");
-import ArgumentException = Exceptions.ArgumentException;
-import Arrays = require("Imports/Core/Arrays");
-import Array2D = Arrays.Array2D;
 import StandardTransformer = require("StandardTransformer");
 import TypeChecking = require("Imports/Core/TypeChecking");
 import checkDefinedAndNotNullAssert = TypeChecking.checkDefinedAndNotNullAssert;
@@ -24,12 +20,12 @@ method = "create";
 
 check("survivalCondition when undefined or null",
     checkDefinedAndNotNullAssert("survivalCondition",
-        survivalCondition => StandardTransformer.create(survivalCondition, []))
+        (survivalCondition: number[]) => StandardTransformer.create(survivalCondition, [0]))
     );
 
 check("birthCondition when undefined or null",
     checkDefinedAndNotNullAssert("birthCondition",
-        birthCondition => StandardTransformer.create([], birthCondition))
+        (birthCondition: number[]) => StandardTransformer.create([0], birthCondition))
     );
 
 

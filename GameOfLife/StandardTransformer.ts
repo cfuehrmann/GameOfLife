@@ -1,6 +1,4 @@
 ﻿/* tslint:disable no-unused-variable*/
-import Exceptions = require("Imports/Core/Exceptions");
-import ArgumentException = Exceptions.ArgumentException;
 import Arrays = require("./Imports/Core/Arrays");
 import Array2D = Arrays.Array2D;
 import Numbers = require("./Imports/Core/Numbers");

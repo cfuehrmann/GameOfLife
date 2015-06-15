@@ -1,8 +1,6 @@
 ﻿/* tslint:disable no-unused-variable*/
 import Arrays = require("./Imports/Core/Arrays");
 import Array2D = Arrays.Array2D;
-import Exceptions = require("./Imports/Core/Exceptions");
-import ArgumentException = Exceptions.ArgumentException;
 import Interface = require("./Interfaces");
 import PointMap = Interface.PointMap;
 import Renderer = Interface.Renderer;

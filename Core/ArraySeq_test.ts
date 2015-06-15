@@ -2,11 +2,8 @@
 
 /* tslint:disable no-unused-variable*/
 import Sequences = require("Sequences");
-import Exceptions = require("Exceptions");
-import ArgumentException = Exceptions.ArgumentException;
 import TypeChecking = require("TypeChecking");
 import checkDefinedAndNotNullAssert = TypeChecking.checkDefinedAndNotNullAssert;
-/* tslint:enable no-unused-variable*/
 
 var method: string;
 
@@ -17,13 +14,13 @@ function check(testCase: string, testBody: (assert?: QUnitAssert) => any) {
 method = "constructor";
 
 check("Argument is defined",
-    checkDefinedAndNotNullAssert("seq", seq => new Sequences.ArraySeq(seq))
+    checkDefinedAndNotNullAssert("seq",(seq: number[]) => new Sequences.ArraySeq(seq))
     );
 
 method = "filter";
 
-check("Argument is defined", () => {
-    var a = new Sequences.ArraySeq([]);
+check("Argument is defined",() => {
+    var a = new Sequences.ArraySeq(new Array<number>());
     checkDefinedAndNotNullAssert("condition", a.filter)();
 });
 

@@ -1,7 +1,6 @@
 ﻿/* tslint:disable no-unused-variable*/
 import Exceptions = require("./Exceptions");
 import ArgumentException = Exceptions.ArgumentException;
-import Numbers = require("./Numbers");
 import TypeChecking = require("./TypeChecking");
 import assertInt = TypeChecking.assertInt;
 /* tslint:enable no-unused-variable*/
@@ -17,9 +16,9 @@ export class Array2D<T> {
         if (height <= 0) {
             throw new ArgumentException("height");
         }
-        this.matrix = [];
+        this.matrix = new Array<T[]>();
         for (var row = 0; row < height; row++) {
-            this.matrix[row] = [];
+            this.matrix[row] = new Array<T>();
             for (var column = 0; column < width; column++) {
                 this.matrix[row][column] = initialValue;
             }

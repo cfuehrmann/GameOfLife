@@ -1,8 +1,6 @@
 ﻿/// <reference path="Imports/QUnit/qunit.d.ts" />
 
 /* tslint:disable no-unused-variable*/
-import Exceptions = require("Imports/Core/Exceptions");
-import ArgumentException = Exceptions.ArgumentException;
 import Arrays = require("Imports/Core/Arrays");
 import Array2D = Arrays.Array2D;
 import Interface = require("Interfaces");
@@ -26,20 +24,20 @@ testClass = "StandardRenderer";
 method = "create";
 
 check("pointMap when undefined or null",
-    checkDefinedAndNotNullAssert("pointMap", pointMap => StandardRenderer.create(pointMap))
+    checkDefinedAndNotNullAssert("pointMap",(pointMap: PointMap<number>) => StandardRenderer.create(pointMap))
     );
 
 
 method = "render";
 
-check("world when undefined or null", () => {
+check("world when undefined or null",() => {
     var r = StandardRenderer.create(new TestPointMap());
 
-    checkDefinedAndNotNullAssert("world", scene => r.render(scene))();
+    checkDefinedAndNotNullAssert("world",(world: Array2D<number>) => r.render(world))();
 });
 
 
-check("PointMapCallSequence", () => {
+check("PointMapCallSequence",() => {
     var pointMap = new TestPointMap();
     var renderer = StandardRenderer.create(pointMap);
     var width = 5;
@@ -81,7 +79,7 @@ class TestPointMap implements PointMap<number>{
     public calls: PointMapCall<number>[];
 
     constructor() {
-        this.calls = [];
+        this.calls = new Array<PointMapCall<number>>(); // <PointMapCall<number>[]>
     }
 
     clear() {

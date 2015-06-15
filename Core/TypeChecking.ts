@@ -42,7 +42,7 @@ export function checkRealAssert<T>(argumentName: string, method: (n: number) => 
     };
 }
 
-export function checkDefinedAndNotNullAssert<T>(argumentName: string, method: (n: any) => T) {
+export function checkDefinedAndNotNullAssert<TArgument, TResult>(argumentName: string, method: (n: TArgument) => TResult) {
     return () => {
         throws(() => method(null),
             (e: ArgumentException) => e.getArgumentName() === argumentName);

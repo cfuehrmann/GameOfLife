@@ -1,18 +1,20 @@
 module.exports = function (grunt) { // jshint ignore:line
 
-    require('load-grunt-tasks')(grunt); // jshint ignore:line
-    require('time-grunt')(grunt); // jshint ignore:line
+    // ReSharper disable UseOfImplicitGlobalInFunctionScope
+    require("load-grunt-tasks")(grunt); // jshint ignore:line
+    require("time-grunt")(grunt); // jshint ignore:line
+    // ReSharper restore UseOfImplicitGlobalInFunctionScope
 
     grunt.initConfig({
 
         typescript: {
             base: {
                 src: ["*.ts"],
-                dest: 'BuildOutput',
+                dest: "BuildOutput",
                 options: {
-                    module: 'amd',
+                    module: "amd",
                     noImplicitAny: true,
-                    target: 'es5',
+                    target: "es5",
                     //  sourceMap: true,
                     declaration: true
                 }
@@ -32,8 +34,8 @@ module.exports = function (grunt) { // jshint ignore:line
                 configuration: grunt.file.readJSON("tslint.json")
             },
             files: {
-                src: ['*.ts']
-            },
+                src: ["*.ts"]
+            }
         },
 
         jshint: {
@@ -41,33 +43,33 @@ module.exports = function (grunt) { // jshint ignore:line
                 jshintrc: true
             },
             files: {
-                src: ['*.js']
-            },
+                src: ["*.js"]
+            }
         },
 
         karma: {
             chrome: {
                 options: {
-                    configFile: 'karma.conf.js',
-                    browsers: ['Chrome']
+                    configFile: "karma.conf.js",
+                    browsers: ["Chrome"]
                 }
             },
             phantomjs: {
                 options: {
-                    configFile: 'karma.conf.js',
-                    browsers: ['PhantomJS']
+                    configFile: "karma.conf.js",
+                    browsers: ["PhantomJS"]
                 }
 
             }
         }
     });
 
-    grunt.registerTask('build', ['newer:jscs', 'newer:tslint', 'newer:jshint', 'typescript']);
-    grunt.registerTask('test', function (browser) {
-        grunt.task.run('karma:' + browser);
+    grunt.registerTask("build", ["newer:jscs", "newer:tslint", "newer:jshint", "typescript"]);
+    grunt.registerTask("test", function (browser) {
+        grunt.task.run("karma:" + browser);
     });
-    grunt.registerTask('buildAndTest', function (browser) {
-        grunt.task.run('build');
-        grunt.task.run('test:' + browser);
+    grunt.registerTask("buildAndTest", function (browser) {
+        grunt.task.run("build");
+        grunt.task.run("test:" + browser);
     });
 };
