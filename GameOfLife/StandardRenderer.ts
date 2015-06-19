@@ -6,7 +6,6 @@ import PointMap = Interface.PointMap;
 import Renderer = Interface.Renderer;
 import TypeChecking = require("Imports/Core/TypeChecking");
 import assertDefinedAndNotNull = TypeChecking.assertDefinedAndNotNull;
-
 /* tslint:enable no-unused-variable*/
 
 export function create<T>(pointMap: PointMap<T>): Renderer<T> {
@@ -24,8 +23,8 @@ class StandardRenderer<T> {
 
         this.pointMap.clear();
 
-        for (var row = 0; row < world.height; row++) {
-            for (var column = 0; column < world.width; column++) {
+        for (let row = 0; row < world.height; row++) {
+            for (let column = 0; column < world.width; column++) {
                 this.pointMap.drawPoint(row, column, world.get(row, column));
             }
         }

@@ -10,6 +10,6 @@ export function mod(numerator: number, denominator: number) {
     if (denominator === 0) {
         throw new ArgumentException("denominator");
     }
-    var ad = Math.abs(denominator);
+    const ad = Math.abs(denominator);
     return ((numerator % ad) + ad) % ad;
 }

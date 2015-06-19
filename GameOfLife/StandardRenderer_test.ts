@@ -8,7 +8,6 @@ import StandardRenderer = require("StandardRenderer");
 import PointMap = Interface.PointMap;
 import TypeChecking = require("Imports/Core/TypeChecking");
 import checkDefinedAndNotNullAssert = TypeChecking.checkDefinedAndNotNullAssert;
-
 /* tslint:enable no-unused-variable*/
 
 var testClass: string;
@@ -43,8 +42,8 @@ check("PointMapCallSequence",() => {
     var width = 5;
     var height = 7;
     var scene = new Array2D(height, width, 0);
-    for (var row = 0; row < height; row++) {
-        for (var column = 0; column < width; column++) {
+    for (let row = 0; row < height; row++) {
+        for (let column = 0; column < width; column++) {
             scene.set(row, column, row * width + column);
         }
     }
@@ -57,7 +56,7 @@ check("PointMapCallSequence",() => {
         clear: () => true,
         drawPoint: (row, column, value) => false
     }));
-    for (var i = 1; i < 1 + width * height; i++) {
+    for (let i = 1; i < 1 + width * height; i++) {
         pointMap.calls[i].match({
             clear: () => ok(false),
             drawPoint: (row, column, value) => {

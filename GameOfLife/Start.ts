@@ -6,7 +6,7 @@ module Start {
     "use strict";
 
     function getChecked(elementName: string) {
-        var nodeList = document.getElementsByName(elementName);
+        const nodeList = document.getElementsByName(elementName);
         return new Sequences.NodeSeq(nodeList)
             .filter(n => (<any>n).checked)
             .map(n => <string>(<any>n).value)

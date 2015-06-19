@@ -58,8 +58,8 @@ export class NodeSeq implements Seq<Node> {
     }
 
     toArray() {
-        var result = new Array<Node>();
-        for (var i = 0; i < this.seq.length; i++) {
+        const result = new Array<Node>();
+        for (let i = 0; i < this.seq.length; i++) {
             result.push(this.seq[i]);
         }
         return result;

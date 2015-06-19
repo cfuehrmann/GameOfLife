@@ -14,7 +14,7 @@ module Main {
     }
 
     function getParameter(s: string): Parameter {
-        var nv = s.split("=");
+        const nv = s.split("=");
         return <Parameter>{ name: nv[0], value: nv[1] };
     }
 
@@ -23,19 +23,19 @@ module Main {
     }
 
     export function exec() {
-        var parameters = getParameters(location.search);
-        var survival = getParts(parameters, "survival");
-        var birth = getParts(parameters, "birth");
-        var width = Math.floor(window.innerWidth / 2) - 12;
-        var height = Math.floor(window.innerHeight / 2) - 12;
-        var pointMap = CanvasPointMap.create(height, width, 2);
+        const parameters = getParameters(location.search);
+        const survival = getParts(parameters, "survival");
+        const birth = getParts(parameters, "birth");
+        const width = Math.floor(window.innerWidth / 2) - 12;
+        const height = Math.floor(window.innerHeight / 2) - 12;
+        const pointMap = CanvasPointMap.create(height, width, 2);
         document.getElementById("content").appendChild(pointMap.node);
         var renderer = StandardRenderer.create(pointMap);
         var currentWorld = new Array2D(height, width, false);
         var nextWorld = new Array2D(height, width, false);
 
-        for (var row = 0; row < height; row++) {
-            for (var column = 0; column < width; column++) {
+        for (let row = 0; row < height; row++) {
+            for (let column = 0; column < width; column++) {
                 currentWorld.set(row, column, Math.random() < 0.5001);
             }
         }

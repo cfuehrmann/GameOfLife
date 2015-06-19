@@ -23,8 +23,7 @@ method = "constructor";
 method = "getArgumentName";
 
 check("result", () => {
-    var e = new ArgumentException("foo");
-
+    const e = new ArgumentException("foo");
     strictEqual(e.getArgumentName(), "foo");
 });
 

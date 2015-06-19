@@ -17,9 +17,9 @@ export class Array2D<T> {
             throw new ArgumentException("height");
         }
         this.matrix = new Array<T[]>();
-        for (var row = 0; row < height; row++) {
+        for (let row = 0; row < height; row++) {
             this.matrix[row] = new Array<T>();
-            for (var column = 0; column < width; column++) {
+            for (let column = 0; column < width; column++) {
                 this.matrix[row][column] = initialValue;
             }
         }

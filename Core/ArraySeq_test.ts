@@ -4,6 +4,7 @@
 import Sequences = require("Sequences");
 import TypeChecking = require("TypeChecking");
 import checkDefinedAndNotNullAssert = TypeChecking.checkDefinedAndNotNullAssert;
+/* tslint:enable no-unused-variable*/
 
 var method: string;
 

@@ -40,8 +40,8 @@ check("width when not positive", () =>
 
 check("initialValue", () => {
     var a = new Array2D(5, 7, 42);
-    for (var row = 0; row < 5; row++) {
-        for (var column = 0; column < 5; column++) {
+    for (let row = 0; row < 5; row++) {
+        for (let column = 0; column < 5; column++) {
             strictEqual(a.get(row, column), 42);
         }
     }
@@ -133,8 +133,8 @@ method = "get";
 var a: Array2D<boolean> = new Array2D(1000, 1000, false);
 
 check("performance", () => {
-    for (var x = 0; x < 1000; x++) {
-        for (var y = 0; y < 1000; y++) {
+    for (let x = 0; x < 1000; x++) {
+        for (let y = 0; y < 1000; y++) {
             a.get(x, y);
         }
     }
