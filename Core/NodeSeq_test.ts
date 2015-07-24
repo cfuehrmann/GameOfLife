@@ -94,3 +94,15 @@ test(name("method works"), () => {
 
     deepEqual(result, [[[[new Array<any>(), nodeArray[3]], nodeArray[2]], nodeArray[1]], nodeArray[0]]);
 });
+
+
+method = "n/a";
+
+test(name("reflects changes to Document"), () => {
+    const element = document.createElement("BUTTON");
+    document.body.appendChild(element);
+    const length = seq.toArray().length;
+    document.body.removeChild(element);
+
+    strictEqual(seq.toArray().length, length - 1);
+});
