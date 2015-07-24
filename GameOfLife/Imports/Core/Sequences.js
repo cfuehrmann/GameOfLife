@@ -1,4 +1,4 @@
-define(["require", "exports", "TypeChecking"], function (require, exports, TypeChecking) {
+define(["require", "exports", "./TypeChecking"], function (require, exports, TypeChecking) {
     var assertDefinedAndNotNull = TypeChecking.assertDefinedAndNotNull;
     // A class that wraps up an array under the Seq interface. Importantly, 
     // we don't extend the prototype, but we *do* use the fast methods of the array.

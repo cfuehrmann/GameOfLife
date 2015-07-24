@@ -1,5 +1,5 @@
 ﻿/* tslint:disable no-unused-variable*/
-import TypeChecking = require("TypeChecking");
+import TypeChecking = require("./TypeChecking");
 import assertDefinedAndNotNull = TypeChecking.assertDefinedAndNotNull;
 /* tslint:enable no-unused-variable*/
 
