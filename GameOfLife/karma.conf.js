@@ -1,25 +1,25 @@
-module.exports = function (config) { // jshint ignore:line
+module.exports = function(config) { // jshint ignore:line
 
     config.set({
         // base path that will be used to resolve all patterns (eg. files, exclude)
-        basePath: '.',
+        basePath: ".",
 
         // frameworks to use
         // available frameworks: https://npmjs.org/browse/keyword/karma-adapter
-        frameworks: ['qunit', 'requirejs'],
+        frameworks: ["requirejs", "qunit"],
 
         // list of files / patterns to load in the browser
         files: [
-         'karmaRequireAndStart.js',
-         { pattern: 'BuildOutput/**/*.js', included: false }
+            "karmaRequireAndStart.js",
+            { pattern: "BuildOutput/**/*.js", included: false }
         ],
 
         // list of files to exclude
         exclude: [
-            'BuildOutput/Main.js',
-            'BuildOutput/Interface.js',
-            'BuildOutput/Imports/RequireJS/*.*',
-            'BuildOutput/Imports/QUnit/*.*'
+            "BuildOutput/Main.js",
+            "BuildOutput/Interface.js",
+            "BuildOutput/Imports/RequireJS/*.*",
+            "BuildOutput/Imports/QUnit/*.*"
         ],
 
         // enable / disable watching file and executing tests whenever any file changes
@@ -41,9 +41,14 @@ module.exports = function (config) { // jshint ignore:line
             //  darwin: path.join(__dirname, 'target/phantomjs/darwin/phantomjs'),
             //  win32: path.join(__dirname, 'target/phantomjs/win/phantomjs.exe')
             // }
+        
         },
 
-        reporters: ['progress', 'junit'],
+        reporters: ["progress", "junit"],
+
+        junitReporter: {
+            outputDir: "junitResults" // results will be saved as $outputDir/$browserName.xml 
+        },
 
         // Continuous Integration mode
         // if true, Karma captures browsers, runs the tests and exits

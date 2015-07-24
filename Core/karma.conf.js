@@ -5,16 +5,16 @@ module.exports = function (config) { // jshint ignore:line
     config.set({
 
         // base path that will be used to resolve all patterns (eg. files, exclude)
-        basePath: '.',
+        basePath: ".",
 
         // frameworks to use
         // available frameworks: https://npmjs.org/browse/keyword/karma-adapter
-        frameworks: ['qunit', 'requirejs'],
+        frameworks: ["requirejs", "qunit"],
 
         // list of files / patterns to load in the browser
         files: [
-         'karmaRequireAndStart.js',
-         { pattern: 'BuildOutput/**/*.js', included: false }
+         "karmaRequireAndStart.js",
+         { pattern: "BuildOutput/**/*.js", included: false }
         ],
 
         // list of files to exclude
@@ -43,7 +43,11 @@ module.exports = function (config) { // jshint ignore:line
             // }
         },
 
-        reporters: ['progress', 'junit'],
+        reporters: ["progress", "junit"],
+
+        junitReporter: {
+            outputDir: "junitResults" // results will be saved as $outputDir/$browserName.xml 
+        },
 
         // Continuous Integration mode
         // if true, Karma captures browsers, runs the tests and exits

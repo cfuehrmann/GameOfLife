@@ -1,4 +1,4 @@
-module.exports = function (grunt) { // jshint ignore:line
+module.exports = function(grunt) { // jshint ignore:line
 
     // ReSharper disable UseOfImplicitGlobalInFunctionScope
     require("load-grunt-tasks")(grunt); // jshint ignore:line
@@ -6,26 +6,26 @@ module.exports = function (grunt) { // jshint ignore:line
     // ReSharper restore UseOfImplicitGlobalInFunctionScope
 
     grunt.initConfig({
-
         copy: {
             imports: {
                 files: [
-                      { expand: true, src: ["Imports/**/*.js"], dest: "BuildOutput" },
-                      {
-                          src: ["Imports/require.js"],
-                          dest: "BuildOutput/Imports/require.js"
-                      }
+                    { expand: true, src: ["Imports/**/*.js"], dest: "BuildOutput" },
+                    {
+                        src: ["Imports/require.js"],
+                        dest: "BuildOutput/Imports/require.js"
+                    }
                 ]
             },
             statics: {
                 files: [
-                      { expand: true, src: ["*.html", "*.css"], dest: "BuildOutput" }
+                    { expand: true, src: ["*.html", "*.css"], dest: "BuildOutput" }
                 ]
             }
         },
 
         jscs: {
             options: {
+
             },
             files: {
                 src: ["*.js"]
@@ -75,17 +75,18 @@ module.exports = function (grunt) { // jshint ignore:line
                     configFile: "karma.conf.js",
                     browsers: ["PhantomJS"]
                 }
-
             }
         }
     });
 
-    grunt.registerTask("build", ["newer:jscs", "newer:tslint", "newer:jshint",
-        "typescript", "copy:imports", "copy:statics"]);
-    grunt.registerTask("test", function (browser) {
+    grunt.registerTask("build", [
+        "newer:jscs", "newer:tslint", "newer:jshint",
+        "typescript", "copy:imports", "copy:statics"
+    ]);
+    grunt.registerTask("test", function(browser) {
         grunt.task.run("karma:" + browser);
     });
-    grunt.registerTask("buildAndTest", function (browser) {
+    grunt.registerTask("buildAndTest", function(browser) {
         grunt.task.run("build");
         grunt.task.run("test:" + browser);
     });

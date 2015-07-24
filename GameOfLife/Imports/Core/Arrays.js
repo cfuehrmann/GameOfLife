@@ -14,9 +14,9 @@ define(["require", "exports", "./Exceptions", "./TypeChecking"], function (requi
             if (height <= 0) {
                 throw new ArgumentException("height");
             }
-            this.matrix = [];
+            this.matrix = new Array();
             for (var row = 0; row < height; row++) {
-                this.matrix[row] = [];
+                this.matrix[row] = new Array();
                 for (var column = 0; column < width; column++) {
                     this.matrix[row][column] = initialValue;
                 }

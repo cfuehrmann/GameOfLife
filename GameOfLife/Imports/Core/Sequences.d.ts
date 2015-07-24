@@ -1,17 +1,22 @@
 export interface Seq<T> {
     filter(condition: (element: T) => boolean): Seq<T>;
-    map<R>(transform: (element: T) => R): Seq<R>;
-    reduceRight<U>(f: (previous: U, current: T) => U, initialValue?: U): U;
+    map<TOut>(transform: (element: T) => TOut): Seq<TOut>;
+    reduceRight<TResult>(f: (previous: TResult, current: T) => TResult, initialValue?: TResult): TResult;
+    toArray(): T[];
 }
 export declare class ArraySeq<T> implements Seq<T> {
+    private seq;
     constructor(seq: T[]);
-    filter(condition: (element: T) => boolean): Seq<T>;
-    map<R>(transform: (element: T) => R): Seq<R>;
-    reduceRight<U>(f: (previous: U, current: T) => U, initialValue?: U): U;
+    filter(condition: (element: T) => boolean): ArraySeq<T>;
+    map<TOut>(transform: (element: T) => TOut): ArraySeq<TOut>;
+    reduceRight<TResult>(f: (previous: TResult, current: T) => TResult, initialValue: TResult): TResult;
+    toArray(): T[];
 }
 export declare class NodeSeq implements Seq<Node> {
+    private seq;
     constructor(seq: NodeList);
-    filter(condition: (element: Node) => boolean): Seq<Node>;
-    map<R>(transform: (element: Node) => R): Seq<R>;
-    reduceRight<U>(f: (previous: U, current: Node) => U, initialValue?: U): U;
+    filter(condition: (element: Node) => boolean): ArraySeq<Node>;
+    map<TOut>(transform: (element: Node) => TOut): ArraySeq<TOut>;
+    reduceRight<TResult>(f: (previous: TResult, current: Node) => TResult, initialValue: TResult): TResult;
+    toArray(): Node[];
 }
