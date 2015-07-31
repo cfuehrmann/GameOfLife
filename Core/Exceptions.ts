@@ -6,6 +6,5 @@
     }
 
     constructor(private argumentName: string) {
-        this.argumentName = argumentName;
     }
 } 

@@ -43,10 +43,8 @@ QUnit.testStart(() => {
 });
 
 let method: string;
+let name = (testCaseName: string) => "NodeSeq, " + method + ": " + testCaseName;
 
-function name(testCaseName: string) {
-    return "NodeSeq, " + method + ": " + testCaseName;
-}
 
 method = "constructor";
 

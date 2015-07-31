@@ -9,11 +9,12 @@ import ArraySeq = Sequences.ArraySeq;
 
 var seq: ArraySeq<number>; // "var" because otherwise R# makes a type inference error
 
-var method: string;
+let method: string;
+let name = (testCaseName: string) => "ArraySeq, " + method + ": " + testCaseName;
 
-function name(testCaseName: string) {
-    return "ArraySeq, " + method + ": " + testCaseName;
-}
+QUnit.testStart(() => {
+    seq = new ArraySeq([0, 1, 2, 3]);
+});
 
 
 method = "constructor";
@@ -21,11 +22,6 @@ method = "constructor";
 test(name("Argument is defined"),
     checkDefinedAndNotNullAssert("seq", (seq: number[]) => new ArraySeq(seq))
 );
-
-
-QUnit.testStart(() => {
-    seq = new ArraySeq([0, 1, 2, 3]);
-});
 
 
 method = "filter";

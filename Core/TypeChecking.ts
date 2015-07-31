@@ -1,5 +1,5 @@
 ﻿/* tslint:disable no-unused-variable*/
-import Exceptions = require("./Exceptions");
+import Exceptions = require("Exceptions");
 import ArgumentException = Exceptions.ArgumentException;
 /* tslint:enable no-unused-variable*/
 
@@ -26,7 +26,7 @@ export function checkIntAssert<T>(argumentName: string, method: (n: number) => T
     return () => {
         checkRealAssert(argumentName, method)();
         throws(() => method(0.5),
-            (e: ArgumentException) => e.getArgumentName() === argumentName);
+        (e: ArgumentException) => e.getArgumentName() === argumentName);
     };
 }
 
@@ -34,19 +34,19 @@ export function checkRealAssert<T>(argumentName: string, method: (n: number) => 
     return () => {
         checkDefinedAndNotNullAssert(argumentName, method)();
         throws(() => method(NaN),
-            (e: ArgumentException) => e.getArgumentName() === argumentName);
+        (e: ArgumentException) => e.getArgumentName() === argumentName);
         throws(() => method(Infinity),
-            (e: ArgumentException) => e.getArgumentName() === argumentName);
+        (e: ArgumentException) => e.getArgumentName() === argumentName);
         throws(() => method(-Infinity),
-            (e: ArgumentException) => e.getArgumentName() === argumentName);
+        (e: ArgumentException) => e.getArgumentName() === argumentName);
     };
 }
 
 export function checkDefinedAndNotNullAssert<TArgument, TResult>(argumentName: string, method: (n: TArgument) => TResult) {
     return () => {
         throws(() => method(null),
-            (e: ArgumentException) => e.getArgumentName() === argumentName);
+        (e: ArgumentException) => e.getArgumentName() === argumentName);
         throws(() => method(undefined),
-            (e: ArgumentException) => e.getArgumentName() === argumentName);
+        (e: ArgumentException) => e.getArgumentName() === argumentName);
     };
 }

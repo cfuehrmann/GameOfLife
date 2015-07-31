@@ -5,12 +5,9 @@ import Exceptions = require("Exceptions");
 import ArgumentException = Exceptions.ArgumentException;
 /* tslint:enable no-unused-variable*/
 
-var testClass: string;
-var method: string;
-
-function check(testCase: string, testBody: (assert?: QUnitAssert) => any) {
-    test(testClass + ", " + method + ": " + testCase, testBody);
-}
+let testClass: string;
+let method: string;
+let name = (testCase: string) => testClass + ", " + method + ": " + testCase;
 
 testClass = "ArgumentException";
 
@@ -22,29 +19,27 @@ method = "constructor";
 
 method = "getArgumentName";
 
-check("result", () => {
+test(name("result"), () => {
     const e = new ArgumentException("foo");
+
     strictEqual(e.getArgumentName(), "foo");
 });
 
 
 method = "toString";
 
-check("containsArgumentName", () => {
-    var e = new ArgumentException("foo");
+test(name("containsArgumentName"), () => {
+    const e = new ArgumentException("foo");
 
     ok(e.toString().indexOf("foo") > -1);
 });
 
-
-check("containsArgumentNameWhenNull", () => {
-    var e = new ArgumentException(null);
-
+test(name("containsArgumentNameWhenNull"), () => {
+    const e = new ArgumentException(null);
     ok(e.toString().indexOf("null") > -1);
 });
 
-check("containsArgumentNameWhenUndefined", () => {
-    var e = new ArgumentException("undefined");
-
+test(name("containsArgumentNameWhenUndefined"), () => {
+    const e = new ArgumentException("undefined");
     ok(e.toString().indexOf("undefined") > -1);
 });
