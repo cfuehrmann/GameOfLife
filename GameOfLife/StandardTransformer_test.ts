@@ -1,6 +1,4 @@
-﻿/// <reference path="Imports/QUnit/qunit.d.ts" />
-
-/* tslint:disable no-unused-variable*/
+﻿/* tslint:disable no-unused-variable*/
 import StandardTransformer = require("StandardTransformer");
 import TypeChecking = require("Imports/Core/TypeChecking");
 import checkDefinedAndNotNullAssert = TypeChecking.checkDefinedAndNotNullAssert;

@@ -1,6 +1,13 @@
-﻿/* tslint:disable no-unused-variable*/
+﻿/* At runtime, karma provides the qunit implementation from node_modules.
+ * The reference here is only to satisfy the typescript compiler. Interestingly,
+ * having the reference in one place eliminates the need to add it anywhere else.
+ */
+/// <reference path="Imports/QUnit/qunit.d.ts" />
+
+/* tslint:disable no-unused-variable*/
 import Exceptions = require("Exceptions");
 import ArgumentException = Exceptions.ArgumentException;
+
 /* tslint:enable no-unused-variable*/
 
 export function assertInt(argumentName: string, value: number) {

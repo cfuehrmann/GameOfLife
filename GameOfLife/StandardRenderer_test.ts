@@ -1,6 +1,4 @@
-﻿/// <reference path="Imports/QUnit/qunit.d.ts" />
-
-/* tslint:disable no-unused-variable*/
+﻿/* tslint:disable no-unused-variable*/
 import Arrays = require("Imports/Core/Arrays");
 import Array2D = Arrays.Array2D;
 import Interface = require("Interfaces");
@@ -23,20 +21,20 @@ testClass = "StandardRenderer";
 method = "create";
 
 check("pointMap when undefined or null",
-    checkDefinedAndNotNullAssert("pointMap",(pointMap: PointMap<number>) => StandardRenderer.create(pointMap))
-    );
+    checkDefinedAndNotNullAssert("pointMap", (pointMap: PointMap<number>) => StandardRenderer.create(pointMap))
+);
 
 
 method = "render";
 
-check("world when undefined or null",() => {
+check("world when undefined or null", () => {
     var r = StandardRenderer.create(new TestPointMap());
 
-    checkDefinedAndNotNullAssert("world",(world: Array2D<number>) => r.render(world))();
+    checkDefinedAndNotNullAssert("world", (world: Array2D<number>) => r.render(world))();
 });
 
 
-check("PointMapCallSequence",() => {
+check("PointMapCallSequence", () => {
     var pointMap = new TestPointMap();
     var renderer = StandardRenderer.create(pointMap);
     var width = 5;
@@ -74,8 +72,8 @@ check("PointMapCallSequence",() => {
 // We refrain from testing that exceptions in the PointMap methods are propagated,
 // since it would take criminal energy to keep them from propagating
 
-class TestPointMap implements PointMap<number>{
-    public calls: PointMapCall<number>[];
+class TestPointMap implements PointMap<number> {
+    calls: PointMapCall<number>[];
 
     constructor() {
         this.calls = new Array<PointMapCall<number>>(); // <PointMapCall<number>[]>
@@ -101,14 +99,14 @@ interface PointMapCallCases<TResult, TPoint> {
     drawPoint(row: number, column: number, value: TPoint): TResult;
 }
 
-class Clear<TResult, TPoint> implements PointMapCall<TPoint>  {
+class Clear<TResult, TPoint> implements PointMapCall<TPoint> {
     match<T>(cases: PointMapCallCases<T, TPoint>) {
         return cases.clear();
     }
 }
 
 class DrawPoint<TResult, TPoint> implements PointMapCall<TPoint> {
-    constructor(private row: number, private column: number, private value: TPoint) { }
+    constructor(private row: number, private column: number, private value: TPoint) {}
 
     match<T>(cases: PointMapCallCases<T, TPoint>) {
         return cases.drawPoint(this.row, this.column, this.value);

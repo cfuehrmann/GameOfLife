@@ -1,4 +1,11 @@
 ﻿/* tslint:disable no-unused-variable*/
+/* At runtime, karma provides the qunit implementation from node_modules.
+ * The reference here is only to satisfy the typescript compiler. Interestingly,
+ * having the reference in one place eliminates the need to add it anywhere else.
+ * Since there is no canonical unit test file, we put the reference here.
+ */
+/// <reference path="Imports/QUnit/qunit.d.ts" />
+
 import Sequences = require("./Imports/Core/Sequences");
 /* tslint:enable no-unused-variable*/
 

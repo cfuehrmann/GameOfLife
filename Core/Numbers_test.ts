@@ -1,6 +1,4 @@
-﻿/// <reference path="Imports/QUnit/qunit.d.ts" />
-
-/* tslint:disable no-unused-variable*/
+﻿/* tslint:disable no-unused-variable*/
 import Numbers = require("Numbers");
 import Exceptions = require("Exceptions");
 import ArgumentException = Exceptions.ArgumentException;

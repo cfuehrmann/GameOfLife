@@ -1,6 +1,4 @@
-﻿/// <reference path="Imports/QUnit/qunit.d.ts" />
-
-/* tslint:disable no-unused-variable*/
+﻿/* tslint:disable no-unused-variable*/
 import Sequences = require("Sequences");
 import TypeChecking = require("TypeChecking");
 import checkDefinedAndNotNullAssert = TypeChecking.checkDefinedAndNotNullAssert;
