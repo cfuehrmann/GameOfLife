@@ -1130,7 +1130,7 @@ var requirejs, require, define;
                             // No direct errback on this module, but something
                             // else is listening for errors, so be sure to
                             // propagate the error correctly.
-                            on(depMap, 'error', bind(this, function (err) {
+                            on(depMap, 'error', bind(this, function(err) {
                                 this.emit('error', err);
                             }));
                         }
@@ -1324,7 +1324,7 @@ var requirejs, require, define;
                     each(cfg.packages, function (pkgObj) {
                         var location, name;
 
-                        pkgObj = typeof pkgObj === 'string' ? { name: pkgObj } : pkgObj;
+                        pkgObj = typeof pkgObj === 'string' ? {name: pkgObj} : pkgObj;
 
                         name = pkgObj.name;
                         location = pkgObj.location;
@@ -1464,7 +1464,7 @@ var requirejs, require, define;
                         }
 
                         return context.nameToUrl(normalize(moduleNamePlusExt,
-                                                relMap && relMap.id, true), ext, true);
+                                                relMap && relMap.id, true), ext,  true);
                     },
 
                     defined: function (id) {
@@ -1497,7 +1497,7 @@ var requirejs, require, define;
                         //Clean queued defines too. Go backwards
                         //in array so that the splices do not
                         //mess up the iteration.
-                        eachReverse(defQueue, function (args, i) {
+                        eachReverse(defQueue, function(args, i) {
                             if (args[0] === id) {
                                 defQueue.splice(i, 1);
                             }
@@ -1873,13 +1873,13 @@ var requirejs, require, define;
             //UNFORTUNATELY Opera implements attachEvent but does not follow the script
             //script execution mode.
             if (node.attachEvent &&
-                //Check if node.attachEvent is artificially added by custom script or
-                //natively supported by browser
-                //read https://github.com/jrburke/requirejs/issues/187
-                //if we can NOT find [native code] then it must NOT natively supported.
-                //in IE8, node.attachEvent does not have toString()
-                //Note the test for "[native code" with no closing brace, see:
-                //https://github.com/jrburke/requirejs/issues/273
+                    //Check if node.attachEvent is artificially added by custom script or
+                    //natively supported by browser
+                    //read https://github.com/jrburke/requirejs/issues/187
+                    //if we can NOT find [native code] then it must NOT natively supported.
+                    //in IE8, node.attachEvent does not have toString()
+                    //Note the test for "[native code" with no closing brace, see:
+                    //https://github.com/jrburke/requirejs/issues/273
                     !(node.attachEvent.toString && node.attachEvent.toString().indexOf('[native code') < 0) &&
                     !isOpera) {
                 //Probably IE. IE (at least 6-8) do not fire
@@ -1979,7 +1979,7 @@ var requirejs, require, define;
                     //baseUrl.
                     src = mainScript.split('/');
                     mainScript = src.pop();
-                    subPath = src.length ? src.join('/') + '/' : './';
+                    subPath = src.length ? src.join('/')  + '/' : './';
 
                     cfg.baseUrl = subPath;
                 }

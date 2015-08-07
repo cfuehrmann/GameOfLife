@@ -7,6 +7,11 @@ module.exports = function(grunt) { // jshint ignore:line
 
     grunt.initConfig({
         copy: {
+            requirejs: {
+                files: [
+                    { src: ["node_modules/requirejs/require.js"], dest: "Imports/require.js" }
+                ]
+            },
             imports: {
                 files: [
                     { expand: true, src: ["Imports/**/*.js"], dest: "BuildOutput" },
@@ -81,7 +86,7 @@ module.exports = function(grunt) { // jshint ignore:line
 
     grunt.registerTask("build", [
         "newer:jscs", "newer:tslint", "newer:jshint",
-        "typescript", "copy:imports", "copy:statics"
+        "typescript", "copy:requirejs", "copy:imports", "copy:statics"
     ]);
     grunt.registerTask("test", function(browser) {
         grunt.task.run("karma:" + browser);

@@ -15,3 +15,4 @@ bin/
 *.suo
 *.user
 
+npm-debug.log
