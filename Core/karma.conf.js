@@ -46,7 +46,7 @@ module.exports = function (config) { // jshint ignore:line
         reporters: ["progress", "junit"],
 
         junitReporter: {
-            outputDir: "junitResults" // results will be saved as $outputDir/$browserName.xml 
+            outputDir: "testResults" // results will be saved as $outputDir/$browserName.xml 
         },
 
         // Continuous Integration mode

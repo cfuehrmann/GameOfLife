@@ -1,18 +1,17 @@
-
+# The node modules, which are completely determinded by the package.json
 node_modules/
 
-# Because this is a Typescript project:
-*.js
-*.js.map
+# The output directory of the build process
+BuildOutput/
 
-# User-specific files
+# Results of unit tests
+testResults/
+
+# Visual-Studio build artefacts
+obj/
+bin/
+
+# User-specific files for Visual Studio
 *.suo
 *.user
-*.sln.docstates
 
-obj/
-VisualStudioOutput/
-BuildOutput/
-test-results.xml
-
-*.log
