@@ -29,9 +29,9 @@ module Main {
         const height = Math.floor(window.innerHeight / 2) - 12;
         const pointMap = CanvasPointMap.create(height, width, 2);
         document.getElementById("content").appendChild(pointMap.node);
-        var renderer = StandardRenderer.create(pointMap);
-        var currentWorld = new Array2D(height, width, false);
-        var nextWorld = new Array2D(height, width, false);
+        const renderer = StandardRenderer.create(pointMap);
+        let currentWorld = new Array2D(height, width, false);
+        let nextWorld = new Array2D(height, width, false);
 
         for (let row = 0; row < height; row++) {
             for (let column = 0; column < width; column++) {
@@ -39,14 +39,14 @@ module Main {
             }
         }
 
-        var transformer = StandardTransformer.create(survival, birth);
+        const transformer = StandardTransformer.create(survival, birth);
 
-        var i = 0;
+        let i = 0;
 
         setInterval(() => {
             renderer.render(currentWorld);
             transformer.transform(currentWorld, nextWorld);
-            var h = currentWorld;
+            const h = currentWorld;
             currentWorld = nextWorld;
             nextWorld = h;
 

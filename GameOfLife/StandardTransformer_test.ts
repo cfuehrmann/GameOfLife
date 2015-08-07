@@ -2,27 +2,21 @@
 import TypeChecking = require("Imports/Core/TypeChecking");
 import checkDefinedAndNotNullAssert = TypeChecking.checkDefinedAndNotNullAssert;
 
-var testClass: string;
-var method: string;
-
-function check(testCase: string, testBody: (assert?: QUnitAssert) => any) {
-    test(testClass + "_" + method + "_" + testCase, testBody);
-}
-
-testClass = "StandardTransformer";
+let method: string;
+let name = (testCase: string) => "StandardTransformer, " + method + ": " + testCase;
 
 
 method = "create";
 
-check("survivalCondition when undefined or null",
+test(name("survivalCondition when undefined or null"),
     checkDefinedAndNotNullAssert("survivalCondition",
-        (survivalCondition: number[]) => StandardTransformer.create(survivalCondition, [0]))
-    );
+    (survivalCondition: number[]) => StandardTransformer.create(survivalCondition, [0]))
+);
 
-check("birthCondition when undefined or null",
+test(name("birthCondition when undefined or null"),
     checkDefinedAndNotNullAssert("birthCondition",
-        (birthCondition: number[]) => StandardTransformer.create([0], birthCondition))
-    );
+    (birthCondition: number[]) => StandardTransformer.create([0], birthCondition))
+);
 
 
 // in principle, there should be more tests here
