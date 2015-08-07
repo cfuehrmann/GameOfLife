@@ -1,9 +1,7 @@
-﻿/* tslint:disable no-unused-variable*/
-import Sequences = require("Sequences");
+﻿import Sequences = require("Sequences");
 import TypeChecking = require("TypeChecking");
 import checkDefinedAndNotNullAssert = TypeChecking.checkDefinedAndNotNullAssert;
 import ArraySeq = Sequences.ArraySeq;
-/* tslint:enable no-unused-variable*/
 
 var seq: ArraySeq<number>; // "var" because otherwise R# makes a type inference error
 

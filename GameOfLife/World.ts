@@ -1,10 +1,9 @@
-﻿/* tslint:disable no-unused-variable*/
-import Arrays = require("./Imports/Core/Arrays");
+﻿import Arrays = require("./Imports/Core/Arrays");
 import Array2D = Arrays.Array2D;
 import StandardRenderer = require("./StandardRenderer");
 import CanvasPointMap = require("./CanvasPointMap");
 import StandardTransformer = require("./StandardTransformer");
-/* tslint:enable no-unused-variable*/
+
 module Main {
     "use strict";
 

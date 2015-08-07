@@ -1,7 +1,5 @@
-﻿/* tslint:disable no-unused-variable*/
-import Exceptions = require("Exceptions");
+﻿import Exceptions = require("Exceptions");
 import ArgumentException = Exceptions.ArgumentException;
-/* tslint:enable no-unused-variable*/
 
 let testClass: string;
 let method: string;

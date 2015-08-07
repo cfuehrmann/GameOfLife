@@ -1,9 +1,7 @@
-﻿/* tslint:disable no-unused-variable*/
-import Exceptions = require("./Exceptions");
-import ArgumentException = Exceptions.ArgumentException;
+﻿import Exceptions = require("./Exceptions");
 import TypeChecking = require("./TypeChecking");
+import ArgumentException = Exceptions.ArgumentException;
 import assertInt = TypeChecking.assertInt;
-/* tslint:enable no-unused-variable*/
 
 export class Array2D<T> {
     private matrix: T[][];

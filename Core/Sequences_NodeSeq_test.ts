@@ -1,9 +1,7 @@
-﻿/* tslint:disable no-unused-variable*/
-import Sequences = require("Sequences");
+﻿import Sequences = require("Sequences");
 import TypeChecking = require("TypeChecking");
 import checkDefinedAndNotNullAssert = TypeChecking.checkDefinedAndNotNullAssert;
 import NodeSeq = Sequences.NodeSeq;
-/* tslint:enable no-unused-variable*/
 
 let nodeArray: Node[];
 let nodes: NodeList;

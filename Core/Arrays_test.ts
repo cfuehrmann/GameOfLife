@@ -1,13 +1,9 @@
-﻿
-
-/* tslint:disable no-unused-variable*/
-import Arrays = require("Arrays");
+﻿import Arrays = require("Arrays");
 import Array2D = Arrays.Array2D;
 import ArgumentException = Exceptions.ArgumentException;
 import Exceptions = require("Exceptions");
 import TypeChecking = require("TypeChecking");
 import checkIntAssert = TypeChecking.checkIntAssert;
-/* tslint:enable no-unused-variable*/
 
 let method: string;
 let name = (testCase: string) => "Array2D, " + method + ": " + testCase;

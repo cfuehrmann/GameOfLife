@@ -1,10 +1,8 @@
-﻿/* tslint:disable no-unused-variable*/
-import Numbers = require("Numbers");
+﻿import Numbers = require("Numbers");
 import Exceptions = require("Exceptions");
 import ArgumentException = Exceptions.ArgumentException;
 import TypeChecking = require("TypeChecking");
 import checkRealAssert = TypeChecking.checkRealAssert;
-/* tslint:enable no-unused-variable*/
 
 let method: string;
 let name = (testCase: string) => "Numbers, " + method + ": " + testCase;

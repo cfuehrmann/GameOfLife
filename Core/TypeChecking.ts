@@ -4,11 +4,8 @@
  */
 /// <reference path="Imports/QUnit/qunit.d.ts" />
 
-/* tslint:disable no-unused-variable*/
 import Exceptions = require("Exceptions");
 import ArgumentException = Exceptions.ArgumentException;
-
-/* tslint:enable no-unused-variable*/
 
 export function assertInt(argumentName: string, value: number) {
     if (value % 1 !== 0 || value == null) {
