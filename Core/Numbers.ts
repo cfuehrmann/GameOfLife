@@ -1,6 +1,6 @@
 ﻿import Exceptions = require("./Exceptions");
-import ArgumentException = Exceptions.ArgumentException;
 import TypeChecking = require("./TypeChecking");
+import ArgumentException = Exceptions.ArgumentException;
 import assertReal = TypeChecking.assertReal;
 
 export function mod(numerator: number, denominator: number) {

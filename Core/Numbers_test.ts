@@ -1,7 +1,7 @@
 ﻿import Numbers = require("Numbers");
 import Exceptions = require("Exceptions");
-import ArgumentException = Exceptions.ArgumentException;
 import TypeChecking = require("TypeChecking");
+import ArgumentException = Exceptions.ArgumentException;
 import checkRealAssert = TypeChecking.checkRealAssert;
 
 let method: string;

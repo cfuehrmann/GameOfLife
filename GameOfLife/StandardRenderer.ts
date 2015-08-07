@@ -1,12 +1,10 @@
-﻿/* tslint:disable no-unused-variable*/
-import Arrays = require("./Imports/Core/Arrays");
-import Array2D = Arrays.Array2D;
+﻿import Arrays = require("./Imports/Core/Arrays");
 import Interface = require("./Interfaces");
+import TypeChecking = require("Imports/Core/TypeChecking");
+import Array2D = Arrays.Array2D;
 import PointMap = Interface.PointMap;
 import Renderer = Interface.Renderer;
-import TypeChecking = require("Imports/Core/TypeChecking");
 import assertDefinedAndNotNull = TypeChecking.assertDefinedAndNotNull;
-/* tslint:enable no-unused-variable*/
 
 export function create<T>(pointMap: PointMap<T>): Renderer<T> {
     return new StandardRenderer(pointMap);

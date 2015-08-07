@@ -1,12 +1,10 @@
-﻿/* tslint:disable no-unused-variable*/
-import Arrays = require("Imports/Core/Arrays");
-import Array2D = Arrays.Array2D;
+﻿import Arrays = require("Imports/Core/Arrays");
 import Interface = require("Interfaces");
 import StandardRenderer = require("StandardRenderer");
-import PointMap = Interface.PointMap;
 import TypeChecking = require("Imports/Core/TypeChecking");
+import Array2D = Arrays.Array2D;
+import PointMap = Interface.PointMap;
 import checkDefinedAndNotNullAssert = TypeChecking.checkDefinedAndNotNullAssert;
-/* tslint:enable no-unused-variable*/
 
 var testClass: string;
 var method: string;

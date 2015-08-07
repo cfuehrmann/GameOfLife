@@ -1,7 +1,5 @@
-﻿/* tslint:disable no-unused-variable*/
-import Interface = require("./Interfaces");
+﻿import Interface = require("./Interfaces");
 import PointMap = Interface.PointMap;
-/* tslint:enable no-unused-variable*/
 
 export function create(height: number, width: number, pointSize: number): PointMap<boolean> {
     return new CanvasPointMap(height, width, pointSize);

@@ -1,7 +1,5 @@
-﻿/* tslint:disable no-unused-variable*/
-import Arrays = require("./Imports/Core/Arrays");
+﻿import Arrays = require("./Imports/Core/Arrays");
 import Array2D = Arrays.Array2D;
-/* tslint:enable no-unused-variable*/
 
 export interface PointMap<T> {
     clear(): void;

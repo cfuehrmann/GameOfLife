@@ -1,8 +1,8 @@
 ﻿import Arrays = require("Arrays");
-import Array2D = Arrays.Array2D;
-import ArgumentException = Exceptions.ArgumentException;
 import Exceptions = require("Exceptions");
 import TypeChecking = require("TypeChecking");
+import Array2D = Arrays.Array2D;
+import ArgumentException = Exceptions.ArgumentException;
 import checkIntAssert = TypeChecking.checkIntAssert;
 
 let method: string;

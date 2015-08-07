@@ -1,8 +1,8 @@
 ﻿import Arrays = require("./Imports/Core/Arrays");
-import Array2D = Arrays.Array2D;
 import StandardRenderer = require("./StandardRenderer");
 import CanvasPointMap = require("./CanvasPointMap");
 import StandardTransformer = require("./StandardTransformer");
+import Array2D = Arrays.Array2D;
 
 module Main {
     "use strict";

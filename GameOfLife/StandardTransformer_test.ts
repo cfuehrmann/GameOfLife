@@ -1,8 +1,6 @@
-﻿/* tslint:disable no-unused-variable*/
-import StandardTransformer = require("StandardTransformer");
+﻿import StandardTransformer = require("StandardTransformer");
 import TypeChecking = require("Imports/Core/TypeChecking");
 import checkDefinedAndNotNullAssert = TypeChecking.checkDefinedAndNotNullAssert;
-/* tslint:enable no-unused-variable*/
 
 var testClass: string;
 var method: string;

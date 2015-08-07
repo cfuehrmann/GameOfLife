@@ -1,12 +1,10 @@
-﻿/* tslint:disable no-unused-variable*/
-import Arrays = require("./Imports/Core/Arrays");
-import Array2D = Arrays.Array2D;
+﻿import Arrays = require("./Imports/Core/Arrays");
 import Numbers = require("./Imports/Core/Numbers");
 import Interface = require("./Interfaces");
-import Transformer = Interface.Transformer;
 import TypeChecking = require("Imports/Core/TypeChecking");
+import Array2D = Arrays.Array2D;
+import Transformer = Interface.Transformer;
 import assertDefinedAndNotNull = TypeChecking.assertDefinedAndNotNull;
-/* tslint:enable no-unused-variable*/
 
 export function create(survivalCondition: number[], birthCondition: number[]): Transformer<boolean> {
     assertDefinedAndNotNull("survivalCondition", survivalCondition);
