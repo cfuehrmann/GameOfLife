@@ -1,12 +1,6 @@
-var testFiles = [];
-var TEST_REGEXP = /_test\.js$/i;
-
-Object.keys(window.__karma__.files).forEach(function (file) {
-    if (TEST_REGEXP.test(file)) {
-        // Normalize paths to RequireJS module names.
-        testFiles.push(file);
-    }
-});
+var testRegExp = /_test\.js$/i;
+var allFiles = Object.keys(window.__karma__.files);
+var testFiles = allFiles.filter(function (file) { return testRegExp.test(file); });
 
 require.config({ // jshint ignore:line
     // Karma serves files under /base, which is the basePath from your config file
