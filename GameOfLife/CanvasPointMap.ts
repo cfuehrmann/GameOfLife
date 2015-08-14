@@ -1,5 +1,7 @@
 ﻿import Interface = require("./Interfaces");
+import TypeChecking = require("Imports/Core/TypeChecking");
 import PointMap = Interface.PointMap;
+import assertInt = TypeChecking.assertInt;
 
 export function create(height: number, width: number, pointSize: number): PointMap<boolean> {
     return new CanvasPointMap(height, width, pointSize);
@@ -9,9 +11,12 @@ class CanvasPointMap implements PointMap<boolean> {
 
     private canvasElement: HTMLCanvasElement;
     private ctx: CanvasRenderingContext2D;
-    public node: Node;
+    node: Node;
 
     constructor(private height: number, private width: number, private pointSize: number) {
+        assertInt("height", height);
+        assertInt("width", width);
+        assertInt("pointSize", pointSize);
         this.canvasElement = document.createElement("canvas");
         this.canvasElement.width = width * pointSize;
         this.canvasElement.height = height * pointSize;

@@ -3,7 +3,7 @@ import TypeChecking = require("TypeChecking");
 import checkDefinedAndNotNullAssert = TypeChecking.checkDefinedAndNotNullAssert;
 import ArraySeq = Sequences.ArraySeq;
 
-var seq: ArraySeq<number>; // "var" because otherwise R# makes a type inference error
+var seq: Sequences.Seq<number>; // "var" because otherwise R# makes a type inference error
 
 let method: string;
 let name = (testCaseName: string) => "ArraySeq, " + method + ": " + testCaseName;

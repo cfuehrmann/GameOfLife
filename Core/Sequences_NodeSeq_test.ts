@@ -5,7 +5,7 @@ import NodeSeq = Sequences.NodeSeq;
 
 let nodeArray: Node[];
 let nodes: NodeList;
-var seq: NodeSeq; // "var" because otherwise R# makes a type inference error
+var seq: Sequences.Seq<Node>; // "var" because otherwise R# makes a type inference error
 
 QUnit.moduleStart(() => {
     nodeArray = new Array<Node>();

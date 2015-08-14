@@ -29,6 +29,7 @@
     <Content Include="index.html" />
   </ItemGroup>
   <ItemGroup>
+    <TypeScriptCompile Include="CanvasPointMap_test.ts" />
     <TypeScriptCompile Include="Imports\Core\Arrays.d.ts" />
     <TypeScriptCompile Include="Imports\Core\Exceptions.d.ts" />
     <TypeScriptCompile Include="Imports\Core\Numbers.d.ts" />
