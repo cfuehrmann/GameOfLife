@@ -1,0 +1,38 @@
+{
+    "version": "1.5.0-beta",
+    "compilerOptions": {
+        "target": "es5",
+        "module": "amd",
+        "isolatedModules": false,
+        "jsx": "react",
+        "experimentalDecorators": true,
+        "emitDecoratorMetadata": true,
+        "declaration": false,
+        "noImplicitAny": true,
+        "removeComments": false,
+        "noLib": false,
+        "preserveConstEnums": true,
+        "suppressImplicitAnyIndexErrors": false
+    },
+    "filesGlob": [
+        "./**/*.ts",
+        "./**/*.tsx",
+        "!./node_modules/**/*"
+    ],
+    "files": [
+        "./CanvasPointMap.ts",
+        "./Imports/Core/Arrays.d.ts",
+        "./Imports/Core/Exceptions.d.ts",
+        "./Imports/Core/Numbers.d.ts",
+        "./Imports/Core/Sequences.d.ts",
+        "./Imports/Core/TypeChecking.d.ts",
+        "./Imports/QUnit/qunit.d.ts",
+        "./Interfaces.ts",
+        "./StandardRenderer.ts",
+        "./StandardRenderer_test.ts",
+        "./StandardTransformer.ts",
+        "./StandardTransformer_test.ts",
+        "./Start.ts",
+        "./World.ts"
+    ]
+}

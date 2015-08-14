@@ -1,0 +1,45 @@
+{
+    "version": "1.5.0-beta",
+    "compilerOptions": {
+        "target": "es5",
+        "module": "amd",
+        "isolatedModules": false,
+        "jsx": "react",
+        "experimentalDecorators": true,
+        "emitDecoratorMetadata": true,
+        "declaration": false,
+        "noImplicitAny": true,
+        "removeComments": false,
+        "noLib": false,
+        "preserveConstEnums": true,
+        "suppressImplicitAnyIndexErrors": false
+    },
+    "filesGlob": [
+        "./**/*.ts",
+        "./**/*.tsx",
+        "!./node_modules/**/*"
+    ],
+    "files": [
+        "./Arrays.ts",
+        "./Arrays_test.ts",
+        "./BuildOutput/Arrays.d.ts",
+        "./BuildOutput/Arrays_test.d.ts",
+        "./BuildOutput/Exceptions.d.ts",
+        "./BuildOutput/Exceptions_test.d.ts",
+        "./BuildOutput/Numbers.d.ts",
+        "./BuildOutput/Numbers_test.d.ts",
+        "./BuildOutput/Sequences.d.ts",
+        "./BuildOutput/Sequences_ArraySeq_test.d.ts",
+        "./BuildOutput/Sequences_NodeSeq_test.d.ts",
+        "./BuildOutput/TypeChecking.d.ts",
+        "./Exceptions.ts",
+        "./Exceptions_test.ts",
+        "./Imports/QUnit/qunit.d.ts",
+        "./Numbers.ts",
+        "./Numbers_test.ts",
+        "./Sequences.ts",
+        "./Sequences_ArraySeq_test.ts",
+        "./Sequences_NodeSeq_test.ts",
+        "./TypeChecking.ts"
+    ]
+}

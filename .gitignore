@@ -1,4 +1,4 @@
-# The node modules, which are completely determinded by the package.json
+# The node modules, which are completely determined by the package.json
 node_modules/
 
 # The output directory of the build process
@@ -16,3 +16,10 @@ bin/
 *.user
 
 npm-debug.log
+
+# Because this is a typescript project
+*.js
+
+!karma.conf.js
+!karmaRequireAndStart.js
+!Gruntfile.js
