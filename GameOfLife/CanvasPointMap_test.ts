@@ -19,4 +19,4 @@ test(name("pointSize is integer"),
     checkIntAssert("pointSize", pointSize => CanvasPointMap.create(1, 1, pointSize))
     );
 
-// there should be more tests here
+// todo: add more tests
