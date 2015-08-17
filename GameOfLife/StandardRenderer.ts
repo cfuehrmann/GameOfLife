@@ -1,6 +1,6 @@
 ﻿import Arrays = require("./Imports/Core/Arrays");
 import Interface = require("./Interfaces");
-import TypeChecking = require("Imports/Core/TypeChecking");
+import TypeChecking = require("./Imports/Core/TypeChecking");
 import Array2D = Arrays.Array2D;
 import PointMap = Interface.PointMap;
 import Renderer = Interface.Renderer;

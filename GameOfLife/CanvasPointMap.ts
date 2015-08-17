@@ -1,5 +1,5 @@
 ﻿import Interface = require("./Interfaces");
-import TypeChecking = require("Imports/Core/TypeChecking");
+import TypeChecking = require("./Imports/Core/TypeChecking");
 import PointMap = Interface.PointMap;
 import assertInt = TypeChecking.assertInt;
 
