@@ -1,4 +1,9 @@
-﻿import TypeChecking = require("TypeChecking");
+﻿/* At runtime, karma provides the qunit implementation from node_modules.
+ * The reference here is only to satisfy the typescript compiler. Interestingly,
+ * having the reference in one place eliminates the need to add it anywhere else.
+ */
+/// <reference path="Imports/QUnit/qunit.d.ts" />
+import TypeChecking = require("TypeChecking");
 import Exceptions = require("Exceptions");
 import assertInt = TypeChecking.assertInt;
 import ArgumentException = Exceptions.ArgumentException;

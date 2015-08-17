@@ -1,7 +1,7 @@
 ﻿import Sequences = require("Sequences");
 import TypeChecking = require("TypeChecking");
 import checkDefinedAndNotNullAssert = TypeChecking.checkDefinedAndNotNullAssert;
-import NodeSeq = Sequences.NodeSeq;
+import createNodeSeq = Sequences.createNodeSeq;
 
 let nodeArray: Node[];
 let nodes: NodeList;
@@ -35,7 +35,7 @@ QUnit.moduleDone(() => {
 });
 
 QUnit.testStart(() => {
-    seq = new NodeSeq(nodes);
+    seq = createNodeSeq(nodes);
 });
 
 let method: string;
@@ -45,7 +45,7 @@ let name = (testCaseName: string) => "NodeSeq, " + method + ": " + testCaseName;
 method = "constructor";
 
 test(name("Argument is defined"),
-    checkDefinedAndNotNullAssert("seq", (n: NodeList) => new Sequences.NodeSeq(n))
+    checkDefinedAndNotNullAssert("seq", (n: NodeList) => createNodeSeq(n))
 );
 
 

@@ -1,4 +1,4 @@
-﻿import TypeChecking = require("TypeChecking");
+﻿import TypeChecking = require("./TypeChecking");
 import assertDefinedAndNotNull = TypeChecking.assertDefinedAndNotNull;
 
 // This interface is aiming at powerful, type-safe method chaining on 
@@ -22,9 +22,13 @@ export interface Seq<T> {
     toArray(): T[];
 }
 
+export function createNodeSeq(nodes: NodeList): Seq<Node> { return new NodeSeq(nodes); }
+
+export function createArraySeq<T>(array: T[]): Seq<T> { return new ArraySeq(array); }
+
 // A class that wraps up an array under the Seq interface. Importantly, 
 // we don't extend the prototype, but we *do* use the fast methods of the array.
-export class ArraySeq<T> implements Seq<T> {
+class ArraySeq<T> implements Seq<T> {
     private seq: T[];
 
     constructor(seq: T[]) {
@@ -52,10 +56,11 @@ export class ArraySeq<T> implements Seq<T> {
     }
 }
 
+
 // A class that wraps up a Nodelist under the Seq interface. Importantly, 
 // we don't extend the prototype of Nodelist, and we don't take a costly 
 // detour through an array before the first method is used.
-export class NodeSeq implements Seq<Node> {
+class NodeSeq implements Seq<Node> {
     private seq: NodeList;
 
     constructor(seq: NodeList) {

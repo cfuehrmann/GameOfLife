@@ -1,5 +1,9 @@
 define(["require", "exports", "./TypeChecking"], function (require, exports, TypeChecking) {
     var assertDefinedAndNotNull = TypeChecking.assertDefinedAndNotNull;
+    function createNodeSeq(nodes) { return new NodeSeq(nodes); }
+    exports.createNodeSeq = createNodeSeq;
+    function createArraySeq(array) { return new ArraySeq(array); }
+    exports.createArraySeq = createArraySeq;
     // A class that wraps up an array under the Seq interface. Importantly, 
     // we don't extend the prototype, but we *do* use the fast methods of the array.
     var ArraySeq = (function () {
@@ -24,7 +28,6 @@ define(["require", "exports", "./TypeChecking"], function (require, exports, Typ
         };
         return ArraySeq;
     })();
-    exports.ArraySeq = ArraySeq;
     // A class that wraps up a Nodelist under the Seq interface. Importantly, 
     // we don't extend the prototype of Nodelist, and we don't take a costly 
     // detour through an array before the first method is used.
@@ -54,5 +57,4 @@ define(["require", "exports", "./TypeChecking"], function (require, exports, Typ
         };
         return NodeSeq;
     })();
-    exports.NodeSeq = NodeSeq;
 });

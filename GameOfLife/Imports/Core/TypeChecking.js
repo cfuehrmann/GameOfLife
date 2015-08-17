@@ -1,6 +1,5 @@
 define(["require", "exports", "./Exceptions"], function (require, exports, Exceptions) {
     var ArgumentException = Exceptions.ArgumentException;
-    /* tslint:enable no-unused-variable*/
     function assertInt(argumentName, value) {
         if (value % 1 !== 0 || value == null) {
             throw new ArgumentException(argumentName);

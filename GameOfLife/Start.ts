@@ -5,14 +5,14 @@
  */
 /// <reference path="Imports/QUnit/qunit.d.ts" />
 
-import Sequences = require("./Imports/Core/Sequences");
+import Sequences = require("Imports/Core/Sequences");
 
 module Start {
     "use strict";
 
     function getChecked(elementName: string) {
         const nodeList = document.getElementsByName(elementName);
-        return new Sequences.NodeSeq(nodeList)
+        return Sequences.createNodeSeq(nodeList)
             .filter(n => (<any>n).checked)
             .map(n => <string>(<any>n).value)
             .reduceRight((previous: string, current: string) => current + "," + previous, "");

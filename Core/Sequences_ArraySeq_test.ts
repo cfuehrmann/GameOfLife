@@ -1,7 +1,7 @@
 ﻿import Sequences = require("Sequences");
 import TypeChecking = require("TypeChecking");
 import checkDefinedAndNotNullAssert = TypeChecking.checkDefinedAndNotNullAssert;
-import ArraySeq = Sequences.ArraySeq;
+import createArraySeq = Sequences.createArraySeq;
 
 var seq: Sequences.Seq<number>; // "var" because otherwise R# makes a type inference error
 
@@ -9,14 +9,14 @@ let method: string;
 let name = (testCaseName: string) => "ArraySeq, " + method + ": " + testCaseName;
 
 QUnit.testStart(() => {
-    seq = new ArraySeq([0, 1, 2, 3]);
+    seq = createArraySeq([0, 1, 2, 3]);
 });
 
 
 method = "constructor";
 
 test(name("Argument is defined"),
-    checkDefinedAndNotNullAssert("seq", (seq: number[]) => new ArraySeq(seq))
+    checkDefinedAndNotNullAssert("seq", (seq: number[]) => createArraySeq(seq))
 );
 
 

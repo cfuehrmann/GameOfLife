@@ -1,7 +1,6 @@
 define(["require", "exports", "./Exceptions", "./TypeChecking"], function (require, exports, Exceptions, TypeChecking) {
     var ArgumentException = Exceptions.ArgumentException;
     var assertInt = TypeChecking.assertInt;
-    /* tslint:enable no-unused-variable*/
     var Array2D = (function () {
         function Array2D(height, width, initialValue) {
             this.height = height;

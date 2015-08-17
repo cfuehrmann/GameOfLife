@@ -1,7 +1,6 @@
 define(["require", "exports", "./Exceptions", "./TypeChecking"], function (require, exports, Exceptions, TypeChecking) {
     var ArgumentException = Exceptions.ArgumentException;
     var assertReal = TypeChecking.assertReal;
-    /* tslint:enable no-unused-variable*/
     function mod(numerator, denominator) {
         assertReal("numerator", numerator);
         assertReal("denominator", denominator);
