@@ -42,14 +42,12 @@ for (let row = 0; row < height; row++) {
 
 const transformer = StandardTransformer.create(survival, birth);
 
-let i = 0;
-
 setInterval(() => {
     renderer.render(currentWorld);
+
     transformer.transform(currentWorld, nextWorld);
+
     const h = currentWorld;
     currentWorld = nextWorld;
     nextWorld = h;
-
-    i++;
 }, 50);
