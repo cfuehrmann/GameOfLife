@@ -7,25 +7,17 @@
 
 import Sequences = require("Imports/Core/Sequences");
 
-module Start {
-    "use strict";
-
-    function getChecked(elementName: string) {
-        const nodeList = document.getElementsByName(elementName);
-        return Sequences.createNodeSeq(nodeList)
-            .filter(n => (<any>n).checked)
-            .map(n => <string>(<any>n).value)
-            .reduceRight((previous: string, current: string) => current + "," + previous, "");
-    }
-
-    function createWorld() {
-        document.location.href = "world.html?survival=" + getChecked("survivalCondition") +
-            "&birth=" + getChecked("birthCondition");
-    }
-
-    export function exec() {
-        document.getElementById("createWorld").onclick = createWorld;
-    }
+function getChecked(elementName: string) {
+    const nodeList = document.getElementsByName(elementName);
+    return Sequences.createNodeSeq(nodeList)
+        .filter(n => (<any>n).checked)
+        .map(n => <string>(<any>n).value)
+        .reduceRight((previous: string, current: string) => current + "," + previous, "");
 }
 
-Start.exec();
+function createWorld() {
+    document.location.href = "world.html?survival=" + getChecked("survivalCondition") +
+        "&birth=" + getChecked("birthCondition");
+}
+
+document.getElementById("createWorld").onclick = createWorld;
