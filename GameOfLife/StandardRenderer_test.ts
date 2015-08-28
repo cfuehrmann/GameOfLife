@@ -12,7 +12,7 @@ let name = (testCase: string) => "StandardRenderer, " + method + ": " + testCase
 method = "create";
 
 test(name("pointMap when undefined or null"),
-    checkDefinedAndNotNullAssert("pointMap", (pointMap: PointMap<number>) => StandardRenderer.create(pointMap))
+    checkDefinedAndNotNullAssert("pointMap", (pointMap: PointMap) => StandardRenderer.create(pointMap))
 );
 
 
@@ -21,38 +21,57 @@ method = "render";
 test(name("world when undefined or null"), () => {
     const r = StandardRenderer.create(new TestPointMap());
 
-    checkDefinedAndNotNullAssert("world", (world: Array2D<number>) => r.render(world))();
+    checkDefinedAndNotNullAssert("world", (world: Array2D<boolean>) => r.render(world))();
 });
 
 
 test(name("PointMapCallSequence"), () => {
+    // PREPARE
+
     const pointMap = new TestPointMap();
     const renderer = StandardRenderer.create(pointMap);
     const width = 5;
-    const height = 7;
-    const scene = new Array2D(height, width, 0);
-    for (let row = 0; row < height; row++) {
-        for (let column = 0; column < width; column++) {
-            scene.set(row, column, row * width + column);
-        }
-    }
-    const drawnPoints = new Array2D(height, width, false);
+    const height = 3;
+    const scene = new Array2D(height, width, false);
 
+    scene.set(0, 0, true);
+    scene.set(0, 1, false);
+    scene.set(0, 2, true);
+    scene.set(0, 3, false);
+    scene.set(0, 4, true);
+
+    scene.set(1, 0, false);
+    scene.set(1, 1, true);
+    scene.set(1, 2, false);
+    scene.set(1, 3, true);
+    scene.set(1, 4, false);
+
+    scene.set(2, 0, true);
+    scene.set(2, 1, false);
+    scene.set(2, 2, true);
+    scene.set(2, 3, false);
+    scene.set(2, 4, true);
+
+    // ACT
     renderer.render(scene);
 
-    strictEqual(pointMap.calls.length, 1 + width * height);
+    // ASSERT 
+    strictEqual(pointMap.calls.length, 1 + 8);
     ok(pointMap.calls[0].match({
         clear: () => true,
-        drawPoint: (row, column, value) => false
+// ReSharper disable UnusedParameter
+        drawPoint: (row, column) => false
+// ReSharper restore UnusedParameter
     }));
-    for (let i = 1; i < 1 + width * height; i++) {
+    const drawnPoints = new Array2D(height, width, false);
+    for (let i = 1; i < 1 + 8; i++) {
         pointMap.calls[i].match({
             clear: () => ok(false),
-            drawPoint: (row, column, value) => {
-                strictEqual(value, scene.get(row, column));
+            drawPoint: (row, column) => {
                 if (drawnPoints.get(row, column)) {
-                    ok(false);
+                    ok(false); // no point is drawn twice
                 } else {
+                    ok(scene.get(row, column));
                     drawnPoints.set(row, column, true);
                 }
             }
@@ -63,43 +82,43 @@ test(name("PointMapCallSequence"), () => {
 // We refrain from testing that exceptions in the PointMap methods are propagated,
 // since it would take criminal energy to keep them from propagating
 
-class TestPointMap implements PointMap<number> {
-    calls: PointMapCall<number>[];
+class TestPointMap implements PointMap {
+    calls: PointMapCall[];
 
     constructor() {
-        this.calls = new Array<PointMapCall<number>>(); // <PointMapCall<number>[]>
+        this.calls = new Array<PointMapCall>(); // <PointMapCall<number>[]>
     }
 
     clear() {
         this.calls.push(new Clear());
     }
 
-    drawPoint(row: number, column: number, value: number) {
-        this.calls.push(new DrawPoint(row, column, value));
+    drawPoint(row: number, column: number) {
+        this.calls.push(new DrawPoint(row, column));
     }
 
     node: any;
 }
 
-interface PointMapCall<TPoint> {
-    match<TResult>(cases: PointMapCallCases<TResult, TPoint>): TResult;
+interface PointMapCall {
+    match<TResult>(cases: PointMapCallCases<TResult>): TResult;
 }
 
-interface PointMapCallCases<TResult, TPoint> {
+interface PointMapCallCases<TResult> {
     clear(): TResult;
-    drawPoint(row: number, column: number, value: TPoint): TResult;
+    drawPoint(row: number, column: number): TResult;
 }
 
-class Clear<TResult, TPoint> implements PointMapCall<TPoint> {
-    match<T>(cases: PointMapCallCases<T, TPoint>) {
+class Clear<TResult, TPoint> implements PointMapCall {
+    match<T>(cases: PointMapCallCases<T>) {
         return cases.clear();
     }
 }
 
-class DrawPoint<TResult, TPoint> implements PointMapCall<TPoint> {
-    constructor(private row: number, private column: number, private value: TPoint) {}
+class DrawPoint<TResult> implements PointMapCall {
+    constructor(private row: number, private column: number) {}
 
-    match<T>(cases: PointMapCallCases<T, TPoint>) {
-        return cases.drawPoint(this.row, this.column, this.value);
+    match<T>(cases: PointMapCallCases<T>) {
+        return cases.drawPoint(this.row, this.column);
     }
 }

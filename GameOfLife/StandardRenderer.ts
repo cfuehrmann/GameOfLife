@@ -1,18 +1,18 @@
-﻿import Arrays = require("./Imports/Core/Arrays");
-import Interface = require("./Interfaces");
-import TypeChecking = require("./Imports/Core/TypeChecking");
+﻿import Arrays = require("Imports/Core/Arrays");
+import Interface = require("Interfaces");
+import TypeChecking = require("Imports/Core/TypeChecking");
 import Array2D = Arrays.Array2D;
 import PointMap = Interface.PointMap;
 import Renderer = Interface.Renderer;
 import assertDefinedAndNotNull = TypeChecking.assertDefinedAndNotNull;
 
-export function create<T>(pointMap: PointMap<T>): Renderer<T> {
+export function create(pointMap: PointMap): Renderer {
     return new StandardRenderer(pointMap);
 }
 
 class StandardRenderer<T> {
 
-    constructor(private pointMap: PointMap<T>) {
+    constructor(private pointMap: PointMap) {
         assertDefinedAndNotNull("pointMap", pointMap);
     }
 
@@ -23,7 +23,9 @@ class StandardRenderer<T> {
 
         for (let row = 0; row < world.height; row++) {
             for (let column = 0; column < world.width; column++) {
-                this.pointMap.drawPoint(row, column, world.get(row, column));
+                if (world.get(row, column)) {
+                    this.pointMap.drawPoint(row, column);
+                }
             }
         }
     }
