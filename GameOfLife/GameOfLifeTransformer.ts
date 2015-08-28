@@ -9,10 +9,10 @@ import assertDefinedAndNotNull = TypeChecking.assertDefinedAndNotNull;
 export function create(survivalCondition: number[], birthCondition: number[]): Transformer<boolean> {
     assertDefinedAndNotNull("survivalCondition", survivalCondition);
     assertDefinedAndNotNull("birthCondition", birthCondition);
-    return new StandardTransformer(survivalCondition, birthCondition);
+    return new GameOfLifeTransformer(survivalCondition, birthCondition);
 }
 
-class StandardTransformer implements Transformer<boolean> {
+class GameOfLifeTransformer implements Transformer<boolean> {
     constructor(private survivalCondition: number[], private birthCondition: number[]) {
     }
 

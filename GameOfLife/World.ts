@@ -1,7 +1,7 @@
 ﻿import Arrays = require("Imports/Core/Arrays");
 import StandardRenderer = require("StandardRenderer");
 import CanvasPointMap = require("CanvasPointMap");
-import StandardTransformer = require("StandardTransformer");
+import GameOfLifeTransformer = require("GameOfLifeTransformer");
 import Array2D = Arrays.Array2D;
 
 interface Parameter {
@@ -40,7 +40,7 @@ for (let row = 0; row < height; row++) {
     }
 }
 
-const transformer = StandardTransformer.create(survival, birth);
+const transformer = GameOfLifeTransformer.create(survival, birth);
 
 setInterval(() => {
     renderer.render(currentWorld);

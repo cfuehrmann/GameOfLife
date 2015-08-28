@@ -1,21 +1,21 @@
-﻿import StandardTransformer = require("StandardTransformer");
+﻿import GameOfLifeTransformer = require("GameOfLifeTransformer");
 import TypeChecking = require("Imports/Core/TypeChecking");
 import checkDefinedAndNotNullAssert = TypeChecking.checkDefinedAndNotNullAssert;
 
 let method: string;
-let name = (testCase: string) => "StandardTransformer, " + method + ": " + testCase;
+let name = (testCase: string) => "GameOfLifeTransformer, " + method + ": " + testCase;
 
 
 method = "create";
 
 test(name("survivalCondition when undefined or null"),
     checkDefinedAndNotNullAssert("survivalCondition",
-    (survivalCondition: number[]) => StandardTransformer.create(survivalCondition, [0]))
+    (survivalCondition: number[]) => GameOfLifeTransformer.create(survivalCondition, [0]))
 );
 
 test(name("birthCondition when undefined or null"),
     checkDefinedAndNotNullAssert("birthCondition",
-    (birthCondition: number[]) => StandardTransformer.create([0], birthCondition))
+    (birthCondition: number[]) => GameOfLifeTransformer.create([0], birthCondition))
 );
 
 

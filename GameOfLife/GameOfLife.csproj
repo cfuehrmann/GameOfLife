@@ -40,9 +40,9 @@
     <TypeScriptCompile Include="World.ts" />
     <TypeScriptCompile Include="CanvasPointMap.ts" />
     <TypeScriptCompile Include="StandardRenderer.ts" />
-    <TypeScriptCompile Include="StandardTransformer_test.ts" />
+    <TypeScriptCompile Include="GameOfLifeTransformer_test.ts" />
     <TypeScriptCompile Include="StandardRenderer_test.ts" />
-    <TypeScriptCompile Include="StandardTransformer.ts" />
+    <TypeScriptCompile Include="GameOfLifeTransformer.ts" />
   </ItemGroup>
   <ItemGroup>
     <Content Include=".jscsrc" />
