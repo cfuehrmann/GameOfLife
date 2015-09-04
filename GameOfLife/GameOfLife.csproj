@@ -37,9 +37,9 @@
     <TypeScriptCompile Include="Interfaces.ts" />
     <TypeScriptCompile Include="Start.ts" />
     <TypeScriptCompile Include="World.ts" />
-    <TypeScriptCompile Include="StandardRenderer.ts" />
+    <TypeScriptCompile Include="CanvasRenderer.ts" />
     <TypeScriptCompile Include="GameOfLifeTransformer_test.ts" />
-    <TypeScriptCompile Include="StandardRenderer_test.ts" />
+    <TypeScriptCompile Include="CanvasRenderer_test.ts" />
     <TypeScriptCompile Include="GameOfLifeTransformer.ts" />
   </ItemGroup>
   <ItemGroup>

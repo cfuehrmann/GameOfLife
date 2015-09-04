@@ -20,7 +20,6 @@
         "!./node_modules/**/*"
     ],
     "files": [
-        "./CanvasPointMap.ts",
         "./Imports/Core/Arrays.d.ts",
         "./Imports/Core/Exceptions.d.ts",
         "./Imports/Core/Numbers.d.ts",
@@ -28,10 +27,10 @@
         "./Imports/Core/TypeChecking.d.ts",
         "./Imports/QUnit/qunit.d.ts",
         "./Interfaces.ts",
-        "./StandardRenderer.ts",
-        "./StandardRenderer_test.ts",
-        "./StandardTransformer.ts",
-        "./StandardTransformer_test.ts",
+        "./CanvasRenderer.ts",
+        "./CanvasRenderer_test.ts",
+        "./GameOfLifeTransformer.ts",
+        "./GameOfLifeTransformer_test.ts",
         "./Start.ts",
         "./World.ts"
     ]

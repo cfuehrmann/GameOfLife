@@ -1,31 +1,31 @@
 ﻿import Arrays = require("Imports/Core/Arrays");
 import Interface = require("Interfaces");
-import StandardRenderer = require("StandardRenderer");
+import CanvasRenderer = require("CanvasRenderer");
 import TypeChecking = require("Imports/Core/TypeChecking");
 import Array2D = Arrays.Array2D;
 import PointMap = Interface.PointMap;
 import checkDefinedAndNotNullAssert = TypeChecking.checkDefinedAndNotNullAssert;
 
 let method: string;
-let name = (testCase: string) => "StandardRenderer, " + method + ": " + testCase;
+let name = (testCase: string) => "CanvasRenderer, " + method + ": " + testCase;
 
 method = "create";
 
 test(name("pointMap when undefined or null"),
     checkDefinedAndNotNullAssert("pointMap",
-    (pointMap: PointMap) => StandardRenderer.create(pointMap, 1))
+    (pointMap: PointMap) => CanvasRenderer.create(pointMap, 1))
 );
 
 test(name("pointSize when undefined or null"),
     checkDefinedAndNotNullAssert("pointSize",
-    (pointSize: number) => StandardRenderer.create(new TestPointMap(), pointSize))
+    (pointSize: number) => CanvasRenderer.create(new TestPointMap(), pointSize))
 );
 
 
 method = "render";
 
 test(name("world when undefined or null"), () => {
-    const r = StandardRenderer.create(new TestPointMap(), 1);
+    const r = CanvasRenderer.create(new TestPointMap(), 1);
 
     checkDefinedAndNotNullAssert("world", (world: Array2D<boolean>) => r.render(world))();
 });
@@ -35,7 +35,7 @@ test(name("PointMapCallSequence"), () => {
     // PREPARE
 
     const pointMap = new TestPointMap();
-    const renderer = StandardRenderer.create(pointMap, 1);
+    const renderer = CanvasRenderer.create(pointMap, 1);
     const width = 5;
     const height = 3;
     const world = new Array2D(height, width, false);

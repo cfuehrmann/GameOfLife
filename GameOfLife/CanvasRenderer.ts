@@ -8,10 +8,10 @@ import assertDefinedAndNotNull = TypeChecking.assertDefinedAndNotNull;
 import assertInt = TypeChecking.assertInt;
 
 export function create(pointMap: PointMap, pointSize: number): Renderer {
-    return new StandardRenderer(pointMap, pointSize);
+    return new CanvasRenderer(pointMap, pointSize);
 }
 
-class StandardRenderer<T> {
+class CanvasRenderer<T> {
 
     constructor(private pointMap: PointMap, private pointSize: number) {
         assertDefinedAndNotNull("pointMap", pointMap);

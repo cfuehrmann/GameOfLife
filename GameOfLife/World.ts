@@ -1,6 +1,5 @@
 ﻿import Arrays = require("Imports/Core/Arrays");
-import StandardRenderer = require("StandardRenderer");
-import CanvasPointMap = require("CanvasPointMap");
+import CanvasRenderer = require("CanvasRenderer");
 import GameOfLifeTransformer = require("GameOfLifeTransformer");
 import Array2D = Arrays.Array2D;
 
@@ -28,9 +27,16 @@ const survival = getParts(parameters, "survival");
 const birth = getParts(parameters, "birth");
 const width = Math.floor(window.innerWidth / 2) - 12;
 const height = Math.floor(window.innerHeight / 2) - 12;
-const pointMap = CanvasPointMap.create(width * 2, height * 2);
-document.getElementById("content").appendChild(pointMap.node);
-const renderer = StandardRenderer.create(pointMap, 2);
+
+const canvasElement = document.createElement("canvas");
+canvasElement.width = width * 2;
+canvasElement.height = height * 2;
+
+const ctx = <CanvasRenderingContext2D>canvasElement.getContext("2d");
+ctx.fillStyle = "rgb(" + String(0) + ", " + String(0) + ", " + String(0) + ")";
+
+document.getElementById("content").appendChild(canvasElement);
+const renderer = CanvasRenderer.create(ctx, 2);
 let currentWorld = new Array2D(height, width, false);
 let nextWorld = new Array2D(height, width, false);
 
