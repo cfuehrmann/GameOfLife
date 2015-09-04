@@ -29,7 +29,6 @@
     <Content Include="index.html" />
   </ItemGroup>
   <ItemGroup>
-    <TypeScriptCompile Include="CanvasPointMap_test.ts" />
     <TypeScriptCompile Include="Imports\Core\Arrays.d.ts" />
     <TypeScriptCompile Include="Imports\Core\Exceptions.d.ts" />
     <TypeScriptCompile Include="Imports\Core\Numbers.d.ts" />
@@ -38,7 +37,6 @@
     <TypeScriptCompile Include="Interfaces.ts" />
     <TypeScriptCompile Include="Start.ts" />
     <TypeScriptCompile Include="World.ts" />
-    <TypeScriptCompile Include="CanvasPointMap.ts" />
     <TypeScriptCompile Include="StandardRenderer.ts" />
     <TypeScriptCompile Include="GameOfLifeTransformer_test.ts" />
     <TypeScriptCompile Include="StandardRenderer_test.ts" />
