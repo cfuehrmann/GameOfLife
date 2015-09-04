@@ -28,7 +28,7 @@ class CanvasPointMap implements PointMap {
         this.ctx.clearRect(x, y, w, h);
     }
 
-    drawPoint(x: number, y: number, w: number, h: number) {
+    fillRect(x: number, y: number, w: number, h: number) {
         this.ctx.fillRect(x, y, w, h);
     }
 }

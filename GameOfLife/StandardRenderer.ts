@@ -27,7 +27,7 @@ class StandardRenderer<T> {
         for (let row = 0; row < world.height; row++) {
             for (let column = 0; column < world.width; column++) {
                 if (world.get(row, column)) {
-                    this.pointMap.drawPoint(column * this.pointSize, row * this.pointSize,
+                    this.pointMap.fillRect(column * this.pointSize, row * this.pointSize,
                         this.pointSize, this.pointSize);
                 }
             }

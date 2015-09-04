@@ -3,7 +3,7 @@ import Array2D = Arrays.Array2D;
 
 export interface PointMap {
     clearRect(x: number, y: number, w: number, h: number): void;
-    drawPoint(x: number, y: number, w: number, h: number): void;
+    fillRect(x: number, y: number, w: number, h: number): void;
     node: any;
 }
 

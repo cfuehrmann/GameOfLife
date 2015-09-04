@@ -66,14 +66,14 @@ test(name("PointMapCallSequence"), () => {
     ok(pointMap.calls[0].match({
         clearRect: (x, y, w, h) => true,
 // ReSharper disable UnusedParameter
-        drawPoint: (row, column) => false
+        fillRect: (row, column) => false
 // ReSharper restore UnusedParameter
     }));
     const drawnPoints = new Array2D(height, width, false);
     for (let i = 1; i < 1 + 8; i++) {
         pointMap.calls[i].match({
             clearRect: (x, y, w, h) => ok(false),
-            drawPoint: (x, y) => {
+            fillRect: (x, y) => {
                 if (drawnPoints.get(y, x)) {
                     ok(false); // no point is drawn twice
                 } else {
@@ -99,8 +99,8 @@ class TestPointMap implements PointMap {
         this.calls.push(new Clear(x, y, w, h));
     }
 
-    drawPoint(x: number, y: number, w: number, h: number) {
-        this.calls.push(new DrawPoint(x, y, w, h));
+    fillRect(x: number, y: number, w: number, h: number) {
+        this.calls.push(new FillRect(x, y, w, h));
     }
 
     node: any;
@@ -112,7 +112,7 @@ interface PointMapCall {
 
 interface PointMapCallCases<TResult> {
     clearRect(x: number, y: number, w: number, h: number): TResult;
-    drawPoint(x: number, y: number, w: number, h: number): TResult;
+    fillRect(x: number, y: number, w: number, h: number): TResult;
 }
 
 class Clear<TResult, TPoint> implements PointMapCall {
@@ -123,10 +123,10 @@ class Clear<TResult, TPoint> implements PointMapCall {
     }
 }
 
-class DrawPoint<TResult> implements PointMapCall {
+class FillRect<TResult> implements PointMapCall {
     constructor(private x: number, private y: number, private w: number, private h: number) {}
 
     match<T>(cases: PointMapCallCases<T>) {
-        return cases.drawPoint(this.x, this.y, this.w, this.h);
+        return cases.fillRect(this.x, this.y, this.w, this.h);
     }
 }
