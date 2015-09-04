@@ -21,7 +21,8 @@ class StandardRenderer<T> {
     render(world: Array2D<T>) {
         assertDefinedAndNotNull("world", world);
 
-        this.pointMap.clear();
+        this.pointMap.clearRect(0, 0,
+            world.width * this.pointSize, world.height * this.pointSize);
 
         for (let row = 0; row < world.height; row++) {
             for (let column = 0; column < world.width; column++) {

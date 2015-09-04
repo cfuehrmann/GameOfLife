@@ -24,8 +24,8 @@ class CanvasPointMap implements PointMap {
         this.node = this.canvasElement;
     }
 
-    clear(): void {
-        this.ctx.clearRect(0, 0, this.width, this.height);
+    clearRect(x: number, y: number, w: number, h: number): void {
+        this.ctx.clearRect(x, y, w, h);
     }
 
     drawPoint(x: number, y: number, w: number, h: number) {
