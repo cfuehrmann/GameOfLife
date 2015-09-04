@@ -1,9 +1,9 @@
-﻿import Arrays = require("./Imports/Core/Arrays");
+﻿import Arrays = require("Imports/Core/Arrays");
 import Array2D = Arrays.Array2D;
 
 export interface PointMap {
     clear(): void;
-    drawPoint(row: number, column: number): void;
+    drawPoint(x: number, y: number, w: number, h: number): void;
     node: any;
 }
 

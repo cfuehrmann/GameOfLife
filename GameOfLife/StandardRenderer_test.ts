@@ -12,14 +12,20 @@ let name = (testCase: string) => "StandardRenderer, " + method + ": " + testCase
 method = "create";
 
 test(name("pointMap when undefined or null"),
-    checkDefinedAndNotNullAssert("pointMap", (pointMap: PointMap) => StandardRenderer.create(pointMap))
+    checkDefinedAndNotNullAssert("pointMap",
+    (pointMap: PointMap) => StandardRenderer.create(pointMap, 1))
+);
+
+test(name("pointSize when undefined or null"),
+    checkDefinedAndNotNullAssert("pointSize",
+    (pointSize: number) => StandardRenderer.create(new TestPointMap(), pointSize))
 );
 
 
 method = "render";
 
 test(name("world when undefined or null"), () => {
-    const r = StandardRenderer.create(new TestPointMap());
+    const r = StandardRenderer.create(new TestPointMap(), 1);
 
     checkDefinedAndNotNullAssert("world", (world: Array2D<boolean>) => r.render(world))();
 });
@@ -29,31 +35,31 @@ test(name("PointMapCallSequence"), () => {
     // PREPARE
 
     const pointMap = new TestPointMap();
-    const renderer = StandardRenderer.create(pointMap);
+    const renderer = StandardRenderer.create(pointMap, 1);
     const width = 5;
     const height = 3;
-    const scene = new Array2D(height, width, false);
+    const world = new Array2D(height, width, false);
 
-    scene.set(0, 0, true);
-    scene.set(0, 1, false);
-    scene.set(0, 2, true);
-    scene.set(0, 3, false);
-    scene.set(0, 4, true);
+    world.set(0, 0, true);
+    world.set(0, 1, false);
+    world.set(0, 2, true);
+    world.set(0, 3, false);
+    world.set(0, 4, true);
 
-    scene.set(1, 0, false);
-    scene.set(1, 1, true);
-    scene.set(1, 2, false);
-    scene.set(1, 3, true);
-    scene.set(1, 4, false);
+    world.set(1, 0, false);
+    world.set(1, 1, true);
+    world.set(1, 2, false);
+    world.set(1, 3, true);
+    world.set(1, 4, false);
 
-    scene.set(2, 0, true);
-    scene.set(2, 1, false);
-    scene.set(2, 2, true);
-    scene.set(2, 3, false);
-    scene.set(2, 4, true);
+    world.set(2, 0, true);
+    world.set(2, 1, false);
+    world.set(2, 2, true);
+    world.set(2, 3, false);
+    world.set(2, 4, true);
 
     // ACT
-    renderer.render(scene);
+    renderer.render(world);
 
     // ASSERT 
     strictEqual(pointMap.calls.length, 1 + 8);
@@ -67,12 +73,12 @@ test(name("PointMapCallSequence"), () => {
     for (let i = 1; i < 1 + 8; i++) {
         pointMap.calls[i].match({
             clear: () => ok(false),
-            drawPoint: (row, column) => {
-                if (drawnPoints.get(row, column)) {
+            drawPoint: (x, y) => {
+                if (drawnPoints.get(y, x)) {
                     ok(false); // no point is drawn twice
                 } else {
-                    ok(scene.get(row, column));
-                    drawnPoints.set(row, column, true);
+                    ok(world.get(y, x));
+                    drawnPoints.set(y, x, true);
                 }
             }
         });
@@ -93,8 +99,8 @@ class TestPointMap implements PointMap {
         this.calls.push(new Clear());
     }
 
-    drawPoint(row: number, column: number) {
-        this.calls.push(new DrawPoint(row, column));
+    drawPoint(x: number, y: number, w: number, h: number) {
+        this.calls.push(new DrawPoint(x, y, w, h));
     }
 
     node: any;
@@ -106,7 +112,7 @@ interface PointMapCall {
 
 interface PointMapCallCases<TResult> {
     clear(): TResult;
-    drawPoint(row: number, column: number): TResult;
+    drawPoint(x: number, y: number, w: number, h: number): TResult;
 }
 
 class Clear<TResult, TPoint> implements PointMapCall {
@@ -116,9 +122,9 @@ class Clear<TResult, TPoint> implements PointMapCall {
 }
 
 class DrawPoint<TResult> implements PointMapCall {
-    constructor(private row: number, private column: number) {}
+    constructor(private x: number, private y: number, private w: number, private h: number) {}
 
     match<T>(cases: PointMapCallCases<T>) {
-        return cases.drawPoint(this.row, this.column);
+        return cases.drawPoint(this.x, this.y, this.w, this.h);
     }
 }

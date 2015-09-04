@@ -5,15 +5,17 @@ import Array2D = Arrays.Array2D;
 import PointMap = Interface.PointMap;
 import Renderer = Interface.Renderer;
 import assertDefinedAndNotNull = TypeChecking.assertDefinedAndNotNull;
+import assertInt = TypeChecking.assertInt;
 
-export function create(pointMap: PointMap): Renderer {
-    return new StandardRenderer(pointMap);
+export function create(pointMap: PointMap, pointSize: number): Renderer {
+    return new StandardRenderer(pointMap, pointSize);
 }
 
 class StandardRenderer<T> {
 
-    constructor(private pointMap: PointMap) {
+    constructor(private pointMap: PointMap, private pointSize: number) {
         assertDefinedAndNotNull("pointMap", pointMap);
+        assertInt("pointSize", pointSize);
     }
 
     render(world: Array2D<T>) {
@@ -24,7 +26,8 @@ class StandardRenderer<T> {
         for (let row = 0; row < world.height; row++) {
             for (let column = 0; column < world.width; column++) {
                 if (world.get(row, column)) {
-                    this.pointMap.drawPoint(row, column);
+                    this.pointMap.drawPoint(column * this.pointSize, row * this.pointSize,
+                        this.pointSize, this.pointSize);
                 }
             }
         }

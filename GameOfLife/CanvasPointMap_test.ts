@@ -8,15 +8,11 @@ let name = (testCase: string) => "CanvasPointMap, " + method + ": " + testCase;
 method = "create";
 
 test(name("height is integer"),
-    checkIntAssert("height", height => CanvasPointMap.create(height, 1, 1))
+    checkIntAssert("height", height => CanvasPointMap.create(1, height))
 );
 
 test(name("width is integer"),
-    checkIntAssert("width", width => CanvasPointMap.create(1, width, 1))
+    checkIntAssert("width", width => CanvasPointMap.create(width, 1))
 );
-
-test(name("pointSize is integer"),
-    checkIntAssert("pointSize", pointSize => CanvasPointMap.create(1, 1, pointSize))
-    );
 
 // todo: add more tests

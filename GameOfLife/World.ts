@@ -28,9 +28,9 @@ const survival = getParts(parameters, "survival");
 const birth = getParts(parameters, "birth");
 const width = Math.floor(window.innerWidth / 2) - 12;
 const height = Math.floor(window.innerHeight / 2) - 12;
-const pointMap = CanvasPointMap.create(height, width, 2);
+const pointMap = CanvasPointMap.create(width * 2, height * 2);
 document.getElementById("content").appendChild(pointMap.node);
-const renderer = StandardRenderer.create(pointMap);
+const renderer = StandardRenderer.create(pointMap, 2);
 let currentWorld = new Array2D(height, width, false);
 let nextWorld = new Array2D(height, width, false);
 

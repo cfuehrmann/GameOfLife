@@ -3,8 +3,8 @@ import TypeChecking = require("Imports/Core/TypeChecking");
 import PointMap = Interface.PointMap;
 import assertInt = TypeChecking.assertInt;
 
-export function create(height: number, width: number, pointSize: number): PointMap {
-    return new CanvasPointMap(height, width, pointSize);
+export function create(height: number, width: number): PointMap {
+    return new CanvasPointMap(height, width);
 }
 
 class CanvasPointMap implements PointMap {
@@ -13,27 +13,22 @@ class CanvasPointMap implements PointMap {
     private ctx: CanvasRenderingContext2D;
     node: Node;
 
-    constructor(private height: number, private width: number, private pointSize: number) {
-        assertInt("height", height);
+    constructor(private width: number, private height: number) {
         assertInt("width", width);
-        assertInt("pointSize", pointSize);
+        assertInt("height", height);
         this.canvasElement = document.createElement("canvas");
-        this.canvasElement.width = width * pointSize;
-        this.canvasElement.height = height * pointSize;
+        this.canvasElement.width = width;
+        this.canvasElement.height = height;
         this.ctx = <CanvasRenderingContext2D>this.canvasElement.getContext("2d");
         this.ctx.fillStyle = "rgb(" + String(0) + ", " + String(0) + ", " + String(0) + ")";
         this.node = this.canvasElement;
     }
 
     clear(): void {
-        this.ctx.clearRect(0, 0, this.width * this.pointSize, this.height * this.pointSize);
+        this.ctx.clearRect(0, 0, this.width, this.height);
     }
 
-    drawPoint(row: number, column: number) {
-        this.ctx.fillRect(
-            column * this.pointSize,
-            row * this.pointSize,
-            this.pointSize,
-            this.pointSize);
+    drawPoint(x: number, y: number, w: number, h: number) {
+        this.ctx.fillRect(x, y, w, h);
     }
 }
