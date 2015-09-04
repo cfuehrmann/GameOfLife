@@ -25,18 +25,23 @@ function getParameters(queryString: string): Parameter[] {
 const parameters = getParameters(location.search);
 const survival = getParts(parameters, "survival");
 const birth = getParts(parameters, "birth");
-const width = Math.floor(window.innerWidth / 2) - 12;
-const height = Math.floor(window.innerHeight / 2) - 12;
+
+const pointSize = 2;
+
+const width = Math.floor(window.innerWidth / pointSize) - 12;
+const height = Math.floor(window.innerHeight / pointSize) - 12;
 
 const canvasElement = document.createElement("canvas");
-canvasElement.width = width * 2;
-canvasElement.height = height * 2;
+canvasElement.width = width * pointSize;
+canvasElement.height = height * pointSize;
 
 const ctx = <CanvasRenderingContext2D>canvasElement.getContext("2d");
 ctx.fillStyle = "rgb(" + String(0) + ", " + String(0) + ", " + String(0) + ")";
 
 document.getElementById("content").appendChild(canvasElement);
-const renderer = CanvasRenderer.create(ctx, 2);
+
+const renderer = CanvasRenderer.create(ctx, pointSize);
+
 let currentWorld = new Array2D(height, width, false);
 let nextWorld = new Array2D(height, width, false);
 
