@@ -5,6 +5,8 @@ import TypeChecking = require("Imports/Core/TypeChecking");
 import Array2D = Arrays.Array2D;
 import RectRenderingContext = Interface.RectRenderingContext;
 import checkDefinedAndNotNullAssert = TypeChecking.checkDefinedAndNotNullAssert;
+import assertInt = TypeChecking.assertInt;
+import checkIntAssert = TypeChecking.checkIntAssert;
 
 let method: string;
 let name = (testCase: string) => "RectRenderer, " + method + ": " + testCase;
@@ -18,9 +20,13 @@ test(name("context when undefined or null"),
 
 test(name("pointSize when undefined or null"),
     checkDefinedAndNotNullAssert("pointSize",
-    (context: number) => RectRenderer.create(new TestContext(), context))
+    (pointSize: number) => RectRenderer.create(new TestContext(), pointSize))
 );
 
+test(name("pointSize when not integer"),
+    checkIntAssert("pointSize",
+    (pointSize: number) => RectRenderer.create(new TestContext(), pointSize))
+);
 
 method = "render";
 
@@ -35,7 +41,8 @@ test(name("ContextCallSequence"), () => {
     // PREPARE
 
     const context = new TestContext();
-    const renderer = RectRenderer.create(context, 1);
+    const pointSize = 4;
+    const renderer = RectRenderer.create(context, pointSize);
     const width = 5;
     const height = 3;
     const world = new Array2D(height, width, false);
@@ -59,34 +66,49 @@ test(name("ContextCallSequence"), () => {
     world.set(2, 4, true);
 
     // ACT
+
     renderer.render(world);
 
     // ASSERT 
-    strictEqual(context.calls.length, 1 + 8);
+
+    // The first call must be clearRect with the proper parameters:
     ok(context.calls[0].match({
-        clearRect: (x, y, w, h) => true,
-// ReSharper disable UnusedParameter
-        fillRect: (row, column) => false
-// ReSharper restore UnusedParameter
+        clearRect: (x, y, w, h) => x === 0 && y === 0 &&
+            w === width * pointSize && h === height * pointSize,
+        fillRect: () => false
     }));
-    const drawnPoints = new Array2D(height, width, false);
-    for (let i = 1; i < 1 + 8; i++) {
+
+    // The subsequent calls must be fillRects with proper parameters.
+    // In particular, each fillRect call must correspond to coordinates
+    // where "world" is true, and no such coordinates must occur twice:
+    for (let i = 1; i < context.calls.length; i++) {
         context.calls[i].match({
-            clearRect: (x, y, w, h) => ok(false),
-            fillRect: (x, y) => {
-                if (drawnPoints.get(y, x)) {
-                    ok(false); // no point is drawn twice
-                } else {
-                    ok(world.get(y, x));
-                    drawnPoints.set(y, x, true);
-                }
+            clearRect: () => ok(false),
+            fillRect: (x, y, w, h) => {
+                assertInt("x", x);
+                assertInt("y", y);
+                ok(x >= 0);
+                ok(y >= 0);
+                strictEqual(w, pointSize);
+                strictEqual(h, pointSize);
+                const row = Math.floor(y / pointSize);
+                const column = Math.floor(x / pointSize);
+                ok(world.get(row, column));
+                world.set(row, column, false);
             }
         });
     }
+
+    // The calls to fillRect must exhaust all coordinates where world is true:
+    for (let row = 0; row < height; row++) {
+        for (let column = 0; column < width; column++) {
+            strictEqual(world.get(row, column), false);
+        }
+    }
 });
 
-// We refrain from testing that exceptions in the PointMap methods are propagated,
-// since it would take criminal energy to keep them from propagating
+// We refrain from testing that exceptions in the RectRenderingContext methods 
+// are propagated, since it would take criminal energy to keep them from propagating
 
 class TestContext implements RectRenderingContext {
     calls: ContextCall[];
@@ -102,8 +124,6 @@ class TestContext implements RectRenderingContext {
     fillRect(x: number, y: number, w: number, h: number) {
         this.calls.push(new FillRect(x, y, w, h));
     }
-
-    node: any;
 }
 
 interface ContextCall {
