@@ -1,7 +1,7 @@
 ﻿import Arrays = require("Imports/Core/Arrays");
 import Array2D = Arrays.Array2D;
 
-export interface PointMap {
+export interface RectRenderingContext {
     clearRect(x: number, y: number, w: number, h: number): void;
     fillRect(x: number, y: number, w: number, h: number): void;
 }

@@ -3,7 +3,7 @@ import Interface = require("Interfaces");
 import CanvasRenderer = require("CanvasRenderer");
 import TypeChecking = require("Imports/Core/TypeChecking");
 import Array2D = Arrays.Array2D;
-import PointMap = Interface.PointMap;
+import RectRenderingContext = Interface.RectRenderingContext;
 import checkDefinedAndNotNullAssert = TypeChecking.checkDefinedAndNotNullAssert;
 
 let method: string;
@@ -11,31 +11,31 @@ let name = (testCase: string) => "CanvasRenderer, " + method + ": " + testCase;
 
 method = "create";
 
-test(name("pointMap when undefined or null"),
-    checkDefinedAndNotNullAssert("pointMap",
-    (pointMap: PointMap) => CanvasRenderer.create(pointMap, 1))
+test(name("context when undefined or null"),
+    checkDefinedAndNotNullAssert("context",
+    (context: RectRenderingContext) => CanvasRenderer.create(context, 1))
 );
 
 test(name("pointSize when undefined or null"),
     checkDefinedAndNotNullAssert("pointSize",
-    (pointSize: number) => CanvasRenderer.create(new TestPointMap(), pointSize))
+    (context: number) => CanvasRenderer.create(new TestContext(), context))
 );
 
 
 method = "render";
 
 test(name("world when undefined or null"), () => {
-    const r = CanvasRenderer.create(new TestPointMap(), 1);
+    const r = CanvasRenderer.create(new TestContext(), 1);
 
     checkDefinedAndNotNullAssert("world", (world: Array2D<boolean>) => r.render(world))();
 });
 
 
-test(name("PointMapCallSequence"), () => {
+test(name("ContextCallSequence"), () => {
     // PREPARE
 
-    const pointMap = new TestPointMap();
-    const renderer = CanvasRenderer.create(pointMap, 1);
+    const context = new TestContext();
+    const renderer = CanvasRenderer.create(context, 1);
     const width = 5;
     const height = 3;
     const world = new Array2D(height, width, false);
@@ -62,8 +62,8 @@ test(name("PointMapCallSequence"), () => {
     renderer.render(world);
 
     // ASSERT 
-    strictEqual(pointMap.calls.length, 1 + 8);
-    ok(pointMap.calls[0].match({
+    strictEqual(context.calls.length, 1 + 8);
+    ok(context.calls[0].match({
         clearRect: (x, y, w, h) => true,
 // ReSharper disable UnusedParameter
         fillRect: (row, column) => false
@@ -71,7 +71,7 @@ test(name("PointMapCallSequence"), () => {
     }));
     const drawnPoints = new Array2D(height, width, false);
     for (let i = 1; i < 1 + 8; i++) {
-        pointMap.calls[i].match({
+        context.calls[i].match({
             clearRect: (x, y, w, h) => ok(false),
             fillRect: (x, y) => {
                 if (drawnPoints.get(y, x)) {
@@ -88,11 +88,11 @@ test(name("PointMapCallSequence"), () => {
 // We refrain from testing that exceptions in the PointMap methods are propagated,
 // since it would take criminal energy to keep them from propagating
 
-class TestPointMap implements PointMap {
-    calls: PointMapCall[];
+class TestContext implements RectRenderingContext {
+    calls: ContextCall[];
 
     constructor() {
-        this.calls = new Array<PointMapCall>(); // <PointMapCall<number>[]>
+        this.calls = new Array<ContextCall>();
     }
 
     clearRect(x: number, y: number, w: number, h: number) {
@@ -106,27 +106,27 @@ class TestPointMap implements PointMap {
     node: any;
 }
 
-interface PointMapCall {
-    match<TResult>(cases: PointMapCallCases<TResult>): TResult;
+interface ContextCall {
+    match<TResult>(cases: ContextCallCases<TResult>): TResult;
 }
 
-interface PointMapCallCases<TResult> {
+interface ContextCallCases<TResult> {
     clearRect(x: number, y: number, w: number, h: number): TResult;
     fillRect(x: number, y: number, w: number, h: number): TResult;
 }
 
-class Clear<TResult, TPoint> implements PointMapCall {
+class Clear<TResult, TPoint> implements ContextCall {
     constructor(private x: number, private y: number, private w: number, private h: number) {}
 
-    match<T>(cases: PointMapCallCases<T>) {
+    match<T>(cases: ContextCallCases<T>) {
         return cases.clearRect(this.x, this.y, this.w, this.h);
     }
 }
 
-class FillRect<TResult> implements PointMapCall {
+class FillRect<TResult> implements ContextCall {
     constructor(private x: number, private y: number, private w: number, private h: number) {}
 
-    match<T>(cases: PointMapCallCases<T>) {
+    match<T>(cases: ContextCallCases<T>) {
         return cases.fillRect(this.x, this.y, this.w, this.h);
     }
 }
