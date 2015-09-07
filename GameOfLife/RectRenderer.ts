@@ -8,10 +8,10 @@ import assertDefinedAndNotNull = TypeChecking.assertDefinedAndNotNull;
 import assertInt = TypeChecking.assertInt;
 
 export function create(context: RectRenderingContext, pointSize: number): Renderer {
-    return new CanvasRenderer(context, pointSize);
+    return new RectRenderer(context, pointSize);
 }
 
-class CanvasRenderer<T> {
+class RectRenderer<T> {
 
     constructor(private context: RectRenderingContext, private pointSize: number) {
         assertDefinedAndNotNull("context", context);

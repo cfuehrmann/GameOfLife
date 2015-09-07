@@ -1,31 +1,31 @@
 ﻿import Arrays = require("Imports/Core/Arrays");
 import Interface = require("Interfaces");
-import CanvasRenderer = require("CanvasRenderer");
+import RectRenderer = require("RectRenderer");
 import TypeChecking = require("Imports/Core/TypeChecking");
 import Array2D = Arrays.Array2D;
 import RectRenderingContext = Interface.RectRenderingContext;
 import checkDefinedAndNotNullAssert = TypeChecking.checkDefinedAndNotNullAssert;
 
 let method: string;
-let name = (testCase: string) => "CanvasRenderer, " + method + ": " + testCase;
+let name = (testCase: string) => "RectRenderer, " + method + ": " + testCase;
 
 method = "create";
 
 test(name("context when undefined or null"),
     checkDefinedAndNotNullAssert("context",
-    (context: RectRenderingContext) => CanvasRenderer.create(context, 1))
+    (context: RectRenderingContext) => RectRenderer.create(context, 1))
 );
 
 test(name("pointSize when undefined or null"),
     checkDefinedAndNotNullAssert("pointSize",
-    (context: number) => CanvasRenderer.create(new TestContext(), context))
+    (context: number) => RectRenderer.create(new TestContext(), context))
 );
 
 
 method = "render";
 
 test(name("world when undefined or null"), () => {
-    const r = CanvasRenderer.create(new TestContext(), 1);
+    const r = RectRenderer.create(new TestContext(), 1);
 
     checkDefinedAndNotNullAssert("world", (world: Array2D<boolean>) => r.render(world))();
 });
@@ -35,7 +35,7 @@ test(name("ContextCallSequence"), () => {
     // PREPARE
 
     const context = new TestContext();
-    const renderer = CanvasRenderer.create(context, 1);
+    const renderer = RectRenderer.create(context, 1);
     const width = 5;
     const height = 3;
     const world = new Array2D(height, width, false);

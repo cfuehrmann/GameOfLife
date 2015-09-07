@@ -1,5 +1,5 @@
 ﻿import Arrays = require("Imports/Core/Arrays");
-import CanvasRenderer = require("CanvasRenderer");
+import RectRenderer = require("RectRenderer");
 import GameOfLifeTransformer = require("GameOfLifeTransformer");
 import Array2D = Arrays.Array2D;
 
@@ -40,7 +40,7 @@ ctx.fillStyle = "rgb(" + String(0) + ", " + String(0) + ", " + String(0) + ")";
 
 document.getElementById("content").appendChild(canvasElement);
 
-const renderer = CanvasRenderer.create(ctx, pointSize);
+const renderer = RectRenderer.create(ctx, pointSize);
 
 let currentWorld = new Array2D(height, width, false);
 let nextWorld = new Array2D(height, width, false);
