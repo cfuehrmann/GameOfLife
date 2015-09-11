@@ -20,81 +20,84 @@ test(name("birthCondition when undefined or null"),
     (birthCondition: number[]) => GameOfLifeTransformer.create([0], birthCondition))
 );
 
-const world0 = new Array2D(3, 3, false);
+//function subArrays<T>(a: T[]): T[][] {
+//    if (a.length === 0) {
+//        return [[]];
+//    }
 
-const world1 = new Array2D(3, 3, false);
-world1.set(0, 0, true);
-
-const world2 = new Array2D(3, 3, false);
-world2.set(0, 0, true);
-world2.set(0, 1, true);
-
-const world3 = new Array2D(3, 3, false);
-world3.set(0, 0, true);
-world3.set(0, 1, true);
-world3.set(0, 2, true);
-
-const world4 = new Array2D(3, 3, false);
-world4.set(0, 0, true);
-world4.set(0, 1, true);
-world4.set(0, 2, true);
-world4.set(1, 0, true);
-
-const world5 = new Array2D(3, 3, false);
-world5.set(0, 0, true);
-world5.set(0, 1, true);
-world5.set(0, 2, true);
-world5.set(1, 0, true);
-world5.set(1, 2, true);
-
-const world6 = new Array2D(3, 3, false);
-world6.set(0, 0, true);
-world6.set(0, 1, true);
-world6.set(0, 2, true);
-world6.set(1, 0, true);
-world6.set(1, 2, true);
-world6.set(2, 0, true);
-
-const world7 = new Array2D(3, 3, false);
-world7.set(0, 0, true);
-world7.set(0, 1, true);
-world7.set(0, 2, true);
-world7.set(1, 0, true);
-world7.set(1, 2, true);
-world7.set(2, 0, true);
-world7.set(2, 1, true);
-
-const world8 = new Array2D(3, 3, false);
-world8.set(0, 0, true);
-world8.set(0, 1, true);
-world8.set(0, 2, true);
-world8.set(1, 0, true);
-world8.set(1, 2, true);
-world8.set(2, 0, true);
-world8.set(2, 1, true);
-world8.set(2, 2, true);
-
-const worlds = [world0, world1, world2, world3, world4, world5, world6, world7, world8];
+//    return subArrays(a.slice(1)).
+//        reduce((previous: T[][], current: T[]) => previous.concat([current, [a[0]].concat(current)]), []);
+//}
 
 
-test(name("SingleBirthNumber"), () => {
-    // PREPARE
+function getWorld(n: number) {
+    const result = new Array2D(3, 3, false);
 
+    let numberOfPointsSet = 0;
+
+    for (let row = 0; row < 3; row++) {
+        for (let col = 0; col < 3; col++) {
+
+            if (numberOfPointsSet >= n) {
+                return result;
+            }
+
+            if (row !== 1 || col !== 1) {
+                result.set(row, col, true);
+                numberOfPointsSet++;
+            }
+        }
+    }
+
+    return result;
+}
+
+//test(name("subArrays"), () => {
+//    deepEqual(subArrays([1, 2]), [[], [1], [2], [1, 2]]);
+//});
+
+test(name("SingleSurvivalNumber"), () => {
     const nextWorld = new Array2D(3, 3, false);
 
-    // ACT
+    for (let n = 0; n < 9; n++) {
+        const t = GameOfLifeTransformer.create([n], []);
 
-    for (let birthNumber = 0; birthNumber < 9; birthNumber++) {
-        const t = GameOfLifeTransformer.create(new Array<number>(), [birthNumber]);
+        for (let neighbors = 0; neighbors < 9; neighbors++) {
+            const w = getWorld(neighbors);
+            w.set(1, 1, true);
+            t.transform(w, nextWorld);
 
-        for (let i = 0; i < 9; i++) {
-            t.transform(worlds[i], nextWorld);
-
-            // ASSERT
-
-            strictEqual(nextWorld.get(1, 1), i === birthNumber);
+            strictEqual(nextWorld.get(1, 1), neighbors === n);
         }
     }
 });
+
+test(name("First of two survival numbers"), () => {
+    const t = GameOfLifeTransformer.create([3, 2], []);
+    const nextWorld = new Array2D(3, 3, false);
+    const w = getWorld(2);
+    w.set(1, 1, true);
+
+    t.transform(w, nextWorld);
+
+    strictEqual(nextWorld.get(1, 1), true);
+});
+
+test(name("Second of two survival numbers"), () => {
+    const t = GameOfLifeTransformer.create([3, 2], []);
+    const nextWorld = new Array2D(3, 3, false);
+    const w = getWorld(3);
+    w.set(1, 1, true);
+
+    t.transform(w, nextWorld);
+
+    strictEqual(nextWorld.get(1, 1), true);
+});
+
+//test(name("Birth wins when empty"), () => {
+//    const t = GameOfLifeTransformer.create([7], [7]);
+//    const w = getWorld(5);
+
+//});
 
 // todo: add more tests?
