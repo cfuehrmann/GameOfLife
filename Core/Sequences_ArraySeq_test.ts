@@ -1,6 +1,6 @@
 ﻿import Sequences = require("Sequences");
-import TypeChecks = require("TypeChecks");
-import assertDefinedAndNotNull = TypeChecks.assertDefinedAndNotNull;
+import TypeAssertions = require("TypeAssertions");
+import assertDefinedAndNotNull = TypeAssertions.assertDefinedAndNotNull;
 import createArraySeq = Sequences.createArraySeq;
 
 var seq: Sequences.Seq<number>; // "var" because otherwise R# makes a type inference error

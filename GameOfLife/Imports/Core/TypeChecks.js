@@ -18,27 +18,4 @@ define(["require", "exports", "./Exceptions"], function (require, exports, Excep
         }
     }
     exports.checkDefinedAndNotNull = checkDefinedAndNotNull;
-    function assertInt(argumentName, method) {
-        return function () {
-            assertReal(argumentName, method)();
-            throws(function () { return method(0.5); }, function (e) { return e.getArgumentName() === argumentName; });
-        };
-    }
-    exports.assertInt = assertInt;
-    function assertReal(argumentName, method) {
-        return function () {
-            assertDefinedAndNotNull(argumentName, method)();
-            throws(function () { return method(NaN); }, function (e) { return e.getArgumentName() === argumentName; });
-            throws(function () { return method(Infinity); }, function (e) { return e.getArgumentName() === argumentName; });
-            throws(function () { return method(-Infinity); }, function (e) { return e.getArgumentName() === argumentName; });
-        };
-    }
-    exports.assertReal = assertReal;
-    function assertDefinedAndNotNull(argumentName, method) {
-        return function () {
-            throws(function () { return method(null); }, function (e) { return e.getArgumentName() === argumentName; });
-            throws(function () { return method(undefined); }, function (e) { return e.getArgumentName() === argumentName; });
-        };
-    }
-    exports.assertDefinedAndNotNull = assertDefinedAndNotNull;
 });

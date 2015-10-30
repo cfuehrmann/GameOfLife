@@ -1,9 +1,9 @@
 ﻿import Arrays = require("Arrays");
 import Exceptions = require("Exceptions");
-import TypeChecks = require("TypeChecks");
+import TypeAssertions = require("TypeAssertions");
 import Array2D = Arrays.Array2D;
 import ArgumentException = Exceptions.ArgumentException;
-import assertInt = TypeChecks.assertInt;
+import assertInt = TypeAssertions.assertInt;
 
 let method: string;
 let name = (testCase: string) => "Array2D, " + method + ": " + testCase;

@@ -1,8 +1,8 @@
 ﻿import Numbers = require("Numbers");
 import Exceptions = require("Exceptions");
-import TypeChecks = require("TypeChecks");
+import TypeAssertions = require("TypeAssertions");
 import ArgumentException = Exceptions.ArgumentException;
-import assertReal = TypeChecks.assertReal;
+import assertReal = TypeAssertions.assertReal;
 
 let method: string;
 let name = (testCase: string) => "Numbers, " + method + ": " + testCase;

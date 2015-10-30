@@ -1,12 +1,13 @@
 ﻿import Arrays = require("Imports/Core/Arrays");
 import Interface = require("Interfaces");
 import RectRenderer = require("RectRenderer");
+import TypeAssertions = require("Imports/Core/TypeAssertions");
 import TypeChecks = require("Imports/Core/TypeChecks");
+import checkInt = TypeChecks.checkInt;
 import Array2D = Arrays.Array2D;
 import RectRenderingContext = Interface.RectRenderingContext;
-import assertDefinedAndNotNull = TypeChecks.assertDefinedAndNotNull;
-import checkInt = TypeChecks.checkInt;
-import assertInt = TypeChecks.assertInt;
+import assertDefinedAndNotNull = TypeAssertions.assertDefinedAndNotNull;
+import assertInt = TypeAssertions.assertInt;
 
 let method: string;
 let name = (testCase: string) => "RectRenderer, " + method + ": " + testCase;
