@@ -1,44 +1,44 @@
 define(["require", "exports", "./Exceptions"], function (require, exports, Exceptions) {
     var ArgumentException = Exceptions.ArgumentException;
-    function assertInt(argumentName, value) {
+    function checkInt(argumentName, value) {
         if (value % 1 !== 0 || value == null) {
             throw new ArgumentException(argumentName);
         }
     }
-    exports.assertInt = assertInt;
-    function assertReal(argumentName, value) {
+    exports.checkInt = checkInt;
+    function checkReal(argumentName, value) {
         if (!isFinite(value) || value == null) {
             throw new ArgumentException(argumentName);
         }
     }
-    exports.assertReal = assertReal;
-    function assertDefinedAndNotNull(argumentName, value) {
+    exports.checkReal = checkReal;
+    function checkDefinedAndNotNull(argumentName, value) {
         if (typeof (value) === "undefined" || value == null) {
             throw new ArgumentException(argumentName);
         }
     }
-    exports.assertDefinedAndNotNull = assertDefinedAndNotNull;
-    function checkIntAssert(argumentName, method) {
+    exports.checkDefinedAndNotNull = checkDefinedAndNotNull;
+    function assertInt(argumentName, method) {
         return function () {
-            checkRealAssert(argumentName, method)();
+            assertReal(argumentName, method)();
             throws(function () { return method(0.5); }, function (e) { return e.getArgumentName() === argumentName; });
         };
     }
-    exports.checkIntAssert = checkIntAssert;
-    function checkRealAssert(argumentName, method) {
+    exports.assertInt = assertInt;
+    function assertReal(argumentName, method) {
         return function () {
-            checkDefinedAndNotNullAssert(argumentName, method)();
+            assertDefinedAndNotNull(argumentName, method)();
             throws(function () { return method(NaN); }, function (e) { return e.getArgumentName() === argumentName; });
             throws(function () { return method(Infinity); }, function (e) { return e.getArgumentName() === argumentName; });
             throws(function () { return method(-Infinity); }, function (e) { return e.getArgumentName() === argumentName; });
         };
     }
-    exports.checkRealAssert = checkRealAssert;
-    function checkDefinedAndNotNullAssert(argumentName, method) {
+    exports.assertReal = assertReal;
+    function assertDefinedAndNotNull(argumentName, method) {
         return function () {
             throws(function () { return method(null); }, function (e) { return e.getArgumentName() === argumentName; });
             throws(function () { return method(undefined); }, function (e) { return e.getArgumentName() === argumentName; });
         };
     }
-    exports.checkDefinedAndNotNullAssert = checkDefinedAndNotNullAssert;
+    exports.assertDefinedAndNotNull = assertDefinedAndNotNull;
 });

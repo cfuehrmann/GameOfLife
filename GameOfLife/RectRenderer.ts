@@ -4,8 +4,8 @@ import TypeChecking = require("Imports/Core/TypeChecking");
 import Array2D = Arrays.Array2D;
 import RectRenderingContext = Interface.RectRenderingContext;
 import Renderer = Interface.Renderer;
-import assertDefinedAndNotNull = TypeChecking.assertDefinedAndNotNull;
-import assertInt = TypeChecking.assertInt;
+import checkDefinedAndNotNull = TypeChecking.checkDefinedAndNotNull;
+import checkInt = TypeChecking.checkInt;
 
 export function create(context: RectRenderingContext, pointSize: number): Renderer {
     return new RectRenderer(context, pointSize);
@@ -14,12 +14,12 @@ export function create(context: RectRenderingContext, pointSize: number): Render
 class RectRenderer<T> {
 
     constructor(private context: RectRenderingContext, private pointSize: number) {
-        assertDefinedAndNotNull("context", context);
-        assertInt("pointSize", pointSize);
+        checkDefinedAndNotNull("context", context);
+        checkInt("pointSize", pointSize);
     }
 
     render(world: Array2D<T>) {
-        assertDefinedAndNotNull("world", world);
+        checkDefinedAndNotNull("world", world);
 
         this.context.clearRect(0, 0,
             world.width * this.pointSize, world.height * this.pointSize);

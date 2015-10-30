@@ -4,11 +4,11 @@ import Interface = require("./Interfaces");
 import TypeChecking = require("./Imports/Core/TypeChecking");
 import Array2D = Arrays.Array2D;
 import Transformer = Interface.Transformer;
-import assertDefinedAndNotNull = TypeChecking.assertDefinedAndNotNull;
+import checkDefinedAndNotNull = TypeChecking.checkDefinedAndNotNull;
 
 export function create(survivalCondition: number[], birthCondition: number[]): Transformer<boolean> {
-    assertDefinedAndNotNull("survivalCondition", survivalCondition);
-    assertDefinedAndNotNull("birthCondition", birthCondition);
+    checkDefinedAndNotNull("survivalCondition", survivalCondition);
+    checkDefinedAndNotNull("birthCondition", birthCondition);
     return new GameOfLifeTransformer(survivalCondition, birthCondition);
 }
 

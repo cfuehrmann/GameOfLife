@@ -1,13 +1,13 @@
 ﻿import Exceptions = require("./Exceptions");
 import TypeChecking = require("./TypeChecking");
 import ArgumentException = Exceptions.ArgumentException;
-import assertInt = TypeChecking.assertInt;
+import checkInt = TypeChecking.checkInt;
 
 export class Array2D<T> {
     private matrix: T[][];
 
     constructor(public height: number, public width: number, initialValue: T) {
-        assertInt("height", height); assertInt("width", width);
+        checkInt("height", height); checkInt("width", width);
         if (width <= 0) {
             throw new ArgumentException("width");
         }
@@ -24,7 +24,7 @@ export class Array2D<T> {
     }
 
     set(row: number, column: number, value: T) {
-        assertInt("row", row); assertInt("column", column);
+        checkInt("row", row); checkInt("column", column);
         if (row < 0 || row >= this.height) {
             throw new ArgumentException("row");
         }
@@ -35,7 +35,7 @@ export class Array2D<T> {
     }
 
     get(row: number, column: number): T {
-        assertInt("row", row); assertInt("column", column);
+        checkInt("row", row); checkInt("column", column);
         if (row < 0 || row >= this.height) {
             throw new ArgumentException("row");
         }

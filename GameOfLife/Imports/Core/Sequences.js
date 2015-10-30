@@ -1,5 +1,5 @@
 define(["require", "exports", "./TypeChecking"], function (require, exports, TypeChecking) {
-    var assertDefinedAndNotNull = TypeChecking.assertDefinedAndNotNull;
+    var checkDefinedAndNotNull = TypeChecking.checkDefinedAndNotNull;
     function createNodeSeq(nodes) { return new NodeSeq(nodes); }
     exports.createNodeSeq = createNodeSeq;
     function createArraySeq(array) { return new ArraySeq(array); }
@@ -8,19 +8,19 @@ define(["require", "exports", "./TypeChecking"], function (require, exports, Typ
     // we don't extend the prototype, but we *do* use the fast methods of the array.
     var ArraySeq = (function () {
         function ArraySeq(seq) {
-            assertDefinedAndNotNull("seq", seq);
+            checkDefinedAndNotNull("seq", seq);
             this.seq = seq;
         }
         ArraySeq.prototype.filter = function (condition) {
-            assertDefinedAndNotNull("condition", condition);
+            checkDefinedAndNotNull("condition", condition);
             return new ArraySeq(this.seq.filter(condition));
         };
         ArraySeq.prototype.map = function (transform) {
-            assertDefinedAndNotNull("transform", transform);
+            checkDefinedAndNotNull("transform", transform);
             return new ArraySeq(this.seq.map(transform));
         };
         ArraySeq.prototype.reduceRight = function (f, initialValue) {
-            assertDefinedAndNotNull("f", f);
+            checkDefinedAndNotNull("f", f);
             return this.seq.reduceRight(f, initialValue);
         };
         ArraySeq.prototype.toArray = function () {
@@ -33,19 +33,19 @@ define(["require", "exports", "./TypeChecking"], function (require, exports, Typ
     // detour through an array before the first method is used.
     var NodeSeq = (function () {
         function NodeSeq(seq) {
-            assertDefinedAndNotNull("seq", seq);
+            checkDefinedAndNotNull("seq", seq);
             this.seq = seq;
         }
         NodeSeq.prototype.filter = function (condition) {
-            assertDefinedAndNotNull("condition", condition);
+            checkDefinedAndNotNull("condition", condition);
             return new ArraySeq(Array.prototype.filter.call(this.seq, condition));
         };
         NodeSeq.prototype.map = function (transform) {
-            assertDefinedAndNotNull("transform", transform);
+            checkDefinedAndNotNull("transform", transform);
             return new ArraySeq(Array.prototype.map.call(this.seq, transform));
         };
         NodeSeq.prototype.reduceRight = function (f, initialValue) {
-            assertDefinedAndNotNull("f", f);
+            checkDefinedAndNotNull("f", f);
             return Array.prototype.reduceRight.call(this.seq, f, initialValue);
         };
         NodeSeq.prototype.toArray = function () {

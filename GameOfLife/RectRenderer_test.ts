@@ -4,9 +4,9 @@ import RectRenderer = require("RectRenderer");
 import TypeChecking = require("Imports/Core/TypeChecking");
 import Array2D = Arrays.Array2D;
 import RectRenderingContext = Interface.RectRenderingContext;
-import checkDefinedAndNotNullAssert = TypeChecking.checkDefinedAndNotNullAssert;
+import assertDefinedAndNotNull = TypeChecking.assertDefinedAndNotNull;
+import checkInt = TypeChecking.checkInt;
 import assertInt = TypeChecking.assertInt;
-import checkIntAssert = TypeChecking.checkIntAssert;
 
 let method: string;
 let name = (testCase: string) => "RectRenderer, " + method + ": " + testCase;
@@ -14,17 +14,17 @@ let name = (testCase: string) => "RectRenderer, " + method + ": " + testCase;
 method = "create";
 
 test(name("context when undefined or null"),
-    checkDefinedAndNotNullAssert("context",
+    assertDefinedAndNotNull("context",
     (context: RectRenderingContext) => RectRenderer.create(context, 1))
 );
 
 test(name("pointSize when undefined or null"),
-    checkDefinedAndNotNullAssert("pointSize",
+    assertDefinedAndNotNull("pointSize",
     (pointSize: number) => RectRenderer.create(new TestContext(), pointSize))
 );
 
 test(name("pointSize when not integer"),
-    checkIntAssert("pointSize",
+    assertInt("pointSize",
     (pointSize: number) => RectRenderer.create(new TestContext(), pointSize))
 );
 
@@ -33,7 +33,7 @@ method = "render";
 test(name("world when undefined or null"), () => {
     const r = RectRenderer.create(new TestContext(), 1);
 
-    checkDefinedAndNotNullAssert("world", (world: Array2D<boolean>) => r.render(world))();
+    assertDefinedAndNotNull("world", (world: Array2D<boolean>) => r.render(world))();
 });
 
 
@@ -85,8 +85,8 @@ test(name("ContextCallSequence"), () => {
         context.calls[i].match({
             clearRect: () => ok(false),
             fillRect: (x, y, w, h) => {
-                assertInt("x", x);
-                assertInt("y", y);
+                checkInt("x", x);
+                checkInt("y", y);
                 ok(x >= 0);
                 ok(y >= 0);
                 strictEqual(w, pointSize);

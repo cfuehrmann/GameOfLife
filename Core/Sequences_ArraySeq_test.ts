@@ -1,6 +1,6 @@
 ﻿import Sequences = require("Sequences");
 import TypeChecking = require("TypeChecking");
-import checkDefinedAndNotNullAssert = TypeChecking.checkDefinedAndNotNullAssert;
+import assertDefinedAndNotNull = TypeChecking.assertDefinedAndNotNull;
 import createArraySeq = Sequences.createArraySeq;
 
 var seq: Sequences.Seq<number>; // "var" because otherwise R# makes a type inference error
@@ -16,14 +16,14 @@ QUnit.testStart(() => {
 method = "constructor";
 
 test(name("Argument is defined"),
-    checkDefinedAndNotNullAssert("seq", (seq: number[]) => createArraySeq(seq))
+    assertDefinedAndNotNull("seq", (seq: number[]) => createArraySeq(seq))
 );
 
 
 method = "filter";
 
 test(name("Argument is defined"), () => {
-    checkDefinedAndNotNullAssert("condition", seq.filter)();
+    assertDefinedAndNotNull("condition", seq.filter)();
 });
 
 test(name("method works"), () => {
@@ -36,7 +36,7 @@ test(name("method works"), () => {
 method = "map";
 
 test(name("Argument is defined"), () => {
-    checkDefinedAndNotNullAssert("transform", seq.map)();
+    assertDefinedAndNotNull("transform", seq.map)();
 });
 
 test(name("method works"), () => {
@@ -51,7 +51,7 @@ method = "reduceRight";
 test(name("Argument is defined"), () => {
     const testee = (f: (previous: number, current: number) => number) => seq.reduceRight(f, 42);
 
-    checkDefinedAndNotNullAssert("f", testee)();
+    assertDefinedAndNotNull("f", testee)();
 });
 
 test(name("method works"), () => {

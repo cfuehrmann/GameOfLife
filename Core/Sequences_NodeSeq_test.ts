@@ -1,6 +1,6 @@
 ﻿import Sequences = require("Sequences");
 import TypeChecking = require("TypeChecking");
-import checkDefinedAndNotNullAssert = TypeChecking.checkDefinedAndNotNullAssert;
+import assertDefinedAndNotNull = TypeChecking.assertDefinedAndNotNull;
 import createNodeSeq = Sequences.createNodeSeq;
 
 let nodeArray: Node[];
@@ -45,14 +45,14 @@ let name = (testCaseName: string) => "NodeSeq, " + method + ": " + testCaseName;
 method = "constructor";
 
 test(name("Argument is defined"),
-    checkDefinedAndNotNullAssert("seq", (n: NodeList) => createNodeSeq(n))
+    assertDefinedAndNotNull("seq", (n: NodeList) => createNodeSeq(n))
 );
 
 
 method = "filter";
 
 test(name("Argument is defined"), () => {
-    checkDefinedAndNotNullAssert("condition", seq.filter)();
+    assertDefinedAndNotNull("condition", seq.filter)();
 });
 
 test(name("method works"), () => {
@@ -65,7 +65,7 @@ test(name("method works"), () => {
 method = "map";
 
 test(name("Argument is defined"), () => {
-    checkDefinedAndNotNullAssert("transform", seq.map)();
+    assertDefinedAndNotNull("transform", seq.map)();
 });
 
 test(name("method works"), () => {
@@ -80,7 +80,7 @@ method = "reduceRight";
 test(name("Argument is defined"), () => {
     const testee = (f: (previous: number, current: Node) => number) => seq.reduceRight(f, 42);
 
-    checkDefinedAndNotNullAssert("f", testee)();
+    assertDefinedAndNotNull("f", testee)();
 });
 
 test(name("method works"), () => {

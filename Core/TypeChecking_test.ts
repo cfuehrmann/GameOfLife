@@ -5,7 +5,7 @@
 /// <reference path="Imports/QUnit/qunit.d.ts" />
 import TypeChecking = require("TypeChecking");
 import Exceptions = require("Exceptions");
-import assertInt = TypeChecking.assertInt;
+import checkInt = TypeChecking.checkInt;
 import ArgumentException = Exceptions.ArgumentException;
 
 let method: string;
@@ -15,14 +15,14 @@ method = "assertInt";
 
 test(name("value is undefined"),
     () => throws(
-        () => assertInt("foo", undefined),
+        () => checkInt("foo", undefined),
         (e: ArgumentException) => e.getArgumentName() === "foo"
     )
 );
 
 test(name("value is null"),
     () => throws(
-        () => assertInt("foo", null),
+        () => checkInt("foo", null),
         (e: ArgumentException) => e.getArgumentName() === "foo"
     )
     );

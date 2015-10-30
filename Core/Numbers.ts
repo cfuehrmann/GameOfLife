@@ -1,10 +1,10 @@
 ﻿import Exceptions = require("./Exceptions");
 import TypeChecking = require("./TypeChecking");
 import ArgumentException = Exceptions.ArgumentException;
-import assertReal = TypeChecking.assertReal;
+import checkReal = TypeChecking.checkReal;
 
 export function mod(numerator: number, denominator: number) {
-    assertReal("numerator", numerator); assertReal("denominator", denominator);
+    checkReal("numerator", numerator); checkReal("denominator", denominator);
     if (denominator === 0) {
         throw new ArgumentException("denominator");
     }

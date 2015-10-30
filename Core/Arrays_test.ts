@@ -3,7 +3,7 @@ import Exceptions = require("Exceptions");
 import TypeChecking = require("TypeChecking");
 import Array2D = Arrays.Array2D;
 import ArgumentException = Exceptions.ArgumentException;
-import checkIntAssert = TypeChecking.checkIntAssert;
+import assertInt = TypeChecking.assertInt;
 
 let method: string;
 let name = (testCase: string) => "Array2D, " + method + ": " + testCase;
@@ -12,7 +12,7 @@ let name = (testCase: string) => "Array2D, " + method + ": " + testCase;
 method = "constructor";
 
 test(name("height when not int"),
-    checkIntAssert("height", height => new Array2D(height, 7, 0))
+    assertInt("height", height => new Array2D(height, 7, 0))
 );
 
 test(name("height when not positive"), () =>
@@ -21,7 +21,7 @@ test(name("height when not positive"), () =>
 );
 
 test(name("width when not int"),
-    checkIntAssert("width", width => new Array2D(5, width, 0))
+    assertInt("width", width => new Array2D(5, width, 0))
 );
 
 test(name("width when not positive"), () =>
@@ -42,7 +42,7 @@ test(name("initialValue"), () => {
 method = "get";
 
 test(name("row when not int"),
-    checkIntAssert("row", row => new Array2D(5, 7, 0).get(row, 3))
+    assertInt("row", row => new Array2D(5, 7, 0).get(row, 3))
 );
 
 test(name("row when negative"), () =>
@@ -56,7 +56,7 @@ test(name("row when too great"), () =>
 );
 
 test(name("column when not int"),
-    checkIntAssert("column", column => new Array2D(5, 7, 0).get(3, column))
+    assertInt("column", column => new Array2D(5, 7, 0).get(3, column))
 );
 
 test(name("column when negative"), () =>
@@ -73,7 +73,7 @@ test(name("column when too great"), () =>
 method = "set";
 
 test(name("row when not int"),
-    checkIntAssert("row", row => new Array2D(5, 7, 0).set(row, 3, 0))
+    assertInt("row", row => new Array2D(5, 7, 0).set(row, 3, 0))
 );
 
 test(name("row when negative"), () =>
@@ -87,7 +87,7 @@ test(name("row when too great"), () =>
 );
 
 test(name("column when not int"),
-    checkIntAssert("column", column => new Array2D(5, 7, 0).set(3, column, 0))
+    assertInt("column", column => new Array2D(5, 7, 0).set(3, column, 0))
 );
 
 test(name("column when negative"), () =>

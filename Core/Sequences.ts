@@ -1,5 +1,5 @@
 ﻿import TypeChecking = require("./TypeChecking");
-import assertDefinedAndNotNull = TypeChecking.assertDefinedAndNotNull;
+import checkDefinedAndNotNull = TypeChecking.checkDefinedAndNotNull;
 
 // This interface is aiming at powerful, type-safe method chaining on 
 // collections. JavaScript arrays do something like that, but their methods
@@ -32,22 +32,22 @@ class ArraySeq<T> implements Seq<T> {
     private seq: T[];
 
     constructor(seq: T[]) {
-        assertDefinedAndNotNull("seq", seq);
+        checkDefinedAndNotNull("seq", seq);
         this.seq = seq;
     }
 
     filter(condition: (element: T) => boolean): ArraySeq<T> { // ArraySeq, not Seq, to keep unit test from being bottomless
-        assertDefinedAndNotNull("condition", condition);
+        checkDefinedAndNotNull("condition", condition);
         return new ArraySeq(this.seq.filter(condition));
     }
 
     map<TOut>(transform: (element: T) => TOut): ArraySeq<TOut> { // ArraySeq, not Seq, to keep unit test from being bottomless
-        assertDefinedAndNotNull("transform", transform);
+        checkDefinedAndNotNull("transform", transform);
         return new ArraySeq(this.seq.map(transform));
     }
 
     reduceRight<TResult>(f: (previous: TResult, current: T) => TResult, initialValue: TResult): TResult {
-        assertDefinedAndNotNull("f", f);
+        checkDefinedAndNotNull("f", f);
         return this.seq.reduceRight(f, initialValue);
     }
 
@@ -64,22 +64,22 @@ class NodeSeq implements Seq<Node> {
     private seq: NodeList;
 
     constructor(seq: NodeList) {
-        assertDefinedAndNotNull("seq", seq);
+        checkDefinedAndNotNull("seq", seq);
         this.seq = seq;
     }
 
     filter(condition: (element: Node) => boolean): ArraySeq<Node> { // ArraySeq, not Seq, to keep unit test from being bottomless
-        assertDefinedAndNotNull("condition", condition);
+        checkDefinedAndNotNull("condition", condition);
         return new ArraySeq(<Node[]>Array.prototype.filter.call(this.seq, condition));
     }
 
     map<TOut>(transform: (element: Node) => TOut): ArraySeq<TOut> { // ArraySeq, not Seq, to keep unit test from being bottomless
-        assertDefinedAndNotNull("transform", transform);
+        checkDefinedAndNotNull("transform", transform);
         return new ArraySeq(<TOut[]>Array.prototype.map.call(this.seq, transform));
     }
 
     reduceRight<TResult>(f: (previous: TResult, current: Node) => TResult, initialValue: TResult): TResult {
-        assertDefinedAndNotNull("f", f);
+        checkDefinedAndNotNull("f", f);
         return Array.prototype.reduceRight.call(this.seq, f, initialValue);
     }
 

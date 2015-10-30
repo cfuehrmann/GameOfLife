@@ -1,6 +1,6 @@
 ﻿import GameOfLifeTransformer = require("GameOfLifeTransformer");
 import TypeChecking = require("Imports/Core/TypeChecking");
-import checkDefinedAndNotNullAssert = TypeChecking.checkDefinedAndNotNullAssert;
+import assertDefinedAndNotNull = TypeChecking.assertDefinedAndNotNull;
 import Arrays = require("Imports/Core/Arrays");
 import Array2D = Arrays.Array2D;
 
@@ -34,12 +34,12 @@ function getWorld(n: number, sparedRow: number, sparedCol: number) {
 method = "create";
 
 test(name("survivalCondition when undefined or null"),
-    checkDefinedAndNotNullAssert("survivalCondition",
+    assertDefinedAndNotNull("survivalCondition",
     (survivalCondition: number[]) => GameOfLifeTransformer.create(survivalCondition, [0]))
 );
 
 test(name("birthCondition when undefined or null"),
-    checkDefinedAndNotNullAssert("birthCondition",
+    assertDefinedAndNotNull("birthCondition",
     (birthCondition: number[]) => GameOfLifeTransformer.create([0], birthCondition))
 );
 

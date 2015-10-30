@@ -1,12 +1,12 @@
 define(["require", "exports", "./Exceptions", "./TypeChecking"], function (require, exports, Exceptions, TypeChecking) {
     var ArgumentException = Exceptions.ArgumentException;
-    var assertInt = TypeChecking.assertInt;
+    var checkInt = TypeChecking.checkInt;
     var Array2D = (function () {
         function Array2D(height, width, initialValue) {
             this.height = height;
             this.width = width;
-            assertInt("height", height);
-            assertInt("width", width);
+            checkInt("height", height);
+            checkInt("width", width);
             if (width <= 0) {
                 throw new ArgumentException("width");
             }
@@ -22,8 +22,8 @@ define(["require", "exports", "./Exceptions", "./TypeChecking"], function (requi
             }
         }
         Array2D.prototype.set = function (row, column, value) {
-            assertInt("row", row);
-            assertInt("column", column);
+            checkInt("row", row);
+            checkInt("column", column);
             if (row < 0 || row >= this.height) {
                 throw new ArgumentException("row");
             }
@@ -33,8 +33,8 @@ define(["require", "exports", "./Exceptions", "./TypeChecking"], function (requi
             this.matrix[row][column] = value;
         };
         Array2D.prototype.get = function (row, column) {
-            assertInt("row", row);
-            assertInt("column", column);
+            checkInt("row", row);
+            checkInt("column", column);
             if (row < 0 || row >= this.height) {
                 throw new ArgumentException("row");
             }

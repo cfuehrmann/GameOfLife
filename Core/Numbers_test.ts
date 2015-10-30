@@ -2,7 +2,7 @@
 import Exceptions = require("Exceptions");
 import TypeChecking = require("TypeChecking");
 import ArgumentException = Exceptions.ArgumentException;
-import checkRealAssert = TypeChecking.checkRealAssert;
+import assertReal = TypeChecking.assertReal;
 
 let method: string;
 let name = (testCase: string) => "Numbers, " + method + ": " + testCase;
@@ -11,7 +11,7 @@ let name = (testCase: string) => "Numbers, " + method + ": " + testCase;
 method = "mod";
 
 test(name("numerator when not real"),
-    checkRealAssert("numerator", numerator => Numbers.mod(numerator, 1))
+    assertReal("numerator", numerator => Numbers.mod(numerator, 1))
 );
 
 test(name("numerator when negative"), () =>
@@ -19,7 +19,7 @@ test(name("numerator when negative"), () =>
 );
 
 test(name("denominator when not real"),
-    checkRealAssert("denominator", denominator => Numbers.mod(1, denominator))
+    assertReal("denominator", denominator => Numbers.mod(1, denominator))
 );
 
 test(name("denominator when 0"), () =>
