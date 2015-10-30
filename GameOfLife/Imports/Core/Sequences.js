@@ -5,7 +5,7 @@ define(["require", "exports", "./TypeChecks"], function (require, exports, TypeC
     function createArraySeq(array) { return new ArraySeq(array); }
     exports.createArraySeq = createArraySeq;
     // A class that wraps up an array under the Seq interface. Importantly, 
-    // we don't extend the prototype, but we *do* use the fast methods of the array.
+    // we don't extend the prototype, but we *do* use the fast functions of the array.
     var ArraySeq = (function () {
         function ArraySeq(seq) {
             checkDefinedAndNotNull("seq", seq);
@@ -30,7 +30,7 @@ define(["require", "exports", "./TypeChecks"], function (require, exports, TypeC
     })();
     // A class that wraps up a Nodelist under the Seq interface. Importantly, 
     // we don't extend the prototype of Nodelist, and we don't take a costly 
-    // detour through an array before the first method is used.
+    // detour through an array before the first function is used.
     var NodeSeq = (function () {
         function NodeSeq(seq) {
             checkDefinedAndNotNull("seq", seq);

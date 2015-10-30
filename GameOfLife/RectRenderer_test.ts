@@ -9,10 +9,10 @@ import RectRenderingContext = Interface.RectRenderingContext;
 import assertDefinedAndNotNull = TypeAssertions.assertDefinedAndNotNull;
 import assertInt = TypeAssertions.assertInt;
 
-let method: string;
-let name = (testCase: string) => "RectRenderer, " + method + ": " + testCase;
+let functionName: string;
+let name = (testCase: string) => "RectRenderer, " + functionName + ": " + testCase;
 
-method = "create";
+functionName = "create";
 
 test(name("context when undefined or null"),
     assertDefinedAndNotNull("context",
@@ -29,7 +29,7 @@ test(name("pointSize when not integer"),
     (pointSize: number) => RectRenderer.create(new TestContext(), pointSize))
 );
 
-method = "render";
+functionName = "render";
 
 test(name("world when undefined or null"), () => {
     const r = RectRenderer.create(new TestContext(), 1);
@@ -108,7 +108,7 @@ test(name("ContextCallSequence"), () => {
     }
 });
 
-// We refrain from testing that exceptions in the RectRenderingContext methods 
+// We refrain from testing that exceptions in the RectRenderingContext functions 
 // are propagated, since it would take criminal energy to keep them from propagating
 
 class TestContext implements RectRenderingContext {

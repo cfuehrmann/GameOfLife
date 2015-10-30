@@ -4,8 +4,8 @@ import assertDefinedAndNotNull = TypeAssertions.assertDefinedAndNotNull;
 import Arrays = require("Imports/Core/Arrays");
 import Array2D = Arrays.Array2D;
 
-let method: string;
-let name = (testCase: string) => "GameOfLifeTransformer, " + method + ": " + testCase;
+let functionName: string;
+let name = (testCase: string) => "GameOfLifeTransformer, " + functionName + ": " + testCase;
 
 
 function getWorld(n: number, sparedRow: number, sparedCol: number) {
@@ -31,7 +31,7 @@ function getWorld(n: number, sparedRow: number, sparedCol: number) {
 }
 
 
-method = "create";
+functionName = "create";
 
 test(name("survivalCondition when undefined or null"),
     assertDefinedAndNotNull("survivalCondition",
@@ -44,7 +44,7 @@ test(name("birthCondition when undefined or null"),
 );
 
 
-method = "transform";
+functionName = "transform";
 
 test(name("Single survival number when alive"), () => {
     const nextWorld = new Array2D(3, 3, false);

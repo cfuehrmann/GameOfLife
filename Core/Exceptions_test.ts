@@ -2,18 +2,18 @@
 import ArgumentException = Exceptions.ArgumentException;
 
 let testClass: string;
-let method: string;
-let name = (testCase: string) => testClass + ", " + method + ": " + testCase;
+let functionName: string;
+let name = (testCase: string) => testClass + ", " + functionName + ": " + testCase;
 
 testClass = "ArgumentException";
 
 
-method = "constructor";
+functionName = "constructor";
 
 // no point in testing that the constructors argument is not checked
 
 
-method = "getArgumentName";
+functionName = "getArgumentName";
 
 test(name("result"), () => {
     const e = new ArgumentException("foo");
@@ -22,7 +22,7 @@ test(name("result"), () => {
 });
 
 
-method = "toString";
+functionName = "toString";
 
 test(name("containsArgumentName"), () => {
     const e = new ArgumentException("foo");

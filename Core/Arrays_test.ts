@@ -5,11 +5,11 @@ import Array2D = Arrays.Array2D;
 import ArgumentException = Exceptions.ArgumentException;
 import assertInt = TypeAssertions.assertInt;
 
-let method: string;
-let name = (testCase: string) => "Array2D, " + method + ": " + testCase;
+let functionName: string;
+let name = (testCase: string) => "Array2D, " + functionName + ": " + testCase;
 
 
-method = "constructor";
+functionName = "constructor";
 
 test(name("height when not int"),
     assertInt("height", height => new Array2D(height, 7, 0))
@@ -39,7 +39,7 @@ test(name("initialValue"), () => {
 });
 
 
-method = "get";
+functionName = "get";
 
 test(name("row when not int"),
     assertInt("row", row => new Array2D(5, 7, 0).get(row, 3))
@@ -70,7 +70,7 @@ test(name("column when too great"), () =>
 );
 
 
-method = "set";
+functionName = "set";
 
 test(name("row when not int"),
     assertInt("row", row => new Array2D(5, 7, 0).set(row, 3, 0))
@@ -116,7 +116,7 @@ test(name("twice"), () => {
 });
 
 
-method = "get";
+functionName = "get";
 
 let a2 = new Array2D(1000, 1000, false);
 
@@ -130,11 +130,11 @@ test(name("performance"), () => {
 });
 
 
-method = "width";
+functionName = "width";
 
 test(name("width"), () => strictEqual(new Array2D(2, 3, false).width, 3));
 
 
-method = "height";
+functionName = "height";
 
 test(name("height"), () => strictEqual(new Array2D(2, 3, false).height, 2));

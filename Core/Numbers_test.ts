@@ -4,11 +4,11 @@ import TypeAssertions = require("TypeAssertions");
 import ArgumentException = Exceptions.ArgumentException;
 import assertReal = TypeAssertions.assertReal;
 
-let method: string;
-let name = (testCase: string) => "Numbers, " + method + ": " + testCase;
+let functionName: string;
+let name = (testCase: string) => "Numbers, " + functionName + ": " + testCase;
 
 
-method = "mod";
+functionName = "mod";
 
 test(name("numerator when not real"),
     assertReal("numerator", numerator => Numbers.mod(numerator, 1))

@@ -11,11 +11,11 @@ export interface Seq<T> {
 
     map<TOut>(transform: (element: T) => TOut): Seq<TOut>;
 
-    // We ignore versions of reduce-methods that take no initial value, because that violates the motto
+    // We ignore reduce-functions that take no initial value, because that violates the motto
     // "Well typed programs do not go wrong" when given an empty argument. For versions that use the 
-    // initial element only for the empty argument, a method with a different name should be provided.
+    // initial element only for the empty argument, a function with a different name should be provided.
     // And another point: reduceRight is bad in that it swaps the order of the input elements when accumulating.
-    // But we accept this, to stay consistent with Javascript. The "reduce" method does not suffer from that flaw,
+    // But we accept this, to stay consistent with Javascript. The "reduce" function does not suffer from that flaw,
     // but we currently don't need it.
     reduceRight<TResult>(f: (previous: TResult, current: T) => TResult, initialValue?: TResult): TResult;
 
@@ -27,7 +27,7 @@ export function createNodeSeq(nodes: NodeList): Seq<Node> { return new NodeSeq(n
 export function createArraySeq<T>(array: T[]): Seq<T> { return new ArraySeq(array); }
 
 // A class that wraps up an array under the Seq interface. Importantly, 
-// we don't extend the prototype, but we *do* use the fast methods of the array.
+// we don't extend the prototype, but we *do* use the fast functions of the array.
 class ArraySeq<T> implements Seq<T> {
     private seq: T[];
 
@@ -59,7 +59,7 @@ class ArraySeq<T> implements Seq<T> {
 
 // A class that wraps up a Nodelist under the Seq interface. Importantly, 
 // we don't extend the prototype of Nodelist, and we don't take a costly 
-// detour through an array before the first method is used.
+// detour through an array before the first function is used.
 class NodeSeq implements Seq<Node> {
     private seq: NodeList;
 

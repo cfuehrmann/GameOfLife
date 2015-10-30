@@ -11,11 +11,11 @@ QUnit.moduleStart(() => {
     nodeArray = new Array<Node>();
     // The only simple way to obtain a NodeList for testing seems 
     // to create HTML elements, attach them to the document,
-    // and then obtain the nodes with some getElements method.
+    // and then obtain the nodes with some getElements function.
     // But the document persists across unit test files. 
     // So we must remove the nodes at the end of a test file.
-    // Interestingly, the node list obtained with a getElements m
-    // method is "live". That is, when nodes are removed from
+    // Interestingly, the node list obtained with a getElements 
+    // function is "live". That is, when nodes are removed from
     // the document, the originally-obtained node list shrinks.
     // This complicates the final removal of the nodes, and
     // we address that problem with the extra node array. 
@@ -38,44 +38,44 @@ QUnit.testStart(() => {
     seq = createNodeSeq(nodes);
 });
 
-let method: string;
-let name = (testCaseName: string) => "NodeSeq, " + method + ": " + testCaseName;
+let functionName: string;
+let name = (testCaseName: string) => "NodeSeq, " + functionName + ": " + testCaseName;
 
 
-method = "constructor";
+functionName = "constructor";
 
 test(name("Argument is defined"),
     assertDefinedAndNotNull("seq", (n: NodeList) => createNodeSeq(n))
 );
 
 
-method = "filter";
+functionName = "filter";
 
 test(name("Argument is defined"), () => {
     assertDefinedAndNotNull("condition", seq.filter)();
 });
 
-test(name("method works"), () => {
+test(name("function works"), () => {
     const result = seq.filter(n => ["1", "3"].indexOf(n.textContent) >= 0);
 
     deepEqual(result.toArray(), [nodes[1], nodes[3]]);
 });
 
 
-method = "map";
+functionName = "map";
 
 test(name("Argument is defined"), () => {
     assertDefinedAndNotNull("transform", seq.map)();
 });
 
-test(name("method works"), () => {
+test(name("function works"), () => {
     const result = seq.map(element => element.textContent + "x");
 
     deepEqual(result.toArray(), ["0x", "1x", "2x", "3x"]);
 });
 
 
-method = "reduceRight";
+functionName = "reduceRight";
 
 test(name("Argument is defined"), () => {
     const testee = (f: (previous: number, current: Node) => number) => seq.reduceRight(f, 42);
@@ -83,14 +83,14 @@ test(name("Argument is defined"), () => {
     assertDefinedAndNotNull("f", testee)();
 });
 
-test(name("method works"), () => {
+test(name("function works"), () => {
     const result = seq.reduceRight((previous, current) => [previous, current], new Array<any>());
 
     deepEqual(result, [[[[new Array<any>(), nodeArray[3]], nodeArray[2]], nodeArray[1]], nodeArray[0]]);
 });
 
 
-method = "n/a";
+functionName = "n/a";
 
 test(name("reflects changes to Document"), () => {
     const element = document.createElement("BUTTON");

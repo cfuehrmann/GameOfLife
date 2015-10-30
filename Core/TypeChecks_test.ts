@@ -8,10 +8,10 @@ import Exceptions = require("Exceptions");
 import checkInt = TypeChecks.checkInt;
 import ArgumentException = Exceptions.ArgumentException;
 
-let method: string;
-let name = (testCaseName: string) => "TypeChecks, " + method + ": " + testCaseName;
+let functionName: string;
+let name = (testCaseName: string) => "TypeChecks, " + functionName + ": " + testCaseName;
 
-method = "assertInt";
+functionName = "assertInt";
 
 test(name("value is undefined"),
     () => throws(

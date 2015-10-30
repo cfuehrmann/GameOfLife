@@ -1,31 +1,31 @@
 ﻿import Exceptions = require("./Exceptions");
 import ArgumentException = Exceptions.ArgumentException;
 
-export function assertInt<T>(argumentName: string, method: (n: number) => T) {
+export function assertInt<T>(argumentName: string, testee: (n: number) => T) {
     return () => {
-        assertReal(argumentName, method)();
-        throws(() => method(0.5),
+        assertReal(argumentName, testee)();
+        throws(() => testee(0.5),
         (e: ArgumentException) => e.getArgumentName() === argumentName);
     };
 }
 
-export function assertReal<T>(argumentName: string, method: (n: number) => T) {
+export function assertReal<T>(argumentName: string, testee: (n: number) => T) {
     return () => {
-        assertDefinedAndNotNull(argumentName, method)();
-        throws(() => method(NaN),
+        assertDefinedAndNotNull(argumentName, testee)();
+        throws(() => testee(NaN),
         (e: ArgumentException) => e.getArgumentName() === argumentName);
-        throws(() => method(Infinity),
+        throws(() => testee(Infinity),
         (e: ArgumentException) => e.getArgumentName() === argumentName);
-        throws(() => method(-Infinity),
+        throws(() => testee(-Infinity),
         (e: ArgumentException) => e.getArgumentName() === argumentName);
     };
 }
 
-export function assertDefinedAndNotNull<TArgument, TResult>(argumentName: string, method: (n: TArgument) => TResult) {
+export function assertDefinedAndNotNull<TArgument, TResult>(argumentName: string, testee: (n: TArgument) => TResult) {
     return () => {
-        throws(() => method(null),
+        throws(() => testee(null),
         (e: ArgumentException) => e.getArgumentName() === argumentName);
-        throws(() => method(undefined),
+        throws(() => testee(undefined),
         (e: ArgumentException) => e.getArgumentName() === argumentName);
     };
 }
