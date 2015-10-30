@@ -1,7 +1,7 @@
 ﻿import Exceptions = require("./Exceptions");
-import TypeChecking = require("./TypeChecking");
+import TypeChecks = require("./TypeChecks");
 import ArgumentException = Exceptions.ArgumentException;
-import checkInt = TypeChecking.checkInt;
+import checkInt = TypeChecks.checkInt;
 
 export class Array2D<T> {
     private matrix: T[][];

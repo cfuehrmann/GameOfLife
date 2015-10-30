@@ -1,5 +1,5 @@
-define(["require", "exports", "./TypeChecking"], function (require, exports, TypeChecking) {
-    var checkDefinedAndNotNull = TypeChecking.checkDefinedAndNotNull;
+define(["require", "exports", "./TypeChecks"], function (require, exports, TypeChecks) {
+    var checkDefinedAndNotNull = TypeChecks.checkDefinedAndNotNull;
     function createNodeSeq(nodes) { return new NodeSeq(nodes); }
     exports.createNodeSeq = createNodeSeq;
     function createArraySeq(array) { return new ArraySeq(array); }

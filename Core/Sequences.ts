@@ -1,5 +1,5 @@
-﻿import TypeChecking = require("./TypeChecking");
-import checkDefinedAndNotNull = TypeChecking.checkDefinedAndNotNull;
+﻿import TypeChecks = require("./TypeChecks");
+import checkDefinedAndNotNull = TypeChecks.checkDefinedAndNotNull;
 
 // This interface is aiming at powerful, type-safe method chaining on 
 // collections. JavaScript arrays do something like that, but their methods

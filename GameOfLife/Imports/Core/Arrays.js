@@ -1,6 +1,6 @@
-define(["require", "exports", "./Exceptions", "./TypeChecking"], function (require, exports, Exceptions, TypeChecking) {
+define(["require", "exports", "./Exceptions", "./TypeChecks"], function (require, exports, Exceptions, TypeChecks) {
     var ArgumentException = Exceptions.ArgumentException;
-    var checkInt = TypeChecking.checkInt;
+    var checkInt = TypeChecks.checkInt;
     var Array2D = (function () {
         function Array2D(height, width, initialValue) {
             this.height = height;

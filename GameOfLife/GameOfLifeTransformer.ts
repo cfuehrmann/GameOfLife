@@ -1,10 +1,10 @@
 ﻿import Arrays = require("./Imports/Core/Arrays");
 import Numbers = require("./Imports/Core/Numbers");
 import Interface = require("./Interfaces");
-import TypeChecking = require("./Imports/Core/TypeChecking");
+import TypeChecks = require("./Imports/Core/TypeChecks");
 import Array2D = Arrays.Array2D;
 import Transformer = Interface.Transformer;
-import checkDefinedAndNotNull = TypeChecking.checkDefinedAndNotNull;
+import checkDefinedAndNotNull = TypeChecks.checkDefinedAndNotNull;
 
 export function create(survivalCondition: number[], birthCondition: number[]): Transformer<boolean> {
     checkDefinedAndNotNull("survivalCondition", survivalCondition);

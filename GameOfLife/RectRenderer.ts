@@ -1,11 +1,11 @@
-﻿import Arrays = require("Imports/Core/Arrays");
-import Interface = require("Interfaces");
-import TypeChecking = require("Imports/Core/TypeChecking");
+﻿import Arrays = require("./Imports/Core/Arrays");
+import Interface = require("./Interfaces");
+import TypeChecks = require("./Imports/Core/TypeChecks");
 import Array2D = Arrays.Array2D;
 import RectRenderingContext = Interface.RectRenderingContext;
 import Renderer = Interface.Renderer;
-import checkDefinedAndNotNull = TypeChecking.checkDefinedAndNotNull;
-import checkInt = TypeChecking.checkInt;
+import checkDefinedAndNotNull = TypeChecks.checkDefinedAndNotNull;
+import checkInt = TypeChecks.checkInt;
 
 export function create(context: RectRenderingContext, pointSize: number): Renderer {
     return new RectRenderer(context, pointSize);

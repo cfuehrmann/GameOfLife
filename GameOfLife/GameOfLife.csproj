@@ -33,7 +33,7 @@
     <TypeScriptCompile Include="Imports\Core\Exceptions.d.ts" />
     <TypeScriptCompile Include="Imports\Core\Numbers.d.ts" />
     <TypeScriptCompile Include="Imports\Core\Sequences.d.ts" />
-    <TypeScriptCompile Include="Imports\Core\TypeChecking.d.ts" />
+    <TypeScriptCompile Include="Imports\Core\TypeChecks.d.ts" />
     <TypeScriptCompile Include="Interfaces.ts" />
     <TypeScriptCompile Include="Start.ts" />
     <TypeScriptCompile Include="World.ts" />

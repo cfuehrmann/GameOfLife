@@ -1,6 +1,6 @@
-define(["require", "exports", "./Exceptions", "./TypeChecking"], function (require, exports, Exceptions, TypeChecking) {
+define(["require", "exports", "./Exceptions", "./TypeChecks"], function (require, exports, Exceptions, TypeChecks) {
     var ArgumentException = Exceptions.ArgumentException;
-    var checkReal = TypeChecking.checkReal;
+    var checkReal = TypeChecks.checkReal;
     function mod(numerator, denominator) {
         checkReal("numerator", numerator);
         checkReal("denominator", denominator);

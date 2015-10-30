@@ -1,6 +1,6 @@
 ﻿import Sequences = require("Sequences");
-import TypeChecking = require("TypeChecking");
-import assertDefinedAndNotNull = TypeChecking.assertDefinedAndNotNull;
+import TypeChecks = require("TypeChecks");
+import assertDefinedAndNotNull = TypeChecks.assertDefinedAndNotNull;
 import createNodeSeq = Sequences.createNodeSeq;
 
 let nodeArray: Node[];

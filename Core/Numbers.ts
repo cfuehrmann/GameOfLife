@@ -1,7 +1,7 @@
 ﻿import Exceptions = require("./Exceptions");
-import TypeChecking = require("./TypeChecking");
+import TypeChecks = require("./TypeChecks");
 import ArgumentException = Exceptions.ArgumentException;
-import checkReal = TypeChecking.checkReal;
+import checkReal = TypeChecks.checkReal;
 
 export function mod(numerator: number, denominator: number) {
     checkReal("numerator", numerator); checkReal("denominator", denominator);

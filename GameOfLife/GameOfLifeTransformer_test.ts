@@ -1,6 +1,6 @@
 ﻿import GameOfLifeTransformer = require("GameOfLifeTransformer");
-import TypeChecking = require("Imports/Core/TypeChecking");
-import assertDefinedAndNotNull = TypeChecking.assertDefinedAndNotNull;
+import TypeChecks = require("Imports/Core/TypeChecks");
+import assertDefinedAndNotNull = TypeChecks.assertDefinedAndNotNull;
 import Arrays = require("Imports/Core/Arrays");
 import Array2D = Arrays.Array2D;
 
