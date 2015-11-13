@@ -1,7 +1,7 @@
 {
-  "name": "GameOfLife",
+  "name": "Core",
   "version": "0.0.0",
-  "description": "All dependencies of the GameOfLife project ",
+  "description": "All dependencies of the Core project ",
   "main": "index.js",
   "dependencies": {},
   "devDependencies": {
