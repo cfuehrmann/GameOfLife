@@ -16,7 +16,7 @@ QUnit.testStart(() => {
 functionName = "constructor";
 
 test(name("Argument is defined"), () => {
-    assertDefinedAndNotNull("seq", (seq: number[]) => createArraySeq(seq));
+    assertDefinedAndNotNull("seq", createArraySeq)();
 });
 
 
