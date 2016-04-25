@@ -1,6 +1,6 @@
-﻿import Numbers = require("Numbers");
-import Exceptions = require("Exceptions");
-import TypeAssertions = require("TypeAssertions");
+﻿import * as Numbers from "Numbers";
+import * as Exceptions from "Exceptions";
+import * as TypeAssertions from "TypeAssertions";
 import ArgumentException = Exceptions.ArgumentException;
 import assertReal = TypeAssertions.assertReal;
 

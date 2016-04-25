@@ -1,4 +1,4 @@
-﻿import Exceptions = require("Exceptions");
+﻿import * as Exceptions from "Exceptions";
 import ArgumentException = Exceptions.ArgumentException;
 
 let testClass: string;

@@ -1,6 +1,6 @@
-﻿import Arrays = require("Arrays");
-import Exceptions = require("Exceptions");
-import TypeAssertions = require("TypeAssertions");
+﻿import * as Arrays from "Arrays";
+import * as Exceptions from "Exceptions";
+import * as TypeAssertions from "TypeAssertions";
 import Array2D = Arrays.Array2D;
 import ArgumentException = Exceptions.ArgumentException;
 import assertInt = TypeAssertions.assertInt;

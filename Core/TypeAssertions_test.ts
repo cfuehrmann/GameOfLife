@@ -1,3 +1,3 @@
-﻿import TypeAssertions = require("TypeAssertions");
+﻿import * as TypeAssertions from "TypeAssertions";
 
 // todo

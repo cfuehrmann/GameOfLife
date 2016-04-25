@@ -1,4 +1,4 @@
-﻿import Exceptions = require("./Exceptions");
+﻿import * as Exceptions from "./Exceptions";
 import ArgumentException = Exceptions.ArgumentException;
 
 export function assertInt<T>(argumentName: string, testee: (n: number) => T) {

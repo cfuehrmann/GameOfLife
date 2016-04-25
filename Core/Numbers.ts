@@ -1,5 +1,5 @@
-﻿import Exceptions = require("./Exceptions");
-import TypeChecks = require("./TypeChecks");
+﻿import * as Exceptions from "./Exceptions";
+import * as TypeChecks from "./TypeChecks";
 import ArgumentException = Exceptions.ArgumentException;
 import checkReal = TypeChecks.checkReal;
 

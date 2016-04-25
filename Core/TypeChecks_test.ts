@@ -3,8 +3,8 @@
  * having the reference in one place eliminates the need to add it anywhere else.
  */
 /// <reference path="Imports/QUnit/qunit.d.ts" />
-import TypeChecks = require("TypeChecks");
-import Exceptions = require("Exceptions");
+import * as TypeChecks from "TypeChecks";
+import * as Exceptions from "Exceptions";
 import checkInt = TypeChecks.checkInt;
 import ArgumentException = Exceptions.ArgumentException;
 

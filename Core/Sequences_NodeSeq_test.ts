@@ -1,5 +1,5 @@
-﻿import Sequences = require("Sequences");
-import TypeAssertions = require("TypeAssertions");
+﻿import * as Sequences from "Sequences";
+import * as TypeAssertions from "TypeAssertions";
 import assertDefinedAndNotNull = TypeAssertions.assertDefinedAndNotNull;
 import createNodeSeq = Sequences.createNodeSeq;
 

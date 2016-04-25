@@ -1,4 +1,4 @@
-﻿import TypeChecks = require("./TypeChecks");
+﻿import * as TypeChecks from "./TypeChecks";
 import checkDefinedAndNotNull = TypeChecks.checkDefinedAndNotNull;
 
 // This interface is aiming at powerful, type-safe method chaining on 
