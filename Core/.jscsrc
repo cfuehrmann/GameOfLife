@@ -1,17 +1,13 @@
 {
-    "requireCurlyBraces": ["if", "else", "for", "while", "do", "try", "catch"],
-    "requireSpaceAfterKeywords": ["if", "else", "for", "while", "do", "switch", "return", "try", "catch"],
-    "requireSpaceBeforeBinaryOperators": ["?", "+", "-", "/", "*", "=", "==", "===", "!=", "!==", ">", ">=", "<", "<="],
-    "requireSpaceAfterBinaryOperators": ["?", "+", "/", "*", ":", "=", "==", "===", "!=", "!==", ">", ">=", "<", "<="],
-    "disallowSpaceAfterPrefixUnaryOperators": ["!"],
-    "disallowSpaceBeforeBinaryOperators": [","],
-    "disallowImplicitTypeConversion": ["string"],
-    "disallowKeywords": ["with"],
-    "disallowMultipleLineBreaks": true,
-    "disallowKeywordsOnNewLine": ["else"],
-    "excludeFiles": [],
-    "validateJSDoc": {
-        "checkParamNames": true,
-        "requireParamTypes": true
-    }
+  "disallowImplicitTypeConversion": [ "string" ],
+  "disallowKeywords": [ "with" ],
+  "disallowKeywordsOnNewLine": [ "else" ],
+  "disallowMultipleLineBreaks": true,
+  "disallowSpaceAfterPrefixUnaryOperators": [ "!" ],
+  "disallowSpaceBeforeBinaryOperators": [ "," ],
+  "excludeFiles": [ ],
+  "requireCurlyBraces": [ "if", "else", "for", "while", "do", "try", "catch" ],
+  "requireSpaceAfterBinaryOperators": [ "?", "+", "/", "*", ":", "=", "==", "===", "!=", "!==", ">", ">=", "<", "<=" ],
+  "requireSpaceAfterKeywords": [ "if", "else", "for", "while", "do", "switch", "return", "try", "catch" ],
+  "requireSpaceBeforeBinaryOperators": [ "?", "+", "-", "/", "*", "=", "==", "===", "!=", "!==", ">", ">=", "<", "<=" ]
 }

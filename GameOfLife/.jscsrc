@@ -9,9 +9,5 @@
     "disallowKeywords": ["with"],
     "disallowMultipleLineBreaks": true,
     "disallowKeywordsOnNewLine": ["else"],
-    "excludeFiles": [],
-    "validateJSDoc": {
-        "checkParamNames": true,
-        "requireParamTypes": true
-    }
+    "excludeFiles": []
 }
