@@ -1,17 +1,15 @@
-define(["require", "exports", "./Exceptions", "./TypeChecks"], function (require, exports, Exceptions, TypeChecks) {
-    var ArgumentException = Exceptions.ArgumentException;
-    var checkInt = TypeChecks.checkInt;
+define(["require", "exports", "Exceptions", "TypeChecks"], function (require, exports, Exceptions_1, TypeChecks_1) {
     var Array2D = (function () {
         function Array2D(height, width, initialValue) {
             this.height = height;
             this.width = width;
-            checkInt("height", height);
-            checkInt("width", width);
+            TypeChecks_1.checkInt("height", height);
+            TypeChecks_1.checkInt("width", width);
             if (width <= 0) {
-                throw new ArgumentException("width");
+                throw new Exceptions_1.ArgumentException("width");
             }
             if (height <= 0) {
-                throw new ArgumentException("height");
+                throw new Exceptions_1.ArgumentException("height");
             }
             this.matrix = new Array();
             for (var row = 0; row < height; row++) {
@@ -22,24 +20,24 @@ define(["require", "exports", "./Exceptions", "./TypeChecks"], function (require
             }
         }
         Array2D.prototype.set = function (row, column, value) {
-            checkInt("row", row);
-            checkInt("column", column);
+            TypeChecks_1.checkInt("row", row);
+            TypeChecks_1.checkInt("column", column);
             if (row < 0 || row >= this.height) {
-                throw new ArgumentException("row");
+                throw new Exceptions_1.ArgumentException("row");
             }
             if (column < 0 || column >= this.width) {
-                throw new ArgumentException("column");
+                throw new Exceptions_1.ArgumentException("column");
             }
             this.matrix[row][column] = value;
         };
         Array2D.prototype.get = function (row, column) {
-            checkInt("row", row);
-            checkInt("column", column);
+            TypeChecks_1.checkInt("row", row);
+            TypeChecks_1.checkInt("column", column);
             if (row < 0 || row >= this.height) {
-                throw new ArgumentException("row");
+                throw new Exceptions_1.ArgumentException("row");
             }
             if (column < 0 || column >= this.width) {
-                throw new ArgumentException("column");
+                throw new Exceptions_1.ArgumentException("column");
             }
             return this.matrix[row][column];
         };

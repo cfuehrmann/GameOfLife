@@ -1,5 +1,4 @@
-﻿import * as Exceptions from "./Exceptions";
-import ArgumentException = Exceptions.ArgumentException;
+﻿import {ArgumentException} from "./Exceptions";
 
 export function assertInt<T>(argumentName: string, testee: (n: number) => T) {
     return () => {

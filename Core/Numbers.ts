@@ -1,7 +1,5 @@
-﻿import * as Exceptions from "./Exceptions";
-import * as TypeChecks from "./TypeChecks";
-import ArgumentException = Exceptions.ArgumentException;
-import checkReal = TypeChecks.checkReal;
+﻿import {ArgumentException} from "./Exceptions";
+import {checkReal} from "./TypeChecks";
 
 export function mod(numerator: number, denominator: number) {
     checkReal("numerator", numerator); checkReal("denominator", denominator);

@@ -3,10 +3,8 @@
  * having the reference in one place eliminates the need to add it anywhere else.
  */
 /// <reference path="Imports/QUnit/qunit.d.ts" />
-import * as TypeChecks from "TypeChecks";
-import * as Exceptions from "Exceptions";
-import checkInt = TypeChecks.checkInt;
-import ArgumentException = Exceptions.ArgumentException;
+import {checkInt} from "TypeChecks";
+import {ArgumentException} from "Exceptions";
 
 let functionName: string;
 let name = (testCaseName: string) => "TypeChecks, " + functionName + ": " + testCaseName;

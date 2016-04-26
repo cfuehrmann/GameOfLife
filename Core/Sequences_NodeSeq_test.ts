@@ -1,11 +1,9 @@
-﻿import * as Sequences from "Sequences";
-import * as TypeAssertions from "TypeAssertions";
-import assertDefinedAndNotNull = TypeAssertions.assertDefinedAndNotNull;
-import createNodeSeq = Sequences.createNodeSeq;
+﻿import {createNodeSeq, Seq} from "Sequences";
+import {assertDefinedAndNotNull} from "TypeAssertions";
 
 let nodeArray: Node[];
 let nodes: NodeList;
-var seq: Sequences.Seq<Node>; // "var" because otherwise R# makes a type inference error
+var seq: Seq<Node>; // "var" because otherwise R# makes a type inference error
 
 QUnit.moduleStart(() => {
     nodeArray = new Array<Node>();

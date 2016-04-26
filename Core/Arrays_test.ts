@@ -1,9 +1,6 @@
-﻿import * as Arrays from "Arrays";
-import * as Exceptions from "Exceptions";
-import * as TypeAssertions from "TypeAssertions";
-import Array2D = Arrays.Array2D;
-import ArgumentException = Exceptions.ArgumentException;
-import assertInt = TypeAssertions.assertInt;
+﻿import {Array2D} from "Arrays";
+import {ArgumentException} from "Exceptions";
+import {assertInt} from "TypeAssertions";
 
 let functionName: string;
 let name = (testCase: string) => "Array2D, " + functionName + ": " + testCase;

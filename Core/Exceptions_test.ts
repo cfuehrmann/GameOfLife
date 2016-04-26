@@ -1,5 +1,4 @@
-﻿import * as Exceptions from "Exceptions";
-import ArgumentException = Exceptions.ArgumentException;
+﻿import {ArgumentException} from "Exceptions";
 
 let testClass: string;
 let functionName: string;

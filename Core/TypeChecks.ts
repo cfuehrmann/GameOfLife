@@ -1,5 +1,4 @@
-﻿import * as Exceptions from "./Exceptions";
-import ArgumentException = Exceptions.ArgumentException;
+﻿import {ArgumentException} from "./Exceptions";
 
 export function checkInt(argumentName: string, value: number) {
     if (value % 1 !== 0 || value == null) {

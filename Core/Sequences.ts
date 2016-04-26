@@ -1,5 +1,4 @@
-﻿import * as TypeChecks from "./TypeChecks";
-import checkDefinedAndNotNull = TypeChecks.checkDefinedAndNotNull;
+﻿import {checkDefinedAndNotNull} from "./TypeChecks";
 
 // This interface is aiming at powerful, type-safe method chaining on 
 // collections. JavaScript arrays do something like that, but their methods

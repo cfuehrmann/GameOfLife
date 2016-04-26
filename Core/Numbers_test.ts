@@ -1,8 +1,6 @@
 ﻿import * as Numbers from "Numbers";
-import * as Exceptions from "Exceptions";
-import * as TypeAssertions from "TypeAssertions";
-import ArgumentException = Exceptions.ArgumentException;
-import assertReal = TypeAssertions.assertReal;
+import {ArgumentException} from "Exceptions";
+import {assertReal} from "TypeAssertions";
 
 let functionName: string;
 let name = (testCase: string) => "Numbers, " + functionName + ": " + testCase;

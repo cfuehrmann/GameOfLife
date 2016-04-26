@@ -1,11 +1,9 @@
-define(["require", "exports", "./Exceptions", "./TypeChecks"], function (require, exports, Exceptions, TypeChecks) {
-    var ArgumentException = Exceptions.ArgumentException;
-    var checkReal = TypeChecks.checkReal;
+define(["require", "exports", "Exceptions", "TypeChecks"], function (require, exports, Exceptions_1, TypeChecks_1) {
     function mod(numerator, denominator) {
-        checkReal("numerator", numerator);
-        checkReal("denominator", denominator);
+        TypeChecks_1.checkReal("numerator", numerator);
+        TypeChecks_1.checkReal("denominator", denominator);
         if (denominator === 0) {
-            throw new ArgumentException("denominator");
+            throw new Exceptions_1.ArgumentException("denominator");
         }
         var ad = Math.abs(denominator);
         return ((numerator % ad) + ad) % ad;

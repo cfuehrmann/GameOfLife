@@ -29,6 +29,7 @@
     "typescript": "1.8.10"
   },
   "scripts": {
+    "transpile" : "tsc",
     "build": "grunt build",
     "testPhantomjs": "grunt test:phantomjs",
     "testChrome": "grunt test:chrome",
