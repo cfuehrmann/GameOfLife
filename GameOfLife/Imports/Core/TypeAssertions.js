@@ -1,4 +1,5 @@
 define(["require", "exports"], function (require, exports) {
+    "use strict";
     function assertInt(argumentName, testee) {
         return function () {
             assertReal(argumentName, testee)();

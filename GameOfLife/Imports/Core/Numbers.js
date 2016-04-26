@@ -1,4 +1,5 @@
-define(["require", "exports", "Exceptions", "TypeChecks"], function (require, exports, Exceptions_1, TypeChecks_1) {
+define(["require", "exports", "./Exceptions", "./TypeChecks"], function (require, exports, Exceptions_1, TypeChecks_1) {
+    "use strict";
     function mod(numerator, denominator) {
         TypeChecks_1.checkReal("numerator", numerator);
         TypeChecks_1.checkReal("denominator", denominator);

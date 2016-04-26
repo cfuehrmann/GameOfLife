@@ -1,4 +1,5 @@
-define(["require", "exports", "Exceptions", "TypeChecks"], function (require, exports, Exceptions_1, TypeChecks_1) {
+define(["require", "exports", "./Exceptions", "./TypeChecks"], function (require, exports, Exceptions_1, TypeChecks_1) {
+    "use strict";
     var Array2D = (function () {
         function Array2D(height, width, initialValue) {
             this.height = height;
@@ -42,6 +43,6 @@ define(["require", "exports", "Exceptions", "TypeChecks"], function (require, ex
             return this.matrix[row][column];
         };
         return Array2D;
-    })();
+    }());
     exports.Array2D = Array2D;
 });

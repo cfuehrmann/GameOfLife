@@ -1,4 +1,5 @@
-define(["require", "exports", "TypeChecks"], function (require, exports, TypeChecks_1) {
+define(["require", "exports", "./TypeChecks"], function (require, exports, TypeChecks_1) {
+    "use strict";
     function createNodeSeq(nodes) { return new NodeSeq(nodes); }
     exports.createNodeSeq = createNodeSeq;
     function createArraySeq(array) { return new ArraySeq(array); }
@@ -26,7 +27,7 @@ define(["require", "exports", "TypeChecks"], function (require, exports, TypeChe
             return this.seq;
         };
         return ArraySeq;
-    })();
+    }());
     // A class that wraps up a Nodelist under the Seq interface. Importantly, 
     // we don't extend the prototype of Nodelist, and we don't take a costly 
     // detour through an array before the first function is used.
@@ -55,5 +56,5 @@ define(["require", "exports", "TypeChecks"], function (require, exports, TypeChe
             return result;
         };
         return NodeSeq;
-    })();
+    }());
 });

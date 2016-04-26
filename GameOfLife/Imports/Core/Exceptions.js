@@ -1,4 +1,5 @@
 define(["require", "exports"], function (require, exports) {
+    "use strict";
     var ArgumentException = (function () {
         function ArgumentException(argumentName) {
             this.argumentName = argumentName;
@@ -8,6 +9,6 @@ define(["require", "exports"], function (require, exports) {
             return "The argument '" + this.argumentName + "' is invalid!";
         };
         return ArgumentException;
-    })();
+    }());
     exports.ArgumentException = ArgumentException;
 });
