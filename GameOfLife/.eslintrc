@@ -1,0 +1,18 @@
+﻿{
+    "parserOptions": {
+        "ecmaVersion": 6,
+        "ecmaFeatures": {
+            "jsx": true
+        }
+    },
+    "extends": "eslint:recommended",
+    "env": {
+        "browser": true,
+        "node": true,
+      "qunit": true,
+      "amd":  true
+    },
+    "rules": {
+        "semi": 2
+    }
+}

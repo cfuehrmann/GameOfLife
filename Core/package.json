@@ -5,14 +5,7 @@
   "main": "index.js",
   "dependencies": {},
   "devDependencies": {
-    "grunt": "0.4.5",
-    "grunt-cli": "1.2.0",
-    "grunt-contrib-jshint": "1.0.0",
-    "grunt-jscs": "2.8.0",
-    "grunt-karma": "0.12.2",
-    "grunt-newer": "1.2.0",
-    "grunt-tslint": "3.1.0",
-    "grunt-typescript": "0.8.0",
+    "eslint": "2.9.0",
     "karma": "0.13.22",
     "karma-chrome-launcher": "0.2.0",
     "karma-firefox-launcher": "0.1.6",
@@ -21,20 +14,13 @@
     "karma-phantomjs-launcher-nonet": "0.1.3",
     "karma-qunit": "0.1.5",
     "karma-requirejs": "0.2.2",
-    "load-grunt-tasks": "3.5.0",
     "qunitjs": "1.18.0",
     "requirejs": "2.1.19",
-    "time-grunt": "1.3.0",
     "tslint": "3.8.0",
     "typescript": "1.8.10"
   },
   "scripts": {
-    "transpile" : "tsc",
-    "build": "grunt build",
-    "testPhantomjs": "grunt test:phantomjs",
-    "testChrome": "grunt test:chrome",
-    "buildPhantomjs": "grunt buildAndTest:phantomjs",
-    "buildChrome": "grunt buildAndTest:chrome"
+    "buildAndTest": "eslint *.js && tslint *.ts && tsc && karma start"
   },
   "repository": {
     "type": "git",

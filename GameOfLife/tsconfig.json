@@ -1,37 +1,18 @@
 {
-    "version": "1.5.0-beta",
-    "compilerOptions": {
-        "target": "es5",
-        "module": "amd",
-        "isolatedModules": false,
-        "jsx": "react",
-        "experimentalDecorators": true,
-        "emitDecoratorMetadata": true,
-        "declaration": false,
-        "noImplicitAny": true,
-        "removeComments": false,
-        "noLib": false,
-        "preserveConstEnums": true,
-        "suppressImplicitAnyIndexErrors": false
-    },
+  "compilerOptions": {
+    "target": "es5",
+    "module": "amd",
+    "declaration": false,
+    "noImplicitAny": true,
+    "outDir": "BuildOutput",
+    "listFiles": true
+  },
     "filesGlob": [
-        "./**/*.ts",
-        "./**/*.tsx",
-        "!./node_modules/**/*"
+        "*.ts"
     ],
-    "files": [
-        "./Imports/Core/Arrays.d.ts",
-        "./Imports/Core/Exceptions.d.ts",
-        "./Imports/Core/Numbers.d.ts",
-        "./Imports/Core/Sequences.d.ts",
-        "./Imports/Core/TypeChecking.d.ts",
-        "./Imports/QUnit/qunit.d.ts",
-        "./Interfaces.ts",
-        "./RectRenderer.ts",
-        "./RectRenderer_test.ts",
-        "./GameOfLifeTransformer.ts",
-        "./GameOfLifeTransformer_test.ts",
-        "./Start.ts",
-        "./World.ts"
+    "exclude": [
+        "node_modules",
+        "BuildOutput",
+        "Imports"
     ]
 }

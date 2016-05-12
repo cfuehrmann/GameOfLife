@@ -21,7 +21,6 @@
     <TypeScriptNoImplicitAny>true</TypeScriptNoImplicitAny>
   </PropertyGroup>
   <ItemGroup>
-    <Content Include="Gruntfile.js" />
     <Content Include="Imports\require.js" />
     <Content Include="karma.conf.js" />
     <Content Include="karmaRequireAndStart.js" />
@@ -45,12 +44,14 @@
     <TypeScriptCompile Include="GameOfLifeTransformer.ts" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include=".jscsrc" />
     <Content Include="package.json" />
     <Content Include="tslint.json" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include=".jshintrc" />
+    <Content Include=".eslintrc" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="tsconfig.json" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

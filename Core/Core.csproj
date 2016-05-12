@@ -72,7 +72,6 @@
     <TypeScriptCompile Include="TypeChecks_test.ts" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Gruntfile.js" />
     <Content Include="karmaRequireAndStart.js" />
   </ItemGroup>
   <ItemGroup>
@@ -82,12 +81,13 @@
     <Content Include="package.json" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include=".jscsrc" />
-    <Content Include=".jshintrc" />
     <Content Include="tslint.json" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="tsconfig.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include=".eslintrc" />
   </ItemGroup>
   <PropertyGroup Condition="'$(Configuration)' == 'Debug'">
     <TypeScriptCompileOnSaveEnabled>True</TypeScriptCompileOnSaveEnabled>
