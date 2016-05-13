@@ -1,10 +1,7 @@
-﻿import Arrays = require("./Imports/Core/Arrays");
-import Numbers = require("./Imports/Core/Numbers");
-import Interface = require("./Interfaces");
-import TypeChecks = require("./Imports/Core/TypeChecks");
-import Array2D = Arrays.Array2D;
-import Transformer = Interface.Transformer;
-import checkDefinedAndNotNull = TypeChecks.checkDefinedAndNotNull;
+﻿import {Array2D} from "./Imports/Core/Arrays";
+import {mod} from "./Imports/Core/Numbers";
+import {Transformer} from "./Interfaces";
+import {checkDefinedAndNotNull} from "./Imports/Core/TypeChecks";
 
 export function create(survivalCondition: number[], birthCondition: number[]): Transformer<boolean> {
     checkDefinedAndNotNull("survivalCondition", survivalCondition);
@@ -27,10 +24,10 @@ class GameOfLifeTransformer implements Transformer<boolean> {
     }
 
     nextValue(world: Array2D<boolean>, row: number, column: number) {
-        const up = Numbers.mod(row - 1, world.height);
-        const right = Numbers.mod(column + 1, world.width);
-        const down = Numbers.mod(row + 1, world.height);
-        const left = Numbers.mod(column - 1, world.width);
+        const up = mod(row - 1, world.height);
+        const right = mod(column + 1, world.width);
+        const down = mod(row + 1, world.height);
+        const left = mod(column - 1, world.width);
         const count = (world.get(up, column) ? 1 : 0) +
         (world.get(up, right) ? 1 : 0) +
         (world.get(row, right) ? 1 : 0) +

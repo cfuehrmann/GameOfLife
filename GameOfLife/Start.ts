@@ -5,7 +5,7 @@
  */
 /// <reference path="Imports/QUnit/qunit.d.ts" />
 
-import Sequences = require("Imports/Core/Sequences");
+import * as Sequences from "Imports/Core/Sequences";
 
 function getChecked(elementName: string) {
     const nodeList = document.getElementsByName(elementName);

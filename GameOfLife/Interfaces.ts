@@ -1,5 +1,4 @@
-﻿import Arrays = require("Imports/Core/Arrays");
-import Array2D = Arrays.Array2D;
+﻿import {Array2D} from "Imports/Core/Arrays";
 
 export interface RectRenderingContext {
     clearRect(x: number, y: number, w: number, h: number): void;

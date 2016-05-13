@@ -5,8 +5,8 @@
   "main": "index.js",
   "dependencies": {},
   "devDependencies": {
-    "copyfiles": "^0.2.1",
-    "eslint": "^2.9.0",
+    "copyfiles": "0.2.1",
+    "eslint": "2.9.0",
     "karma": "0.13.22",
     "karma-chrome-launcher": "0.2.0",
     "karma-firefox-launcher": "0.1.6",
@@ -21,7 +21,9 @@
     "typescript": "1.8.10"
   },
   "scripts": {
-    "buildAndTest": "eslint *.js && tslint *.ts && tsc && copyfiles -f node_modules/requirejs/require.js Imports && copyfiles Imports/**/*.js *.html *.css BuildOutput && karma start"  },
+    "build": "eslint *.js && tslint *.ts && tsc && copyfiles -f node_modules/requirejs/require.js Imports && copyfiles Imports/**/*.js *.html *.css BuildOutput && karma start",
+    "quickBuild": "tslint *.ts && tsc && copyfiles Imports/**/*.js BuildOutput && karma start"   
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/cfuehrmann/GameOfLife.git"

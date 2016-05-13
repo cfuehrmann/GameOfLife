@@ -1,7 +1,6 @@
-﻿import Arrays = require("Imports/Core/Arrays");
-import RectRenderer = require("RectRenderer");
-import GameOfLifeTransformer = require("GameOfLifeTransformer");
-import Array2D = Arrays.Array2D;
+﻿import {Array2D} from "Imports/Core/Arrays";
+import * as RectRenderer from "RectRenderer";
+import * as GameOfLifeTransformer from "GameOfLifeTransformer";
 
 interface Parameter {
     name: string;

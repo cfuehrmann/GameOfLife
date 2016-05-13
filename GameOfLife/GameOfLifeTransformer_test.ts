@@ -1,8 +1,6 @@
-﻿import GameOfLifeTransformer = require("GameOfLifeTransformer");
-import TypeAssertions = require("Imports/Core/TypeAssertions");
-import assertDefinedAndNotNull = TypeAssertions.assertDefinedAndNotNull;
-import Arrays = require("Imports/Core/Arrays");
-import Array2D = Arrays.Array2D;
+﻿import * as GameOfLifeTransformer from "GameOfLifeTransformer";
+import {assertDefinedAndNotNull} from "Imports/Core/TypeAssertions";
+import {Array2D} from "Imports/Core/Arrays";
 
 let functionName: string;
 let name = (testCase: string) => "GameOfLifeTransformer, " + functionName + ": " + testCase;
