@@ -1,4 +1,5 @@
 define(["require", "exports", "./Exceptions"], function (require, exports, Exceptions_1) {
+    "use strict";
     function checkInt(argumentName, value) {
         if (value % 1 !== 0 || value == null) {
             throw new Exceptions_1.ArgumentException(argumentName);
