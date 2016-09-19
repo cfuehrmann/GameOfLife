@@ -13,7 +13,8 @@ define(["require", "exports", "./TypeChecks"], function (require, exports, TypeC
         }
         ArraySeq.prototype.filter = function (condition) {
             TypeChecks_1.checkDefinedAndNotNull("condition", condition);
-            return new ArraySeq(this.seq.filter(condition));
+            var filter = this.seq.filter(condition);
+            return new ArraySeq(filter);
         };
         ArraySeq.prototype.map = function (transform) {
             TypeChecks_1.checkDefinedAndNotNull("transform", transform);

@@ -1,10 +1,10 @@
 ﻿import {createArraySeq, Seq} from "Sequences";
 import {assertDefinedAndNotNull} from "TypeAssertions";
 
-let seq: Seq<number>; 
+let seq: Seq<number>;
 
 let functionName: string;
-let name = (testCaseName: string) => "ArraySeq, " + functionName + ": " + testCaseName;
+let name = (testCaseName: string) => `ArraySeq, ${functionName}: ${testCaseName}`;
 
 QUnit.testStart(() => {
     seq = createArraySeq([0, 1, 2, 3]);

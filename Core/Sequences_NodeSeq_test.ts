@@ -3,7 +3,7 @@ import {assertDefinedAndNotNull} from "TypeAssertions";
 
 let nodeArray: Node[];
 let nodes: NodeList;
-let seq: Seq<Node>; 
+let seq: Seq<Node>;
 
 QUnit.moduleStart(() => {
     nodeArray = new Array<Node>();

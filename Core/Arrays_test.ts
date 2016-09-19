@@ -3,7 +3,7 @@ import {ArgumentException} from "Exceptions";
 import {assertInt} from "TypeAssertions";
 
 let functionName: string;
-let name = (testCase: string) => "Array2D, " + functionName + ": " + testCase;
+let name = (testCase: string) => `Array2D, ${functionName}: ${testCase}`;
 
 
 functionName = "constructor";

@@ -4,7 +4,7 @@ var testFiles = allFiles.filter(function (file) { return testRegExp.test(file); 
 
 require.config({ // jshint ignore:line
     // Karma serves files under /base, which is the basePath from your config file
-    baseUrl: '/base/BuildOutput',
+    baseUrl: "/base/BuildOutput",
 
     deps: testFiles,
 

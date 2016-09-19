@@ -3,7 +3,7 @@ import {ArgumentException} from "Exceptions";
 import {assertReal} from "TypeAssertions";
 
 let functionName: string;
-let name = (testCase: string) => "Numbers, " + functionName + ": " + testCase;
+let name = (testCase: string) => `Numbers, ${functionName}: ${testCase}`;
 
 
 functionName = "mod";

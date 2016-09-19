@@ -3,7 +3,7 @@ import {assertDefinedAndNotNull} from "Imports/Core/TypeAssertions";
 import {Array2D} from "Imports/Core/Arrays";
 
 let functionName: string;
-let name = (testCase: string) => "GameOfLifeTransformer, " + functionName + ": " + testCase;
+let name = (testCase: string) => `GameOfLifeTransformer, ${functionName}: ${testCase}`;
 
 
 function getWorld(n: number, sparedRow: number, sparedCol: number) {

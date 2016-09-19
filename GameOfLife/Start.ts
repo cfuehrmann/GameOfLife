@@ -16,8 +16,7 @@ function getChecked(elementName: string) {
 }
 
 function createWorld() {
-    document.location.href = "world.html?survival=" + getChecked("survivalCondition") +
-        "&birth=" + getChecked("birthCondition");
+    document.location.href = `world.html?survival=${getChecked("survivalCondition")}&birth=${getChecked("birthCondition")}`;
 }
 
 document.getElementById("createWorld").onclick = createWorld;

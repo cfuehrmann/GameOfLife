@@ -17,7 +17,7 @@
     "qunitjs": "1.18.0",
     "requirejs": "2.1.19",
     "tslint": "3.8.0",
-    "typescript": "1.8.10"
+    "typescript": "2.0.2"
   },
   "scripts": {
     "build": "eslint *.js && tslint *.ts && tsc && karma start",

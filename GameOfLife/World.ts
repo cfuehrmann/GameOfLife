@@ -13,8 +13,8 @@ function getParts(parameters: Parameter[], parameterName: string) {
 }
 
 function getParameter(s: string): Parameter {
-    const nv = s.split("=");
-    return <Parameter>{ name: nv[0], value: nv[1] };
+    const [name, value] = s.split("=");
+    return { name, value };
 }
 
 function getParameters(queryString: string): Parameter[] {
@@ -35,7 +35,7 @@ canvasElement.width = width * pointSize;
 canvasElement.height = height * pointSize;
 
 const ctx = canvasElement.getContext("2d");
-ctx.fillStyle = "rgb(" + String(0) + ", " + String(0) + ", " + String(0) + ")";
+ctx.fillStyle = `rgb(${String(0)}, ${String(0)}, ${String(0)})`;
 
 document.getElementById("content").appendChild(canvasElement);
 

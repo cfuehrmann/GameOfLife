@@ -7,7 +7,7 @@ import {checkInt} from "TypeChecks";
 import {ArgumentException} from "Exceptions";
 
 let functionName: string;
-let name = (testCaseName: string) => "TypeChecks, " + functionName + ": " + testCaseName;
+let name = (testCaseName: string) => `TypeChecks, ${functionName}: ${testCaseName}`;
 
 functionName = "assertInt";
 

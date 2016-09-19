@@ -35,22 +35,23 @@ class ArraySeq<T> implements Seq<T> {
         this.seq = seq;
     }
 
-    filter(condition: (element: T) => boolean): ArraySeq<T> { // ArraySeq, not Seq, to keep unit test from being bottomless
+    filter(condition: (element: T) => boolean) { // ArraySeq, not Seq, to keep unit test from being bottomless
         checkDefinedAndNotNull("condition", condition);
-        return new ArraySeq(this.seq.filter(condition));
+        const filter = this.seq.filter(condition);
+        return new ArraySeq(filter) as ArraySeq<T>;
     }
 
-    map<TOut>(transform: (element: T) => TOut): ArraySeq<TOut> { // ArraySeq, not Seq, to keep unit test from being bottomless
+    map<TOut>(transform: (element: T) => TOut) { // ArraySeq, not Seq, to keep unit test from being bottomless
         checkDefinedAndNotNull("transform", transform);
         return new ArraySeq(this.seq.map(transform));
     }
 
-    reduceRight<TResult>(f: (previous: TResult, current: T) => TResult, initialValue: TResult): TResult {
+    reduceRight<TResult>(f: (previous: TResult, current: T) => TResult, initialValue: TResult) {
         checkDefinedAndNotNull("f", f);
         return this.seq.reduceRight(f, initialValue);
     }
 
-    toArray(): T[] {
+    toArray() {
         return this.seq;
     }
 }
@@ -67,17 +68,17 @@ class NodeSeq implements Seq<Node> {
         this.seq = seq;
     }
 
-    filter(condition: (element: Node) => boolean): ArraySeq<Node> { // ArraySeq, not Seq, to keep unit test from being bottomless
+    filter(condition: (element: Node) => boolean) { // ArraySeq, not Seq, to keep unit test from being bottomless
         checkDefinedAndNotNull("condition", condition);
-        return new ArraySeq(<Node[]>Array.prototype.filter.call(this.seq, condition));
+        return new ArraySeq(Array.prototype.filter.call(this.seq, condition) as Node[]);
     }
 
-    map<TOut>(transform: (element: Node) => TOut): ArraySeq<TOut> { // ArraySeq, not Seq, to keep unit test from being bottomless
+    map<TOut>(transform: (element: Node) => TOut) { // ArraySeq, not Seq, to keep unit test from being bottomless
         checkDefinedAndNotNull("transform", transform);
-        return new ArraySeq(<TOut[]>Array.prototype.map.call(this.seq, transform));
+        return new ArraySeq(Array.prototype.map.call(this.seq, transform) as TOut[]);
     }
 
-    reduceRight<TResult>(f: (previous: TResult, current: Node) => TResult, initialValue: TResult): TResult {
+    reduceRight<TResult>(f: (previous: TResult, current: Node) => TResult, initialValue: TResult) {
         checkDefinedAndNotNull("f", f);
         return Array.prototype.reduceRight.call(this.seq, f, initialValue);
     }
