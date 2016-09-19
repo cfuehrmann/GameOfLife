@@ -1,5 +1,5 @@
 {
-  "name": "Core",
+  "name": "core",
   "version": "0.0.0",
   "description": "All dependencies of the Core project ",
   "main": "index.js",

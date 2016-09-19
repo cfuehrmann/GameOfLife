@@ -1,5 +1,5 @@
 {
-  "name": "GameOfLife",
+  "name": "game_of_life",
   "version": "0.0.0",
   "description": "All dependencies of the GameOfLife project ",
   "main": "index.js",
