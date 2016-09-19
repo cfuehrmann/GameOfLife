@@ -3,7 +3,7 @@ import {assertDefinedAndNotNull} from "TypeAssertions";
 
 let nodeArray: Node[];
 let nodes: NodeList;
-var seq: Seq<Node>; // "var" because otherwise R# makes a type inference error
+let seq: Seq<Node>; 
 
 QUnit.moduleStart(() => {
     nodeArray = new Array<Node>();

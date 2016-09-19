@@ -1,7 +1,7 @@
 ﻿import {createArraySeq, Seq} from "Sequences";
 import {assertDefinedAndNotNull} from "TypeAssertions";
 
-var seq: Seq<number>; // "var" because otherwise R# makes a type inference error
+let seq: Seq<number>; 
 
 let functionName: string;
 let name = (testCaseName: string) => "ArraySeq, " + functionName + ": " + testCaseName;

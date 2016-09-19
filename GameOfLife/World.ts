@@ -34,7 +34,7 @@ const canvasElement = document.createElement("canvas");
 canvasElement.width = width * pointSize;
 canvasElement.height = height * pointSize;
 
-const ctx = <CanvasRenderingContext2D>canvasElement.getContext("2d");
+const ctx = canvasElement.getContext("2d");
 ctx.fillStyle = "rgb(" + String(0) + ", " + String(0) + ", " + String(0) + ")";
 
 document.getElementById("content").appendChild(canvasElement);
