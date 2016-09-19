@@ -5,7 +5,7 @@
   "main": "index.js",
   "dependencies": {},
   "devDependencies": {
-    "eslint": "2.9.0",
+    "eslint": "3.5.0",
     "karma": "0.13.22",
     "karma-chrome-launcher": "0.2.0",
     "karma-firefox-launcher": "0.1.6",
@@ -16,7 +16,7 @@
     "karma-requirejs": "0.2.2",
     "qunitjs": "1.18.0",
     "requirejs": "2.1.19",
-    "tslint": "3.8.0",
+    "tslint": "3.15.1",
     "typescript": "2.0.2"
   },
   "scripts": {
