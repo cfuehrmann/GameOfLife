@@ -6,18 +6,18 @@
   "dependencies": {},
   "devDependencies": {
     "copyfiles": "1.0.0",
-    "eslint": "3.5.0",
+    "eslint": "3.12.0",
     "karma": "1.3.0",
     "karma-chrome-launcher": "2.0.0",
     "karma-firefox-launcher": "1.0.0",
     "karma-ie-launcher": "1.0.0",
-    "karma-junit-reporter": "1.1.0",
-    "karma-qunit": "1.2.0",
+    "karma-junit-reporter": "1.2.0",
+    "karma-qunit": "1.2.1",
     "karma-requirejs": "1.1.0",
     "qunitjs": "1.18.0",
     "requirejs": "2.3.2",
-    "tslint": "3.15.1",
-    "typescript": "2.0.2"
+    "tslint": "4.0.2",
+    "typescript": "2.1.4"
   },
   "scripts": {
     "build": "eslint *.js && tslint *.ts && tsc && copyfiles -f node_modules/requirejs/require.js Imports && copyfiles Imports/**/*.js *.html *.css BuildOutput && karma start",
