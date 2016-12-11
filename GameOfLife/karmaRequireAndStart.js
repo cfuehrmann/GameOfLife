@@ -2,7 +2,7 @@ var testRegExp = /_test\.js$/i;
 var allFiles = Object.keys(window.__karma__.files);
 var testFiles = allFiles.filter(function (file) { return testRegExp.test(file); });
 
-require.config({ // jshint ignore:line
+require.config({
     // Karma serves files under /base, which is the basePath from your config file
     baseUrl: "/base/BuildOutput",
 

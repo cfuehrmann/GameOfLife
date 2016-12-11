@@ -1,59 +1,59 @@
-﻿import {createArraySeq, Seq} from "Sequences";
-import {assertDefinedAndNotNull} from "TypeAssertions";
+﻿import { createArraySeq, Seq } from "Sequences";
+import { assertDefinedAndNotNull } from "TypeAssertions";
 
 let seq: Seq<number>;
 
 let functionName: string;
 let name = (testCaseName: string) => `ArraySeq, ${functionName}: ${testCaseName}`;
 
-QUnit.testStart(() => {
+QUnit.testStart(details => {
     seq = createArraySeq([0, 1, 2, 3]);
 });
 
 
 functionName = "constructor";
 
-test(name("Argument is defined"), () => {
-    assertDefinedAndNotNull("seq", createArraySeq)();
-});
+QUnit.test(name("Argument is defined"), assert =>
+    assertDefinedAndNotNull("seq", createArraySeq)
+);
 
 
 functionName = "filter";
 
-test(name("Argument is defined"), () => {
-    assertDefinedAndNotNull("condition", seq.filter)();
-});
+QUnit.test(name("Argument is defined"), assert =>
+    assertDefinedAndNotNull("condition", seq.filter)
+);
 
-test(name("function works"), () => {
+QUnit.test(name("function works"), assert => {
     const result = seq.filter(n => [1, 3].indexOf(n) >= 0).toArray();
 
-    deepEqual(result, [1, 3]);
+    assert.deepEqual(result, [1, 3]);
 });
 
 
 functionName = "map";
 
-test(name("Argument is defined"), () => {
-    assertDefinedAndNotNull("transform", seq.map)();
-});
+QUnit.test(name("Argument is defined"), assert =>
+    assertDefinedAndNotNull("transform", seq.map)
+);
 
-test(name("function works"), () => {
+QUnit.test(name("function works"), assert => {
     const result = seq.map(element => 2 * element);
 
-    deepEqual(result.toArray(), [0, 2, 4, 6]);
+    assert.deepEqual(result.toArray(), [0, 2, 4, 6]);
 });
 
 
 functionName = "reduceRight";
 
-test(name("Argument is defined"), () => {
+QUnit.test(name("Argument is defined"), assert => {
     const testee = (f: (previous: number, current: number) => number) => seq.reduceRight(f, 42);
 
-    assertDefinedAndNotNull("f", testee)();
+    assertDefinedAndNotNull("f", testee);
 });
 
-test(name("function works"), () => {
+QUnit.test(name("function works"), assert => {
     const result = seq.reduceRight((previous, current) => [previous, current], new Array<any>());
 
-    deepEqual(result, [[[[new Array<any>(), 3], 2], 1], 0]);
+    assert.deepEqual(result, [[[[new Array<any>(), 3], 2], 1], 0]);
 });

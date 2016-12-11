@@ -1,5 +1,5 @@
-﻿import {createNodeSeq, Seq} from "Sequences";
-import {assertDefinedAndNotNull} from "TypeAssertions";
+﻿import { createNodeSeq, Seq } from "Sequences";
+import { assertDefinedAndNotNull } from "TypeAssertions";
 
 let nodeArray: Node[];
 let nodes: NodeList;
@@ -32,7 +32,7 @@ QUnit.moduleDone(() => {
     }
 });
 
-QUnit.testStart(() => {
+QUnit.testStart(details => {
     seq = createNodeSeq(nodes);
 });
 
@@ -42,59 +42,59 @@ let name = (testCaseName: string) => "NodeSeq, " + functionName + ": " + testCas
 
 functionName = "constructor";
 
-test(name("Argument is defined"),
+QUnit.test(name("Argument is defined"), assert =>
     assertDefinedAndNotNull("seq", (n: NodeList) => createNodeSeq(n))
 );
 
 
 functionName = "filter";
 
-test(name("Argument is defined"), () => {
-    assertDefinedAndNotNull("condition", seq.filter)();
-});
+QUnit.test(name("Argument is defined"), assert =>
+    assertDefinedAndNotNull("condition", seq.filter)
+);
 
-test(name("function works"), () => {
+QUnit.test(name("function works"), assert => {
     const result = seq.filter(n => ["1", "3"].indexOf(n.textContent) >= 0);
 
-    deepEqual(result.toArray(), [nodes[1], nodes[3]]);
+    assert.deepEqual(result.toArray(), [nodes[1], nodes[3]]);
 });
 
 
 functionName = "map";
 
-test(name("Argument is defined"), () => {
-    assertDefinedAndNotNull("transform", seq.map)();
-});
+QUnit.test(name("Argument is defined"), assert =>
+    assertDefinedAndNotNull("transform", seq.map)
+);
 
-test(name("function works"), () => {
+QUnit.test(name("function works"), assert => {
     const result = seq.map(element => element.textContent + "x");
 
-    deepEqual(result.toArray(), ["0x", "1x", "2x", "3x"]);
+    assert.deepEqual(result.toArray(), ["0x", "1x", "2x", "3x"]);
 });
 
 
 functionName = "reduceRight";
 
-test(name("Argument is defined"), () => {
+QUnit.test(name("Argument is defined"), assert => {
     const testee = (f: (previous: number, current: Node) => number) => seq.reduceRight(f, 42);
 
-    assertDefinedAndNotNull("f", testee)();
+    assertDefinedAndNotNull("f", testee);
 });
 
-test(name("function works"), () => {
+QUnit.test(name("function works"), assert => {
     const result = seq.reduceRight((previous, current) => [previous, current], new Array<any>());
 
-    deepEqual(result, [[[[new Array<any>(), nodeArray[3]], nodeArray[2]], nodeArray[1]], nodeArray[0]]);
+    assert.deepEqual(result, [[[[new Array<any>(), nodeArray[3]], nodeArray[2]], nodeArray[1]], nodeArray[0]]);
 });
 
 
 functionName = "n/a";
 
-test(name("reflects changes to Document"), () => {
+QUnit.test(name("reflects changes to Document"), assert => {
     const element = document.createElement("BUTTON");
     document.body.appendChild(element);
     const length = seq.toArray().length;
     document.body.removeChild(element);
 
-    strictEqual(seq.toArray().length, length - 1);
+    assert.strictEqual(seq.toArray().length, length - 1);
 });

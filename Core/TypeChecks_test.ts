@@ -3,23 +3,23 @@
  * having the reference in one place eliminates the need to add it anywhere else.
  */
 /// <reference path="Imports/QUnit/qunit.d.ts" />
-import {checkInt} from "TypeChecks";
-import {ArgumentException} from "Exceptions";
+import { checkInt } from "TypeChecks";
+import { ArgumentException } from "Exceptions";
 
 let functionName: string;
 let name = (testCaseName: string) => `TypeChecks, ${functionName}: ${testCaseName}`;
 
 functionName = "assertInt";
 
-test(name("value is undefined"),
-    () => throws(
+QUnit.test(name("value is undefined"), assert =>
+    assert.throws(
         () => checkInt("foo", undefined),
         (e: ArgumentException) => e.getArgumentName() === "foo"
     )
 );
 
-test(name("value is null"),
-    () => throws(
+QUnit.test(name("value is null"), assert =>
+    assert.throws(
         () => checkInt("foo", null),
         (e: ArgumentException) => e.getArgumentName() === "foo"
     )

@@ -14,7 +14,7 @@
     "karma-junit-reporter": "1.2.0",
     "karma-qunit": "1.2.1",
     "karma-requirejs": "1.1.0",
-    "qunitjs": "1.18.0",
+    "qunitjs": "2.1.0",
     "requirejs": "2.3.2",
     "tslint": "4.0.2",
     "typescript": "2.1.4"

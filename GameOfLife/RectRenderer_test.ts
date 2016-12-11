@@ -1,39 +1,39 @@
-﻿import {Array2D} from "Imports/Core/Arrays";
-import {RectRenderingContext} from "Interfaces";
+﻿import { Array2D } from "Imports/Core/Arrays";
+import { RectRenderingContext } from "Interfaces";
 import * as RectRenderer from "RectRenderer";
-import {assertDefinedAndNotNull, assertInt} from "Imports/Core/TypeAssertions";
-import {checkInt} from "Imports/Core/TypeChecks";
+import { assertDefinedAndNotNull, assertInt } from "Imports/Core/TypeAssertions";
+import { checkInt } from "Imports/Core/TypeChecks";
 
 let functionName: string;
 let name = (testCase: string) => "RectRenderer, " + functionName + ": " + testCase;
 
 functionName = "create";
 
-test(name("context when undefined or null"),
+QUnit.test(name("context when undefined or null"), assert =>
     assertDefinedAndNotNull("context",
-    (context: RectRenderingContext) => RectRenderer.create(context, 1))
+        (context: RectRenderingContext) => RectRenderer.create(context, 1))
 );
 
-test(name("pointSize when undefined or null"),
+QUnit.test(name("pointSize when undefined or null"), assert =>
     assertDefinedAndNotNull("pointSize",
-    (pointSize: number) => RectRenderer.create(new TestContext(), pointSize))
+        (pointSize: number) => RectRenderer.create(new TestContext(), pointSize))
 );
 
-test(name("pointSize when not integer"),
+QUnit.test(name("pointSize when not integer"), assert =>
     assertInt("pointSize",
-    (pointSize: number) => RectRenderer.create(new TestContext(), pointSize))
+        (pointSize: number) => RectRenderer.create(new TestContext(), pointSize))
 );
 
 functionName = "render";
 
-test(name("world when undefined or null"), () => {
+QUnit.test(name("world when undefined or null"), assert => {
     const r = RectRenderer.create(new TestContext(), 1);
 
-    assertDefinedAndNotNull("world", (world: Array2D<boolean>) => r.render(world))();
+    assertDefinedAndNotNull("world", (world: Array2D<boolean>) => r.render(world));
 });
 
 
-test(name("ContextCallSequence"), () => {
+QUnit.test(name("ContextCallSequence"), assert => {
     // PREPARE
 
     const context = new TestContext();
@@ -68,7 +68,7 @@ test(name("ContextCallSequence"), () => {
     // ASSERT 
 
     // The first call must be clearRect with the proper parameters:
-    ok(context.calls[0].match({
+    assert.ok(context.calls[0].match({
         clearRect: (x, y, w, h) => x === 0 && y === 0 &&
             w === width * pointSize && h === height * pointSize,
         fillRect: () => false
@@ -79,17 +79,17 @@ test(name("ContextCallSequence"), () => {
     // where "world" is true, and no such coordinates must occur twice:
     for (let i = 1; i < context.calls.length; i++) {
         context.calls[i].match({
-            clearRect: () => ok(false),
+            clearRect: () => assert.ok(false),
             fillRect: (x, y, w, h) => {
                 checkInt("x", x);
                 checkInt("y", y);
-                ok(x >= 0);
-                ok(y >= 0);
-                strictEqual(w, pointSize);
-                strictEqual(h, pointSize);
+                assert.ok(x >= 0);
+                assert.ok(y >= 0);
+                assert.strictEqual(w, pointSize);
+                assert.strictEqual(h, pointSize);
                 const row = Math.floor(y / pointSize);
                 const column = Math.floor(x / pointSize);
-                ok(world.get(row, column));
+                assert.ok(world.get(row, column));
                 world.set(row, column, false);
             }
         });
@@ -98,7 +98,7 @@ test(name("ContextCallSequence"), () => {
     // The calls to fillRect must exhaust all coordinates where world is true:
     for (let row = 0; row < height; row++) {
         for (let column = 0; column < width; column++) {
-            strictEqual(world.get(row, column), false);
+            assert.strictEqual(world.get(row, column), false);
         }
     }
 });
@@ -132,7 +132,7 @@ interface ContextCallCases<TResult> {
 }
 
 class Clear<TResult, TPoint> implements ContextCall {
-    constructor(private x: number, private y: number, private w: number, private h: number) {}
+    constructor(private x: number, private y: number, private w: number, private h: number) { }
 
     match<T>(cases: ContextCallCases<T>) {
         return cases.clearRect(this.x, this.y, this.w, this.h);
@@ -140,7 +140,7 @@ class Clear<TResult, TPoint> implements ContextCall {
 }
 
 class FillRect<TResult> implements ContextCall {
-    constructor(private x: number, private y: number, private w: number, private h: number) {}
+    constructor(private x: number, private y: number, private w: number, private h: number) { }
 
     match<T>(cases: ContextCallCases<T>) {
         return cases.fillRect(this.x, this.y, this.w, this.h);

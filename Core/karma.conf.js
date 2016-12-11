@@ -1,7 +1,7 @@
 // The module object is apparently created by karma before this code is executed. 
 // It is then used below to store the config data. The exports may be used later by
 // the module system to attache modules to it.
-module.exports = function (config) { // jshint ignore:line
+module.exports = function (config) {
     config.set({
 
         // base path that will be used to resolve all patterns (eg. files, exclude)
@@ -13,8 +13,8 @@ module.exports = function (config) { // jshint ignore:line
 
         // list of files / patterns to load in the browser
         files: [
-         "karmaRequireAndStart.js",
-         { pattern: "BuildOutput/**/*.js", included: false }
+            "karmaRequireAndStart.js",
+            { pattern: "BuildOutput/**/*.js", included: false }
         ],
 
         // list of files to exclude
@@ -28,7 +28,7 @@ module.exports = function (config) { // jshint ignore:line
         // Start these browsers.
         // Available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
         // This setting has been moved into the gruntfile
-        browsers: ["ChromeCanary"], 
+        browsers: ["ChromeCanary"],
 
         phantomjsLauncher: {
             // Here we could configure the path to the PhantomJS executable for each 

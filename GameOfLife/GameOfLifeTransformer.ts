@@ -1,7 +1,7 @@
-﻿import {Array2D} from "./Imports/Core/Arrays";
-import {mod} from "./Imports/Core/Numbers";
-import {Transformer} from "./Interfaces";
-import {checkDefinedAndNotNull} from "./Imports/Core/TypeChecks";
+﻿import { Array2D } from "./Imports/Core/Arrays";
+import { mod } from "./Imports/Core/Numbers";
+import { Transformer } from "./Interfaces";
+import { checkDefinedAndNotNull } from "./Imports/Core/TypeChecks";
 
 export function create(survivalCondition: number[], birthCondition: number[]): Transformer<boolean> {
     checkDefinedAndNotNull("survivalCondition", survivalCondition);
@@ -29,13 +29,13 @@ class GameOfLifeTransformer implements Transformer<boolean> {
         const down = mod(row + 1, world.height);
         const left = mod(column - 1, world.width);
         const count = (world.get(up, column) ? 1 : 0) +
-        (world.get(up, right) ? 1 : 0) +
-        (world.get(row, right) ? 1 : 0) +
-        (world.get(down, right) ? 1 : 0) +
-        (world.get(down, column) ? 1 : 0) +
-        (world.get(down, left) ? 1 : 0) +
-        (world.get(row, left) ? 1 : 0) +
-        (world.get(up, left) ? 1 : 0);
+            (world.get(up, right) ? 1 : 0) +
+            (world.get(row, right) ? 1 : 0) +
+            (world.get(down, right) ? 1 : 0) +
+            (world.get(down, column) ? 1 : 0) +
+            (world.get(down, left) ? 1 : 0) +
+            (world.get(row, left) ? 1 : 0) +
+            (world.get(up, left) ? 1 : 0);
         return world.get(row, column) ?
             this.survivalCondition.indexOf(count) >= 0 :
             this.birthCondition.indexOf(count) >= 0;

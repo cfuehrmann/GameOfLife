@@ -14,27 +14,27 @@ functionName = "constructor";
 
 functionName = "getArgumentName";
 
-test(name("result"), () => {
+QUnit.test(name("result"), assert => {
     const e = new ArgumentException("foo");
 
-    strictEqual(e.getArgumentName(), "foo");
+    assert.strictEqual(e.getArgumentName(), "foo");
 });
 
 
 functionName = "toString";
 
-test(name("containsArgumentName"), () => {
+QUnit.test(name("containsArgumentName"), assert => {
     const e = new ArgumentException("foo");
 
-    ok(e.toString().indexOf("foo") > -1);
+    assert.ok(e.toString().indexOf("foo") > -1);
 });
 
-test(name("containsArgumentNameWhenNull"), () => {
+QUnit.test(name("containsArgumentNameWhenNull"), assert => {
     const e = new ArgumentException(null);
-    ok(e.toString().indexOf("null") > -1);
+    assert.ok(e.toString().indexOf("null") > -1);
 });
 
-test(name("containsArgumentNameWhenUndefined"), () => {
+QUnit.test(name("containsArgumentNameWhenUndefined"), assert => {
     const e = new ArgumentException("undefined");
-    ok(e.toString().indexOf("undefined") > -1);
+    assert.ok(e.toString().indexOf("undefined") > -1);
 });

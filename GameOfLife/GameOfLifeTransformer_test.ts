@@ -1,6 +1,6 @@
 ﻿import * as GameOfLifeTransformer from "GameOfLifeTransformer";
-import {assertDefinedAndNotNull} from "Imports/Core/TypeAssertions";
-import {Array2D} from "Imports/Core/Arrays";
+import { assertDefinedAndNotNull } from "Imports/Core/TypeAssertions";
+import { Array2D } from "Imports/Core/Arrays";
 
 let functionName: string;
 let name = (testCase: string) => `GameOfLifeTransformer, ${functionName}: ${testCase}`;
@@ -31,20 +31,20 @@ function getWorld(n: number, sparedRow: number, sparedCol: number) {
 
 functionName = "create";
 
-test(name("survivalCondition when undefined or null"),
+QUnit.test(name("survivalCondition when undefined or null"), assert =>
     assertDefinedAndNotNull("survivalCondition",
-    (survivalCondition: number[]) => GameOfLifeTransformer.create(survivalCondition, [0]))
+        (survivalCondition: number[]) => GameOfLifeTransformer.create(survivalCondition, [0]))
 );
 
-test(name("birthCondition when undefined or null"),
+QUnit.test(name("birthCondition when undefined or null"), assert =>
     assertDefinedAndNotNull("birthCondition",
-    (birthCondition: number[]) => GameOfLifeTransformer.create([0], birthCondition))
+        (birthCondition: number[]) => GameOfLifeTransformer.create([0], birthCondition))
 );
 
 
 functionName = "transform";
 
-test(name("Single survival number when alive"), () => {
+QUnit.test(name("Single survival number when alive"), assert => {
     const nextWorld = new Array2D(3, 3, false);
 
     for (let n = 0; n < 9; n++) {
@@ -56,12 +56,12 @@ test(name("Single survival number when alive"), () => {
 
             t.transform(w, nextWorld);
 
-            strictEqual(nextWorld.get(1, 1), neighbors === n);
+            assert.strictEqual(nextWorld.get(1, 1), neighbors === n);
         }
     }
 });
 
-test(name("Single survival number when dead"), () => {
+QUnit.test(name("Single survival number when dead"), assert => {
     const nextWorld = new Array2D(3, 3, false);
 
     for (let n = 0; n < 9; n++) {
@@ -72,12 +72,12 @@ test(name("Single survival number when dead"), () => {
 
             t.transform(w, nextWorld);
 
-            strictEqual(nextWorld.get(1, 1), false);
+            assert.strictEqual(nextWorld.get(1, 1), false);
         }
     }
 });
 
-test(name("First of two survival numbers"), () => {
+QUnit.test(name("First of two survival numbers"), assert => {
     const t = GameOfLifeTransformer.create([3, 2], []);
     const nextWorld = new Array2D(3, 3, false);
     const w = getWorld(2, 1, 1);
@@ -85,10 +85,10 @@ test(name("First of two survival numbers"), () => {
 
     t.transform(w, nextWorld);
 
-    strictEqual(nextWorld.get(1, 1), true);
+    assert.strictEqual(nextWorld.get(1, 1), true);
 });
 
-test(name("Second of two survival numbers"), () => {
+QUnit.test(name("Second of two survival numbers"), assert => {
     const t = GameOfLifeTransformer.create([3, 2], []);
     const nextWorld = new Array2D(3, 3, false);
     const w = getWorld(3, 1, 1);
@@ -96,11 +96,11 @@ test(name("Second of two survival numbers"), () => {
 
     t.transform(w, nextWorld);
 
-    strictEqual(nextWorld.get(1, 1), true);
+    assert.strictEqual(nextWorld.get(1, 1), true);
 });
 
 
-test(name("Single birth number when dead"), () => {
+QUnit.test(name("Single birth number when dead"), assert => {
     const nextWorld = new Array2D(3, 3, false);
 
     for (let n = 0; n < 9; n++) {
@@ -111,12 +111,12 @@ test(name("Single birth number when dead"), () => {
 
             t.transform(w, nextWorld);
 
-            strictEqual(nextWorld.get(1, 1), neighbors === n);
+            assert.strictEqual(nextWorld.get(1, 1), neighbors === n);
         }
     }
 });
 
-test(name("Single birth number when alive"), () => {
+QUnit.test(name("Single birth number when alive"), assert => {
     const nextWorld = new Array2D(3, 3, false);
 
     for (let n = 0; n < 9; n++) {
@@ -128,44 +128,44 @@ test(name("Single birth number when alive"), () => {
 
             t.transform(w, nextWorld);
 
-            strictEqual(nextWorld.get(1, 1), false);
+            assert.strictEqual(nextWorld.get(1, 1), false);
         }
     }
 });
 
-test(name("First of two birth numbers"), () => {
+QUnit.test(name("First of two birth numbers"), assert => {
     const t = GameOfLifeTransformer.create([], [3, 2]);
     const nextWorld = new Array2D(3, 3, false);
     const w = getWorld(2, 1, 1);
 
     t.transform(w, nextWorld);
 
-    strictEqual(nextWorld.get(1, 1), true);
+    assert.strictEqual(nextWorld.get(1, 1), true);
 });
 
-test(name("Second of two birth numbers"), () => {
+QUnit.test(name("Second of two birth numbers"), assert => {
     const t = GameOfLifeTransformer.create([], [3, 2]);
     const nextWorld = new Array2D(3, 3, false);
     const w = getWorld(3, 1, 1);
 
     t.transform(w, nextWorld);
 
-    strictEqual(nextWorld.get(1, 1), true);
+    assert.strictEqual(nextWorld.get(1, 1), true);
 });
 
 
-test(name("Overlapping birth"), () => {
+QUnit.test(name("Overlapping birth"), assert => {
     const t = GameOfLifeTransformer.create([], [0]);
     const w = new Array2D(3, 4, false);
     const nextWorld = new Array2D(3, 4, false);
 
     t.transform(w, nextWorld);
 
-    strictEqual(nextWorld.get(1, 2), true);
-    strictEqual(nextWorld.get(1, 3), true);
+    assert.strictEqual(nextWorld.get(1, 2), true);
+    assert.strictEqual(nextWorld.get(1, 3), true);
 });
 
-test(name("Overlapping death"), () => {
+QUnit.test(name("Overlapping death"), assert => {
     const t = GameOfLifeTransformer.create([1], []);
     const w = new Array2D(3, 4, false);
     const nextWorld = new Array2D(3, 4, false);
@@ -174,22 +174,22 @@ test(name("Overlapping death"), () => {
 
     t.transform(w, nextWorld);
 
-    strictEqual(nextWorld.get(0, 0), false);
-    strictEqual(nextWorld.get(0, 1), false);
+    assert.strictEqual(nextWorld.get(0, 0), false);
+    assert.strictEqual(nextWorld.get(0, 1), false);
 });
 
 
-test(name("Birth wins when dead"), () => {
+QUnit.test(name("Birth wins when dead"), assert => {
     const t = GameOfLifeTransformer.create([3], [3]);
     const nextWorld = new Array2D(3, 3, false);
     const w = getWorld(3, 1, 1);
 
     t.transform(w, nextWorld);
 
-    strictEqual(nextWorld.get(1, 1), true);
+    assert.strictEqual(nextWorld.get(1, 1), true);
 });
 
-test(name("Survival wins when alive"), () => {
+QUnit.test(name("Survival wins when alive"), assert => {
     const t = GameOfLifeTransformer.create([3], [3]);
     const nextWorld = new Array2D(3, 3, false);
     const w = getWorld(3, 1, 1);
@@ -197,11 +197,11 @@ test(name("Survival wins when alive"), () => {
 
     t.transform(w, nextWorld);
 
-    strictEqual(nextWorld.get(1, 1), true);
+    assert.strictEqual(nextWorld.get(1, 1), true);
 });
 
 
-test(name("Proper counting top left"), () => {
+QUnit.test(name("Proper counting top left"), assert => {
     const nextWorld = new Array2D(3, 3, false);
 
     for (let n = 0; n < 9; n++) {
@@ -212,12 +212,12 @@ test(name("Proper counting top left"), () => {
 
             t.transform(w, nextWorld);
 
-            strictEqual(nextWorld.get(0, 0), neighbors === n);
+            assert.strictEqual(nextWorld.get(0, 0), neighbors === n);
         }
     }
 });
 
-test(name("Proper counting top"), () => {
+QUnit.test(name("Proper counting top"), assert => {
     const nextWorld = new Array2D(3, 3, false);
 
     for (let n = 0; n < 9; n++) {
@@ -228,12 +228,12 @@ test(name("Proper counting top"), () => {
 
             t.transform(w, nextWorld);
 
-            strictEqual(nextWorld.get(0, 1), neighbors === n);
+            assert.strictEqual(nextWorld.get(0, 1), neighbors === n);
         }
     }
 });
 
-test(name("Proper counting top right"), () => {
+QUnit.test(name("Proper counting top right"), assert => {
     const nextWorld = new Array2D(3, 3, false);
 
     for (let n = 0; n < 9; n++) {
@@ -244,12 +244,12 @@ test(name("Proper counting top right"), () => {
 
             t.transform(w, nextWorld);
 
-            strictEqual(nextWorld.get(0, 2), neighbors === n);
+            assert.strictEqual(nextWorld.get(0, 2), neighbors === n);
         }
     }
 });
 
-test(name("Proper counting left"), () => {
+QUnit.test(name("Proper counting left"), assert => {
     const nextWorld = new Array2D(3, 3, false);
 
     for (let n = 0; n < 9; n++) {
@@ -260,12 +260,12 @@ test(name("Proper counting left"), () => {
 
             t.transform(w, nextWorld);
 
-            strictEqual(nextWorld.get(1, 0), neighbors === n);
+            assert.strictEqual(nextWorld.get(1, 0), neighbors === n);
         }
     }
 });
 
-test(name("Proper counting right"), () => {
+QUnit.test(name("Proper counting right"), assert => {
     const nextWorld = new Array2D(3, 3, false);
 
     for (let n = 0; n < 9; n++) {
@@ -276,12 +276,12 @@ test(name("Proper counting right"), () => {
 
             t.transform(w, nextWorld);
 
-            strictEqual(nextWorld.get(1, 2), neighbors === n);
+            assert.strictEqual(nextWorld.get(1, 2), neighbors === n);
         }
     }
 });
 
-test(name("Proper counting bottom left"), () => {
+QUnit.test(name("Proper counting bottom left"), assert => {
     const nextWorld = new Array2D(3, 3, false);
 
     for (let n = 0; n < 9; n++) {
@@ -292,12 +292,12 @@ test(name("Proper counting bottom left"), () => {
 
             t.transform(w, nextWorld);
 
-            strictEqual(nextWorld.get(2, 0), neighbors === n);
+            assert.strictEqual(nextWorld.get(2, 0), neighbors === n);
         }
     }
 });
 
-test(name("Proper counting bottom"), () => {
+QUnit.test(name("Proper counting bottom"), assert => {
     const nextWorld = new Array2D(3, 3, false);
 
     for (let n = 0; n < 9; n++) {
@@ -308,12 +308,12 @@ test(name("Proper counting bottom"), () => {
 
             t.transform(w, nextWorld);
 
-            strictEqual(nextWorld.get(2, 1), neighbors === n);
+            assert.strictEqual(nextWorld.get(2, 1), neighbors === n);
         }
     }
 });
 
-test(name("Proper counting bottom right"), () => {
+QUnit.test(name("Proper counting bottom right"), assert => {
     const nextWorld = new Array2D(3, 3, false);
 
     for (let n = 0; n < 9; n++) {
@@ -324,7 +324,7 @@ test(name("Proper counting bottom right"), () => {
 
             t.transform(w, nextWorld);
 
-            strictEqual(nextWorld.get(2, 2), neighbors === n);
+            assert.strictEqual(nextWorld.get(2, 2), neighbors === n);
         }
     }
 });

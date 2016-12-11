@@ -1,4 +1,4 @@
-module.exports = function(config) { // jshint ignore:line
+module.exports = function (config) {
 
     config.set({
         // base path that will be used to resolve all patterns (eg. files, exclude)
@@ -28,7 +28,7 @@ module.exports = function(config) { // jshint ignore:line
         // start these browsers
         // available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
         // This setting has been moved into the gruntfile
-        browsers: ["Chrome"], 
+        browsers: ["Chrome"],
 
         phantomjsLauncher: {
             // Here we could configure the path to the PhantomJS executable for each 
@@ -41,7 +41,7 @@ module.exports = function(config) { // jshint ignore:line
             //  darwin: path.join(__dirname, 'target/phantomjs/darwin/phantomjs'),
             //  win32: path.join(__dirname, 'target/phantomjs/win/phantomjs.exe')
             // }
-        
+
         },
 
         reporters: ["progress", "junit"],
