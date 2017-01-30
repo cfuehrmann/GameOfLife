@@ -1,5 +1,4 @@
 ﻿import { createNodeSeq, Seq } from "Sequences";
-import { assertDefinedAndNotNull } from "TypeAssertions";
 
 let nodeArray: Node[];
 let nodes: NodeList;
@@ -40,31 +39,18 @@ let functionName: string;
 let name = (testCaseName: string) => "NodeSeq, " + functionName + ": " + testCaseName;
 
 
-functionName = "constructor";
-
-QUnit.test(name("Argument is defined"), assert =>
-    assertDefinedAndNotNull("seq", (n: NodeList) => createNodeSeq(n))
-);
-
+// functionName = "constructor";
 
 functionName = "filter";
 
-QUnit.test(name("Argument is defined"), assert =>
-    assertDefinedAndNotNull("condition", seq.filter)
-);
-
 QUnit.test(name("function works"), assert => {
-    const result = seq.filter(n => ["1", "3"].indexOf(n.textContent) >= 0);
+    const result = seq.filter(n => new Array<string | null>("1", "3").indexOf(n.textContent) >= 0);
 
     assert.deepEqual(result.toArray(), [nodes[1], nodes[3]]);
 });
 
 
 functionName = "map";
-
-QUnit.test(name("Argument is defined"), assert =>
-    assertDefinedAndNotNull("transform", seq.map)
-);
 
 QUnit.test(name("function works"), assert => {
     const result = seq.map(element => element.textContent + "x");
@@ -74,12 +60,6 @@ QUnit.test(name("function works"), assert => {
 
 
 functionName = "reduceRight";
-
-QUnit.test(name("Argument is defined"), assert => {
-    const testee = (f: (previous: number, current: Node) => number) => seq.reduceRight(f, 42);
-
-    assertDefinedAndNotNull("f", testee);
-});
 
 QUnit.test(name("function works"), assert => {
     const result = seq.reduceRight((previous, current) => [previous, current], new Array<any>());

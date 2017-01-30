@@ -13,14 +13,7 @@ functionName = "assertInt";
 
 QUnit.test(name("value is undefined"), assert =>
     assert.throws(
-        () => checkInt("foo", undefined),
-        (e: ArgumentException) => e.getArgumentName() === "foo"
-    )
-);
-
-QUnit.test(name("value is null"), assert =>
-    assert.throws(
-        () => checkInt("foo", null),
+        () => checkInt("foo", 0.5),
         (e: ArgumentException) => e.getArgumentName() === "foo"
     )
 );

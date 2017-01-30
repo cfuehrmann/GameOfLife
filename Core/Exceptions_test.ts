@@ -29,11 +29,6 @@ QUnit.test(name("containsArgumentName"), assert => {
     assert.ok(e.toString().indexOf("foo") > -1);
 });
 
-QUnit.test(name("containsArgumentNameWhenNull"), assert => {
-    const e = new ArgumentException(null);
-    assert.ok(e.toString().indexOf("null") > -1);
-});
-
 QUnit.test(name("containsArgumentNameWhenUndefined"), assert => {
     const e = new ArgumentException("undefined");
     assert.ok(e.toString().indexOf("undefined") > -1);

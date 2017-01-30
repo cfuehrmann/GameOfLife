@@ -5,7 +5,8 @@
     "declaration": true,
     "noImplicitAny": true,
     "outDir": "BuildOutput",
-    "listFiles": false
+    "listFiles": false,
+    "strictNullChecks": true
   },
     "filesGlob": [
         "*.ts"

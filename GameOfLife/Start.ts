@@ -19,4 +19,4 @@ function createWorld() {
     document.location.href = `world.html?survival=${getChecked("survivalCondition")}&birth=${getChecked("birthCondition")}`;
 }
 
-document.getElementById("createWorld").onclick = createWorld;
+document.getElementById("createWorld")!.onclick = createWorld;

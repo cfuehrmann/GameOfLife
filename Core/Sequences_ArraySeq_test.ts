@@ -1,5 +1,4 @@
 ﻿import { createArraySeq, Seq } from "Sequences";
-import { assertDefinedAndNotNull } from "TypeAssertions";
 
 let seq: Seq<number>;
 
@@ -11,18 +10,9 @@ QUnit.testStart(details => {
 });
 
 
-functionName = "constructor";
-
-QUnit.test(name("Argument is defined"), assert =>
-    assertDefinedAndNotNull("seq", createArraySeq)
-);
-
+// functionName = "constructor";
 
 functionName = "filter";
-
-QUnit.test(name("Argument is defined"), assert =>
-    assertDefinedAndNotNull("condition", seq.filter)
-);
 
 QUnit.test(name("function works"), assert => {
     const result = seq.filter(n => [1, 3].indexOf(n) >= 0).toArray();
@@ -33,10 +23,6 @@ QUnit.test(name("function works"), assert => {
 
 functionName = "map";
 
-QUnit.test(name("Argument is defined"), assert =>
-    assertDefinedAndNotNull("transform", seq.map)
-);
-
 QUnit.test(name("function works"), assert => {
     const result = seq.map(element => 2 * element);
 
@@ -45,12 +31,6 @@ QUnit.test(name("function works"), assert => {
 
 
 functionName = "reduceRight";
-
-QUnit.test(name("Argument is defined"), assert => {
-    const testee = (f: (previous: number, current: number) => number) => seq.reduceRight(f, 42);
-
-    assertDefinedAndNotNull("f", testee);
-});
 
 QUnit.test(name("function works"), assert => {
     const result = seq.reduceRight((previous, current) => [previous, current], new Array<any>());
